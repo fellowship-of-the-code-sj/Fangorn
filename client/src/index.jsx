@@ -1,4 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ProductInformation from './components/ProductInformation.jsx';
 
-ReactDOM.render(<div> SOME COOL THINGS </div>, document.getElementById('root'));
+ReactDOM.render(<ProductInformation />, document.getElementById('root'));
