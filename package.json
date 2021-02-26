@@ -22,6 +22,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "jquery": "^3.5.1",
+    "nodemon": "^2.0.7",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "webpack": "^5.24.1"
