@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest testing --collectCoverage"
+    "test": "jest testing --collectCoverage",
     "react-dev": "npx webpack -d --watch",
     "start": "nodemon server/index.js"
   },
