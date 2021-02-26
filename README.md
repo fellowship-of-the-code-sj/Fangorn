@@ -4,7 +4,7 @@
 ## STEPS FOR SET UP AND INSTALLATION
 
 ### STEP ONE
-  * npm install to install all of the dependencies locally,
+  * 'npm install' to install all of the dependencies locally,
 
 ### STEP TWO
 create GitHub API Token
@@ -23,3 +23,7 @@ create GitHub API Token
 ### STEP THREE
   * create copy of configure.example.js and rename it configure.js,
   * update the CAMPUS_CODE and apiKey properties within the file.
+
+### STEP FOUR
+  * run 'npm start' to start the server
+  * run 'npm react-dev' to compile and bundle with webpack
