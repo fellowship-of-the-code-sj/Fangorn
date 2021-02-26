@@ -1,0 +1,21 @@
+version: 2.1
+jobs:
+  run_tests :
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - run:
+          name:  Install npm dependencies
+          command: |
+            npm install --save
+      - run:
+          name: bundle react components
+          command: |
+            npm run react-dev
+      - run:
+          name: run test
+          command: |
+            npm run test
+
+
