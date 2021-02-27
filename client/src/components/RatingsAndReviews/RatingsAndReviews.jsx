@@ -8,10 +8,14 @@ class RatingsAndReviews extends React.Component {
     }
   }
 
+  componentDidMount() {
+    console.log('hello there');
+  }
+
   render() {
     return (
       <div>
-        <h1>ding dong skype is dead</h1>
+        <h1>bing bong skype is dead</h1>
       </div>
 
     )
