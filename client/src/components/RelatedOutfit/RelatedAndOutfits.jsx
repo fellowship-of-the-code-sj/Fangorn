@@ -1,12 +1,9 @@
 import React from 'react';
 
-var RelatedAndOutfits = () => {
-  return (
-    <div>
-      SOMEHTING NICE
-      NOTHING
-    </div>
-  )
-};
+const RelatedAndOutfits = () => (
+  <div>
+    SOMEHTING NICE
+  </div>
+);
 
 export default RelatedAndOutfits;

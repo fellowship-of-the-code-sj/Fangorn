@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from'axios';
+import axios from 'axios';
 import Overview from './Overview/Overview.jsx'
 import RelatedAndOutfits from './RelatedOutfit/RelatedAndOutfits.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
