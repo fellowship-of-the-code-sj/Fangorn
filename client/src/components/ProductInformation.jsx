@@ -13,10 +13,10 @@ class ProductInformation extends React.Component {
   render() {
     return (
       <div>
-        <Overview />
-        <RelatedAndOutfits />
-        <QuestionsAndAnswers />
-        <RatingsAndReviews />
+        <Overview productID={1} />
+        <RelatedAndOutfits productID={1} />
+        <QuestionsAndAnswers productID={1} />
+        <RatingsAndReviews productID={1} />
       </div>
     )
   }
