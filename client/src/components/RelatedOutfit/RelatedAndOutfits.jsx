@@ -4,6 +4,7 @@ var RelatedAndOutfits = () => {
   return (
     <div>
       SOMEHTING NICE
+      NOTHING MUCH
     </div>
   )
 };
