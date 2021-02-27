@@ -3,7 +3,7 @@ import React from 'react';
 var RelatedAndOutfits = () => {
   return (
     <div>
-      SOMEHTING NICE
+      SOMEHTING conflicting
     </div>
   )
 };
