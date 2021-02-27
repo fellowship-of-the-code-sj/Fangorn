@@ -12,7 +12,7 @@ jobs:
       - run:
           name: bundle react components
           command: |
-            npm run react-dev
+            npx webpack
       - run:
           name: run test
           command: |
