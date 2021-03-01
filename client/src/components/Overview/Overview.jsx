@@ -6,7 +6,11 @@ class Overview extends React.Component {
   }
 
   render () {
-    return <h2>Overview</h2>
+    return (
+      <div className="overview">
+        <h1>Overview</h1>
+      </div>
+    )
   }
 }
 
