@@ -1,25 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-class RatingsAndReviews extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
+function RatingsAndReviews(props) {
 
-    }
-  }
 
-  componentDidMount() {
-    console.log('hello there');
-  }
+  return (
+    <div>
+      <h1>bing bong skype is dead</h1>
+    </div>
 
-  render() {
-    return (
-      <div>
-        <h1>bing bong skype is dead</h1>
-      </div>
-
-    )
-  }
+  )
 }
 
 export default RatingsAndReviews
