@@ -5,7 +5,7 @@ import RelatedAndOutfits from './RelatedOutfit/RelatedAndOutfits.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 
-class ProductInformation extends React.Component {
+class ProductDetailPage extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -22,4 +22,4 @@ class ProductInformation extends React.Component {
   }
 }
 
-export default ProductInformation;
+export default ProductDetailPage;
