@@ -14,7 +14,7 @@ class ProductInformation extends React.Component {
     return (
       <div>
         <Overview productID={1} />
-        <RelatedAndOutfits productID={1} />
+        <RelatedAndOutfits productID={13023} />
         <QuestionsAndAnswers productID={1} />
         <RatingsAndReviews productID={1} />
       </div>
