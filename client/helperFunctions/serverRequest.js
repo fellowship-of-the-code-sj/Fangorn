@@ -4,8 +4,12 @@ var get = (url, params, callback) => {
   axios.get(url, {
     params: params
   })
-    .then((result) => callback(result))
-    .catch(callback('error'));
+    .then((result) => {
+      callback(result);
+    })
+    .catch((err) => {
+      throw err;
+    });
 }
 
 export default {get};

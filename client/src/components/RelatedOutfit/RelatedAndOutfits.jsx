@@ -13,11 +13,11 @@ const RelatedAndOutfits = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className='relatedItemsList'>
       {
         relatedItems?
           relatedItems.map((item) => {
-            return <div key={item.id} >{(item.id)}</div>;
+            return <div className='relatedItem' key={item.id} >{(item.id)}</div>;
           })
         : <div></div>
       }
