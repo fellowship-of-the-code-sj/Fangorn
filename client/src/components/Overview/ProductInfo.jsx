@@ -20,17 +20,17 @@ const ProductInfo = (props) => {
 
   return (
     <div className="productInfo">
-      <h3 id="product_info_rating">{ratingData.average} - Read all {ratingData.count} reviews</h3>
-      <h3 id="product_info_category">{props.product.category}</h3>
-      <h1 id="product_info_name">{props.product.name}</h1>
-      <h3 id="product_info_price">${props.style.original_price}</h3>
+      <div id="product_info_rating">{ratingData.average} - Read all {ratingData.count} reviews</div>
+      <div id="product_info_category">{props.product.category}</div>
+      <div id="product_info_name">{props.product.name}</div>
+      <div id="product_info_price">${props.currentStyle.original_price}</div>
     </div>
   )
 
   ProductInfo.propTypes = {
     ratings: PropTypes.object,
     product: PropTypes.object,
-    style: PropTypes.object
+    currentStyle: PropTypes.object
   }
 }
 

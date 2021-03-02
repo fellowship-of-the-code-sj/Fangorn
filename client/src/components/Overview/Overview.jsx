@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import StyleSelector from './StyleSelector.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
 import PropTypes from 'prop-types';
@@ -9,14 +10,14 @@ const Overview = (props) => {
   const [ product, setProduct ] = useState({});
   const [ styles, setStyles ] = useState({});
   const [ ratings, setRatings ] = useState({});
-  const [ style, setStyle ] = useState({});
+  const [ currentStyle, setCurrentStyle ] = useState({});
 
   useEffect(() => {
     axiosHelper.get(`http://localhost:${port}/Overview`, {itemID: props.productID}, (results) => {
       setProduct(results.data.productObj);
       setStyles(results.data.stylesArr);
       setRatings(results.data.ratingsObj);
-      setStyle(results.data.stylesArr[0]);
+      setCurrentStyle(results.data.stylesArr[0]);
     })
   }, [])
 
@@ -25,8 +26,13 @@ const Overview = (props) => {
       <h1>Overview:</h1>
       <ProductInfo 
         product={ product }
-        style={ style }
+        currentStyle={ currentStyle }
         ratings={ ratings }
+      />
+      <StyleSelector
+        styles={ styles }
+        currentStyle={ currentStyle }
+        handleStyleChange={(style) => (setCurrentStyle(style))}
       />
     </div>
   )
