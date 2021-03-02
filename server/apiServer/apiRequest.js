@@ -5,14 +5,24 @@ const { url } = require('../apiURL.js');
 axios.defaults.headers.common['Authorization'] = apiKey;
 module.exports = {
 
-// GET REQUEST TO THE Atelier Products API
+  // GET REQUEST TO THE Atelier Products API
   get: (endpoint, callback) => {
     //console.log(url.endpoint);
-    axios.get(url+ endpoint)
+    axios.get(url + endpoint)
       .then((result) => {
         callback(null, result);
       })
-      .catch((err) =>  {
+      .catch((err) => {
+        callback(err, null);
+      });
+  },
+  put: (endpoint, callback) => {
+    //console.log(url.endpoint);
+    axios.put(url + endpoint)
+      .then((result) => {
+        callback(null, result);
+      })
+      .catch((err) => {
         callback(err, null);
       });
   }
