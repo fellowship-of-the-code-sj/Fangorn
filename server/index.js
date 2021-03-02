@@ -20,7 +20,16 @@ app.get('/Overview', (req, res) => {
     if (err) {
       res.sendStatus(err.response.status);
     } else {
-      res.send(product);
+      let productObj = product;
+      overview.getStyles(req.query, (err, styles) => {
+        if (err) {
+          res.sendStatus(err.response.status);
+        } else {
+          const stylesObj = styles;
+          res.send({ productObj, stylesObj });
+        }
+      })
+      // res.send(productObj);
     }
   });
 })

@@ -11,7 +11,7 @@ const Overview = (props) => {
 
   useEffect(() => {
     axiosHelper.get(`http://localhost:${port}/Overview`, {itemID: props.productID}, (data) => {
-      console.log(data);
+      console.log(data.data);
     })
   })
   
