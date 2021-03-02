@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest testing --collectCoverage",
+    "testO": "jest overview.test.js",
     "react-dev": "npx webpack --watch",
     "start": "nodemon server/index.js"
   },

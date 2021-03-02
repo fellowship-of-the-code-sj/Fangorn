@@ -17,7 +17,7 @@ const Overview = (props) => {
       setRatings(results.data.ratingsObj);
       setStyle(results.data.stylesArr[0]);
     })
-  }, [product])
+  }, [])
 
   return (
     <div className="overview">
