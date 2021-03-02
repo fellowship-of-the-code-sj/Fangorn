@@ -10,10 +10,12 @@ const Overview = (props) => {
   const [ ratings, setRatings ] = useState({});
 
   useEffect(() => {
-    axiosHelper.get(`http://localhost:${port}/Overview`, {itemID: props.productID}, (data) => {
-      console.log(data.data);
+    axiosHelper.get(`http://localhost:${port}/Overview`, {itemID: props.productID}, (results) => {
+      setProduct(results.data.productObj);
+      setStyles(results.data.stylesArr);
+      setRatings(results.data.ratingsObj);
     })
-  })
+  }, [product])
   
   return (
     <div className="overview">
