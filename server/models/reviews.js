@@ -13,5 +13,23 @@ module.exports = {
         callback(null, data);
       }
     });
+  },
+  report: (reviewId, callback) => {
+    apiRequest.put(`/reviews/${reviewId}/report`, (err) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback();
+      }
+    });
+  },
+  helpful: (reviewId, callback) => {
+    apiRequest.put(`/reviews/${reviewId}/helpful`, (err) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback();
+      }
+    });
   }
 }

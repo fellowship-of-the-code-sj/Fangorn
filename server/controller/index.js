@@ -31,3 +31,4 @@ module.exports.relatedItems = (req, res) => {
 
 // something like this should be the only things in this file:
 module.exports.getQuestions = require('./getQuestions.js');
+module.exports.ratingsAndReviews = require('./ratingsAndReviews.js');
