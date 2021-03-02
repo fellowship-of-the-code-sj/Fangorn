@@ -9,6 +9,6 @@ describe('<QuestionsAndAnswers />', () => {
 
   it('should render an h1 tag', () => {
     const wrapper = shallow(<QuestionsAndAnswers />);
-    expect(wrapper.find('h1').length).toEqual(1);
+    expect(wrapper.find('h3').length).toEqual(1);
   });
 });
