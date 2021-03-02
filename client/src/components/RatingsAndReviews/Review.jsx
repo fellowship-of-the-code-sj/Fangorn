@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 const port = 404;
 
 function Review(props) {
@@ -16,7 +17,9 @@ function Review(props) {
   const sendReport = function () {
     if (!reported) {
       //axios.put
-      axios.put(`http://localhost:${port}/RatingsAndReviews/`, { productId: props.productId })
+      axios.put(`http://localhost:${port}/RatingsAndReviews/report`, null, { params: { reviewId: props.review.review_id } })
+    } else {
+      alert('You have already reported this review')
     }
     report(true)
   }
@@ -24,6 +27,8 @@ function Review(props) {
   const sendHelpful = function () {
     if (!helpful) {
       //axios.put
+      axios.put(`http://localhost:${port}/RatingsAndReviews/helpful`, null, { params: { reviewId: props.review.review_id } })
+    } else {
     }
 
     setHelpful(true);
@@ -42,7 +47,7 @@ function Review(props) {
       <span className="helpful">Helpful?</span>
       <span className="helpful-toggle" onClick={sendHelpful} >Yes</span>
       <span className="helpful-count">{helpfulNum()}</span>
-      <span className="report" onClick={() => { sendReport(); alert('Review has been reported') }} >{isReported()}</span>
+      <span className="report" onClick={() => { sendReport() }} >{isReported()}</span>
     </div>
   )
 }
