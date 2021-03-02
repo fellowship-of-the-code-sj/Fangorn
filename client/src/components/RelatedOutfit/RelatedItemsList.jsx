@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import RelatedItemCard from './RelatedItemCard.jsx';
 
 const RelatedItemsList = (props) => {
-  console.log(props);
+
   return (
     <div className='relatedItemsList'>
       {

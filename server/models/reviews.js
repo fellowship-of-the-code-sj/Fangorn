@@ -4,8 +4,7 @@ module.exports = {
   //Sends API request for reviews metadata
 
   getMeta: (productId, callback) => {
-    var url = `/products/${callback}/reviews/meta`;
-
+    var url = `/reviews/meta?product_id=${productId}`;
     apiRequest.get(url, (err, data) => {
       if (err) {
         callback(err);
