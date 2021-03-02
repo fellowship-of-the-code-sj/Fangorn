@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const controller = require('./controller/index.js');
 const { relatedItems, overview } = require('./controllers.js');
 
 const app = express();
