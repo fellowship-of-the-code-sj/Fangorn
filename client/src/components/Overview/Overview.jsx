@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductInfo from './ProductInfo.jsx';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
+import PropTypes from 'prop-types';
 const port = 404;
 
 const Overview = (props) => {
@@ -29,6 +30,10 @@ const Overview = (props) => {
       />
     </div>
   )
+
+  Overview.propTypes = {
+    productID: PropTypes.number
+  }
 }
 
 export default Overview;

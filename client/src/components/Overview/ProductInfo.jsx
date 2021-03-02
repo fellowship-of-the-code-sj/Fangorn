@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ProductInfo = (props) => {
 
@@ -25,6 +26,12 @@ const ProductInfo = (props) => {
       <h3 id="product_info_price">${props.style.original_price}</h3>
     </div>
   )
+
+  ProductInfo.propTypes = {
+    ratings: PropTypes.object,
+    product: PropTypes.object,
+    style: PropTypes.object
+  }
 }
 
 export default ProductInfo;
