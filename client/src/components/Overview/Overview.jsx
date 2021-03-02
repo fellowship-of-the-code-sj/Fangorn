@@ -32,7 +32,7 @@ const Overview = (props) => {
       <StyleSelector
         styles={ styles }
         currentStyle={ currentStyle }
-        handleStyleChange={(style) => (setCurrentStyle(style))}
+        handleStyleChange={style => setCurrentStyle(style)}
       />
     </div>
   )
