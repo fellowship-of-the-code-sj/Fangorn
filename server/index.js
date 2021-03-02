@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
 // Retrieves get request for endpoint /RelatedItems
-app.get('/RelatedItems', relatedItems);
+app.get('/RelatedItems', controller.relatedItems);
 
 // Resolves get request for endpoint /Overview
 app.get('/Overview', (req, res) => {
