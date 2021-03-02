@@ -30,7 +30,26 @@ module.exports = {
         }
       });
     }
+  },
+
+  overview: {
+    getProduct: (query, callback) => {
+      apiRequest.get(`/products/${query.itemID}`, (err, results) => {
+        if (err) {
+          callback(err, null);
+        } else {
+          callback(null, results.data);
+        }
+      })
+    },
+    // getStyles: (query, callback) => {
+    //   apiRequest.get(`/products/${query.itemID}`, (err, results) => {
+    //     if (err) {
+    //       callback(err, null);
+    //     } else {
+    //       callback(null, results.data);
+    //     }
+    //   })
+    // }
   }
-
-
 }

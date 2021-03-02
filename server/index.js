@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { relatedItems } = require('./controllers.js');
+const { relatedItems, overview } = require('./controllers.js');
 
 const app = express();
 
@@ -16,8 +16,13 @@ app.get('/RelatedItems', relatedItems.get);
 
 // Resolves get request for endpoint /Overview
 app.get('/Overview', (req, res) => {
-  console.log(req.query);
-  res.send({message: 'Hello World'});
+  overview.getProduct(req.query, (err, product) => {
+    if (err) {
+      res.sendStatus(err.response.status);
+    } else {
+      res.send(product);
+    }
+  });
 })
 
 const PORT = 404;
