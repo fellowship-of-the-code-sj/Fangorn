@@ -40,7 +40,9 @@ app.get('/Overview', (req, res) => {
       })
     }
   });
-})
+});
+
+app.get('/Questions/:product_id', controller.questions.getQuestions);
 
 const PORT = 404;
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
