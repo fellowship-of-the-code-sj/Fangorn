@@ -1,6 +1,7 @@
-import React, ( useState, useEffect ) from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductInfo from './ProductInfo.jsx';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
+const port = 404;
 
 const Overview = (props) => {
 
