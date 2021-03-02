@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
+import RelatedItemsList from './RelatedItemsList.jsx';
+import OutfitList from './OutfitList.jsx';
 const port = 404;
 
 const RelatedAndOutfits = (props) => {
@@ -13,14 +15,13 @@ const RelatedAndOutfits = (props) => {
   }, []);
 
   return (
-    <div className='relatedItemsList'>
-      {
-        relatedItems?
-          relatedItems.map((item) => {
-            return <div className='relatedItem' key={item.id} >{(item.id)}</div>;
-          })
-        : <div></div>
-      }
+    <div>
+      <RelatedItemsList relatedItemsList={relatedItems}>
+
+      </RelatedItemsList>
+      <OutfitList outfitList={[]}>
+
+      </OutfitList>
     </div>
   )
 };
