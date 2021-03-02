@@ -30,7 +30,7 @@ describe('Rendering Components', () => {
   });
 
 
-  it ('should render outfitList list with dummy data passed', () => {
+  it ('should render relatedItemsCard div', () => {
     const wrapper = shallow(<RelatedItemCard />);
     expect(wrapper.contains(<div className='relatedItemCard'></div>)).toBe(true);
   });
@@ -40,9 +40,10 @@ describe('Rendering Components', () => {
     expect(wrapper.find('OutfitListCard')).toHaveLength(2);
   });
 
-  it ('should render outfitList list with dummy data passed', () => {
-    const wrapper = shallow(<OutfitListCard />);
-    expect(wrapper.contains(<div className='outfitListCard'></div>)).toBe(true);
+  it ('should render relatedItemsCard div', () => {
+    const wrapper = shallow(<OutfitListCard/>);
+    console.log(wrapper.debug());
+    expect(wrapper.contains(<div className='outfitListCard'></div>))
   });
 
 });
