@@ -1,0 +1,14 @@
+.relatedItemsAndOutfits {
+  border: 1px solid black;
+}
+
+.relatedItemsList {
+  border: 1px solid black;
+  display:flex;
+  flex-direction:row;
+}
+
+.relatedItemCard {
+  border: 1px solid black;
+  margin: 5px;
+}
