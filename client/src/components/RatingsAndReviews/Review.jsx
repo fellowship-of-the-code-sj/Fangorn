@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+const port = 404;
 
 function Review(props) {
   const [helpful, setHelpful] = useState(false);
@@ -14,14 +15,15 @@ function Review(props) {
 
   const sendReport = function () {
     if (!reported) {
-      //axios.post
+      //axios.put
+      axios.put(`http://localhost:${port}/RatingsAndReviews/`, { productId: props.productId })
     }
     report(true)
   }
 
   const sendHelpful = function () {
     if (!helpful) {
-      //axios.post
+      //axios.put
     }
 
     setHelpful(true);

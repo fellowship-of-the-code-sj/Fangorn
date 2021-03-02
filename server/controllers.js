@@ -30,7 +30,24 @@ module.exports = {
         }
       });
     }
+  },
+  ratingsAndReviews: {
+    get: () => { },
+    report: (req, res) => {
+      apiRequest.put(`/reviews/${req.query.itemId}/report`, (err) => {
+        if (err) {
+          res.status(err.response.status);
+          res.end();
+        }
+      })
+    },
+    helpful: (req, res) => {
+      apiRequest.put(`/reviews/${req.query.itemId}/helpful`, (err) => {
+        if (err) {
+          res.status(err.response.status);
+          res.end();
+        }
+      })
+    }
   }
-
-
 }
