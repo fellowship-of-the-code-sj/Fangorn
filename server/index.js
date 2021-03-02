@@ -25,11 +25,17 @@ app.get('/Overview', (req, res) => {
         if (err) {
           res.sendStatus(err.response.status);
         } else {
-          const stylesObj = styles;
-          res.send({ productObj, stylesObj });
+          const stylesArr = styles;
+          overview.getRatings(req.query, (err, ratings) => {
+            if (err) {
+              res.sendStatus(err.response.status);
+            } else {
+              const ratingsObj = ratings;
+              res.send({ productObj, stylesArr, ratingsObj });
+            }
+          })
         }
       })
-      // res.send(productObj);
     }
   });
 })
