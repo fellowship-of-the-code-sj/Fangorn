@@ -30,7 +30,41 @@ module.exports = {
         }
       });
     }
+  },
+
+  overview: {
+    getProduct: (query, callback) => {
+      apiRequest.get(`/products/${query.itemID}`, (err, results) => {
+        if (err) {
+          callback(err, null);
+        } else {
+          callback(null, {
+            id: results.data.id,
+            name: results.data.name,
+            slogan: results.data.slogan,
+            description: results.data.description,
+            category: results.data.category
+          });
+        }
+      })
+    },
+    getStyles: (query, callback) => {
+      apiRequest.get(`/products/${query.itemID}/styles`, (err, results) => {
+        if (err) {
+          callback(err, null);
+        } else {
+          callback(null, results.data.results);
+        }
+      })
+    },
+    getRatings: (query, callback) => {
+      apiRequest.get(`/reviews/meta?product_id=${query.itemID}`, (err, results) => {
+        if (err) {
+          callback(err, null);
+        } else {
+          callback(null, results.data.ratings);
+        }
+      })
+    }
   }
-
-
 }
