@@ -20,8 +20,13 @@ describe('Rendering Components', () => {
     shallow(<RelatedAndOutfits />);
     shallow(<RelatedItemsList relatedItemsList={[]}/>);
     shallow(<OutfitList outfitList={[]}/>);
-    shallow(<RelatedItemCard />);
+    shallow(<RelatedItemCard cardData={dummyData.products[0]}/>);
     shallow(<OutfitListCard  />)
+  });
+
+  it ('should render relatedItems list with dummy data passed', () => {
+    const wrapper = shallow(<RelatedAndOutfits />);;
+    expect(wrapper.find('h3')).toHaveLength(2);
   });
 
   it ('should render relatedItems list with dummy data passed', () => {
@@ -29,10 +34,15 @@ describe('Rendering Components', () => {
     expect(wrapper.find('RelatedItemCard')).toHaveLength(2);
   });
 
-
   it ('should render relatedItemsCard div', () => {
-    const wrapper = shallow(<RelatedItemCard />);
-    expect(wrapper.contains(<div className='relatedItemCard'></div>)).toBe(true);
+    const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
+    expect(wrapper.contains(
+      <div className="relatedItemCard">
+        <h6 className="category">Accessories</h6>
+        <h5 className="name">Bright Future Sunglasses</h5>
+        <h6 className="price">69.00</h6>
+      </div>
+    )).toBe(true);
   });
 
   it ('should render outfitList list with dummy data passed', () => {
@@ -42,22 +52,21 @@ describe('Rendering Components', () => {
 
   it ('should render relatedItemsCard div', () => {
     const wrapper = shallow(<OutfitListCard/>);
-    console.log(wrapper.debug());
     expect(wrapper.contains(<div className='outfitListCard'></div>))
   });
 
 });
 
-describe('Server Request', () => {
-  it('should make successful request to server', async () => {
-    await axios.get(`http://localhost:${port}/RelatedItems`, {
-      params: {itemId: 13023}
-    })
-      .then((result) => {
-        expect(result.status).toBe(200);
-      });
-  });
-});
+// describe('Server Request', () => {
+//   it('should make successful request to server', async () => {
+//     await axios.get(`http://localhost:${port}/RelatedItems`, {
+//       params: {itemId: 13023}
+//     })
+//       .then((result) => {
+//         expect(result.status).toBe(200);
+//       });
+//   });
+// });
 
 
   // it ('should render all Related Components', async () => {

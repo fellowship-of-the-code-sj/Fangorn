@@ -15,10 +15,12 @@ const RelatedAndOutfits = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className='relatedItemsAndOutfits'>
+      <h3 className='relatedItemsHeader' >Related Products</h3>
       <RelatedItemsList relatedItemsList={relatedItems}>
 
       </RelatedItemsList>
+      <h3 className='yourOutfit' >Your Outfit</h3>
       <OutfitList outfitList={[]}>
 
       </OutfitList>
