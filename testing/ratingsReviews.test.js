@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import RatingsAndReviews from '../client/src/components/RatingsAndReviews/RatingsAndReviews.jsx';
 
-describe('Rendering Components', () => {
+describe('Rendering <RatingsAndReviews />', () => {
 
   it('should render without throwing an error', () => {
     shallow(<RatingsAndReviews />);

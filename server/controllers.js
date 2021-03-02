@@ -31,7 +31,6 @@ module.exports = {
       });
     }
   },
-
   overview: {
     getProduct: (query, callback) => {
       apiRequest.get(`/products/${query.itemID}`, (err, results) => {

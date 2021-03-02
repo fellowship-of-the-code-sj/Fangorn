@@ -1,7 +1,7 @@
 const apiRequest = require('../apiServer/apiRequest.js')
 
 //function to make api request for related items data
-  module.exports = {
+module.exports = {
 
   retrieveAllRelatedItems : (relatedItemIds, sendProductDataToClient) => {
 
