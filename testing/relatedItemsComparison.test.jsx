@@ -48,16 +48,16 @@ describe('Rendering Components', () => {
 
 });
 
-describe('Server Request', () => {
-  it('should make successful request to server', async () => {
-    await axios.get(`http://localhost:${port}/RelatedItems`, {
-      params: {itemId: 13023}
-    })
-      .then((result) => {
-        expect(result.status).toBe(200);
-      });
-  });
-});
+// describe('Server Request', () => {
+//   it('should make successful request to server', async () => {
+//     await axios.get(`http://localhost:${port}/RelatedItems`, {
+//       params: {itemId: 13023}
+//     })
+//       .then((result) => {
+//         expect(result.status).toBe(200);
+//       });
+//   });
+// });
 
 
   // it ('should render all Related Components', async () => {

@@ -1,7 +1,18 @@
-import React from 'react';
+import React, ( useState, useEffect ) from 'react';
 import ProductInfo from './ProductInfo.jsx';
+import axiosHelper from '../../../helperFunctions/serverRequest.js';
 
 const Overview = (props) => {
+
+  const [ product, setProduct ] = useState({});
+  const [ styles, setStyles ] = useState({});
+  const [ ratings, setRatings ] = useState({});
+
+  useEffect(() => {
+    axiosHelper.get(`http://localhost:${port}/Overview`, {itemID: props.productID}, (data) => {
+      console.log(data);
+    })
+  })
   
   return (
     <div className="overview">
