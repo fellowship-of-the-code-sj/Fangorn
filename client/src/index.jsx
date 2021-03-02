@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ProductInformation from './components/ProductInformation.jsx';
+import ProductDetailPage from './components/ProductDetailPage.jsx';
 
-ReactDOM.render(<ProductInformation />, document.getElementById('root'));
+ReactDOM.render(<ProductDetailPage />, document.getElementById('root'));
