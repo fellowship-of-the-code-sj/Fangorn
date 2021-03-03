@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AddQuestions = ({ handleAddQuestionModal }) => {
+const AddQuestionButton = ({ handleAddQuestionModal }) => {
   return <button onClick={handleAddQuestionModal}>ADD A QUESTION +</button>
 };
 
-export default AddQuestions;
+export default AddQuestionButton;
 
-AddQuestions.propTypes = {
-  handleAddQuestionModal: PropTypes.function
+AddQuestionButton.propTypes = {
+  handleAddQuestionModal: PropTypes.func
 }
