@@ -11,7 +11,7 @@ const ProductInfo = (props) => {
       total += Number(key * obj[key]);
     }
     return {
-      average: total / count,
+      average: (total / count).toFixed(2),
       count: count
     }
   };
