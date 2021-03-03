@@ -4,18 +4,16 @@ import Search from './Search.jsx';
 import QuestionsList from './QuestionsList.jsx';
 import MoreAnsweredQuestions from './MoreAnsweredQuestions.jsx';
 import AddQuestion from './AddQuestion.jsx';
-import myBestestGetter from 'axios';
+import serverRequest from '../../../helperFunctions/serverRequest.js';
 
 const QuestionsAndAnswers = ({ productID }) => {
   const [ questions, setQuestions ] = useState([]);
 
   useEffect(() => {
-    myBestestGetter.get(`http://localhost:404/Questions/${productID}`)
-      .then(response => {
-        // console.log(response.data);
-        setQuestions(response.data);
-      })
-      .catch(error => console.log(error));
+    serverRequest.get(
+      `http://localhost:404/Questions/${productID}`,
+      null,
+      response => setQuestions(response.data));
   }, []);
 
   return (
