@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import Ratings from './Ratings.jsx';
+import ReviewsList from './ReviewsList.jsx';
 
-function RatingsAndReviews(props) {
+import Review from './Review.jsx'
+
+function RatingsAndReviews() {
 
 
   return (
-    <div>
-      <h1>bing bong skype is dead</h1>
+    <div className="ratings-and-reviews">
+      <Ratings />
+      <ReviewsList />
     </div>
 
   )

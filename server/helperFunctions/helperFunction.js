@@ -2,7 +2,7 @@ const products = require('../models/products.js');
 const reviews = require('../models/reviews.js');
 
 //function to make api request for related items data
-  module.exports = {
+module.exports = {
 
   retrieveAllRelatedItems : (relatedItemIds, sendProductDataToClient) => {
     var relatedItemsPromises = relatedItemIds.map((itemId) => {
