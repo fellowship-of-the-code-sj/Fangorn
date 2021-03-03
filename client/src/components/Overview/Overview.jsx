@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import ProductInfo from './ProductInfo.jsx';
+import ProductSummary from './ProductSummary.jsx';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
 import PropTypes from 'prop-types';
 const port = 404;
@@ -33,6 +34,9 @@ const Overview = (props) => {
         styles={ styles }
         currentStyle={ currentStyle }
         handleStyleChange={index => setCurrentStyle(styles[index])}
+      />
+      <ProductSummary
+        product={ product }
       />
     </div>
   )
