@@ -65,7 +65,8 @@ function Review(props) {
 
   const handleImageClick = function (event) {
     var modal = document.getElementById("imageModal" + JSON.stringify(props.review.review_id));
-    selectPhoto(props.review.photos[event.target.id])
+    var index = event.target.id.split("-")[0];
+    selectPhoto(props.review.photos[index])
     modal.style.display = "block";
   }
 
@@ -85,7 +86,7 @@ function Review(props) {
       <div className="review-thumbnails"></div>
       {
         props.review.photos.map((image, i) => {
-          return <img onClick={handleImageClick} className="review-thumbnail" key={i} id={i} src={image.url}></img>
+          return <img onClick={handleImageClick} className="review-thumbnail" key={image.id} id={`${i}-${image.id}`} src={image.url}></img>
         })
       }
       {
