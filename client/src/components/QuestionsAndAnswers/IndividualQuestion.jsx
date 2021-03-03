@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'underscore';
 import AnswerList from './AnswerList.jsx';
+import AddAnswer from './AddAnswer.jsx';
 
 const IndividualQuestion = ({ question }) => {
   const [ answers, setAnswers ] = useState([]);
+  const [ showAddAnswerModal, setShowAddAnswerModal ] = useState(false);
   const [ showMoreAnswersButton, setShowMoreAnswersButton ] = useState(false);
   const [ numDisplayedAnswers, setNumDisplayedAnswers ] = useState(0);
   const [ displayedAnswers, setDisplayedAnswers ] = useState([]);
@@ -40,23 +42,29 @@ const IndividualQuestion = ({ question }) => {
     }
   };
 
+  const handleAddAnswerModal = e => {
+    e.preventDefault();
+    setShowAddAnswerModal(!showAddAnswerModal);
+  };
+
   return (
     <div>
         <p>Q: {question.question_body}</p>
         <p>Helpful? <a href="#">Yes {question.question_helpfulness}</a></p>
-        <a href="#">Add Answer</a>
-<<<<<<< HEAD
-        <AnswerList
-          answers={answers}
-          question={question.question_body} />
-=======
+        <a href="#" onClick={handleAddAnswerModal}>Add Answer</a>
         <AnswerList answers={displayedAnswers} />
         {
           showMoreAnswersButton ?
           <a href="#" onClick={handleShowMoreAnswers}>LOAD MORE ANSWERS</a>
           : null
         }
->>>>>>> 5765678bebc4e4e6882a5994a6ee229d46660198
+        {
+          showAddAnswerModal ?
+          <AddAnswer
+          question={question.question_body}
+            handleAddAnswerModal={handleAddAnswerModal}/>
+          : null
+        }
     </div>
   );
 };
