@@ -60,12 +60,12 @@
   padding: 0;
   display: block;
   z-index: 0;
+}
 
 .overview {
   border: 1px solid black;
   padding: 5px;
   margin: 5px;
-
 }
 
 /*
