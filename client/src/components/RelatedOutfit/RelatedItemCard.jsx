@@ -1,41 +1,64 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import StarRating from './StarRating.jsx';
+import RelatedActionButton from './RelatedActionButton.jsx';
 
 
-const RelatedItemCard = (props) => {
+const RelatedItemCard = ({ cardData}) => {
 
   //gets rating percentage
-  var rating = props.cardData.rating? parseFloat(props.cardData.rating)*20 : 0;
+  var rating = cardData.rating? parseFloat(cardData.rating)*20 : 0;
+
+  //State for comparison table toggle
+  const [ actionButtonToggle, setActionButtonToggle] = useState(false)
+
+  //event listener for action button
+  const actionButtonListener = () => {
+    setActionButtonToggle(!actionButtonToggle);
+  }
 
   return (
     <div className='relatedItemCard'>
+
+      {/* Star Action Button */}
+      <RelatedActionButton actionButtonListener={actionButtonListener}/>
       {
         //Checks to see if image exists, if not returns default image
-        props.cardData.default_style.photos[0].url ?
-        <img className='relatedProductImg' src={props.cardData.default_style.photos[0].url}></img>
+        cardData.default_style.photos[0].url ?
+        <img className='relatedProductImg' src={cardData.default_style.photos[0].url}></img>
         : <img className='relatedProductImg' src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'></img>
       }
       {/* category and name */}
-      <h6 className='category' >{props.cardData.category}</h6>
-      <h5 className='name' >{props.cardData.name}</h5>
+      <h6 className='category' >{cardData.category}</h6>
+      <h5 className='name' >{cardData.name}</h5>
 
       {
         //checks to see if product contains sales price, if so, displays sales price, else original price
-        props.cardData.default_style.sale_price ?
-        <h6 className='salePrice' >{props.cardData.default_style.sale_price}</h6>
-        : <h6 className='price' >{props.cardData.default_style.original_price}</h6>
+        cardData.default_style.sale_price ?
+        <h6 className='salePrice' >{cardData.default_style.sale_price}</h6>
+        : <h6 className='price' >{cardData.default_style.original_price}</h6>
       }
 
       {/* Star Rating */}
-      <div className="star-ratings-css">
-        <div style={ { width: `${rating}%` } } className="star-top">
-          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-        </div>
-        <div className="star-bottom">
-          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-        </div>
-      </div>
+      <StarRating rating={rating}/>
+
+      {/* Modal Element */}
+
+      {
+        actionButtonToggle ?
+          <div>
+            <div className='outerModal' onClick={actionButtonListener}>OUTER MODAL </div>
+            <div className='innerModal' >INNER MODAL </div>
+          </ div>
+          : null
+      }
+
     </div>
   )
 }
 
 export default RelatedItemCard;
+
+RelatedItemCard.propTypes = {
+  cardData: PropTypes.object,
+}
