@@ -184,7 +184,8 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-.add-question-modal {
+.add-question-modal,
+.add-answer-modal {
   max-height: calc(100% - 100px);
   z-index: 200;
   position: fixed;
@@ -208,6 +209,9 @@
 
 .add-question-modal textarea,
 .add-question-modal input,
-.add-question-modal label {
+.add-question-modal label,
+.add-answer-modal textarea,
+.add-answer-modal input,
+.add-answer-modal label {
   display: block;
 }
