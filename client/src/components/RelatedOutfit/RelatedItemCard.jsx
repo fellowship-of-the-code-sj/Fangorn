@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import StarRating from './StarRating.jsx';
 
 
 const RelatedItemCard = ({ cardData }) => {
@@ -27,14 +28,7 @@ const RelatedItemCard = ({ cardData }) => {
       }
 
       {/* Star Rating */}
-      <div className="star-ratings-css">
-        <div style={ { width: `${rating}%` } } className="star-top">
-          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-        </div>
-        <div className="star-bottom">
-          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-        </div>
-      </div>
+      <StarRating rating={rating}/>
     </div>
   )
 }

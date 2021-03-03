@@ -11,6 +11,7 @@ import RelatedItemsList from '../client/src/components/RelatedOutfit/RelatedItem
 import RelatedItemCard from '../client/src/components/RelatedOutfit/RelatedItemCard.jsx';
 import OutfitList from '../client/src/components/RelatedOutfit/OutfitList.jsx';
 import OutfitListCard from '../client/src/components/RelatedOutfit/OutfitListCard.jsx';
+import StarRating from '../client/src/components/RelatedOutfit/StarRating.jsx';
 
 const port = 404;
 
@@ -22,6 +23,7 @@ describe('Rendering Components', () => {
     shallow(<OutfitList outfitList={[]}/>);
     shallow(<RelatedItemCard cardData={dummyData.products[0]}/>);
     shallow(<OutfitListCard  />)
+    shallow(<StarRating rating={'72%'}/>);
   });
 });
 
@@ -71,18 +73,22 @@ describe('Rendering RelatedItems Card Components', () => {
 
   });
 
-  it('should render correct ratings for the specific item', () => {
-    //renders no rating if rating isn't provided
-    const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[1]} />);
-    expect(wrapper.contains(<div style={ { width: '0%' } } className="star-ratings-css-top" ></div>));
-
-    //renders rating if rating is provided
-    const wrapper2 = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
-    expect(wrapper2.contains(<div style={ { width: '72%' } } className="star-ratings-css-top" ></div>));
-  });
 
 });
 
+describe('Rendering StarRating Component', () => {
+
+  it('should render correct ratings for the specific item', () => {
+    //renders no rating if rating isn't provided
+    const wrapper = shallow(<StarRating cardData={dummyData.products[1]} />);
+    expect(wrapper.contains(<div style={ { width: '0%' } } className="star-top" ></div>));
+
+    //renders rating if rating is provided
+    const wrapper2 = shallow(<StarRating cardData={dummyData.products[0]} />);
+    expect(wrapper2.contains(<div style={ { width: '72%' } } className="star-top" ></div>));
+  });
+
+})
 
 describe('Rendering OutfitList List Component', () => {
 
