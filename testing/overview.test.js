@@ -29,7 +29,7 @@ describe('Product Information', () => {
       currentStyle={ data.styles[0] }
       ratings={ data.reviewMeta.ratings }
     />);
-    expect(wrapper.find('#product_info_rating').length).toBe(1);
+    expect(wrapper.find('#productInfoRating').length).toBe(1);
   })
 
   it('should display the product category', () => {
@@ -38,7 +38,7 @@ describe('Product Information', () => {
       currentStyle={ data.styles[0] }
       ratings={ data.reviewMeta.ratings }
     />);
-    expect(wrapper.find('#product_info_category').length).toBe(1);
+    expect(wrapper.find('#productInfoCategory').length).toBe(1);
   })
 
   it('should display the product name', () => {
@@ -47,7 +47,7 @@ describe('Product Information', () => {
       currentStyle={ data.styles[0] }
       ratings={ data.reviewMeta.ratings }
     />);
-    expect(wrapper.find('#product_info_name').length).toBe(1);
+    expect(wrapper.find('#productInfoName').length).toBe(1);
   })
 
   it('should display the product price', () => {
@@ -56,7 +56,7 @@ describe('Product Information', () => {
       currentStyle={ data.styles[0] }
       ratings={ data.reviewMeta.ratings }
     />);
-    expect(wrapper.find('#product_info_price').length).toBe(1);
+    expect(wrapper.find('#productInfoPrice').length).toBe(1);
   })
 })
 
@@ -74,7 +74,7 @@ describe('Style Selector', () => {
       styles={ data.styles }
       currentStyle={ data.styles[0] }
     />);
-    expect(wrapper.contains(<div id="style_selector_name">Style: Forest Green &amp; Black</div>)).toBe(true);
+    expect(wrapper.contains(<div id="styleSelectorName">Style: Forest Green &amp; Black</div>)).toBe(true);
   })
 
   it('should render thumbnails of styles dynamically', () => {
@@ -82,7 +82,7 @@ describe('Style Selector', () => {
       styles={ data.styles }
       currentStyle={ data.styles[0] }
     />);
-    expect(wrapper.find('.style_thumbnail').length).toBe(2)
+    expect(wrapper.find('.styleThumbnail').length).toBe(2)
   })
 })
 
@@ -94,8 +94,8 @@ describe('Product Summary', () => {
 
   it('should render slogan and description', () => {
     const wrapper = shallow(<ProductSummary product={data.products[0]} />);
-    expect(wrapper.contains(<h3 id="product_summary_slogan">You&apos;ve got to wear shades</h3>)).toBe(true);
-    expect(wrapper.contains(<p id="product_summary_description">Where you&apos;re going you might not need roads, but you definitely need some shades. Give those baby blues a rest and let the future shine bright on these timeless lenses.</p>)).toBe(true);
+    expect(wrapper.contains(<h3 id="productOverviewSlogan">You&apos;ve got to wear shades</h3>)).toBe(true);
+    expect(wrapper.contains(<p id="productOverviewDescription">Where you&apos;re going you might not need roads, but you definitely need some shades. Give those baby blues a rest and let the future shine bright on these timeless lenses.</p>)).toBe(true);
   })
 
   it('should display logos of Twitter, Facebook and Pinterest', () => {
