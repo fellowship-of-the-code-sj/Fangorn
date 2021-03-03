@@ -5,7 +5,6 @@ import IndividualAnswer from './IndividualAnswer.jsx';
 const AnswerList = ({ answers }) => {
   return (
     <div>
-      A:
       {answers.map(answer => <IndividualAnswer key={answer.id} answer={answer} />)}
     </div>
   );
