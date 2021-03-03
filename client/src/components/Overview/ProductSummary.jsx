@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 const ProductSummary = (props) => {
   return (
     <div className="productSummary">
-      <div id="product_summary">
-        <h3 id="product_summary_slogan">{props.product.slogan}</h3>
-        <p id="product_summary_description">{props.product.description}</p>
+      <div id="productOverview">
+        <h3 id="productOverviewSlogan">{props.product.slogan}</h3>
+        <p id="productOverviewDescription">{props.product.description}</p>
       </div>
-      <div id="product_share">
+      <div id="productShare">
         <img 
           src="https://www.vhv.rs/dpng/d/146-1461722_twitter-circle-twitter-logo-png-transparent-png.png"
           alt="Twitter Logo"
