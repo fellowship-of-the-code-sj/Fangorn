@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 const DefaultView = (props) => {
   return (
-    <div></div>
+    <div className="defaultView">
+      <div id="defaultViewImage">Image</div>
+      <div id="defaultViewThumbnails">Thumbnails</div>
+    </div>
   )
 }
 

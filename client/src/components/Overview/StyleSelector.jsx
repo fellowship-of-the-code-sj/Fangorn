@@ -19,6 +19,7 @@ const StyleSelector = (props) => {
               height="50"
               width="50"
               index={index}
+              id={`styleThumbnail${index}`}
             />
           )}) : <div></div>
         }
