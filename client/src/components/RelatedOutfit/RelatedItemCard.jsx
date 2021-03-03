@@ -19,6 +19,7 @@ const RelatedItemCard = ({ cardData}) => {
 
   return (
     <div className='relatedItemCard'>
+
       {/* Star Action Button */}
       <RelatedActionButton actionButtonListener={actionButtonListener}/>
       {

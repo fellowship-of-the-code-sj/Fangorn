@@ -76,12 +76,25 @@
   transform: translate(-50%, -60%);
   background-color: white;
 }
+.carouselButton {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 150px;
+
+}
+
+
+
+
 
 .overview {
   border: 1px solid black;
   padding: 5px;
   margin: 5px;
 }
+
+
 
 
 
