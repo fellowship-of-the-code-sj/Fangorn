@@ -9,11 +9,21 @@ const RelatedAndOutfits = ({ productID }) => {
 
   const [ relatedItems, setRelatedItems ] = useState([]);
 
+  // //State for comparison table
+  // const [ actionButtonToggle, setActionButtonToggle] = useState(false)
+
+  // //event listener for action button
+  // const actionButtonListener = () => {
+  //   setActionButtonToggle(!actionButtonToggle);
+  // }
+
+
   useEffect(() => {
     axiosHelper.get(`http://localhost:${port}/RelatedItems`, {itemId: productID}, (data) => {
       setRelatedItems(data.data);
     });
   }, []);
+
 
   return (
     <div className='relatedItemsAndOutfits'>

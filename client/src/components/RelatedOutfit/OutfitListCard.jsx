@@ -9,6 +9,6 @@ const OutfitListCard = ({ cardData }) => {
 
 export default OutfitListCard;
 
-OutfitListCard.propTypes = {
-  cardData: PropTypes.object
-}
+// OutfitListCard.propTypes = {
+//   cardData: PropTypes.object
+// }

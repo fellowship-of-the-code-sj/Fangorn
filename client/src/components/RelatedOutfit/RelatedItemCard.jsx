@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import StarRating from './StarRating.jsx';
+import RelatedActionButton from './RelatedActionButton.jsx';
 
 
-const RelatedItemCard = ({ cardData }) => {
+const RelatedItemCard = ({ cardData}) => {
 
   //gets rating percentage
   var rating = cardData.rating? parseFloat(cardData.rating)*20 : 0;
 
+  //State for comparison table toggle
+  const [ actionButtonToggle, setActionButtonToggle] = useState(false)
+
+  //event listener for action button
+  const actionButtonListener = () => {
+    setActionButtonToggle(!actionButtonToggle);
+  }
+
   return (
     <div className='relatedItemCard'>
+      {/* Star Action Button */}
+      <RelatedActionButton actionButtonListener={actionButtonListener}/>
       {
         //Checks to see if image exists, if not returns default image
         cardData.default_style.photos[0].url ?
@@ -29,6 +40,18 @@ const RelatedItemCard = ({ cardData }) => {
 
       {/* Star Rating */}
       <StarRating rating={rating}/>
+
+      {/* Modal Element */}
+
+      {
+        actionButtonToggle ?
+          <div>
+            <div className='outerModal' onClick={actionButtonListener}>OUTER MODAL </div>
+            <div className='innerModal' >INNER MODAL </div>
+          </ div>
+          : null
+      }
+
     </div>
   )
 }
@@ -36,5 +59,5 @@ const RelatedItemCard = ({ cardData }) => {
 export default RelatedItemCard;
 
 RelatedItemCard.propTypes = {
-  cardData: PropTypes.object
+  cardData: PropTypes.object,
 }

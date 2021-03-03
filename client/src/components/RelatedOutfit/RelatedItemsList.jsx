@@ -9,7 +9,7 @@ const RelatedItemsList = ({ relatedItemsList }) => {
       {
         relatedItemsList.length ?
         relatedItemsList.map((item) => {
-          return <RelatedItemCard key={item.id} cardData={item} ></RelatedItemCard>;
+          return <RelatedItemCard key={item.id} cardData={item}></RelatedItemCard>;
         })
         : <div className='relatedItemCard' ></div>
       }
@@ -20,5 +20,6 @@ const RelatedItemsList = ({ relatedItemsList }) => {
 export default RelatedItemsList;
 
 RelatedItemsList.propTypes = {
-  relatedItemsList: PropTypes.array
+  relatedItemsList: PropTypes.array,
+  // actionButtonListener: PropTypes.func
 }
