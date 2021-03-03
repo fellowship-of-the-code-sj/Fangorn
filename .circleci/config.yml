@@ -21,4 +21,4 @@ workflows:
   build_test:
     jobs:
       - run_tests:
-        context: Atelier
+          context: Atelier
