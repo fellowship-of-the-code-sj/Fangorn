@@ -12,6 +12,7 @@ import RelatedItemCard from '../client/src/components/RelatedOutfit/RelatedItemC
 import OutfitList from '../client/src/components/RelatedOutfit/OutfitList.jsx';
 import OutfitListCard from '../client/src/components/RelatedOutfit/OutfitListCard.jsx';
 import StarRating from '../client/src/components/RelatedOutfit/StarRating.jsx';
+import RelatedActionButton from '../client/src/components/RelatedOutfit/RelatedActionButton.jsx';
 
 const port = 404;
 
@@ -22,9 +23,11 @@ describe('Rendering Components', () => {
     shallow(<RelatedItemsList relatedItemsList={[]}/>);
     shallow(<OutfitList outfitList={[]}/>);
     shallow(<RelatedItemCard cardData={dummyData.products[0]}/>);
-    shallow(<OutfitListCard  />)
-    shallow(<StarRating rating={'72%'}/>);
+    shallow(<OutfitListCard cardData={{}} />)
+    shallow(<StarRating rating={'0%'}/>);
+    shallow(<RelatedActionButton />);
   });
+
 });
 
 describe('Rendering RelatedItems List Components', () => {
@@ -73,7 +76,6 @@ describe('Rendering RelatedItems Card Components', () => {
 
   });
 
-
 });
 
 describe('Rendering StarRating Component', () => {
@@ -89,6 +91,24 @@ describe('Rendering StarRating Component', () => {
   });
 
 })
+
+describe('Rendering RelatedActionButton Component', () => {
+
+  it ('should render update state click event', () => {
+    var testState = true;
+    var clickListener = () => {
+      testState = !testState;
+    }
+
+    const wrapper = shallow(<RelatedActionButton actionButtonListener={clickListener}/>)
+    expect(wrapper.find('span')).toHaveLength(1);
+
+    //simulate button click
+    wrapper.find('span').simulate('click');
+    expect(testState).toEqual(false);
+  });
+
+});
 
 describe('Rendering OutfitList List Component', () => {
 
