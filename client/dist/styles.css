@@ -12,3 +12,12 @@
   border: 1px solid black;
   margin: 5px;
 }
+
+.salePrice {
+  color: red;
+}
+
+.relatedProductImg {
+  width: 100px;
+  height:auto;
+}

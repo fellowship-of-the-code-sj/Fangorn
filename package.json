@@ -43,6 +43,7 @@
     "nodemon": "^2.0.7",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "underscore": "^1.12.0",
     "webpack": "^5.24.1"
   },
   "devDependencies": {
