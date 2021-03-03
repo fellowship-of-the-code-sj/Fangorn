@@ -1,3 +1,9 @@
+.overview {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+}
+
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ***** Related Items and Outfit *****
@@ -55,6 +61,7 @@
   display: block;
   z-index: 0;
 }
+
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ***** Ratings and reviews *****

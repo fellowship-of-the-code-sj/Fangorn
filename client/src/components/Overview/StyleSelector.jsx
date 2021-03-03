@@ -6,9 +6,8 @@ const StyleSelector = (props) => {
     <div className="styleSelector">
       <div id="style_selector_name">Style: {props.currentStyle.name}</div>
       <div id="style_selector_styles">
-        { props.styles.length > 0 ?
-          props.styles.map((style, index) => {
-            return (
+        { props.styles.length > 0 ? props.styles.map((style, index) => {
+          return (
             <img
               key={style.style_id}
               className="style_thumbnail"
@@ -21,8 +20,7 @@ const StyleSelector = (props) => {
               width="50"
               index={index}
             />
-          )}) :
-          <div></div>
+          )}) : <div></div>
         }
       </div>
     </div>
