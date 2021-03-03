@@ -8,7 +8,7 @@ const port = 404;
 const Overview = (props) => {
 
   const [ product, setProduct ] = useState({});
-  const [ styles, setStyles ] = useState({});
+  const [ styles, setStyles ] = useState([]);
   const [ ratings, setRatings ] = useState({});
   const [ currentStyle, setCurrentStyle ] = useState({});
 
@@ -32,7 +32,7 @@ const Overview = (props) => {
       <StyleSelector
         styles={ styles }
         currentStyle={ currentStyle }
-        handleStyleChange={style => setCurrentStyle(style)}
+        handleStyleChange={index => setCurrentStyle(styles[index])}
       />
     </div>
   )
