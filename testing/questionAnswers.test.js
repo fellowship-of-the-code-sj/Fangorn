@@ -25,7 +25,7 @@ describe('QuestionsAndAnswers', () => {
 
   it('should render an MoreAnsweredQuestions component', () => {
     const wrapper = shallow(<QuestionsAndAnswers productID={1}/>);
-    expect(wrapper.containsMatchingElement(<MoreAnsweredQuestions />)).toEqual(true);
+    expect(wrapper.containsMatchingElement(<MoreAnsweredQuestions />)).toEqual(false);
   });
 
   it('should render an AddQuestion component', () => {
