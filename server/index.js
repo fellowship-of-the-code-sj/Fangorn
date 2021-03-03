@@ -14,7 +14,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
 // Retrieves get request for endpoint /RelatedItems
-app.get('/RelatedItems', controller.relatedItems);
+app.get('/RelatedItems', controller.relatedItems.get);
+
+app.put('/RatingsAndReviews/report', controller.ratingsAndReviews.report);
+
+app.put('/RatingsAndReviews/helpful', controller.ratingsAndReviews.helpful)
 
 // Resolves get request for endpoint /Overview
 app.get('/Overview', (req, res) => {
@@ -40,7 +44,9 @@ app.get('/Overview', (req, res) => {
       })
     }
   });
-})
+});
+
+app.get('/Questions/:product_id', controller.questions.getQuestions);
 
 const PORT = 404;
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
