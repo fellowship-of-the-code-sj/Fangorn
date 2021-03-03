@@ -11,7 +11,9 @@ const IndividualQuestion = ({ question }) => {
         <p>Q: {question.question_body}</p>
         <p>Helpful? <a href="#">Yes {question.question_helpfulness}</a></p>
         <a href="#">Add Answer</a>
-        <AnswerList answers={answers} />
+        <AnswerList
+          answers={answers}
+          question={question.question_body} />
     </div>
   );
 };
