@@ -63,5 +63,5 @@ var AddQuestion = ({ handleAddQuestionModal }) => {
 export default AddQuestion;
 
 AddQuestion.propTypes = {
-  handleAddQuestionModal: PropTypes.function
+  handleAddQuestionModal: PropTypes.func
 }
