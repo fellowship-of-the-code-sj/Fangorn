@@ -38,6 +38,7 @@ describe('Rendering Components', () => {
     const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
     expect(wrapper.contains(
       <div className="relatedItemCard">
+        <img className="relatedProductImg" src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' />
         <h6 className="category">Accessories</h6>
         <h5 className="name">Bright Future Sunglasses</h5>
         <h6 className="price">69.00</h6>
@@ -45,14 +46,35 @@ describe('Rendering Components', () => {
     )).toBe(true);
   });
 
+  it ('should render the sales price if it exists in relatedItemsCard', () => {
+    //Component isn't on sale
+    const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
+    expect(wrapper.contains(<h6 className="price">69.00</h6>)).toBe(true);
+
+    //Component is on sale
+    const wrapper2 = shallow(<RelatedItemCard cardData={dummyData.products[1]} />);
+    expect(wrapper2.contains(<h6 className="salePrice">30.00</h6>)).toBe(true);
+  });
+
+  it('should render the image if it exists in the relatedItemsCard', () => {
+    //component contains no images
+    const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
+    expect(wrapper.contains(<img className='relatedProductImg' src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
+
+    //component containes images
+    const wrapper2 = shallow(<RelatedItemCard cardData={dummyData.products[1]} />);
+    expect(wrapper2.contains(<img className='relatedProductImg' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"></img>)).toBe(true);
+
+  });
+
   it ('should render outfitList list with dummy data passed', () => {
     const wrapper = shallow(<OutfitList outfitList={dummyData.products}/>);
     expect(wrapper.find('OutfitListCard')).toHaveLength(2);
   });
 
-  it ('should render relatedItemsCard div', () => {
+  it ('should render outfitListCard div', () => {
     const wrapper = shallow(<OutfitListCard/>);
-    expect(wrapper.contains(<div className='outfitListCard'></div>))
+    expect(wrapper.contains(<div className='outfitListCard'></div>)).toBe(true);
   });
 
 });
