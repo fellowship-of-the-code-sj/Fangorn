@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'underscore';
 import AnswerList from './AnswerList.jsx';
 
 const IndividualQuestion = ({ question }) => {
-  let answers = [];
-  for (var key in question.answers) {
-    answers.push(question.answers[key]);
-  }
+  let answers = _.values(question.answers);
 
   return (
     <div>
