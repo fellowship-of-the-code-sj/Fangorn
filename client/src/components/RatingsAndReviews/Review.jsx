@@ -5,7 +5,7 @@ const port = 404;
 function Review(props) {
   const [helpful, setHelpful] = useState(false);
   const [reported, report] = useState(false);
-  const [selectedPhoto, selectPhoto] = useState('');
+  const [selectedPhoto, selectPhoto] = useState({});
 
   const helpfulNum = function () {
     return helpful ? props.review.helpfulness + 1 : props.review.helpfulness;
@@ -57,18 +57,20 @@ function Review(props) {
     if (!helpful) {
       //axios.put
       axios.put(`http://localhost:${port}/RatingsAndReviews/helpful`, null, { params: { reviewId: props.review.review_id } })
+    } else {
+      alert('You have already marked this review as helpful')
     }
     setHelpful(true);
   }
 
   const handleImageClick = function (event) {
-    var modal = document.getElementById("imageModal");
+    var modal = document.getElementById("imageModal" + JSON.stringify(props.review.review_id));
     selectPhoto(props.review.photos[event.target.id])
     modal.style.display = "block";
   }
 
   const handleImageClose = function () {
-    var modal = document.getElementById("imageModal");
+    var modal = document.getElementById("imageModal" + JSON.stringify(props.review.review_id));
     modal.style.display = "none";
   }
 
@@ -83,7 +85,7 @@ function Review(props) {
       <div className="review-thumbnails"></div>
       {
         props.review.photos.map((image, i) => {
-          return <img onClick={handleImageClick} className="review-thumbnail" key={i} id={i} src={image}></img>
+          return <img onClick={handleImageClick} className="review-thumbnail" key={i} id={i} src={image.url}></img>
         })
       }
       {
@@ -96,10 +98,10 @@ function Review(props) {
       <span className="helpful-toggle" onClick={sendHelpful} >Yes</span>
       <span className="helpful-count">({helpfulNum()}) </span>
       <span className="report" onClick={() => { sendReport() }} >{isReported()}</span>
-      <div id="imageModal" className="review-image-modal">
+      <div id={"imageModal" + JSON.stringify(props.review.review_id)} className="review-image-modal">
         <div className="review-image-modal-content">
           <span onClick={handleImageClose} className="review-image-modal-close">&times;</span>
-          <img src={selectedPhoto} ></img>
+          <img src={selectedPhoto.url} ></img>
         </div>
       </div>
     </div>
