@@ -3,7 +3,6 @@ const reviews = require('../models/reviews')
 module.exports = {
   report: (req, res) => {
     reviews.report(req.query.reviewId, (err) => {
-      console.log('req.query.reviewId: ', req.query.reviewId)
       if (err) {
         console.log('error reporting review');
         res.end();

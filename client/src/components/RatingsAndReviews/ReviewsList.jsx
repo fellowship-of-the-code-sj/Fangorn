@@ -9,13 +9,13 @@ function ReviewsList() {
     "review_id": 111380,
     "rating": 4,
     "summary": "This product was ok!",
-    "recommend": false,
-    "response": "",
+    "recommend": true,
+    "response": "this is a response",
     "body": "I really did not like this product solely because I am tiny and do not fit into it.",
     "date": "2019-01-11T00:00:00.000Z",
     "reviewer_name": "mymainstreammother",
     "helpfulness": 2,
-    "photos": []
+    "photos": ["http://www.clker.com//cliparts/3/m/v/Y/E/V/small-red-apple-hi.png", "https://www.pinclipart.com/picdir/middle/167-1677865_facebook-button-image-facebook-small-icon-png-clipart.png"]
   }]);
   // make api call to update reviewsList
 
