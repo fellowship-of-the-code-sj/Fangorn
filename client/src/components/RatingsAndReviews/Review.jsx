@@ -5,6 +5,7 @@ const port = 404;
 function Review(props) {
   const [helpful, setHelpful] = useState(false);
   const [reported, report] = useState(false);
+  const [selectedPhoto, selectPhoto] = useState('');
 
   const helpfulNum = function () {
     return helpful ? props.review.helpfulness + 1 : props.review.helpfulness;
@@ -12,6 +13,34 @@ function Review(props) {
 
   const isReported = function () {
     return reported ? 'Reported' : 'Report'
+  }
+
+  const giveDate = function () {
+    var formatDate = props.review.date.split("T")[0]
+    var year = formatDate.slice(0, 4);
+    var month = formatDate.slice(5, 7);
+    var day = formatDate.slice(8, 10);
+    var monthNames = {
+      '01': 'January',
+      '02': 'February',
+      '03': 'March',
+      '04': 'April',
+      '05': 'May',
+      '06': 'June',
+      '07': 'July',
+      '08': 'August',
+      '09': 'September',
+      '10': 'October',
+      '11': 'November',
+      '12': 'December'
+    }
+    return (`${monthNames[month]} ${day}, ${year}`)
+  }
+
+  const giveRatingProp = function () {
+    var percent = props.review.rating / 5;
+    percent *= 100;
+    return JSON.stringify(percent) + "%"
   }
 
   const sendReport = function () {
@@ -28,26 +57,51 @@ function Review(props) {
     if (!helpful) {
       //axios.put
       axios.put(`http://localhost:${port}/RatingsAndReviews/helpful`, null, { params: { reviewId: props.review.review_id } })
-    } else {
     }
-
     setHelpful(true);
+  }
+
+  const handleImageClick = function (event) {
+    var modal = document.getElementById("imageModal");
+    selectPhoto(props.review.photos[event.target.id])
+    modal.style.display = "block";
+  }
+
+  const handleImageClose = function () {
+    var modal = document.getElementById("imageModal");
+    modal.style.display = "none";
   }
 
   return (
     <div className="review">
-      <h3>Review tile:</h3>
-      <span className="rating"></span>
-      <span className="reviewer-name">{props.review.reviewer_name}</span>
-      <span className="date">{ }</span>
+      <div className="rating-sprite">
+        <span style={{ "width": giveRatingProp() }} className="rating-sprite-fill"></span>
+      </div>
+      <div className="reviewer-name-and-date">{props.review.reviewer_name}, {giveDate()}</div>
       <div className="review-summary">{props.review.summary}</div>
-      <div className="recommend">{ }</div>
       <div className="review-body">{props.review.body}</div>
-      <div className="response">{ }</div>
+      <div className="review-thumbnails"></div>
+      {
+        props.review.photos.map((image, i) => {
+          return <img onClick={handleImageClick} className="review-thumbnail" key={i} id={i} src={image}></img>
+        })
+      }
+      {
+        props.review.recommend ? <div className="recommend"> ✔ I recommend this product</div> : <div></div>
+      }
+      {
+        props.review.response !== "" ? <div className="response"><b>Response:</b><br></br>{props.review.response}</div> : <div></div>
+      }
       <span className="helpful">Helpful?</span>
       <span className="helpful-toggle" onClick={sendHelpful} >Yes</span>
-      <span className="helpful-count">{helpfulNum()}</span>
+      <span className="helpful-count">({helpfulNum()}) </span>
       <span className="report" onClick={() => { sendReport() }} >{isReported()}</span>
+      <div id="imageModal" className="review-image-modal">
+        <div className="review-image-modal-content">
+          <span onClick={handleImageClose} className="review-image-modal-close">&times;</span>
+          <img src={selectedPhoto} ></img>
+        </div>
+      </div>
     </div>
   )
 }
