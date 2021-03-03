@@ -89,7 +89,7 @@ describe('MoreAnsweredQuestions', () => {
 describe('AddQuestionButton', () => {
   it('should render a button', () => {
     const wrapper = shallow(<AddQuestionButton />);
-    console.log(API_KEY || 'NOTHING');
+    console.log(apiKey || 'NOTHING');
     expect(wrapper.find('button').length).toEqual(1);
   });
 });
