@@ -1,3 +1,8 @@
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***** Related Items and Outfit *****
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
 .relatedItemsAndOutfits {
   border: 1px solid black;
 }
@@ -20,6 +25,35 @@
 .relatedProductImg {
   width: 100px;
   height:auto;
+}
+
+.star-ratings-css {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 10px;
+  height: 10px;
+  width: 50px;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+  top: -20px;
+}
+
+.star-top {
+  color: #e7711b;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0px;
+  left: 0;
+  overflow: hidden;
+}
+
+.star-bottom {
+  padding: 0;
+  display: block;
+  z-index: 0;
 }
 
 .overview {
@@ -144,4 +178,40 @@
   cursor: pointer;
 }
 
-/*-----------------------------*/
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***** Questions & Answers *****
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+.add-question-modal,
+.add-answer-modal {
+  max-height: calc(100% - 100px);
+  z-index: 200;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  padding: 25px;
+  border: 1px solid #000;
+  background-color: #fff;
+}
+
+.modal-focus {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
+.add-question-modal textarea,
+.add-question-modal input,
+.add-question-modal label,
+.add-answer-modal textarea,
+.add-answer-modal input,
+.add-answer-modal label {
+  display: block;
+}

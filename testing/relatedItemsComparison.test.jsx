@@ -36,22 +36,20 @@ describe('Rendering Components', () => {
 
   it ('should render relatedItemsCard div', () => {
     const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
-    expect(wrapper.contains(
-      <div className="relatedItemCard">
-        <img className="relatedProductImg" src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' />
-        <h6 className="category">Accessories</h6>
-        <h5 className="name">Bright Future Sunglasses</h5>
+    expect(wrapper.containsAllMatchingElements([
+        <img className="relatedProductImg" src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' />,
+        <h6 className="category">Accessories</h6>,
+        <h5 className="name">Bright Future Sunglasses</h5>,
         <h6 className="price">69.00</h6>
-      </div>
-    )).toBe(true);
+    ])).toBe(true);
   });
 
   it ('should render the sales price if it exists in relatedItemsCard', () => {
-    //Component isn't on sale
+    //component isn't on sale
     const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
     expect(wrapper.contains(<h6 className="price">69.00</h6>)).toBe(true);
 
-    //Component is on sale
+    //component is on sale
     const wrapper2 = shallow(<RelatedItemCard cardData={dummyData.products[1]} />);
     expect(wrapper2.contains(<h6 className="salePrice">30.00</h6>)).toBe(true);
   });
@@ -67,6 +65,16 @@ describe('Rendering Components', () => {
 
   });
 
+  it('should render correct ratings for the specific item', () => {
+    //renders no rating if rating isn't provided
+    const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[1]} />);
+    expect(wrapper.contains(<div style={ { width: '0%' } } className="star-ratings-css-top" ></div>));
+
+    //renders rating if rating is provided
+    const wrapper2 = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
+    expect(wrapper2.contains(<div style={ { width: '72%' } } className="star-ratings-css-top" ></div>));
+  });
+
   it ('should render outfitList list with dummy data passed', () => {
     const wrapper = shallow(<OutfitList outfitList={dummyData.products}/>);
     expect(wrapper.find('OutfitListCard')).toHaveLength(2);
@@ -76,6 +84,8 @@ describe('Rendering Components', () => {
     const wrapper = shallow(<OutfitListCard/>);
     expect(wrapper.contains(<div className='outfitListCard'></div>)).toBe(true);
   });
+
+
 
 });
 

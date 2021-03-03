@@ -23,5 +23,15 @@ module.exports = {
       }
     })
   },
-  getAll: (req, res) => { }
+  getAll: (req, res) => {
+    reviews.getAll({ params: req.query }, (err, results) => {
+      if (err) {
+        console.log('Error getting all reviews');
+        res.end();
+      } else {
+        console.log('successfully got all reviews')
+        res.send(results.data.results);
+      }
+    })
+  }
 }

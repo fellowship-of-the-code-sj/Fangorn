@@ -1,37 +1,41 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-var AddQuestion = ({ handleAddQuestionModal }) => {
-  const [ question, setQuestion ] = useState('');
+var AddAnswer = ({ question, handleAddAnswerModal }) => {
+  const [ answer, setAnswer ] = useState('');
   const [ nickname, setNickname ] = useState('');
   const [ email, setEmail ] = useState('');
 
   const handleChange = e => {
     let value = e.target.value
-    if (e.target.name === 'question') setQuestion(value);
+    if (e.target.name === 'answer') setAnswer(value);
     if (e.target.name === 'nickname') setNickname(value);
     if (e.target.name === 'email') setEmail(value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    setQuestion('');
+    setAnswer('');
     setNickname('');
     setEmail('');
   }
 
   return (
     <React.Fragment>
-      <div className="modal-focus" onClick={handleAddQuestionModal}></div>
-      <div className="add-question-modal">
-        <h1>Your Question</h1>
+      <div className="modal-focus" onClick={handleAddAnswerModal}></div>
+      <div className="add-answer-modal">
+        <h1>Submit your Answer</h1>
+        <h2>[PRODUCT_NAME]: {question}</h2>
         <form>
-          <textarea
-            name="question"
-            value={question}
-            onChange={e => handleChange(e)}></textarea>
           <label>
-            What is your nickname?
+            Your Answer*
+            <textarea
+              name="answer"
+              value={answer}
+              onChange={e => handleChange(e)}></textarea>
+          </label>
+          <label>
+            What is your nickname*
             <input
               type="text"
               name="nickname"
@@ -41,7 +45,7 @@ var AddQuestion = ({ handleAddQuestionModal }) => {
             For privacy reasons, do not use your full name or email address
           </label>
           <label>
-            Your email
+            Your email*
             <input
               type="text"
               name="email"
@@ -60,8 +64,9 @@ var AddQuestion = ({ handleAddQuestionModal }) => {
   );
 };
 
-export default AddQuestion;
+export default AddAnswer;
 
-AddQuestion.propTypes = {
-  handleAddQuestionModal: PropTypes.func
+AddAnswer.propTypes = {
+  question: PropTypes.string,
+  handleAddAnswerModal: PropTypes.func
 }

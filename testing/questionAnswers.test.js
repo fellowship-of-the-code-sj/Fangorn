@@ -6,6 +6,7 @@ import Search from '../client/src/components/QuestionsAndAnswers/Search.jsx';
 import QuestionsList from '../client/src/components/QuestionsAndAnswers/QuestionsList.jsx';
 import MoreAnsweredQuestions from '../client/src/components/QuestionsAndAnswers/MoreAnsweredQuestions.jsx';
 import AddQuestion from '../client/src/components/QuestionsAndAnswers/AddQuestion.jsx';
+import AddQuestionButton from '../client/src/components/QuestionsAndAnswers/AddQuestionButton.jsx';
 import IndividualQuestion from '../client/src/components/QuestionsAndAnswers/IndividualQuestion.jsx';
 import AnswerList from '../client/src/components/QuestionsAndAnswers/AnswerList.jsx';
 import IndividualAnswer from '../client/src/components/QuestionsAndAnswers/IndividualAnswer.jsx';
@@ -24,12 +25,12 @@ describe('QuestionsAndAnswers', () => {
 
   it('should render an MoreAnsweredQuestions component', () => {
     const wrapper = shallow(<QuestionsAndAnswers productID={1}/>);
-    expect(wrapper.containsMatchingElement(<MoreAnsweredQuestions />)).toEqual(true);
+    expect(wrapper.containsMatchingElement(<MoreAnsweredQuestions />)).toEqual(false);
   });
 
   it('should render an AddQuestion component', () => {
     const wrapper = shallow(<QuestionsAndAnswers productID={1}/>);
-    expect(wrapper.containsMatchingElement(<AddQuestion />)).toEqual(true);
+    expect(wrapper.containsMatchingElement(<AddQuestionButton />)).toEqual(true);
   });
 });
 
@@ -88,7 +89,7 @@ describe('MoreAnsweredQuestions', () => {
 
 describe('AddQuestions', () => {
   it('should render a button', () => {
-    const wrapper = shallow(<AddQuestion />);
+    const wrapper = shallow(<AddQuestionButton />);
     expect(wrapper.find('button').length).toEqual(1);
   });
 });
