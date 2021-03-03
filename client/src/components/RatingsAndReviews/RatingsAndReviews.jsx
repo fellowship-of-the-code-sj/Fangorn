@@ -4,13 +4,13 @@ import ReviewsList from './ReviewsList.jsx';
 
 import Review from './Review.jsx'
 
-function RatingsAndReviews() {
+function RatingsAndReviews(props) {
 
 
   return (
     <div className="ratings-and-reviews">
       <Ratings />
-      <ReviewsList />
+      <ReviewsList productID={props.productID} />
     </div>
 
   )
