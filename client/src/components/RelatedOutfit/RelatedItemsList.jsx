@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import RelatedItemCard from './RelatedItemCard.jsx';
 
-const RelatedItemsList = (props) => {
+const RelatedItemsList = ({ relatedItemsList }) => {
   //console.log(props);
   return (
     <div className='relatedItemsList'>
       {
-        props.relatedItemsList.length ?
-        props.relatedItemsList.map((item) => {
+        relatedItemsList.length ?
+        relatedItemsList.map((item) => {
           return <RelatedItemCard key={item.id} cardData={item} ></RelatedItemCard>;
         })
         : <div className='relatedItemCard' ></div>
@@ -17,3 +18,7 @@ const RelatedItemsList = (props) => {
 };
 
 export default RelatedItemsList;
+
+RelatedItemsList.propTypes = {
+  relatedItemsList: PropTypes.array
+}

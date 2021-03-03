@@ -23,6 +23,9 @@ describe('Rendering Components', () => {
     shallow(<RelatedItemCard cardData={dummyData.products[0]}/>);
     shallow(<OutfitListCard  />)
   });
+});
+
+describe('Rendering RelatedItems List Components', () => {
 
   it ('should render relatedItems list with dummy data passed', () => {
     const wrapper = shallow(<RelatedAndOutfits />);;
@@ -33,6 +36,9 @@ describe('Rendering Components', () => {
     const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
     expect(wrapper.find('RelatedItemCard')).toHaveLength(2);
   });
+});
+
+describe('Rendering RelatedItems Card Components', () => {
 
   it ('should render relatedItemsCard div', () => {
     const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
@@ -75,6 +81,11 @@ describe('Rendering Components', () => {
     expect(wrapper2.contains(<div style={ { width: '72%' } } className="star-ratings-css-top" ></div>));
   });
 
+});
+
+
+describe('Rendering OutfitList List Component', () => {
+
   it ('should render outfitList list with dummy data passed', () => {
     const wrapper = shallow(<OutfitList outfitList={dummyData.products}/>);
     expect(wrapper.find('OutfitListCard')).toHaveLength(2);
@@ -85,9 +96,37 @@ describe('Rendering Components', () => {
     expect(wrapper.contains(<div className='outfitListCard'></div>)).toBe(true);
   });
 
-
-
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // describe('Server Request', () => {
 //   it('should make successful request to server', async () => {
