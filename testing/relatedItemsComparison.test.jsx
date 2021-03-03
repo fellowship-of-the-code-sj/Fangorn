@@ -39,12 +39,11 @@ describe('Rendering RelatedItems List Components', () => {
 
   it ('should render relatedItems list with dummy data passed', () => {
     const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
-    expect(wrapper.find('RelatedItemCard')).toHaveLength(2);
+    expect(wrapper.find('RelatedItemCard')).toHaveLength(4);
   });
 });
 
 describe('Rendering RelatedItems Card Components', () => {
-
   it ('should render relatedItemsCard div', () => {
     const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
     expect(wrapper.containsAllMatchingElements([
@@ -110,11 +109,31 @@ describe('Rendering RelatedActionButton Component', () => {
 
 });
 
+describe('Rendering List Behavior', () => {
+
+  it ('should render with no slider buttons if list is shorter then 5 items', () => {
+    const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products.slice(0,4)}/>);
+    expect(wrapper.find('.carouselButton')).toHaveLength(0);
+  });
+
+  it ('should render with right slider buttons if list is longer then 4 items', () => {
+    const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
+    expect(wrapper.find('.carouselButton')).toHaveLength(1);
+  });
+
+  it ('should render the left slider button when thr list is moved to the right' , () => {
+    const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
+    wrapper.find('.carouselButton').simulate('click');
+    expect(wrapper.find('.carouselButton')).toHaveLength(2);
+  });
+
+});
+
 describe('Rendering OutfitList List Component', () => {
 
   it ('should render outfitList list with dummy data passed', () => {
     const wrapper = shallow(<OutfitList outfitList={dummyData.products}/>);
-    expect(wrapper.find('OutfitListCard')).toHaveLength(2);
+    expect(wrapper.find('OutfitListCard')).toHaveLength(6);
   });
 
   it ('should render outfitListCard div', () => {
