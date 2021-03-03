@@ -1,28 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Search from './Search.jsx';
 import QuestionsList from './QuestionsList.jsx';
 import MoreAnsweredQuestions from './MoreAnsweredQuestions.jsx';
 import AddQuestion from './AddQuestion.jsx';
-import myBestestGetter from 'axios';
+import serverRequest from '../../../helperFunctions/serverRequest.js';
 
-var QuestionsAndAnswers = props => {
+const QuestionsAndAnswers = ({ productID }) => {
   const [ questions, setQuestions ] = useState([]);
 
-  // effectively componentDIdMount because we are explicitly saying
-  // that we aren't watching anything
   useEffect(() => {
-    // TODO: handle the /questions route on the server
-    myBestestGetter.get('http://localhost:404/questions')
-      .then(response => {
-        setQuestions(response.data);
-      })
+    serverRequest.get(
+      `http://localhost:404/Questions/${productID}`,
+      null,
+      response => setQuestions(response.data));
   }, []);
 
   return (
     <div>
       <h3>Questions &amp; Answers</h3>
       <Search />
-      <QuestionsList />
+      <QuestionsList questions={questions} />
       <div>
         <MoreAnsweredQuestions />
         <AddQuestion />
@@ -32,3 +30,7 @@ var QuestionsAndAnswers = props => {
 }
 
 export default QuestionsAndAnswers;
+
+QuestionsAndAnswers.propTypes = {
+  productID: PropTypes.number
+}

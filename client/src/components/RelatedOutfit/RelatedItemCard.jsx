@@ -27,10 +27,10 @@ const RelatedItemCard = (props) => {
 
       {/* Star Rating */}
       <div className="star-ratings-css">
-        <div style={ { width: `${rating}%` } } className="star-ratings-css-top">
+        <div style={ { width: `${rating}%` } } className="star-top">
           <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
         </div>
-        <div className="star-ratings-css-bottom">
+        <div className="star-bottom">
           <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
         </div>
       </div>

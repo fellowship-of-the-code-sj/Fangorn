@@ -1,11 +1,5 @@
 import React from 'react';
 
-const MoreAnsweredQuestions = props => {
-  return (
-    <div>
-      <p>More Answered Questions Component</p>
-    </div>
-  );
-};
+const MoreAnsweredQuestions = props => <button>MORE ANSWERED QUESTIONS</button>;
 
 export default MoreAnsweredQuestions;

@@ -15,7 +15,7 @@ class ProductDetailPage extends React.Component {
       <div>
         <Overview productID={13023} />
         <RelatedAndOutfits productID={13025} />
-        <QuestionsAndAnswers productID={1} />
+        <QuestionsAndAnswers productID={13024} />
         <RatingsAndReviews productID={1} />
       </div>
     )
