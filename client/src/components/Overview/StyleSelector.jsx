@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 const StyleSelector = (props) => {
   return (
     <div className="styleSelector">
-      <div id="style_selector_name">Style: {props.currentStyle.name}</div>
-      <div id="style_selector_styles">
+      <div id="styleSelectorName">Style: {props.currentStyle.name}</div>
+      <div id="styleSelectorStyles">
         { props.styles.length > 0 ? props.styles.map((style, index) => {
           return (
             <img
               key={style.style_id}
-              className="style_thumbnail"
+              className="styleThumbnail"
               onClick={event => {
                 props.handleStyleChange(event.target.attributes[5].value)
               }}
