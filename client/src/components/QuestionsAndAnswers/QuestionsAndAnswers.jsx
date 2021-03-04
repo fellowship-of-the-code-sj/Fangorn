@@ -68,7 +68,7 @@ const QuestionsAndAnswers = ({ productID }) => {
       </div>
       {
         showAddQuestionModal ?
-        <AddQuestion handleAddQuestionModal={handleAddQuestionModal}/>
+        <AddQuestion productID={productID} handleAddQuestionModal={handleAddQuestionModal}/>
         : null
       }
     </div>

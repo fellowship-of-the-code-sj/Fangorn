@@ -112,7 +112,8 @@ const IndividualQuestion = ({ question }) => {
         {
           showAddAnswerModal ?
           <AddAnswer
-          question={question.question_body}
+            questionId={question.question_id}
+            questionBody={question.question_body}
             handleAddAnswerModal={handleAddAnswerModal}/>
           : null
         }
