@@ -69,19 +69,20 @@
 .innerModal {
   z-index: 200;
   position: fixed;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 200px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -60%);
   background-color: white;
+  padding: 50px;
 }
+
 .carouselLeftButton, .carouselRightButton{
   width: 30px;
   height: 30px;
   position: relative;
   top: 150px;
-
 }
 
 
