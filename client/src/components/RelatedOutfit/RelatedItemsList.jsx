@@ -29,7 +29,7 @@ const RelatedItemsList = ({ relatedItemsList }) => {
       {
         carouselInput.start === 0 ?
         null
-        : <button className='carouselButton' onClick={scrollLeft}> -- </button>
+        : <button className='carouselLeftButton' onClick={scrollLeft}> -- </button>
       }
       {
         relatedItemsList.length ?
@@ -43,7 +43,7 @@ const RelatedItemsList = ({ relatedItemsList }) => {
       {
         carouselInput.end >= relatedItemsList.length ?
         null
-        : <button className='carouselButton' onClick={scrollRight} >--</button>
+        : <button className='carouselRightButton' onClick={scrollRight} >--</button>
       }
     </div>
   )
