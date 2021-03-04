@@ -14,8 +14,16 @@ module.exports = {
             res.status(err.response.status);
             res.end();
           } else {
-            let stylesObj = results.data;
-            res.send({ productObj, stylesObj });
+            let stylesArr = results.data.results;
+            reviews.getMeta(req.query.itemID, (err, results) => {
+              if (err) {
+                res.status(err.response.status);
+                res.end();
+              } else {
+                let ratingsObj = results.data.ratings;
+                res.send({ productObj, stylesArr, ratingsObj })
+              }
+            })
           }
         })
       }
