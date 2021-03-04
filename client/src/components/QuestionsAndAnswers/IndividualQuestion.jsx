@@ -44,7 +44,7 @@ const IndividualQuestion = ({ question }) => {
     setShowAddAnswerModal(!showAddAnswerModal);
   };
 
-  let loadOrCollapseAnswers = showingMoreAnswers ? 'COLLAPSE ANSWERS' : 'LOAD MORE ANSWERS';
+  let loadOrCollapseAnswers = showingMoreAnswers ? 'COLLAPSE ANSWERS' : 'SEE MORE ANSWERS';
 
   return (
     <div>
