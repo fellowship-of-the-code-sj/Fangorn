@@ -16,7 +16,7 @@ const QuestionsAndAnswers = ({ productID }) => {
 
   useEffect(() => {
     serverRequest.get(
-      `http://localhost:404/Questions/${productID}`,
+      `http://localhost:404/questions/${productID}`,
       null,
       response => {
         setQuestions(response.data);
