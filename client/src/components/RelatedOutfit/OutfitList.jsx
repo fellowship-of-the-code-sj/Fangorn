@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import OutfitListCard from './OutfitListCard.jsx';
 import dummyData from '../../../../testing/dummyData.js';
 
-const OutfitList = ({}) => {
+const OutfitList = ({ productInfo }) => {
 
   const [ carouselInput, setCarouselInput ] = useState({start: 0, end: 4});
 
@@ -31,8 +31,7 @@ const OutfitList = ({}) => {
 
   //Adds item to outfitList
   const addOutfit = () => {
-    outfitList.list.push(dummyData.products[0]);
-
+    outfitList.list.push(productInfo);
     var outfitListArrayString = JSON.stringify(outfitList.list);
     window.localStorage.setItem('outfitList', outfitListArrayString);
 
@@ -42,7 +41,6 @@ const OutfitList = ({}) => {
   const removeOutfitItem = (item) => {
     var index = outfitList.list.indexOf({ id: item})
     outfitList.list.splice(index, 1);
-
     var outfitListArrayString = JSON.stringify(outfitList.list);
     window.localStorage.setItem('outfitList', outfitListArrayString);
     setOutfitList({list: outfitList.list });
@@ -84,6 +82,6 @@ const OutfitList = ({}) => {
 
 export default OutfitList;
 
-// OutfitList.propTypes = {
-//   outfitList: PropTypes.array
-// }
+OutfitList.propTypes = {
+  productInfo: PropTypes.object
+}
