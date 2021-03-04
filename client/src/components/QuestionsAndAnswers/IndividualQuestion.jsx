@@ -49,13 +49,26 @@ const IndividualQuestion = ({ question }) => {
 
   return (
     <div>
-        <p>Q: {question.question_body}</p>
-        <p>Helpful? <a href="#">Yes {question.question_helpfulness}</a></p>
-        <a href="#" onClick={handleAddAnswerModal}>Add Answer</a>
+        <div className="flex">
+          <div>Q:&nbsp;</div>
+          <div>{question.question_body}</div>
+          <div className="flex-grow"></div>
+          <div>
+            Helpful? <a href="#" className="link-clear">
+              <span className="underline">Yes</span> ({question.question_helpfulness})
+              </a>
+          </div>
+          <div className="spacer">|</div>
+          <div>
+            <a href="#" onClick={handleAddAnswerModal}>Add Answer</a>
+          </div>
+        </div>
         <AnswerList answers={displayedAnswers} />
         {
           showMoreAnswersButton ?
-          <a href="#" onClick={handleShowMoreAnswers}>LOAD MORE ANSWERS</a>
+          <React.Fragment>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onClick={handleShowMoreAnswers}>LOAD MORE ANSWERS</a>
+          </React.Fragment>
           : null
         }
         {
