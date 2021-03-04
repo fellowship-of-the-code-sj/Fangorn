@@ -77,7 +77,7 @@ const QuestionsAndAnswers = ({ productID }) => {
       <h3>Questions &amp; Answers</h3>
       <Search
         query={query}
-        handleQueryInput={handleSearchInput} />
+        handleQueryInput={handleQueryInput} />
       <QuestionsList
         questions={displayedQuestions} />
       <div>
