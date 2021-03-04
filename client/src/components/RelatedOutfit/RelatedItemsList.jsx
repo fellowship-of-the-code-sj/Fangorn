@@ -3,22 +3,24 @@ import PropTypes from 'prop-types';
 import RelatedItemCard from './RelatedItemCard.jsx';
 
 const RelatedItemsList = ({ relatedItemsList }) => {
-  //console.log(props);
 
+  //state for controlling the carousel
   const [ carouselInput, setCarouselInput] = useState({start: 0, end: 4});
 
+  //event listener for scrolling right
   const scrollRight = () => {
     if (carouselInput.end < relatedItemsList.length) {
       setCarouselInput({start: carouselInput.start + 1, end: carouselInput.end + 1})
     }
   }
 
-
+  //event lisetener for scrolling left
   const scrollLeft = () => {
     if (carouselInput.start > 0) {
       setCarouselInput({start: carouselInput.start - 1, end: carouselInput.end - 1})
     }
   }
+
 
   return (
     <div className='relatedItemsList'>
@@ -27,21 +29,21 @@ const RelatedItemsList = ({ relatedItemsList }) => {
       {
         carouselInput.start === 0 ?
         null
-        : <button className='carouselButton' onClick={scrollLeft}> -- </button>
+        : <button className='carouselLeftButton' onClick={scrollLeft}> -- </button>
       }
       {
         relatedItemsList.length ?
         relatedItemsList.slice(carouselInput.start, carouselInput.end).map((item) => {
           return <RelatedItemCard key={item.id} cardData={item}></RelatedItemCard>;
         })
-        : <div className='relatedItemCard' ></div>
+        : null
       }
 
       {/* Carousel Scroll Button Right */}
       {
-        carouselInput.end === relatedItemsList.length ?
+        carouselInput.end >= relatedItemsList.length ?
         null
-        : <button className='carouselButton' onClick={scrollRight} >--</button>
+        : <button className='carouselRightButton' onClick={scrollRight} >--</button>
       }
     </div>
   )
@@ -50,6 +52,5 @@ const RelatedItemsList = ({ relatedItemsList }) => {
 export default RelatedItemsList;
 
 RelatedItemsList.propTypes = {
-  relatedItemsList: PropTypes.array,
-  // actionButtonListener: PropTypes.func
+  relatedItemsList: PropTypes.array
 }
