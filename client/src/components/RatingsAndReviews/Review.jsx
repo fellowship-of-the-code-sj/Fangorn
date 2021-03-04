@@ -37,7 +37,7 @@ function Review(props) {
     return (`${monthNames[month]} ${day}, ${year}`)
   }
 
-  const giveRatingProp = function () {
+  const giveRatingPercentage = function () {
     var percent = props.review.rating / 5;
     percent *= 100;
     return JSON.stringify(percent) + "%"
@@ -78,7 +78,7 @@ function Review(props) {
   return (
     <div className="review">
       <div className="rating-sprite">
-        <span style={{ "width": giveRatingProp() }} className="rating-sprite-fill"></span>
+        <span style={{ "width": giveRatingPercentage() }} className="rating-sprite-fill"></span>
       </div>
       <div className="reviewer-name-and-date">{props.review.reviewer_name}, {giveDate()}</div>
       <div className="review-summary">{props.review.summary}</div>

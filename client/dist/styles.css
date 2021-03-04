@@ -172,6 +172,32 @@
   display:block;
 }
 
+.rating-proportions {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.rating-proportion-bar {
+  background-color: rgb(192, 189, 189);
+  height: 13px;
+  width: 300px;
+  margin-left: 70px
+}
+
+.rating-proportion-fill {
+  background-color: rgb(44, 44, 44);
+  background-position: 0 100%;
+  float: left;
+  height: 13px;
+  display:block;
+}
+
+.star-label {
+  text-decoration: underline;
+  position: relative;
+  top: 15px;
+}
+
 .review-thumbnail {
   height: 50px;
   width: 50px;

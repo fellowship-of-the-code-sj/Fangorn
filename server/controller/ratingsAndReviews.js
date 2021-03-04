@@ -33,5 +33,16 @@ module.exports = {
         res.send(results.data.results);
       }
     })
+  },
+  getMeta: (req, res) => {
+    reviews.getMeta(req.query.product_id, (err, results) => {
+      if (err) {
+        console.log('Error getting review metadata')
+        res.end();
+      } else {
+        console.log('Successfully got review metadata')
+        res.send(results.data);
+      }
+    })
   }
 }
