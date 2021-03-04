@@ -2,18 +2,46 @@ const questionsModel = require('../models/questions.js');
 
 module.exports = {
   getQuestions: (req, res) => {
-    const productId = req.params.product_id;
+    const product_id = req.params.product_id;
 
-    questionsModel.get(productId, (error, result) => {
-      if (error) {
-        res.sendStatus(404);
-      } else {
-        const questions = result.data.results;
+    questionsModel.getAllQuestions(product_id)
+      .then(response => {
+        const questions = response.data.results;
         res.status(200).send(questions);
-      }
-    });
+      })
+      .catch(error => {
+        res.sendStatus(404);
+      })
   },
-  postQuestions: () => {},
-  getAnswers: () => {},
-  postAnswers: () => {}
+  postQuestion: () => {},
+  postAnswer: () => {},
+  putQuestionHelpful: (req, res) => {
+    const question_id = req.params.question_id;
+
+    questionsModel.putQuestionHelpful(question_id)
+      .then(() => res.sendStatus(204))
+      .catch(() => res.sendStatus(404));
+  },
+  putQuestionReport: (req, res) => {
+    const question_id = req.params.question_id;
+
+    questionsModel.putQuestionReport(question_id)
+      .then(() => res.sendStatus(204))
+      .catch(() => res.sendStatus(404));
+  },
+  putAnswerHelpful: (req, res) => {
+    const answer_id = req.params.answer_id;
+
+    questionsModel.putAnswerHelpful(answer_id)
+      .then(() => res.sendStatus(204))
+      .catch(() => res.sendStatus(404));
+  },
+  putAnswerReport: (req, res) => {
+    const answer_id = req.params.answer_id;
+    console.log(answer_id);
+
+    questionsModel.putAnswerReport(answer_id)
+    .then(() => res.sendStatus(204))
+    .catch(() => res.sendStatus(404));
+  }
 };
