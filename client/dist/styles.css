@@ -104,6 +104,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
+.ratings-and-reviews {
+  margin-top: 50px;
+}
+
 .reviews-list {
   border: 1px solid black;
 }
@@ -164,6 +168,10 @@
   bottom: 30px;
 }
 
+.rating-summary {
+  margin-bottom: 10px;
+}
+
 .rating-sprite {
   background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
   font-size: 0;
@@ -183,7 +191,7 @@
 }
 
 .rating-proportions {
-  margin-bottom: 10px;
+  margin-bottom: 75px;
   margin-top: 10px;
 }
 

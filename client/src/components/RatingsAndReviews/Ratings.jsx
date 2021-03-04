@@ -139,7 +139,7 @@ function Ratings(props) {
         </div>
 
       </div>
-      <br></br><br></br>
+
       <div className="characteristics">
         {
           metaObject.characteristics.Size ? <div className="characteristic">Size

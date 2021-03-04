@@ -9,6 +9,7 @@ function RatingsAndReviews(props) {
 
   return (
     <div className="ratings-and-reviews">
+      <h3>Ratings and Reviews</h3><br></br>
       <Ratings />
       <ReviewsList productID={props.productID} />
     </div>
