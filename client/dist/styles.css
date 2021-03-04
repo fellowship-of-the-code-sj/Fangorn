@@ -202,6 +202,11 @@
   margin-bottom: 30px;
 }
 
+.characteristic-icon {
+  position: relative;
+  top: 1px;
+}
+
 .characteristic-bar {
   background-color: rgb(184, 184, 184);
   background-position: 0 100%;
@@ -211,19 +216,19 @@
 .characteristic-bar-label-left {
   font-size: small;
   position: relative;
-  top: 15px;
+  top: 5px;
 }
 
 .characteristic-bar-label-middle {
   font-size: small;
   position: relative;
-  top: 15px;
+  top: 5px;
 }
 
 .characteristic-bar-label-right {
   font-size: small;
   position: relative;
-  top: 15px;
+  top: 5px;
 }
 
 .review-thumbnail {
