@@ -274,8 +274,35 @@
 */
 
 .overview {
-  border: 1px solid red;
+  border: 1px solid black;
   width: 80%;
   margin: 10px auto;
   padding: 10px;
+  display: grid;
+  grid-template: repeat(3, 2fr) 1fr / 65% 35% ;
+  grid-template-areas: 
+  "defaultView productInfo"
+  "defaultView styleSelector"
+  "defaultView addToCart"
+  "productSummary productSummary";
+}
+
+.defaultView {
+  grid-area: defaultView;
+}
+
+.productInfo {
+  grid-area: productInfo;
+}
+
+.styleSelector {
+  grid-area: styleSelector;
+}
+
+.addToCart {
+  grid-area: addToCart;
+}
+
+.productSummary {
+  grid-area: productSummary;
 }
