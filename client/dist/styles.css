@@ -13,7 +13,7 @@
   flex-direction:row;
 }
 
-.relatedItemCard {
+.relatedItemCard, .outfitAddItemCard {
   border: 1px solid black;
   margin: 5px;
 }
@@ -76,7 +76,7 @@
   transform: translate(-50%, -60%);
   background-color: white;
 }
-.carouselButton {
+.carouselLeftButton, .carouselRightButton{
   width: 30px;
   height: 30px;
   position: relative;
@@ -93,10 +93,6 @@
   padding: 5px;
   margin: 5px;
 }
-
-
-
-
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

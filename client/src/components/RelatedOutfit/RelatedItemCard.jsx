@@ -6,9 +6,6 @@ import RelatedActionButton from './RelatedActionButton.jsx';
 
 const RelatedItemCard = ({ cardData}) => {
 
-  //gets rating percentage
-  var rating = cardData.rating? parseFloat(cardData.rating)*20 : 0;
-
   //State for comparison table toggle
   const [ actionButtonToggle, setActionButtonToggle] = useState(false)
 
@@ -40,10 +37,11 @@ const RelatedItemCard = ({ cardData}) => {
       }
 
       {/* Star Rating */}
-      <StarRating rating={rating}/>
+      <div className="star-ratings">
+        <StarRating rating={cardData.rating}/>
+      </div>
 
       {/* Modal Element */}
-
       {
         actionButtonToggle ?
           <div>
