@@ -18,12 +18,20 @@ module.exports = {
 
     questionsModel.postQuestion(body_params)
       .then((data) => {
-        console.log('data', data);
         res.sendStatus(201);
       })
       .catch(() => res.sendStatus(404));
   },
-  postAnswer: () => {},
+  postAnswer: (req, res) => {
+    const question_id = req.params.question_id;
+    const body_params = req.body;
+
+    questionsModel.postAnswer(question_id, body_params)
+      .then((data) => {
+        res.sendStatus(201);
+      })
+      .catch(() => res.sendStatus(404));
+  },
   putQuestionHelpful: (req, res) => {
     const question_id = req.params.question_id;
 
@@ -47,7 +55,6 @@ module.exports = {
   },
   putAnswerReport: (req, res) => {
     const answer_id = req.params.answer_id;
-    console.log(answer_id);
 
     questionsModel.putAnswerReport(answer_id)
     .then(() => res.sendStatus(204))
