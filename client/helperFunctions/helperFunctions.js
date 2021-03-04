@@ -31,4 +31,14 @@ const ratingsAverage = (ratings) => {
   }
 }
 
-export default { createObjectData };
+//Function to check if product exists
+const checkIfProductExists = (outfitList, currentProductId) => {
+  for (var i = 0; i < outfitList.length; i++) {
+    if (outfitList[i].id === currentProductId) {
+      return true;
+    }
+  }
+  return false;
+}
+
+export default { createObjectData, checkIfProductExists };
