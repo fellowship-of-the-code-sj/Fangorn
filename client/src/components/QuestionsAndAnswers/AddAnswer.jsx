@@ -18,8 +18,8 @@ var AddAnswer = ({ questionId, questionBody, handleAddAnswerModal }) => {
   const handleSubmit = e => {
     e.preventDefault();
     let body_params = {
-      name: nickname,
-      email,
+      name: _.escape(nickname),
+      email: _.escape(email),
       body: _.escape(answer)
     };
     axios.post(`http://localhost:404/questions/${questionId}/answer/add`, body_params)
