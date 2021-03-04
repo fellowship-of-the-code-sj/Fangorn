@@ -30,7 +30,7 @@ class ProductDetailPage extends React.Component {
         <div className='secondaryComponent'>
         {
           this.state.productInfo.productObj?
-          <RelatedAndOutfits productID={13025} productInfo={helperFunctions.createObjectData(this.state.productInfo)} />
+          <RelatedAndOutfits productID={13025} productInfo={helperFunctions.createProductObjectData(this.state.productInfo)} />
           : <RelatedAndOutfits productID={13025} />
         }
           <QuestionsAndAnswers productID={13024} />

@@ -1,4 +1,4 @@
-const createObjectData = (data) => {
+const createProductObjectData = (data) => {
 
   data.productObj.default_style = findDefaultStyle(data.stylesArr);
   data.productObj.rating = ratingsAverage(data.ratingsObj);
@@ -31,4 +31,4 @@ const ratingsAverage = (ratings) => {
   }
 }
 
-export default { createObjectData };
+export default { createProductObjectData };
