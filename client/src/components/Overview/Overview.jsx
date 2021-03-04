@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import ProductInfo from './ProductInfo.jsx';
+import AddToCart from './AddToCart.jsx';
 import ProductSummary from './ProductSummary.jsx';
+import DefaultView from './DefaultView.jsx';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
 import PropTypes from 'prop-types';
 const port = 404;
@@ -25,6 +27,9 @@ const Overview = (props) => {
   return (
     <div className="overview">
       <h1>Overview:</h1>
+      <DefaultView
+        photos={ currentStyle.photos }
+      />
       <ProductInfo 
         product={ product }
         currentStyle={ currentStyle }
@@ -34,6 +39,9 @@ const Overview = (props) => {
         styles={ styles }
         currentStyle={ currentStyle }
         handleStyleChange={index => setCurrentStyle(styles[index])}
+      />
+      <AddToCart
+        skus={ currentStyle.skus }
       />
       <ProductSummary
         product={ product }

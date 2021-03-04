@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'underscore';
 import AnswerList from './AnswerList.jsx';
+import AddAnswer from './AddAnswer.jsx';
 
 const IndividualQuestion = ({ question }) => {
   const [ answers, setAnswers ] = useState([]);
+  const [ showAddAnswerModal, setShowAddAnswerModal ] = useState(false);
   const [ showMoreAnswersButton, setShowMoreAnswersButton ] = useState(false);
   const [ numDisplayedAnswers, setNumDisplayedAnswers ] = useState(0);
   const [ displayedAnswers, setDisplayedAnswers ] = useState([]);
@@ -40,15 +42,40 @@ const IndividualQuestion = ({ question }) => {
     }
   };
 
+  const handleAddAnswerModal = e => {
+    e.preventDefault();
+    setShowAddAnswerModal(!showAddAnswerModal);
+  };
+
   return (
     <div>
-        <p>Q: {question.question_body}</p>
-        <p>Helpful? <a href="#">Yes {question.question_helpfulness}</a></p>
-        <a href="#">Add Answer</a>
+        <div className="flex">
+          <div>Q:&nbsp;</div>
+          <div>{question.question_body}</div>
+          <div className="flex-grow"></div>
+          <div>
+            Helpful? <a href="#" className="link-clear">
+              <span className="underline">Yes</span> ({question.question_helpfulness})
+              </a>
+          </div>
+          <div className="spacer">|</div>
+          <div>
+            <a href="#" onClick={handleAddAnswerModal}>Add Answer</a>
+          </div>
+        </div>
         <AnswerList answers={displayedAnswers} />
         {
           showMoreAnswersButton ?
-          <a href="#" onClick={handleShowMoreAnswers}>LOAD MORE ANSWERS</a>
+          <React.Fragment>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onClick={handleShowMoreAnswers}>LOAD MORE ANSWERS</a>
+          </React.Fragment>
+          : null
+        }
+        {
+          showAddAnswerModal ?
+          <AddAnswer
+          question={question.question_body}
+            handleAddAnswerModal={handleAddAnswerModal}/>
           : null
         }
     </div>

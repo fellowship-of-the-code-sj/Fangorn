@@ -18,7 +18,9 @@ app.get('/RelatedItems', controller.relatedItems.get);
 
 app.put('/RatingsAndReviews/report', controller.ratingsAndReviews.report);
 
-app.put('/RatingsAndReviews/helpful', controller.ratingsAndReviews.helpful)
+app.put('/RatingsAndReviews/helpful', controller.ratingsAndReviews.helpful);
+
+app.get('/RatingsAndReviews/getAll', controller.ratingsAndReviews.getAll);
 
 // Resolves get request for endpoint /Overview
 app.get('/Overview', (req, res) => {
