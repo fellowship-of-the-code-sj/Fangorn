@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import StarRating from './StarRating.jsx';
 import RelatedActionButton from './RelatedActionButton.jsx';
+import helperFunctions from '../../../helperFunctions/helperFunctions.js';
+import ComparisonTable from './ComparisonTable.jsx';
 
-
-const RelatedItemCard = ({ cardData}) => {
+const RelatedItemCard = ({ cardData, productInfo }) => {
 
   //State for comparison table toggle
   const [ actionButtonToggle, setActionButtonToggle] = useState(false)
@@ -45,12 +46,15 @@ const RelatedItemCard = ({ cardData}) => {
       {
         actionButtonToggle ?
           <div>
-            <div className='outerModal' onClick={actionButtonListener}>OUTER MODAL </div>
-            <div className='innerModal' >INNER MODAL </div>
+            <div className='outerModal' onClick={actionButtonListener}></div>
+            <ComparisonTable
+              comparisionList={ helperFunctions.comparisonTable(productInfo.features, cardData.features)}
+              currentProductName={productInfo.name}
+              relatedProductName={cardData.name}
+            />
           </ div>
           : null
       }
-
     </div>
   )
 }
@@ -59,4 +63,5 @@ export default RelatedItemCard;
 
 RelatedItemCard.propTypes = {
   cardData: PropTypes.object,
+  productInfo: PropTypes.object
 }
