@@ -94,8 +94,10 @@ function Ratings(props) {
     <div className="ratings">
       <div className="rating-summary">
         <span className="rating-number">{getAvgRating('avgRating')}</span>
-        <div className="rating-sprite">
-          <span style={{ "width": getAvgRating('ratingPercentage') }} className="rating-sprite-fill"></span>
+        <div className="rating-stars">
+          <div className="rating-sprite">
+            <span style={{ "width": getAvgRating('ratingPercentage') }} className="rating-sprite-fill"></span>
+          </div>
         </div>
       </div>
       <div className="recommend-percentage">{getRecommendPercentage()}% of reviews recommend this product</div>
@@ -137,6 +139,7 @@ function Ratings(props) {
         </div>
 
       </div>
+      <br></br><br></br>
       <div className="characteristics">
         {
           metaObject.characteristics.Size ? <div className="characteristic">Size
