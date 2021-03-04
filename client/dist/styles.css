@@ -198,6 +198,34 @@
   top: 15px;
 }
 
+.characteristic{
+  margin-bottom: 30px;
+}
+
+.characteristic-bar {
+  background-color: rgb(184, 184, 184);
+  background-position: 0 100%;
+  width: 370px;
+}
+
+.characteristic-bar-label-left {
+  font-size: small;
+  position: relative;
+  top: 15px;
+}
+
+.characteristic-bar-label-middle {
+  font-size: small;
+  position: relative;
+  top: 15px;
+}
+
+.characteristic-bar-label-right {
+  font-size: small;
+  position: relative;
+  top: 15px;
+}
+
 .review-thumbnail {
   height: 50px;
   width: 50px;

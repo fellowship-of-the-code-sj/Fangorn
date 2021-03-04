@@ -8,7 +8,8 @@ function Ratings(props) {
       true: 0,
       false: 0
     },
-    ratings: {}
+    ratings: {},
+    characteristics: {}
   })
   const [fetchedMetaObject, willFetchMetaObject] = useState(false);
 
@@ -138,26 +139,61 @@ function Ratings(props) {
       </div>
       <div className="characteristics">
         {
-          metaObject.characteristics.Size ? <div className="characteristic">
-
+          metaObject.characteristics.Size ? <div className="characteristic">Size
+            <div className="characteristic-bar">
+              <span className="characteristic-bar-label-left">Too small</span>
+              <span className="characteristic-bar-label-middle" style={{ "left": "110px" }}>Perfect</span>
+              <span className="characteristic-bar-label-right" style={{ "left": "230px" }}>Too large</span>
+            </div>
           </div> : <div></div>
         }
         {
-          metaObject.characteristics.Width ? <div className="characteristic"></div> : <div></div>
+          metaObject.characteristics.Width ? <div className="characteristic">Width
+            <div className="characteristic-bar">
+              <span className="characteristic-bar-label-left">Too skinny</span>
+              <span className="characteristic-bar-label-middle" style={{ "left": "105px" }}>Perfect</span>
+              <span className="characteristic-bar-label-right" style={{ "left": "225px" }}>Too wide</span>
+            </div>
+          </div> : <div></div>
         }
         {
-          metaObject.characteristics.Comfort ? <div className="characteristic"></div> : <div></div>
+          metaObject.characteristics.Comfort ? <div className="characteristic">Comfort
+            <div className="characteristic-bar">
+              <span className="characteristic-bar-label-left">Uncomfortable</span>
+              <span className="characteristic-bar-label-right" style={{ "left": "250px" }}>Perfect</span>
+            </div>
+          </div> : <div></div>
         }
         {
-          metaObject.characteristics.Quality ? <div className="characteristic"></div> : <div></div>
+          metaObject.characteristics.Quality ? <div className="characteristic">Quality
+            <div className="characteristic-bar">
+              <span className="characteristic-bar-label-left">Poor</span>
+              <span className="characteristic-bar-label-right" style={{ "left": "315px" }}>Great</span>
+            </div>
+          </div> : <div></div>
         }
         {
-          metaObject.characteristics.Length ? <div className="characteristic"></div> : <div></div>
+          metaObject.characteristics.Length ? <div className="characteristic">Length
+            <div className="characteristic-bar">
+              <span className="characteristic-bar-label-left">Too short</span>
+              <span className="characteristic-bar-label-middle" style={{ "left": "110px" }}>Perfect</span>
+              <span className="characteristic-bar-label-right" style={{ "left": "230px" }}>Too long</span>
+            </div>
+          </div> : <div></div>
         }
         {
-          metaObject.characteristics.Fit ? <div className="characteristic"></div> : <div></div>
+          metaObject.characteristics.Fit ? <div className="characteristic">Fit
+            <div className="characteristic-bar">
+              <span className="characteristic-bar-label-left">Poor</span>
+              <span className="characteristic-bar-label-right" style={{ "left": "230px" }}>Great</span>
+            </div>
+          </div> : <div></div>
         }
       </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   )
 }
