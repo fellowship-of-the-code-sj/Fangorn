@@ -27,8 +27,10 @@ const Overview = (props) => {
   return (
     <div className="overview">
       <h1>Overview:</h1>
-      <DefaultView/>
-      <ProductInfo 
+      <DefaultView
+        photos={ currentStyle.photos }
+      />
+      <ProductInfo
         product={ product }
         currentStyle={ currentStyle }
         ratings={ ratings }

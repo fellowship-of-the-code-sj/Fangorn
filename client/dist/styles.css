@@ -13,7 +13,7 @@
   flex-direction:row;
 }
 
-.relatedItemCard {
+.relatedItemCard, .outfitAddItemCard {
   border: 1px solid black;
   margin: 5px;
 }
@@ -76,7 +76,7 @@
   transform: translate(-50%, -60%);
   background-color: white;
 }
-.carouselButton {
+.carouselLeftButton, .carouselRightButton{
   width: 30px;
   height: 30px;
   position: relative;
@@ -93,10 +93,6 @@
   padding: 5px;
   margin: 5px;
 }
-
-
-
-
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -276,10 +272,38 @@
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-***** Questions & Answers *****
+***** QUESTIONS & ANSWERS *****
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
+/* reusable */
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.spacer {
+  padding: 0 10px;
+}
+
+.link-clear {
+  text-decoration: none;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.scrollable-content {
+  max-height: 45vh;
+  overflow: auto;
+}
+
+/* Q&A Modals */
 .add-question-modal,
 .add-answer-modal {
   max-height: calc(100% - 100px);

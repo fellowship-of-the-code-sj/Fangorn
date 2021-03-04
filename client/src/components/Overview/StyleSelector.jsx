@@ -6,22 +6,23 @@ const StyleSelector = (props) => {
     <div className="styleSelector">
       <div id="styleSelectorName">Style: {props.currentStyle.name}</div>
       <div id="styleSelectorStyles">
-        { props.styles.length > 0 ? props.styles.map((style, index) => {
-          return (
+        { props.styles.length > 0 ? 
+          props.styles.map((style, index) => (
             <img
               key={style.style_id}
               className="styleThumbnail"
               onClick={event => {
-                props.handleStyleChange(event.target.attributes[5].value)
+                // console.log(event.target.attributes)
+                props.handleStyleChange(event.target.attributes[4].value)
               }}
               src={style.photos[0].thumbnail_url}
               alt={`Image Thumbnail ${style.name}`}
               height="50"
-              width="50"
+              // width="50"
               index={index}
               id={`styleThumbnail${index}`}
             />
-          )}) : <div></div>
+          )) : null
         }
       </div>
     </div>

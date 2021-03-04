@@ -13,6 +13,7 @@ import OutfitList from '../client/src/components/RelatedOutfit/OutfitList.jsx';
 import OutfitListCard from '../client/src/components/RelatedOutfit/OutfitListCard.jsx';
 import StarRating from '../client/src/components/RelatedOutfit/StarRating.jsx';
 import RelatedActionButton from '../client/src/components/RelatedOutfit/RelatedActionButton.jsx';
+import OutfitActionButton from '../client/src/components/RelatedOutfit/OutfitActionButton.jsx'
 
 const port = 404;
 
@@ -23,7 +24,7 @@ describe('Rendering Components', () => {
     shallow(<RelatedItemsList relatedItemsList={[]}/>);
     shallow(<OutfitList outfitList={[]}/>);
     shallow(<RelatedItemCard cardData={dummyData.products[0]}/>);
-    shallow(<OutfitListCard cardData={{}} />)
+    shallow(<OutfitListCard cardData={dummyData.products[0]} />)
     shallow(<StarRating rating={'0%'}/>);
     shallow(<RelatedActionButton />);
   });
@@ -109,41 +110,147 @@ describe('Rendering RelatedActionButton Component', () => {
 
 });
 
-describe('Rendering List Behavior', () => {
+describe('Rendering Related Items List Behavior', () => {
 
   it ('should render with no slider buttons if list is shorter then 5 items', () => {
     const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products.slice(0,4)}/>);
-    expect(wrapper.find('.carouselButton')).toHaveLength(0);
+    expect(wrapper.find('.carouselRightButton')).toHaveLength(0);
   });
 
   it ('should render with right slider buttons if list is longer then 4 items', () => {
     const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
-    expect(wrapper.find('.carouselButton')).toHaveLength(1);
+    expect(wrapper.find('.carouselRightButton')).toHaveLength(1);
   });
 
-  it ('should render the left slider button when thr list is moved to the right' , () => {
+  it ('should render the left slide button when the list is moved to the right' , () => {
     const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
-    wrapper.find('.carouselButton').simulate('click');
-    expect(wrapper.find('.carouselButton')).toHaveLength(2);
+    wrapper.find('.carouselRightButton').simulate('click');
+    expect(wrapper.find('.carouselLeftButton')).toHaveLength(1);
   });
+
+  it ('should remove the left side button when the list reaches the end of the left' , () => {
+    const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
+    wrapper.find('.carouselRightButton').simulate('click');
+    wrapper.find('.carouselLeftButton').simulate('click');
+    expect(wrapper.find('.carouselLeftButton')).toHaveLength(0);
+  });
+
 
 });
 
 describe('Rendering OutfitList List Component', () => {
 
   it ('should render outfitList list with dummy data passed', () => {
-    const wrapper = shallow(<OutfitList outfitList={dummyData.products}/>);
-    expect(wrapper.find('OutfitListCard')).toHaveLength(6);
+    const wrapper = shallow(<OutfitList />);
+    expect(wrapper.find('.relatedItemsList')).toHaveLength(1);
   });
+});
+
+describe('Rendering OutfitList List Card Component', () => {
 
   it ('should render outfitListCard div', () => {
-    const wrapper = shallow(<OutfitListCard/>);
-    expect(wrapper.contains(<div className='outfitListCard'></div>)).toBe(true);
+    const wrapper = shallow(<OutfitListCard cardData={dummyData.products[0]}/>);
+    expect(wrapper.containsAllMatchingElements([
+      <img className="relatedProductImg" src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' />,
+      <h6 className="category">Accessories</h6>,
+      <h5 className="name">Bright Future Sunglasses</h5>,
+      <h6 className="price">69.00</h6>
+    ])).toBe(true);
+  });
+
+  it ('should render the sales price if it exists in relatedItemsCard', () => {
+    //component isn't on sale
+    const wrapper = shallow(<OutfitListCard cardData={dummyData.products[0]} />);
+    expect(wrapper.contains(<h6 className="price">69.00</h6>)).toBe(true);
+
+    //component is on sale
+    const wrapper2 = shallow(<OutfitListCard cardData={dummyData.products[1]} />);
+    expect(wrapper2.contains(<h6 className="salePrice">30.00</h6>)).toBe(true);
+  });
+
+  it('should render the image if it exists in the relatedItemsCard', () => {
+    //component contains no images
+    const wrapper = shallow(<OutfitListCard cardData={dummyData.products[0]} />);
+    expect(wrapper.contains(<img className='relatedProductImg' src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
+
+    //component containes images
+    const wrapper2 = shallow(<OutfitListCard cardData={dummyData.products[1]} />);
+    expect(wrapper2.contains(<img className='relatedProductImg' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"></img>)).toBe(true);
+
   });
 
 });
 
+describe('Rendering Outfit List Behavior', () => {
 
+  it ('should render outfit card component when it is added to outfit list', () => {
+    const wrapper = shallow(<OutfitList relatedItemsList={dummyData.products.slice(0,4)}/>);
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    expect(wrapper.find('OutfitListCard')).toHaveLength(1);
+  });
+
+  it ('should render with no slider buttons if list is shorter then 5 items', () => {
+    const wrapper = shallow(<OutfitList relatedItemsList={dummyData.products.slice(0,4)}/>);
+    expect(wrapper.find('.carouselRightButton')).toHaveLength(0);
+  });
+
+
+  it ('should render with right slide buttons if list is longer then 4 items', () => {
+    const wrapper = shallow(<OutfitList relatedItemsList={dummyData.products}/>);
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    expect(wrapper.find('.carouselRightButton')).toHaveLength(1);
+  });
+
+  it ('should render the left slide button when the list is moved to the right' , () => {
+    const wrapper = shallow(<OutfitList relatedItemsList={dummyData.products}/>);
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.carouselRightButton').simulate('click');
+    expect(wrapper.find('.carouselLeftButton')).toHaveLength(1);
+  });
+
+  it ('should remove the left side button when the list reaches the end of the left and add the right' , () => {
+    const wrapper = shallow(<OutfitList relatedItemsList={dummyData.products}/>);
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.outfitAddItemCard').simulate('click');
+    wrapper.find('.carouselRightButton').simulate('click');
+    expect(wrapper.find('.carouselLeftButton')).toHaveLength(1);
+    wrapper.find('.carouselLeftButton').simulate('click');
+    expect(wrapper.find('.carouselLeftButton')).toHaveLength(0);
+  });
+
+});
+
+describe('rendering action button', () => {
+
+  it ('should render the action button', () => {
+    const wrapper = shallow(<OutfitActionButton />);
+    expect(wrapper.find('.OutfitActionButton')).toHaveLength(1);
+  });
+
+  it ('should excecute event listener function that is passed it', () => {
+
+    var tempState = false;
+    var changeState = () => {
+      tempState = !tempState;
+    }
+
+    const wrapper = shallow(<OutfitActionButton removeOutfitItem={changeState}/>);
+    wrapper.find('.OutfitActionButton').simulate('click');
+    expect(tempState).toBe(true);
+  })
+
+});
 
 
 

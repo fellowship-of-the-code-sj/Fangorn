@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 
 
 var StarRating = ({ rating }) => {
-  return (
 
-    <div className="star-ratings">
-    <div style={ { width: `${rating}%` } } className="star-top">
-      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-    </div>
-    <div className="star-bottom">
-      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-    </div>
-    </div>
+  rating = rating? parseFloat(rating)*20 : 0;
+
+  return (
+    <React.Fragment>
+      <div style={ { width: `${rating}%` } } className="star-top">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <div className="star-bottom">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+    </React.Fragment>
   )
 }
-
 
 export default StarRating;
 
