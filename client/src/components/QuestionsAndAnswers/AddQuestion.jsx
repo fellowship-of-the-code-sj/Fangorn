@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'underscore';
+import axios from 'axios';
 
-var AddQuestion = ({ handleAddQuestionModal }) => {
+var AddQuestion = ({ productID, handleAddQuestionModal }) => {
   const [ question, setQuestion ] = useState('');
   const [ nickname, setNickname ] = useState('');
   const [ email, setEmail ] = useState('');
@@ -15,9 +17,19 @@ var AddQuestion = ({ handleAddQuestionModal }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setQuestion('');
-    setNickname('');
-    setEmail('');
+    let body_params = {
+      product_id: productID,
+      name: nickname,
+      email,
+      body: _.escape(question)
+    };
+    axios.post(`http://localhost:404/questions/add`, body_params)
+      .then(() => {
+        setQuestion('');
+        setNickname('');
+        setEmail('');
+      })
+      .catch(() => console.error('error'));
   }
 
   return (
@@ -63,5 +75,6 @@ var AddQuestion = ({ handleAddQuestionModal }) => {
 export default AddQuestion;
 
 AddQuestion.propTypes = {
+  productID: PropTypes.number,
   handleAddQuestionModal: PropTypes.func
 }

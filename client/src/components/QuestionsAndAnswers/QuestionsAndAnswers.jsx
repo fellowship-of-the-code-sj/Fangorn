@@ -16,7 +16,7 @@ const QuestionsAndAnswers = ({ productID }) => {
 
   useEffect(() => {
     serverRequest.get(
-      `http://localhost:404/Questions/${productID}`,
+      `http://localhost:404/questions/${productID}`,
       null,
       response => {
         setQuestions(response.data);
@@ -68,7 +68,7 @@ const QuestionsAndAnswers = ({ productID }) => {
       </div>
       {
         showAddQuestionModal ?
-        <AddQuestion handleAddQuestionModal={handleAddQuestionModal}/>
+        <AddQuestion productID={productID} handleAddQuestionModal={handleAddQuestionModal}/>
         : null
       }
     </div>

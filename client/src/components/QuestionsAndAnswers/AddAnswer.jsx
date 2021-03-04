@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import _ from 'underscore';
 
-var AddAnswer = ({ question, handleAddAnswerModal }) => {
+var AddAnswer = ({ questionId, questionBody, handleAddAnswerModal }) => {
   const [ answer, setAnswer ] = useState('');
   const [ nickname, setNickname ] = useState('');
   const [ email, setEmail ] = useState('');
@@ -15,9 +17,18 @@ var AddAnswer = ({ question, handleAddAnswerModal }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setAnswer('');
-    setNickname('');
-    setEmail('');
+    let body_params = {
+      name: nickname,
+      email,
+      body: _.escape(answer)
+    };
+    axios.post(`http://localhost:404/questions/${questionId}/answer/add`, body_params)
+      .then(() => {
+        setAnswer('');
+        setNickname('');
+        setEmail('');
+      })
+      .catch(() => console.error('error'));
   }
 
   return (
@@ -25,7 +36,7 @@ var AddAnswer = ({ question, handleAddAnswerModal }) => {
       <div className="modal-focus" onClick={handleAddAnswerModal}></div>
       <div className="add-answer-modal">
         <h1>Submit your Answer</h1>
-        <h2>[PRODUCT_NAME]: {question}</h2>
+        <h2>[PRODUCT_NAME]: {questionBody}</h2>
         <form>
           <label>
             Your Answer*
@@ -67,6 +78,7 @@ var AddAnswer = ({ question, handleAddAnswerModal }) => {
 export default AddAnswer;
 
 AddAnswer.propTypes = {
-  question: PropTypes.string,
+  questionId: PropTypes.number,
+  questionBody: PropTypes.string,
   handleAddAnswerModal: PropTypes.func
 }

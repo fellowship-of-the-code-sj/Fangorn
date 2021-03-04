@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'underscore';
+import axios from 'axios';
 import AnswerList from './AnswerList.jsx';
 import AddAnswer from './AddAnswer.jsx';
 
@@ -9,8 +10,10 @@ const IndividualQuestion = ({ question }) => {
   const [ showAddAnswerModal, setShowAddAnswerModal ] = useState(false);
   const [ showingMoreAnswers, setShowingMoreAnswers ] = useState(false);
   const [ showMoreAnswersButton, setShowMoreAnswersButton ] = useState(false);
-  // const [ numDisplayedAnswers, setNumDisplayedAnswers ] = useState(0);
   const [ displayedAnswers, setDisplayedAnswers ] = useState([]);
+  // this should really be handled by the API..
+  const [ submittedHelpful, setSubmittedHelpful ] = useState(false);
+  const [ submittedReport, setSubmittedReport ] = useState(false);
 
   useEffect(() => {
     const allAnswers = _.values(question.answers);
@@ -24,9 +27,37 @@ const IndividualQuestion = ({ question }) => {
     } else {
       numToDisplay = numAnswers;
     }
-    // setNumDisplayedAnswers(numToDisplay);
     setDisplayedAnswers(allAnswers.slice(0, numToDisplay));
   }, []);
+
+  const handleSubmitHelpful = e => {
+    e.preventDefault();
+    const { question_id } = question;
+    axios.put(`http://localhost:404/questions/${question_id}/helpful`)
+      .then(() => {
+        setSubmittedHelpful(true);
+      })
+      .catch(() => {
+        console.error('error');
+      });
+  };
+
+  const handleSubmitReport = e => {
+    e.preventDefault();
+    const { question_id } = question;
+    axios.put(`http://localhost:404/questions/${question_id}/report`)
+      .then(() => {
+        setSubmittedReport(true);
+      })
+      .catch(() => {
+        console.error('error');
+      });
+  };
+
+  const handleAddAnswerModal = e => {
+    e.preventDefault();
+    setShowAddAnswerModal(!showAddAnswerModal);
+  };
 
   const handleShowMoreAnswers = e => {
     e.preventDefault();
@@ -39,11 +70,6 @@ const IndividualQuestion = ({ question }) => {
     }
   };
 
-  const handleAddAnswerModal = e => {
-    e.preventDefault();
-    setShowAddAnswerModal(!showAddAnswerModal);
-  };
-
   let loadOrCollapseAnswers = showingMoreAnswers ? 'COLLAPSE ANSWERS' : 'SEE MORE ANSWERS';
 
   return (
@@ -53,9 +79,22 @@ const IndividualQuestion = ({ question }) => {
           <div>{question.question_body}</div>
           <div className="flex-grow"></div>
           <div>
-            Helpful? <a href="#" className="link-clear">
-              <span className="underline">Yes</span> ({question.question_helpfulness})
-              </a>
+            Helpful?&nbsp;
+            {
+              submittedHelpful ?
+              <span>Yes ({question.question_helpfulness + 1})</span>
+              : <a href="#" className="link-clear" onClick={handleSubmitHelpful}>
+                  <span className="underline">Yes</span> ({question.question_helpfulness})
+                </a>
+            }
+          </div>
+          <div className="spacer">|</div>
+          <div>
+            {
+              submittedReport ?
+              <span>Reported!</span>
+              : <a href="#" onClick={handleSubmitReport}>Report</a>
+            }
           </div>
           <div className="spacer">|</div>
           <div>
@@ -73,7 +112,8 @@ const IndividualQuestion = ({ question }) => {
         {
           showAddAnswerModal ?
           <AddAnswer
-          question={question.question_body}
+            questionId={question.question_id}
+            questionBody={question.question_body}
             handleAddAnswerModal={handleAddAnswerModal}/>
           : null
         }
