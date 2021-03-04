@@ -4,6 +4,7 @@ import Overview from '../client/src/components/Overview/Overview.jsx';
 import DefaultView from '../client/src/components/Overview/DefaultView.jsx';
 import ProductInfo from '../client/src/components/Overview/ProductInfo.jsx';
 import StyleSelector from '../client/src/components/Overview/StyleSelector.jsx';
+import AddToCart from '../client/src/components/Overview/AddToCart.jsx';
 import ProductSummary from '../client/src/components/Overview/ProductSummary.jsx';
 import data from './dummyData.js';
 
@@ -113,11 +114,29 @@ describe('Style Selector', () => {
 })
 
 describe('Add to Cart', () => {
+  it('should render Add To Cart component', () => {
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    expect(wrapper.find('.addToCart').length).toBe(1);
+  })
+  
+  it('should include a Select Size select element', () => {
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    expect(wrapper.find('#sizeSelect').length).toBe(1);
+  })
 
+  it('should include a Quantity select element', () => {
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    expect(wrapper.find('#quantitySelect').length).toBe(1);
+  })
+  
+  it('should include a Add to Cart button element', () => {
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    expect(wrapper.find('#addToCartButton').length).toBe(1);
+  })
 });
 
 describe('Product Summary', () => {
-  it('should render Product Summary', () => {
+  it('should render Product Summary component', () => {
     const wrapper = shallow(<ProductSummary product={data.products[0]} />);
     expect(wrapper.find('.productSummary').length).toBe(1);
   })
