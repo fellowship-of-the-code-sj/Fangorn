@@ -6,10 +6,11 @@ import React, { useState, useEffect } from 'react';
 function ReviewsList(props) {
 
   const [list, setList] = useState([]);
+  const [visibleList, setVisibleList] = useState([]);
   const [hasFetchedList, willFetchList] = useState(false);
 
   // make api call to update reviewsList
-  const getList = function () {
+  const getList = () => {
     axios.get('/RatingsAndReviews/getAll', {
       params: {
         page: 1,
@@ -19,13 +20,17 @@ function ReviewsList(props) {
       }
     })
       .then((response) => {
-        console.log('setting list to be: ', response.data)
         setList(response.data);
+        setVisibleList(response.data.slice(0, 1))
       })
   }
 
   const handleNewReview = (event) => {
     // call api and send new review, then update state
+  }
+
+  const showMoreReviews = () => {
+    setVisibleList(list.slice(0, visibleList.length + 1));
   }
 
   useEffect(() => {
@@ -37,9 +42,12 @@ function ReviewsList(props) {
 
   return (
     <div className="reviews-list">
-      {list.map((review) => {
+      {visibleList.map((review) => {
         return <Review key={review.review_id} review={review} />
       })}
+      {
+        list.length > visibleList.length ? <button className="show-more-reviews-button" onClick={showMoreReviews}>Show more reviews</button> : <div></div>
+      }
     </div>
   )
 }

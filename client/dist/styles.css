@@ -27,7 +27,7 @@
   height:auto;
 }
 
-.star-ratings-css {
+.star-ratings {
   unicode-bidi: bidi-override;
   color: #c5c5c5;
   font-size: 10px;
@@ -56,11 +56,48 @@
   z-index: 0;
 }
 
+.outerModal {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.innerModal {
+  z-index: 200;
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  background-color: white;
+}
+.carouselButton {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 150px;
+
+}
+
+
+
+
+
 .overview {
   border: 1px solid black;
   padding: 5px;
   margin: 5px;
 }
+
+
+
+
+
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ***** Ratings and reviews *****
