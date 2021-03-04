@@ -1,30 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'underscore';
 
 const AddToCart = (props) => {
-  // const createQuantities = (obj) => {
-  //   let quantities = [];
-  //   for (let key in obj) {
-  //     quantities.push(obj[key].quantity)
-  //   }
-  //   return quantities;
-  // }
-  // const quantities = createQuantities(props.skus);
 
-  // const createSizes = (obj) => {
-  //   let sizes = [];
-  //   for (let key in obj) {
-  //     sizes.push(obj[key].size)
-  //   }
-  //   return sizes;
-  // }
-  // const sizes = createSizes(props.skus);
+  const [ quantity, setQuantity ] = useState(null);
 
-
+  const getQuantity = (size) => {
+    for (let key in props.skus) {
+      if (props.skus[key].size === size) {
+        setQuantity(props.skus[key].quantity)
+      }
+    }
+  }
   return (
     <div className="addToCart">
-      <select id="sizeSelect">
+      <select 
+        id="sizeSelect"
+        onChange={(event) => {getQuantity(event.target.value)}}
+      >
         <option>Select Size</option>
         {props.skus ?
           Object.keys(props.skus).map((key, index) => (
