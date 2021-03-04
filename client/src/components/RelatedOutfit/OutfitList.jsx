@@ -66,7 +66,7 @@ const OutfitList = ({ productInfo }) => {
       {
         outfitList.list.length ?
         outfitList.list.slice(carouselInput.start, carouselInput.end).map((item) => {
-          return <OutfitListCard cardData={item} removeOutfitItem={removeOutfitItem} ></OutfitListCard>
+          return <OutfitListCard key={item.id} cardData={item} removeOutfitItem={removeOutfitItem} ></OutfitListCard>
         })
         : null
       }
