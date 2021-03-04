@@ -19,21 +19,19 @@ const DefaultView = (props) => {
       </div>
       <div id="defaultViewThumbnailsContainer">
         {props.photos ?
-          props.photos.map((photo, index) => {
-            return (
-              <img
-                key={index}
-                className="defaultViewThumbnail"
-                src={photo.thumbnail_url}
-                alt={`Style Thumbnail`}
-                height="50"
-                // width="50"
-                index={index}
-                id={`defaultViewThumbnail${index}`}
-                onClick={(event) => {setImageIndex(event.target.attributes[4].value)}}
-              />
-            )
-          }) : null
+          props.photos.map((photo, index) => (
+            <img
+              key={index}
+              className="defaultViewThumbnail"
+              src={photo.thumbnail_url}
+              alt={`Style Thumbnail`}
+              height="50"
+              // width="50"
+              index={index}
+              id={`defaultViewThumbnail${index}`}
+              onClick={(event) => {setImageIndex(event.target.attributes[4].value)}}
+            />
+          )) : null
         }
       </div>
     </div>

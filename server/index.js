@@ -50,7 +50,14 @@ app.get('/OverviewOld', (req, res) => {
   });
 });
 
-app.get('/Questions/:product_id', controller.questions.getQuestions);
+app.get('/questions/:product_id', controller.questions.getQuestions);
+app.post('/questions/add', controller.questions.postQuestion);
+app.post('/questions/:question_id/answer/add', controller.questions.postAnswer);
+app.put('/questions/:question_id/helpful', controller.questions.putQuestionHelpful);
+app.put('/questions/:question_id/report', controller.questions.putQuestionReport);
+app.put('/answer/:answer_id/helpful', controller.questions.putAnswerHelpful);
+app.put('/answer/:answer_id/report', controller.questions.putAnswerReport);
+
 
 const PORT = 404;
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
