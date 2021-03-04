@@ -13,7 +13,16 @@ module.exports = {
         res.sendStatus(404);
       })
   },
-  postQuestion: () => {},
+  postQuestion: (req, res) => {
+    const body_params = req.body;
+
+    questionsModel.postQuestion(body_params)
+      .then((data) => {
+        console.log('data', data);
+        res.sendStatus(201);
+      })
+      .catch(() => res.sendStatus(404));
+  },
   postAnswer: () => {},
   putQuestionHelpful: (req, res) => {
     const question_id = req.params.question_id;
