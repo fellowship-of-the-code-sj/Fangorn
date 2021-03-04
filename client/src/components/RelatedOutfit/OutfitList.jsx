@@ -4,6 +4,7 @@ import OutfitListCard from './OutfitListCard.jsx';
 import dummyData from '../../../../testing/dummyData.js';
 
 const OutfitList = ({}) => {
+
   const [ carouselInput, setCarouselInput ] = useState({start: 0, end: 4});
 
   if (!window.localStorage.outfitList) {
@@ -44,8 +45,11 @@ const OutfitList = ({}) => {
 
     var outfitListArrayString = JSON.stringify(outfitList.list);
     window.localStorage.setItem('outfitList', outfitListArrayString);
-
     setOutfitList({list: outfitList.list });
+
+    if (outfitList.list.length < carouselInput.end) {
+      scrollLeft();
+    }
   }
 
   return (
