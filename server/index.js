@@ -22,10 +22,10 @@ app.put('/RatingsAndReviews/helpful', controller.ratingsAndReviews.helpful);
 
 app.get('/RatingsAndReviews/getAll', controller.ratingsAndReviews.getAll);
 
-app.get('/OverviewRefactor', controller.overview.get)
+app.get('/Overview', controller.overview.get)
 
 // Resolves get request for endpoint /Overview
-app.get('/Overview', (req, res) => {
+app.get('/OverviewOld', (req, res) => {
   overview.getProduct(req.query, (err, product) => {
     if (err) {
       res.sendStatus(err.response.status);
