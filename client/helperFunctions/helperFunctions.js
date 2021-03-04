@@ -31,14 +31,27 @@ const ratingsAverage = (ratings) => {
   }
 }
 
-//Function to check if product exists
-const checkIfProductExists = (outfitList, currentProductId) => {
-  for (var i = 0; i < outfitList.length; i++) {
-    if (outfitList[i].id === currentProductId) {
-      return true;
-    }
-  }
-  return false;
-}
+const comparisonTable = (currentProduct, relatedProduct) => {
 
-export default { createObjectData, checkIfProductExists };
+  var resultObj = {};
+  currentProduct.forEach((product) => {
+    if (product.value) {
+      resultObj[product.value] = [true, false];
+    }
+  });
+
+  relatedProduct.forEach((product) => {
+    if (product.value) {
+      if (resultObj[product.value]) {
+        resultObj[product.value] = [true, true];
+      } else {
+        resultObj[product.value] = [false, true];
+      }
+    }
+
+  });
+  console.log(resultObj)
+  return resultObj;
+ }
+
+export default { createObjectData, comparisonTable };
