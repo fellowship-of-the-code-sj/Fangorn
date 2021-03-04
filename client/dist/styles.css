@@ -84,16 +84,6 @@
 
 }
 
-
-
-
-
-.overview {
-  border: 1px solid black;
-  padding: 5px;
-  margin: 5px;
-}
-
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ***** Ratings and reviews *****
@@ -275,4 +265,17 @@
 .add-answer-modal input,
 .add-answer-modal label {
   display: block;
+}
+
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***** Overview *****
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+.overview {
+  border: 1px solid red;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
 }
