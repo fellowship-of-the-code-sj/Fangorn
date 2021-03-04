@@ -7,8 +7,9 @@ import AddAnswer from './AddAnswer.jsx';
 const IndividualQuestion = ({ question }) => {
   const [ answers, setAnswers ] = useState([]);
   const [ showAddAnswerModal, setShowAddAnswerModal ] = useState(false);
+  const [ showingMoreAnswers, setShowingMoreAnswers ] = useState(false);
   const [ showMoreAnswersButton, setShowMoreAnswersButton ] = useState(false);
-  const [ numDisplayedAnswers, setNumDisplayedAnswers ] = useState(0);
+  // const [ numDisplayedAnswers, setNumDisplayedAnswers ] = useState(0);
   const [ displayedAnswers, setDisplayedAnswers ] = useState([]);
 
   useEffect(() => {
@@ -23,22 +24,18 @@ const IndividualQuestion = ({ question }) => {
     } else {
       numToDisplay = numAnswers;
     }
-    setNumDisplayedAnswers(numToDisplay);
+    // setNumDisplayedAnswers(numToDisplay);
     setDisplayedAnswers(allAnswers.slice(0, numToDisplay));
   }, []);
 
   const handleShowMoreAnswers = e => {
     e.preventDefault();
-    // there will not be any more answers to display
-    if ((answers.length - numDisplayedAnswers) < 3) {
-      setShowMoreAnswersButton(false);
-      setNumDisplayedAnswers(answers.length);
-      setDisplayedAnswers(answers.slice(0, answers.length));
+    if (showingMoreAnswers) {
+      setShowingMoreAnswers(false);
+      setDisplayedAnswers(answers.slice(0,2));
     } else {
-    // there will be more answers to display
-      const updatedNum = numDisplayedAnswers + 2;
-      setNumDisplayedAnswers(updatedNum);
-      setDisplayedAnswers(answers.slice(0, updatedNum));
+      setShowingMoreAnswers(true);
+      setDisplayedAnswers(answers.slice());
     }
   };
 
@@ -46,6 +43,8 @@ const IndividualQuestion = ({ question }) => {
     e.preventDefault();
     setShowAddAnswerModal(!showAddAnswerModal);
   };
+
+  let loadOrCollapseAnswers = showingMoreAnswers ? 'COLLAPSE ANSWERS' : 'SEE MORE ANSWERS';
 
   return (
     <div>
@@ -67,7 +66,7 @@ const IndividualQuestion = ({ question }) => {
         {
           showMoreAnswersButton ?
           <React.Fragment>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onClick={handleShowMoreAnswers}>LOAD MORE ANSWERS</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" className="link-clear" onClick={handleShowMoreAnswers}>{loadOrCollapseAnswers}</a>
           </React.Fragment>
           : null
         }
