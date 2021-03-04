@@ -8,3 +8,4 @@ module.exports.ratingsAndReviews = require('./ratingsAndReviews.js');
 
 module.exports.questions = require('./questions.js');
 
+module.exports.overview = require('./overview.js');
