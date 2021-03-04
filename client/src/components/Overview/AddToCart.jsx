@@ -26,6 +26,11 @@ const AddToCart = (props) => {
     <div className="addToCart">
       <select id="sizeSelect">
         <option>Select Size</option>
+        {props.skus ?
+          Object.keys(props.skus).map((key, index) => (
+            <option key={key}>{props.skus[key].size}</option>
+          )) : null
+        }
       </select>
       <select id="quantitySelect">
         <option>-</option>
