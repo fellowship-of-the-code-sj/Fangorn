@@ -33,3 +33,13 @@ RelatedAndOutfits.propTypes = {
   productID: PropTypes.number,
   productInfo: PropTypes.object
 }
+
+/* .carouselItems {
+  margin: 0px;
+  padding: 0px;
+  border: 0;
+} */
+
+/* .carouselContainer {
+  align-content: left;
+} */

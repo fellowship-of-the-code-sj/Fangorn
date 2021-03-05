@@ -17,7 +17,7 @@ class ProductDetailPage extends React.Component {
 
 
   componentDidMount() {
-    serverRequest.get(`http://localhost:${PORT}/Overview`, {itemID: 13025}, (result) => {
+    serverRequest.get(`http://localhost:${PORT}/Overview`, {itemID: 13028}, (result) => {
       this.setState({ productInfo: result.data })
     });
   }
@@ -33,7 +33,7 @@ class ProductDetailPage extends React.Component {
         {
           this.state.productInfo.productObj?
           <RelatedAndOutfits productID={13025} productInfo={helperFunctions.createProductObjectData(this.state.productInfo)} />
-          : <RelatedAndOutfits productID={13025} />
+          : <RelatedAndOutfits productID={13023} />
         }
           <QuestionsAndAnswers productID={13025} productName={this.state.productInfo.productObj?.name} />
           <RatingsAndReviews productID={13023} />

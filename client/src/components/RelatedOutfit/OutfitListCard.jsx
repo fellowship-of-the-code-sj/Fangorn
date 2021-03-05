@@ -25,8 +25,8 @@ const OutfitListCard = ({ cardData, removeOutfitItem }) => {
       {
         //checks to see if product contains sales price, if so, displays sales price, else original price
         cardData.default_style.sale_price ?
-        <h6 className='cardItemSalePrice' >{cardData.default_style.sale_price}</h6>
-        : <h6 className='cardItemPrice' >{cardData.default_style.original_price}</h6>
+        <h6 className='cardItemSalePrice' >{'$' + cardData.default_style.sale_price}</h6>
+        : <h6 className='cardItemPrice' >{'$' + cardData.default_style.original_price}</h6>
       }
 
       {/* Star Rating */}
