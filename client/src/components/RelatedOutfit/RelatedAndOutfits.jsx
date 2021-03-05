@@ -17,11 +17,9 @@ const RelatedAndOutfits = ({ productID, productInfo }) => {
 
   return (
     <div className='relatedItemsAndOutfits'>
-      <h3 className='relatedItemsHeader' >Related Products</h3>
       <RelatedItemsList productInfo={productInfo} relatedItemsList={relatedItems}>
 
       </RelatedItemsList>
-      <h3 className='yourOutfit' >Your Outfit</h3>
       <OutfitList productInfo={productInfo}>
 
       </OutfitList>

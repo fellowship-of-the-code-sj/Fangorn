@@ -19,7 +19,8 @@ const RelatedItemsList = ({ relatedItemsList, productInfo }) => {
   }
 
   return (
-    <div className='relatedItemsList'>
+    <div className='itemsList'>
+      <h3 className='listTitle' >Related Products</h3>
       {
         relatedItemsList.length?
         <Carousel responsive={helperFunctions.responsive}>

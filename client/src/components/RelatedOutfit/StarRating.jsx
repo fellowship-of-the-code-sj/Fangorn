@@ -12,7 +12,7 @@ var StarRating = ({ rating }) => {
         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
       </div>
       <div className="star-bottom">
-        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
       </div>
     </React.Fragment>
   )

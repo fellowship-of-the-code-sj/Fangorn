@@ -4,44 +4,101 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 .relatedItemsAndOutfits {
-  border: 1px solid black;
+  padding: 0 150px;
+  width: 900px;
 }
 
-.relatedItemsList {
-  border: 1px solid black
-  /* border: 1px solid black;
-  display:flex;
-  flex-direction:row; */
+.itemsList {
+  margin: 50px 0px;
 }
 
-.relatedItemCard, .outfitAddItemCard {
+.itemCard, .outfitAddItemCard {
   border: 1px solid black;
   margin: 5px;
+  width: 200px;
+  height: 300px;
 }
 
-.salePrice {
+.outfitAddItemCard {
+  font-size: 20px;
+  text-align: center;
+}
+
+.addOutfitText {
+  position: relative;
+  top: 40%;
+}
+
+.itemCardImg {
+  z-index: 1;
+  height:100%;
+  width:100%;
+  display: block;
+  margin: auto;
+  position:relative;
+  object-fit: cover;
+}
+
+.photoBorder {
+  z-index: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.cardCategory {
+  position: fixed;
+  top: 190px;
+  left: 10px;
+  font-size: 12px;
+}
+
+.cardItemName {
+  position: fixed;
+  top: 215px;
+  left: 10px;
+  font-size: 15px;
+}
+
+.cardItemPrice, .cardItemSalePrice{
+  position: fixed;
+  top: 235px;
+  left: 10px;
+  font-size: 12px;
+}
+
+.cardItemsalePrice {
   color: red;
 }
 
-.relatedProductImg {
-  width: 100px;
-  height:auto;
+.action-button {
+  z-index: 2;
+  position: fixed;
+  left: 180px;
+  top: 10px;
+  font-size: 18px;
+  color: red;
+
 }
 
 .star-ratings {
   unicode-bidi: bidi-override;
   color: #c5c5c5;
-  font-size: 10px;
-  height: 10px;
-  width: 50px;
-  position: relative;
+  font-size: 13px;
+  height: 13px;
+  width: 65px;
   padding: 0;
-  text-shadow: 0px 1px 0 #a2a2a2;
-  top: -20px;
+  /* text-shadow: 0px 1px 0 #a2a2a2; */
+  position: fixed;
+  top: 285px;
+  left: 10px;
 }
 
 .star-top {
-  color: #e7711b;
+  color: black;
   padding: 0;
   position: absolute;
   z-index: 1;
@@ -70,20 +127,13 @@
 .innerModal {
   z-index: 300;
   position: fixed;
-  width: 300px;
-  height: 200px;
+  width: 400px;
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -60%);
   background-color: white;
   padding: 50px;
-}
-
-.carouselLeftButton, .carouselRightButton{
-  width: 30px;
-  height: 30px;
-  position: relative;
-  top: 150px;
 }
 
 /*
@@ -458,7 +508,7 @@
   padding: 10px;
   display: grid;
   grid-template: repeat(4, 1fr) / 65% 35% ;
-  grid-template-areas: 
+  grid-template-areas:
   "defaultView productInfo"
   "defaultView styleSelector"
   "defaultView addToCart"
@@ -555,7 +605,7 @@
 }
 
 #styleSelectorName {
-  grid-row: 1 / 2;  
+  grid-row: 1 / 2;
 }
 
 #styleSelectorStyles {

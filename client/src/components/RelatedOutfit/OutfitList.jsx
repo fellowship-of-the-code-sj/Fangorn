@@ -38,9 +38,17 @@ const OutfitList = ({ productInfo }) => {
   }
 
   return (
-    <div className='relatedItemsList'>
+    <div className='itemsList'>
+      <h3 className='listTitle' >Your Outfit</h3>
       <Carousel responsive={helperFunctions.responsive}>
-        <div className='outfitAddItemCard' onClick={addOutfit} >{'ADD Outfit'}</div>
+        <div className='outfitAddItemCard' onClick={addOutfit} >
+          <div className='addOutfitText'>
+            {'ADD OUFIT'}
+            <br></br>
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </div>
+
+        </div>
         {
           outfitList.list.length ?
           outfitList.list.map((item) => {
