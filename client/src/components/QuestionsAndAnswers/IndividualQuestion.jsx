@@ -74,34 +74,44 @@ const IndividualQuestion = ({ question, productName }) => {
 
   return (
     <div>
-        <div className="flex">
-          <div>Q:&nbsp;</div>
-          <div>{question.question_body}</div>
+        <div className="question-head flex">
+          <div className="QA-important">Q:&nbsp;&nbsp;</div>
+          <div className="QA-important">{question.question_body}</div>
           <div className="flex-grow"></div>
-          <div>
-            Helpful?&nbsp;
-            {
-              submittedHelpful ?
-              <span>Yes ({question.question_helpfulness + 1})</span>
-              : <a href="#" className="link-clear" onClick={handleSubmitHelpful}>
-                  <span className="underline">Yes</span> ({question.question_helpfulness})
-                </a>
-            }
-          </div>
-          <div className="spacer">|</div>
-          <div>
-            {
-              submittedReport ?
-              <span>Reported!</span>
-              : <a href="#" onClick={handleSubmitReport}>Report</a>
-            }
-          </div>
-          <div className="spacer">|</div>
-          <div>
-            <a href="#" onClick={handleAddAnswerModal}>Add Answer</a>
+          <div className="secondary-text flex">
+            <div>
+              Helpful?&nbsp;
+              {
+                submittedHelpful ?
+                <span>Yes ({question.question_helpfulness + 1})</span>
+                : <a href="#" className="link-clear" onClick={handleSubmitHelpful}>
+                    <span className="underline">Yes</span> ({question.question_helpfulness})
+                  </a>
+              }
+            </div>
+            <div className="spacer">|</div>
+            <div>
+              {
+                submittedReport ?
+                <span>Reported!</span>
+                : <a href="#" onClick={handleSubmitReport}>Report</a>
+              }
+            </div>
+            <div className="spacer">|</div>
+            <div>
+              <a href="#" onClick={handleAddAnswerModal}>Add Answer</a>
+            </div>
           </div>
         </div>
-        <AnswerList answers={displayedAnswers} />
+        {
+          displayedAnswers.length > 0 ?
+          <div className="flex">
+              <div className="QA-important">A:&nbsp;&nbsp;</div>
+              <AnswerList answers={displayedAnswers} />
+              <div className="flex-grow"></div>
+          </div>
+          : null
+        }
         {
           showMoreAnswersButton ?
           <React.Fragment>
