@@ -11,7 +11,9 @@ function NewReview(props) {
   const [recommend, setRecommend] = useState(null);
   const [charCount, setCharCount] = useState(0);
   const [photos, setPhotos] = useState([]);
-  const [characteristics, setCharacteristics] = useState({});
+  const [characteristics, setCharacteristics] = useState({
+
+  });
 
   const sendReview = () => {
     axios.post('/RatingsAndReviews/postReview', {
@@ -114,10 +116,11 @@ function NewReview(props) {
             </div> <br></br>
             <div className="name-and-email-form">
               <form>
-                Name:<sup className="mandatory">&nbsp;*</sup><input className="new-review-name" onChange={(e) => { handleChange(e, setName) }} type="text" value={name}></input>
-                Email:<sup className="mandatory">&nbsp;*</sup> <input className="new-review-email" onChange={(e) => { handleChange(e, setEmail) }} type="text" value={email}></input> <br></br> <br></br>
-                Review summary:<br></br><textarea className="new-review-summary" onChange={(e) => { handleChange(e, setSummary) }} type="text" value={summary} rows="1" cols="30" ></textarea> <br></br>
-                Enter your review:<sup className="mandatory">&nbsp;*</sup> <textarea className="new-review-body" onChange={(e) => { handleChange(e, setBody) }} type="text" placeholder="Spill the beans" value={body} rows="4" cols="50"></textarea><br></br>
+                Name:<sup className="mandatory">&nbsp;*</sup><input className="new-review-name" placeholder="e.g. jackson11!" size="25" maxLength="60" onChange={(e) => { handleChange(e, setName) }} type="text" value={name}></input><br></br>
+                Email:<sup className="mandatory">&nbsp;*</sup><input className="new-review-email" placeholder="e.g. jackson11@email.com" size="25" maxLength="60" onChange={(e) => { handleChange(e, setEmail) }} type="text" value={email}></input> <br></br>
+                <span className="disclaimer-small">For authentication reasons, you will not be emailed</span><br></br><br></br>
+                Review summary:<br></br><textarea className="new-review-summary" placeholder="e.g. Best purchase ever!" maxLength="60" onChange={(e) => { handleChange(e, setSummary) }} type="text" value={summary} rows="1" cols="30" ></textarea> <br></br>
+                Enter your review:<sup className="mandatory">&nbsp;*</sup> <textarea className="new-review-body" placeholder="Why did you like the product or not?" maxLength="500" onChange={(e) => { handleChange(e, setBody) }} type="text" value={body} rows="4" cols="50"></textarea><br></br>
                 {
                   body.length < 50 ? <span className="new-review-char-count" style={{ "fontSize": "small" }}>Minimum required characters: {50 - body.length}</span> : <span className="new-review-char-count" style={{ "fontSize": "small" }}>Minimum reached</span>
                 }
