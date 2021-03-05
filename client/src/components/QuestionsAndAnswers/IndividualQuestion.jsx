@@ -17,9 +17,15 @@ const IndividualQuestion = ({ question, productName }) => {
 
   useEffect(() => {
     const allAnswers = _.values(question.answers);
-    setAnswers(allAnswers);
+    const sellerAnswers = _.filter(allAnswers, answer => answer.answerer_name === 'Seller');
+    const otherAnswers = _.filter(allAnswers, answer => answer.answerer_name !== 'Seller');
+    const sortedSellerAnswers = _.sortBy(sellerAnswers, answer => answer.helpfulness).reverse();
+    const sortedOtherAnswers = _.sortBy(otherAnswers, answer => answer.helpfulness).reverse();
 
-    const numAnswers = allAnswers.length;
+    const sortedAnswers = sortedSellerAnswers.concat(sortedOtherAnswers);
+    setAnswers(sortedAnswers);
+
+    const numAnswers = sortedAnswers.length;
     let numToDisplay;
     if (numAnswers > 2) {
       setShowMoreAnswersButton(true);
@@ -27,7 +33,7 @@ const IndividualQuestion = ({ question, productName }) => {
     } else {
       numToDisplay = numAnswers;
     }
-    setDisplayedAnswers(allAnswers.slice(0, numToDisplay));
+    setDisplayedAnswers(sortedAnswers.slice(0, numToDisplay));
   }, []);
 
   const handleSubmitHelpful = e => {
@@ -76,7 +82,7 @@ const IndividualQuestion = ({ question, productName }) => {
     <div>
         <div className="question-head flex">
           <div className="QA-important">Q:&nbsp;&nbsp;</div>
-          <div className="QA-important">{question.question_body}</div>
+          <div className="QA-important">{_.unescape(question.question_body)}</div>
           <div className="flex-grow"></div>
           <div className="secondary-text flex">
             <div>
