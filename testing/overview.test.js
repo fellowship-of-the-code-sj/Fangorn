@@ -100,7 +100,7 @@ describe('Style Selector', () => {
       styles={ data.styles }
       currentStyle={ data.styles[0] }
     />);
-    expect(wrapper.contains(<div id="styleSelectorName">Style: Forest Green &amp; Black</div>)).toBe(true);
+    expect(wrapper.contains(<div id="styleSelectorName">Style &gt; Forest Green &amp; Black</div>)).toBe(true);
   })
 
   it('should render thumbnails of styles dynamically', () => {
