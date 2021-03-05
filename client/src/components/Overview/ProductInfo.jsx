@@ -23,7 +23,7 @@ const ProductInfo = (props) => {
     <div className="productInfo">
       <div id="productInfoRating"> 
         <div id="overviewRating">
-          <StarRating rating={(ratingData.average).toString}/>
+          <StarRating rating={ratingData.average}/>
         </div>
         &nbsp;- Read all&nbsp;<a href="#randr">{ratingData.count}</a>&nbsp;reviews
       </div>

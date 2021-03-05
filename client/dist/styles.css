@@ -534,6 +534,12 @@ body { font-family: 'Lato', sans-serif; }
   font-weight: bold;
 }
 
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***** Overview *****
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
 .overview {
   border: 1px solid black;
   width: 80%;
@@ -563,10 +569,10 @@ body { font-family: 'Lato', sans-serif; }
   grid-row: 1 / 2;
   grid-column: 1 / 5;
   z-index: 0;
-  height: 90%;
-  width: 90%;
-  /* height: 725px; */
-  /* width: 725px; */
+  /* height: 90%; */
+  /* width: 90%; */
+  height: 725px;
+  width: 725px;
 }
 
 #defaultViewImage {
@@ -736,7 +742,3 @@ body { font-family: 'Lato', sans-serif; }
   flex-direction: row;
   justify-content: space-evenly;
 }
-
-/* ion-icon .shareIcon {
-  font-size: 64px;
-} */
