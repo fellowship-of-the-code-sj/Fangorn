@@ -219,6 +219,12 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
+/* AOE */
+.QA textarea:focus,
+.QA input:focus{
+  outline: none;
+}
+
 /* reusable */
 .flex {
   display: flex;
@@ -262,6 +268,23 @@
 .mandatory {
   color: red;
   font-size: 1em;
+}
+
+/* Search bar */
+.QA-search-bar {
+  border: 1px solid #000;
+  padding: 15px;
+}
+
+.QA-search-bar ion-icon {
+  color: #000;
+}
+
+.QA-search-bar input {
+  font-size: 1.5em;
+  width: 95vw;
+  border: 0;
+  color: #000;
 }
 
 /* Q&A Modals */
