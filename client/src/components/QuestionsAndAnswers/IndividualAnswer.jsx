@@ -40,12 +40,12 @@ const IndividualAnswer = ({ answer }) => {
   return (
     <div className="answer">
       <div className="flex">
-        <div className="answer-body">{answer.body}</div>
+        <div className="answer-body">{_.unescape(answer.body)}</div>
         <div className="flex-grow"></div>
       </div>
       <div className="secondary-text flex">
         <div>
-            by <span style={bolded}>{answer.answerer_name}</span>, {date}
+            by <span style={bolded}>{_.unescape(answer.answerer_name)}</span>, {date}
           </div>
         <div className="spacer">|</div>
         <div>

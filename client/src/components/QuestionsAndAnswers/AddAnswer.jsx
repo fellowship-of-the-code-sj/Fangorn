@@ -27,6 +27,7 @@ var AddAnswer = ({ questionId, questionBody, productName, handleAddAnswerModal }
 
   const handleSubmit = e => {
     e.preventDefault();
+
     let answerHasContent = answer.length > 0;
     let nicknameHasContent = nickname.length > 0;
     let emailHasContent = email.length > 0;
@@ -40,17 +41,17 @@ var AddAnswer = ({ questionId, questionBody, productName, handleAddAnswerModal }
 
     if (allValid) {
       let body_params = {
-        name: nickname,
-        email,
+        name: _.escape(nickname),
+        email: _.escape(email),
         body: _.escape(answer)
       };
       axios.post(`http://localhost:404/questions/${questionId}/answer/add`, body_params)
-      .then(() => {
-          setAnswer('');
-          setNickname('');
-          setEmail('');
-          setIsSubmitted(true);
-        })
+        .then(() => {
+            setAnswer('');
+            setNickname('');
+            setEmail('');
+            setIsSubmitted(true);
+          })
         .catch(() => console.error('error'));
     } else {
       if (!answerHasContent) setIsAnswerEmpty(true);
