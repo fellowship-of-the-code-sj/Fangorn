@@ -331,6 +331,16 @@
   font-size: 1em;
 }
 
+.center {
+  text-align: center;
+}
+
+.confirmed {
+  color: green;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
 .QA-important {
   font-weight: bold;
   font-size: 1.25em;
@@ -458,7 +468,7 @@
   padding: 10px;
   display: grid;
   grid-template: repeat(4, 1fr) / 65% 35% ;
-  grid-template-areas: 
+  grid-template-areas:
   "defaultView productInfo"
   "defaultView styleSelector"
   "defaultView addToCart"
@@ -577,7 +587,7 @@
 }
 
 #styleSelectorName {
-  grid-row: 1 / 2;  
+  grid-row: 1 / 2;
 }
 
 #styleSelectorStyles {
