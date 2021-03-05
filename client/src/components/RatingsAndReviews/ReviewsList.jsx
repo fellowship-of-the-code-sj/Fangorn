@@ -29,6 +29,11 @@ function ReviewsList(props) {
     // call api and send new review, then update state
   }
 
+  const showForm = () => {
+    var modal = document.getElementById('newReviewForm');
+    modal.style.display = "block";
+  }
+
   const showMoreReviews = () => {
     setVisibleList(list.slice(0, visibleList.length + 2));
   }
@@ -46,13 +51,17 @@ function ReviewsList(props) {
         return <Review key={review.review_id} review={review} />
       })}
       {
-        list.length > visibleList.length ? <button className="show-more-reviews-button" onClick={showMoreReviews}>Show more reviews</button> : <div></div>
+        list.length > visibleList.length ?
+          <div className="review-list-buttons">
+            <button className="show-more-reviews-button" onClick={showMoreReviews}>Show more reviews</button>
+            <button className="new-review-button" onClick={showForm}>Leave a review</button>
+          </div> :
+          <div className="review-list-buttons">
+            <button className="new-review-button" onClick={showForm}>Leave a review</button>
+          </div>
       }
-      {
-        visibleList[0] ? <NewReview productID={props.productID} /> : <div></div>
-      }
-
-    </div>
+      <NewReview productID={props.productID} />
+    </div >
   )
 }
 

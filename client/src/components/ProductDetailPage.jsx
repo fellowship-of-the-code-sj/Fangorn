@@ -36,7 +36,7 @@ class ProductDetailPage extends React.Component {
               : <RelatedAndOutfits productID={13025} />
           }
           <QuestionsAndAnswers productID={13025} productName={this.state.productInfo.productObj?.name} />
-          <RatingsAndReviews productID={13023} />
+          <RatingsAndReviews productID={13027} />
         </div>
       </div>
     )
