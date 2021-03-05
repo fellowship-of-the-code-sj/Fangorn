@@ -19,10 +19,11 @@ const RelatedItemsList = ({ relatedItemsList, productInfo }) => {
   }
 
   return (
-    <div className='relatedItemsList'>
+    <div className='itemsList'>
+      <h3 className='listTitle' >Related Products</h3>
       {
         relatedItemsList.length?
-        <Carousel responsive={helperFunctions.responsive}>
+        <Carousel containerClass='carouselContainer' draggable={false} itemClass='carouselItems' partialVisible={true} responsive={helperFunctions.responsive}>
           {
             relatedItemsList.map((item) => {
               return <RelatedItemCard actionButtonListener={actionButtonListener} productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;

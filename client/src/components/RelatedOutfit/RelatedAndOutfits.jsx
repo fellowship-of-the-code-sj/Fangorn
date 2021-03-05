@@ -17,11 +17,9 @@ const RelatedAndOutfits = ({ productID, productInfo }) => {
 
   return (
     <div className='relatedItemsAndOutfits'>
-      <h3 className='relatedItemsHeader' >Related Products</h3>
       <RelatedItemsList productInfo={productInfo} relatedItemsList={relatedItems}>
 
       </RelatedItemsList>
-      <h3 className='yourOutfit' >Your Outfit</h3>
       <OutfitList productInfo={productInfo}>
 
       </OutfitList>
@@ -35,3 +33,13 @@ RelatedAndOutfits.propTypes = {
   productID: PropTypes.number,
   productInfo: PropTypes.object
 }
+
+/* .carouselItems {
+  margin: 0px;
+  padding: 0px;
+  border: 0;
+} */
+
+/* .carouselContainer {
+  align-content: left;
+} */

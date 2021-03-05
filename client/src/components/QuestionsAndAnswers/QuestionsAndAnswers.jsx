@@ -23,10 +23,12 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
       `http://localhost:404/questions/${productID}`,
       null,
       response => {
-        setOriginalQuestions(response.data);
-        setQuestions(response.data);
+        const sortedList = _.sortBy(response.data, question => question.question_helpfulness).reverse();
 
-        const totalNumberOfQuestions = response.data.length;
+        setOriginalQuestions(sortedList);
+        setQuestions(sortedList);
+
+        const totalNumberOfQuestions = sortedList.length;
         let numToDisplay;
         if (totalNumberOfQuestions > 2) {
           setShowMoreQuestionsButton(true);
@@ -35,7 +37,7 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
           numToDisplay = totalNumberOfQuestions;
         }
         setNumDisplayedQuestions(numToDisplay);
-        setDisplayedQuestions(response.data.slice(0, numToDisplay));
+        setDisplayedQuestions(sortedList.slice(0, numToDisplay));
       });
   }, []);
 
