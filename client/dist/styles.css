@@ -401,6 +401,16 @@
   font-size: 1em;
 }
 
+.center {
+  text-align: center;
+}
+
+.confirmed {
+  color: green;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
 .QA-important {
   font-weight: bold;
   font-size: 1.25em;
