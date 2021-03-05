@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import _ from 'underscore';
+import regex from '../../../helperFunctions/regex';
 
 var AddAnswer = ({ questionId, questionBody, productName, handleAddAnswerModal }) => {
   const [ answer, setAnswer ] = useState('');
   const [ nickname, setNickname ] = useState('');
   const [ email, setEmail ] = useState('');
+  const [ isAnswerEmpty, setIsAnswerEmpty ] = useState(false);
+  const [ isNicknameEmpty, setisNicknameEmpty ] = useState(false);
+  const [ isEmailEmpty, setIsEmailEmpty ] = useState(false);
+  const [ isEmailFormatInvalid, setIsEmailFormatInvalid ] = useState(false);
+  const [ isSubmitted, setIsSubmitted ] = useState(false);
+
+  useEffect(() => {
+    if (isSubmitted) setIsSubmitted(false);
+  }, [ answer, nickname, email ]);
 
   const handleChange = e => {
     let value = e.target.value
@@ -17,26 +27,62 @@ var AddAnswer = ({ questionId, questionBody, productName, handleAddAnswerModal }
 
   const handleSubmit = e => {
     e.preventDefault();
-    let body_params = {
-      name: _.escape(nickname),
-      email: _.escape(email),
-      body: _.escape(answer)
-    };
-    axios.post(`http://localhost:404/questions/${questionId}/answer/add`, body_params)
-      .then(() => {
-        setAnswer('');
-        setNickname('');
-        setEmail('');
-      })
-      .catch(() => console.error('error'));
+
+    let answerHasContent = answer.length > 0;
+    let nicknameHasContent = nickname.length > 0;
+    let emailHasContent = email.length > 0;
+    let emailFormatIsValid = regex.email.test(email);
+    let allValid = answerHasContent && nicknameHasContent && emailHasContent && emailFormatIsValid;
+
+    setIsAnswerEmpty(false);
+    setisNicknameEmpty(false);
+    setIsEmailEmpty(false);
+    setIsEmailFormatInvalid(false);
+
+    if (allValid) {
+      let body_params = {
+        name: _.escape(nickname),
+        email: _.escape(email),
+        body: _.escape(answer)
+      };
+      axios.post(`http://localhost:404/questions/${questionId}/answer/add`, body_params)
+        .then(() => {
+            setAnswer('');
+            setNickname('');
+            setEmail('');
+            setIsSubmitted(true);
+          })
+        .catch(() => console.error('error'));
+    } else {
+      if (!answerHasContent) setIsAnswerEmpty(true);
+      if (!nicknameHasContent) setisNicknameEmpty(true);
+      if (!emailHasContent) setIsEmailEmpty(true);
+      if (!emailFormatIsValid) setIsEmailFormatInvalid(true);
+    }
   }
 
   return (
     <React.Fragment>
       <div className="modal-focus" onClick={handleAddAnswerModal}></div>
       <div className="modal-add">
-        <h1>Submit your Answer</h1>
-        <h2>{productName}: {questionBody}</h2>
+        <div className="center">
+          <h1>Submit your Answer</h1>
+          <h2>{productName}: {questionBody}</h2>
+          {
+            isSubmitted ?
+            <div className="confirmed">Question submitted <ion-icon name="checkmark-outline"></ion-icon></div>
+            : null
+          }
+        </div>
+        {
+          isAnswerEmpty || isNicknameEmpty || isEmailEmpty || isEmailFormatInvalid ?
+          <div>You must enter the following:</div>
+          : null
+        }
+        { isAnswerEmpty ? <div className="mandatory">Answer cannot be empty</div> : null }
+        { isNicknameEmpty ? <div className="mandatory">Nickname cannot be empty</div> : null }
+        { isEmailEmpty ? <div className="mandatory">Email cannot be empty</div> : null }
+        { isEmailFormatInvalid ? <div className="mandatory">Email must be a valid email address</div> : null }
         <form>
           <label>
             <span className="modal-label">Your Answer</span><sup className="mandatory">&nbsp;*</sup>
@@ -69,7 +115,7 @@ var AddAnswer = ({ questionId, questionBody, productName, handleAddAnswerModal }
                 <input
                   type="text"
                   name="email"
-                  placeholder="Why did you like the product or not?"
+                  placeholder="Example: jack@email.com"
                   value={email}
                   onChange={e => handleChange(e)}></input>
                 <span className="disclaimer-small">For authentication reasons, you will not be emailed</span>
