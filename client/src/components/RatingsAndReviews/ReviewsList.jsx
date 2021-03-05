@@ -48,6 +48,10 @@ function ReviewsList(props) {
       {
         list.length > visibleList.length ? <button className="show-more-reviews-button" onClick={showMoreReviews}>Show more reviews</button> : <div></div>
       }
+      {
+        visibleList[0] ? <NewReview /> : <div><NewReview /></div>
+      }
+
     </div>
   )
 }

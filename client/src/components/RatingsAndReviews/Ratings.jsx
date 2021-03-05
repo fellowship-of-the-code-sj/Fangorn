@@ -15,7 +15,7 @@ function Ratings(props) {
 
   const getMetaObject = () => {
     var ratingObject = {};
-    axios.get('/RatingsAndReviews/getMeta?product_id=13027')
+    axios.get(`/RatingsAndReviews/getMeta?product_id=${props.productID}`)
       .then((response) => {
         setMetaObject(response.data)
       })
@@ -62,7 +62,7 @@ function Ratings(props) {
       numReccs += metaObject.recommended.false * 1;
     }
     if (metaObject.recommended.true) {
-      return ((metaObject.recommended.true / numReccs) * 100);
+      return Math.round((metaObject.recommended.true / numReccs) * 100);
     } else {
       return 0;
     }

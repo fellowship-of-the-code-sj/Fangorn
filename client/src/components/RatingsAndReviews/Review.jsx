@@ -15,6 +15,14 @@ function Review(props) {
     return reported ? 'Reported' : 'Report'
   }
 
+  const ResponseBox = function () {
+    if (props.review.response !== '' && props.review.response !== undefined && props.review.response !== null) {
+      return (<div className="response"><b>Response:</b><br></br>{props.review.response}</div>)
+    } else {
+      return (<div></div>)
+    }
+  }
+
   const giveDate = function () {
     var formatDate = props.review.date.split("T")[0]
     var year = formatDate.slice(0, 4);
@@ -89,11 +97,9 @@ function Review(props) {
           return <img onClick={handleImageClick} className="review-thumbnail" key={image.id} id={`${i}-${image.id}`} src={image.url}></img>
         })
       }
+      <ResponseBox />
       {
         props.review.recommend ? <div className="recommend"> ✔ I recommend this product</div> : <div></div>
-      }
-      {
-        props.review.response !== "" ? <div className="response"><b>Response:</b><br></br>{props.review.response}</div> : <div></div>
       }
       <span className="helpful">Helpful?</span>
       <span className="helpful-toggle" onClick={sendHelpful} >Yes</span>
