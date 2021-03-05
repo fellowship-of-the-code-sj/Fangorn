@@ -76,8 +76,6 @@ const IndividualQuestion = ({ question, productName }) => {
     }
   };
 
-  let loadOrCollapseAnswers = showingMoreAnswers ? 'COLLAPSE ANSWERS' : 'SEE MORE ANSWERS';
-
   return (
     <div>
         <div className="question-head flex">
@@ -86,7 +84,7 @@ const IndividualQuestion = ({ question, productName }) => {
           <div className="flex-grow"></div>
           <div className="secondary-text flex">
             <div>
-              Helpful?&nbsp;
+              Helpful?&nbsp;&nbsp;&nbsp;
               {
                 submittedHelpful ?
                 <span>Yes ({question.question_helpfulness + 1})</span>
@@ -113,16 +111,13 @@ const IndividualQuestion = ({ question, productName }) => {
           displayedAnswers.length > 0 ?
           <div className="flex">
               <div className="QA-important">A:&nbsp;&nbsp;</div>
-              <AnswerList answers={displayedAnswers} />
+                <AnswerList
+                  answers={displayedAnswers}
+                  showMoreAnswersButton={showMoreAnswersButton}
+                  handleShowMoreAnswers={handleShowMoreAnswers}
+                  loadOrCollapseAnswers={ showingMoreAnswers ? 'COLLAPSE ANSWERS' : 'LOAD MORE ANSWERS' } />
               <div className="flex-grow"></div>
           </div>
-          : null
-        }
-        {
-          showMoreAnswersButton ?
-          <React.Fragment>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" className="link-clear" onClick={handleShowMoreAnswers}>{loadOrCollapseAnswers}</a>
-          </React.Fragment>
           : null
         }
         {
