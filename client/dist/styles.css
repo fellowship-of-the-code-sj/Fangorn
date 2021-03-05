@@ -285,19 +285,6 @@
   display: block;
 }
 
-<<<<<<< HEAD
-/*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-***** Overview *****
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*/
-
-.overview {
-  border: 1px solid red;
-  width: 80%;
-  margin: 10px auto;
-  padding: 10px;
-=======
 .modal-add textarea,
 .modal-add input[type="text"] {
   padding: 5px 7px;
@@ -329,5 +316,4 @@
   margin: 10px 0 5px auto;
   font-size: 2.5em;
   font-weight: bold;
->>>>>>> 90e080e0b5ea49d59dc52747da79ce3f70e5b9c4
 }
