@@ -34,7 +34,7 @@ class ProductDetailPage extends React.Component {
             stylesArr={this.state.productInfo.stylesArr}
             ratingsObj={this.state.productInfo.ratingsObj}
           />
-          : null /*<Overview productID={13025} />*/
+          : <div className="overview"></div>/*<Overview productID={13023} />*/
         }
         </div>
 

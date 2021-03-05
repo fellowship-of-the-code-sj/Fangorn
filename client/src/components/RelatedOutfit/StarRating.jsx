@@ -21,5 +21,5 @@ var StarRating = ({ rating }) => {
 export default StarRating;
 
 StarRating.propTypes = {
-  raing: PropTypes.string
+  rating: PropTypes.number
 }

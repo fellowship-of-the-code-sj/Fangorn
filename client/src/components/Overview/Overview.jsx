@@ -15,14 +15,6 @@ const Overview = (props) => {
   const [ ratings, setRatings ] = useState({});
   const [ currentStyle, setCurrentStyle ] = useState({});
 
-  // useEffect(() => {
-  //   axiosHelper.get(`http://localhost:${port}/Overview`, {itemID: props.productID}, (results) => {
-  //     setProduct(results.data.productObj);
-  //     setStyles(results.data.stylesArr);
-  //     setRatings(results.data.ratingsObj);
-  //     setCurrentStyle(results.data.stylesArr[0]);
-  //   })
-  // }, [])
   useEffect(() => {
     setProduct(props.productObj);
     setStyles(props.stylesArr);
