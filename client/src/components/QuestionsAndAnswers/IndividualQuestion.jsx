@@ -76,7 +76,7 @@ const IndividualQuestion = ({ question, productName }) => {
     <div>
         <div className="question-head flex">
           <div className="QA-important">Q:&nbsp;&nbsp;</div>
-          <div className="QA-important">{question.question_body}</div>
+          <div className="QA-important">{_.unescape(question.question_body)}</div>
           <div className="flex-grow"></div>
           <div className="secondary-text flex">
             <div>
