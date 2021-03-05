@@ -47,7 +47,6 @@ module.exports = {
   },
   postReview: (req, res) => {
     reviews.postReview(req.body, (err) => {
-      console.log('req.body: ', req.body)
       if (err) {
         console.log('Error posting new review, error: ', err);
         res.end();
