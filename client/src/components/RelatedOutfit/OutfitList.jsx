@@ -35,7 +35,8 @@ const OutfitList = ({ productInfo }) => {
   }
 
   const removeOutfitItem = (item) => {
-    var index = outfitList.list.indexOf({ id: item})
+    var index = helperFunctions.findIndex(outfitList.list, item)
+    console.log(index);
     outfitList.list.splice(index, 1);
 
     if (outfitList.list.length === 2) {

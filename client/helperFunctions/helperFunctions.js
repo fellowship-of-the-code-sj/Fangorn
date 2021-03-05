@@ -53,6 +53,15 @@ const comparisonTable = (currentProduct, relatedProduct) => {
   return resultObj;
  }
 
+
+const findIndex = (outfitList, id) => {
+  for (var i =0; i< outfitList.length; i++) {
+    if (outfitList[i].id === id) {
+      return i;
+    }
+  }
+}
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -77,4 +86,5 @@ const responsive = {
   }
 };
 
-export default { createProductObjectData, comparisonTable, responsive };
+
+export default { createProductObjectData, comparisonTable, responsive, findIndex };

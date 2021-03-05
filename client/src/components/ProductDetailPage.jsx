@@ -17,7 +17,7 @@ class ProductDetailPage extends React.Component {
 
 
   componentDidMount() {
-    serverRequest.get(`http://localhost:${PORT}/Overview`, {itemID: 13028}, (result) => {
+    serverRequest.get(`http://localhost:${PORT}/Overview`, {itemID: 13027}, (result) => {
       this.setState({ productInfo: result.data })
     });
   }
