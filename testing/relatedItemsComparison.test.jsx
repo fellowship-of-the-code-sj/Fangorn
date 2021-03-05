@@ -26,7 +26,7 @@ describe('Rendering Components', () => {
     shallow(<OutfitList outfitList={[]}/>);
     shallow(<RelatedItemCard cardData={dummyData.products[0]}/>);
     shallow(<OutfitListCard cardData={dummyData.products[0]} />)
-    shallow(<StarRating rating={'0%'}/>);
+    shallow(<StarRating rating={0}/>);
     shallow(<RelatedActionButton />);
   });
 
@@ -36,7 +36,7 @@ describe('Rendering RelatedItems List Components', () => {
 
   it ('should render relatedItems list with dummy data passed', () => {
     const wrapper = shallow(<RelatedAndOutfits />);;
-    expect(wrapper.find('h3')).toHaveLength(2);
+    expect(wrapper.find('.relatedItemsAndOutfits')).toHaveLength(1);
   });
 
   it ('should render relatedItems list with dummy data passed', () => {
@@ -49,31 +49,33 @@ describe('Rendering RelatedItems Card Components', () => {
   it ('should render relatedItemsCard div', () => {
     const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
     expect(wrapper.containsAllMatchingElements([
-        <img className="relatedProductImg" src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' />,
-        <h6 className="category">Accessories</h6>,
-        <h5 className="name">Bright Future Sunglasses</h5>,
-        <h6 className="price">69.00</h6>
+      <div className="photoBorder">
+        <img className="itemCardImg" src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png" />
+      </div>,
+        <h6 className="cardCategory">Accessories</h6>,
+        <h5 className="cardItemName">Bright Future Sunglasses</h5>,
+        <h6 className="cardItemPrice">$69.00</h6>
     ])).toBe(true);
   });
 
   it ('should render the sales price if it exists in relatedItemsCard', () => {
     //component isn't on sale
     const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
-    expect(wrapper.contains(<h6 className="price">69.00</h6>)).toBe(true);
+    expect(wrapper.contains(<h6 className="cardItemPrice">$69.00</h6>)).toBe(true);
 
     //component is on sale
     const wrapper2 = shallow(<RelatedItemCard cardData={dummyData.products[1]} />);
-    expect(wrapper2.contains(<h6 className="salePrice">30.00</h6>)).toBe(true);
+    expect(wrapper2.contains(<h6 className="cardItemSalePrice">$30.00</h6>)).toBe(true);
   });
 
   it('should render the image if it exists in the relatedItemsCard', () => {
     //component contains no images
     const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
-    expect(wrapper.contains(<img className='relatedProductImg' src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
+    expect(wrapper.contains(<img className='itemCardImg' src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
 
     //component containes images
     const wrapper2 = shallow(<RelatedItemCard cardData={dummyData.products[1]} />);
-    expect(wrapper2.contains(<img className='relatedProductImg' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"></img>)).toBe(true);
+    expect(wrapper2.contains(<img className='itemCardImg' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"></img>)).toBe(true);
 
   });
 
@@ -111,39 +113,11 @@ describe('Rendering RelatedActionButton Component', () => {
 
 });
 
-// describe('Rendering Related Items List Behavior', () => {
-
-//   it ('should render with no slider buttons if list is shorter then 5 items', () => {
-//     const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products.slice(0,4)}/>);
-//     expect(wrapper.find('.carouselRightButton')).toHaveLength(0);
-//   });
-
-//   it ('should render with right slider buttons if list is longer then 4 items', () => {
-//     const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
-//     expect(wrapper.find('.carouselRightButton')).toHaveLength(1);
-//   });
-
-//   it ('should render the left slide button when the list is moved to the right' , () => {
-//     const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
-//     wrapper.find('.carouselRightButton').simulate('click');
-//     expect(wrapper.find('.carouselLeftButton')).toHaveLength(1);
-//   });
-
-//   it ('should remove the left side button when the list reaches the end of the left' , () => {
-//     const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
-//     wrapper.find('.carouselRightButton').simulate('click');
-//     wrapper.find('.carouselLeftButton').simulate('click');
-//     expect(wrapper.find('.carouselLeftButton')).toHaveLength(0);
-//   });
-
-
-// });
-
 describe('Rendering OutfitList List Component', () => {
 
   it ('should render outfitList list with dummy data passed', () => {
     const wrapper = shallow(<OutfitList />);
-    expect(wrapper.find('.relatedItemsList')).toHaveLength(1);
+    expect(wrapper.find('.itemsList')).toHaveLength(1);
   });
 });
 
@@ -152,31 +126,31 @@ describe('Rendering OutfitList List Card Component', () => {
   it ('should render outfitListCard div', () => {
     const wrapper = shallow(<OutfitListCard cardData={dummyData.products[0]}/>);
     expect(wrapper.containsAllMatchingElements([
-      <img className="relatedProductImg" src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' />,
-      <h6 className="category">Accessories</h6>,
-      <h5 className="name">Bright Future Sunglasses</h5>,
-      <h6 className="price">69.00</h6>
+      <img className="itemCardImg" src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' />,
+      <h6 className="cardCategory">Accessories</h6>,
+      <h5 className="cardItemName">Bright Future Sunglasses</h5>,
+      <h6 className="cardItemPrice">$69.00</h6>
     ])).toBe(true);
   });
 
   it ('should render the sales price if it exists in relatedItemsCard', () => {
     //component isn't on sale
     const wrapper = shallow(<OutfitListCard cardData={dummyData.products[0]} />);
-    expect(wrapper.contains(<h6 className="price">69.00</h6>)).toBe(true);
+    expect(wrapper.contains(<h6 className="cardItemPrice">$69.00</h6>)).toBe(true);
 
     //component is on sale
     const wrapper2 = shallow(<OutfitListCard cardData={dummyData.products[1]} />);
-    expect(wrapper2.contains(<h6 className="salePrice">30.00</h6>)).toBe(true);
+    expect(wrapper2.contains(<h6 className="cardItemSalePrice">$30.00</h6>)).toBe(true);
   });
 
   it('should render the image if it exists in the relatedItemsCard', () => {
     //component contains no images
     const wrapper = shallow(<OutfitListCard cardData={dummyData.products[0]} />);
-    expect(wrapper.contains(<img className='relatedProductImg' src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
+    expect(wrapper.contains(<img className='itemCardImg' src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
 
     //component containes images
     const wrapper2 = shallow(<OutfitListCard cardData={dummyData.products[1]} />);
-    expect(wrapper2.contains(<img className='relatedProductImg' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"></img>)).toBe(true);
+    expect(wrapper2.contains(<img className='itemCardImg' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"></img>)).toBe(true);
 
   });
 
@@ -203,7 +177,7 @@ describe('rendering action button', () => {
 
   it ('should render the action button', () => {
     const wrapper = shallow(<OutfitActionButton />);
-    expect(wrapper.find('.OutfitActionButton')).toHaveLength(1);
+    expect(wrapper.find('.action-button')).toHaveLength(1);
   });
 
   it ('should excecute event listener function that is passed it', () => {
@@ -214,7 +188,7 @@ describe('rendering action button', () => {
     }
 
     const wrapper = shallow(<OutfitActionButton removeOutfitItem={changeState}/>);
-    wrapper.find('.OutfitActionButton').simulate('click');
+    wrapper.find('.action-button').simulate('click');
     expect(tempState).toBe(true);
   })
 

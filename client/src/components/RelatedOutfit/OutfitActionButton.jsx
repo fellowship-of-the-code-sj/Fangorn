@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 export default function OutfitActionButton ({ id, removeOutfitItem }) {
   return (
     <React.Fragment>
-      <div className='OutfitActionButton' onClick={
+      <div className='action-button' onClick={
         () => {
           removeOutfitItem(id)
         }
-      }>x</div>
+      }>
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </div>
     </React.Fragment>
   )
 }

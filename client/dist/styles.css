@@ -4,44 +4,121 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 .relatedItemsAndOutfits {
-  border: 1px solid black;
+  padding: 0 200px;
+  width: 67%;
+  min-width: 850px;
+  max-width: 900px;
+  margin: auto;
 }
 
-.relatedItemsList {
-  border: 1px solid black
-  /* border: 1px solid black;
-  display:flex;
-  flex-direction:row; */
-}
+/* .itemsList {
+  left: 0;
+} */
 
-.relatedItemCard, .outfitAddItemCard {
-  border: 1px solid black;
+.itemCard, .outfitAddItemCard {
+  border: 1px solid grey;
   margin: 5px;
+  width: 200px;
+  height: 35vh;
+  min-height: 300px;
+}
+/*
+.carousel-container {
+
+  justify-content: start;
+} */
+/* .carouselItems {
+
+} */
+
+.outfitAddItemCard {
+  font-size: 20px;
+  text-align: center;
 }
 
-.salePrice {
+.outfitAddItemCard:hover .addOutfitText{
+  transform: scale(1.15);
+}
+
+.addOutfitText {
+  position: relative;
+  top: 40%;
+}
+
+.itemCardImg {
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: block;
+  margin: auto;
+  position:relative;
+  object-fit: cover;
+}
+
+.photoBorder {
+  z-index: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65%;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.cardCategory {
+  position: fixed;
+  top: 60%;
+  left: 5%;
+  font-size: 1.4vh;
+}
+
+.cardItemName {
+  position: fixed;
+  top: 67%;
+  left: 5%;
+  font-size: 1.6vh;
+
+}
+
+.cardItemPrice, .cardItemSalePrice{
+  position: fixed;
+  top: 75%;
+  left: 5%;
+  font-size: 1.4vh;
+}
+
+.cardItemsalePrice {
   color: red;
 }
 
-.relatedProductImg {
-  width: 100px;
-  height:auto;
+.action-button {
+  z-index: 2;
+  position: fixed;
+  left: 175px;
+  top: 20px;
+  font-size: 18px;
+  color: rgb(165, 52, 52);
+}
+
+.action-button:hover {
+  transform: scale(1.25);
+  color: red;
 }
 
 .star-ratings {
   unicode-bidi: bidi-override;
   color: #c5c5c5;
-  font-size: 10px;
-  height: 10px;
-  width: 50px;
-  position: relative;
+  font-size: 15px;
+  height: 15px;
+  width: 75px;
   padding: 0;
-  text-shadow: 0px 1px 0 #a2a2a2;
-  top: -20px;
+  position: fixed;
+  top: 90%;
+  left: 5%;
 }
 
 .star-top {
-  color: #e7711b;
+  color: black;
   padding: 0;
   position: absolute;
   z-index: 1;
@@ -70,20 +147,13 @@
 .innerModal {
   z-index: 300;
   position: fixed;
-  width: 300px;
-  height: 200px;
+  width: 400px;
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -60%);
   background-color: white;
   padding: 50px;
-}
-
-.carouselLeftButton, .carouselRightButton{
-  width: 30px;
-  height: 30px;
-  position: relative;
-  top: 150px;
 }
 
 /*
