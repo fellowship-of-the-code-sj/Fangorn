@@ -1,4 +1,4 @@
-const createObjectData = (data) => {
+const createProductObjectData = (data) => {
 
   data.productObj.default_style = findDefaultStyle(data.stylesArr);
   data.productObj.rating = ratingsAverage(data.ratingsObj);
@@ -50,8 +50,7 @@ const comparisonTable = (currentProduct, relatedProduct) => {
     }
 
   });
-  console.log(resultObj)
   return resultObj;
  }
 
-export default { createObjectData, comparisonTable };
+export default { createProductObjectData, comparisonTable };

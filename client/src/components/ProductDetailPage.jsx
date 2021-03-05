@@ -5,6 +5,8 @@ import RelatedAndOutfits from './RelatedOutfit/RelatedAndOutfits.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import helperFunctions from '../../helperFunctions/helperFunctions.js';
+
+
 const PORT = 404;
 
 class ProductDetailPage extends React.Component {
@@ -30,7 +32,7 @@ class ProductDetailPage extends React.Component {
         <div className='secondaryComponent'>
         {
           this.state.productInfo.productObj?
-          <RelatedAndOutfits productID={13025} productInfo={helperFunctions.createObjectData(this.state.productInfo)} />
+          <RelatedAndOutfits productID={13025} productInfo={helperFunctions.createProductObjectData(this.state.productInfo)} />
           : <RelatedAndOutfits productID={13025} />
         }
           <QuestionsAndAnswers productID={13024} />
@@ -42,3 +44,23 @@ class ProductDetailPage extends React.Component {
 }
 
 export default ProductDetailPage;
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 4
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 4
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 4
+  }
+};
