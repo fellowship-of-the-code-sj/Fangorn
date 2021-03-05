@@ -256,6 +256,18 @@
   font-size: 0.8em;
 }
 
+.secondary-text {
+  font-size: 0.9em;
+  color: darkgray;
+}
+
+.secondary-text a:link,
+.secondary-text a:visited,
+.secondary-text a:hover,
+.secondary-text a:active {
+  color: darkgray;
+}
+
 /* Q&A reusable */
 .modal-label {
   font-size: 1.25em;
@@ -268,6 +280,11 @@
 .mandatory {
   color: red;
   font-size: 1em;
+}
+
+.QA-important {
+  font-weight: bold;
+  font-size: 1.25em;
 }
 
 /* Search bar */
@@ -285,6 +302,41 @@
   width: 95vw;
   border: 0;
   color: #000;
+}
+
+/* Question List */
+.question-list {
+  margin-bottom: 15px;
+}
+
+/* Question */
+.question-head {
+  margin: 17px 0;
+}
+
+/* Answer */
+.answer-body {
+  margin-bottom: 10px;
+}
+
+.answer {
+  margin-top: 17px;
+}
+
+.answer:first-child {
+  margin-top: 3px;
+}
+
+.question-buttons {
+  border: 1px solid #000;
+  background-color: transparent;
+  padding: 15px;
+  font-size: 1.5em;
+}
+
+.more-answers-button {
+  margin-right: 10px;
+  margin-bottom: 15px;
 }
 
 /* Q&A Modals */
