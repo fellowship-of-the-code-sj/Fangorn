@@ -30,7 +30,7 @@ const Overview = (props) => {
       <DefaultView
         photos={ currentStyle.photos }
       />
-      <ProductInfo 
+      <ProductInfo
         product={ product }
         currentStyle={ currentStyle }
         ratings={ ratings }

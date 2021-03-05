@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import _ from 'underscore';
 
-var AddAnswer = ({ question, handleAddAnswerModal }) => {
+var AddAnswer = ({ questionId, questionBody, productName, handleAddAnswerModal }) => {
   const [ answer, setAnswer ] = useState('');
   const [ nickname, setNickname ] = useState('');
   const [ email, setEmail ] = useState('');
@@ -15,45 +17,66 @@ var AddAnswer = ({ question, handleAddAnswerModal }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setAnswer('');
-    setNickname('');
-    setEmail('');
+    let body_params = {
+      name: nickname,
+      email,
+      body: _.escape(answer)
+    };
+    axios.post(`http://localhost:404/questions/${questionId}/answer/add`, body_params)
+      .then(() => {
+        setAnswer('');
+        setNickname('');
+        setEmail('');
+      })
+      .catch(() => console.error('error'));
   }
 
   return (
     <React.Fragment>
       <div className="modal-focus" onClick={handleAddAnswerModal}></div>
-      <div className="add-answer-modal">
+      <div className="modal-add">
         <h1>Submit your Answer</h1>
-        <h2>[PRODUCT_NAME]: {question}</h2>
+        <h2>{productName}: {questionBody}</h2>
         <form>
           <label>
-            Your Answer*
+            <span className="modal-label">Your Answer</span><sup className="mandatory">&nbsp;*</sup>
             <textarea
               name="answer"
+              rows="5"
+              maxLength="1000"
               value={answer}
               onChange={e => handleChange(e)}></textarea>
           </label>
-          <label>
-            What is your nickname*
-            <input
-              type="text"
-              name="nickname"
-              placeholder="Example: jackson11!"
-              value={nickname}
-              onChange={e => handleChange(e)}></input>
-            For privacy reasons, do not use your full name or email address
-          </label>
-          <label>
-            Your email*
-            <input
-              type="text"
-              name="email"
-              placeholder="Why did you like the product or not?"
-              value={email}
-              onChange={e => handleChange(e)}></input>
-            For authentication reasons, you will not be emailed
-          </label>
+          <div className="flex">
+            <div className="modal-user-data">
+              <label>
+                <span className="modal-label">What is your nickname</span><sup className="mandatory">&nbsp;*</sup>
+                <input
+                  type="text"
+                  name="nickname"
+                  placeholder="Example: jackson11!"
+                  value={nickname}
+                  onChange={e => handleChange(e)}></input>
+                <span className="disclaimer-small">For privacy reasons, do not use your full name or email address</span>
+              </label>
+            </div>
+            <div className="flex-grow"></div>
+          </div>
+          <div className="flex">
+            <div className="modal-user-data">
+              <label>
+                <span className="modal-label">Your email</span><sup className="mandatory">&nbsp;*</sup>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Why did you like the product or not?"
+                  value={email}
+                  onChange={e => handleChange(e)}></input>
+                <span className="disclaimer-small">For authentication reasons, you will not be emailed</span>
+              </label>
+            </div>
+            <div className="flex-grow"></div>
+          </div>
           <input
             type="submit"
             value="Submit"
@@ -67,6 +90,8 @@ var AddAnswer = ({ question, handleAddAnswerModal }) => {
 export default AddAnswer;
 
 AddAnswer.propTypes = {
-  question: PropTypes.string,
+  questionId: PropTypes.number,
+  questionBody: PropTypes.string,
+  productName: PropTypes.string,
   handleAddAnswerModal: PropTypes.func
 }
