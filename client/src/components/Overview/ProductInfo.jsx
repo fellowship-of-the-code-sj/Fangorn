@@ -25,7 +25,7 @@ const ProductInfo = (props) => {
         <div id="overviewRating">
           <StarRating rating={ratingData.average}/>
         </div>
-        {` - Read all ${ratingData.count} reviews`}
+        &nbsp;- Read all&nbsp;<a href="#randr">{ratingData.count}</a>&nbsp;reviews
       </div>
       <div id="productInfoCategory">{props.product.category}</div>
       <div id="productInfoName">{props.product.name}</div>
