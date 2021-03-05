@@ -261,7 +261,7 @@ module.exports = {
         },
         "370326": {
           "quantity": 4,
-          "size": "XL"
+          "size": "XXL"
         }
       }
     },
@@ -446,5 +446,12 @@ module.exports = {
         }
       }
     ]
+  },
+
+  comparisonTable: {
+    '100% Cotton': [true, false],
+    'LightCompose': [false, true],
+    'Skinny': [true, false],
+    'Ultrasheen': [false, true]
   }
 }

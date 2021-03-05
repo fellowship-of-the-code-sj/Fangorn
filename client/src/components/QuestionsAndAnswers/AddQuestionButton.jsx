@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const AddQuestionButton = ({ handleAddQuestionModal }) => {
-  return <button onClick={handleAddQuestionModal}>ADD A QUESTION +</button>
+  return (
+    <button
+      className="question-buttons"
+      onClick={handleAddQuestionModal}>ADD A QUESTION +</button>
+  );
 };
 
 export default AddQuestionButton;

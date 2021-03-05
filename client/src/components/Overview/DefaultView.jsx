@@ -1,13 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const DefaultView = (props) => {
+
+  const [ imageIndex, setImageIndex ] = useState(0);
+
   return (
     <div className="defaultView">
-      <div id="defaultViewImage">Image</div>
-      <div id="defaultViewThumbnails">Thumbnails</div>
+      <div id="defaultViewImageContainer">
+        { props.photos ?
+          <img 
+            src={`${props.photos[imageIndex].url}`}
+            // height="200"
+            // width="200"
+            id="defaultViewImage"
+          /> : <img src="" />
+        }
+        
+      </div>
+      <div id="defaultViewThumbnails">
+        {props.photos ?
+          props.photos.map((photo, index) => (
+            <div key={index} className="imageThumbnailContainer">
+              <img
+                className="imageThumbnail"
+                src={photo.thumbnail_url}
+                alt={`Style Thumbnail`}
+                // height="50"
+                // width="50"
+                index={index}
+                id={`imageThumbnail${index}`}
+                onClick={(event) => {setImageIndex(event.target.attributes[3].value)}}
+              />
+            </div>
+          )) : null
+        }
+      </div>
     </div>
   )
+
+  DefaultView.propTypes = {
+    photos: PropTypes.array
+  }
 }
 
 export default DefaultView;

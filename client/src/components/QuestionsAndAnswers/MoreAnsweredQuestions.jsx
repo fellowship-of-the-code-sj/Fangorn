@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MoreAnsweredQuestions = ({ handleShowMoreQuestions }) => <button onClick={handleShowMoreQuestions}>MORE ANSWERED QUESTIONS</button>;
+const MoreAnsweredQuestions = ({ handleShowMoreQuestions }) => {
+  return (
+    <button
+      className="question-buttons more-answers-button"
+      onClick={handleShowMoreQuestions}>MORE ANSWERED QUESTIONS</button>
+  );
+}
 
 export default MoreAnsweredQuestions;
 

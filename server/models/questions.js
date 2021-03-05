@@ -1,15 +1,12 @@
-const apiRequest = require('../apiServer/apiRequest.js');
-const querystring = require('querystring');
+const axios = require('axios');
+const { url } = require('../apiURL.js');
 
 module.exports = {
-  get: (product_id, callback) => {
-    // const queryString = querystring.stringify({ product_id });
-    apiRequest.get(`/qa/questions/?product_id=${product_id}`, (error, result) => {
-      if (error) {
-        callback(error);
-      } else {
-        callback(null, result);
-      }
-    })
-  }
+  getAllQuestions: (product_id) => axios.get(`${url}/qa/questions/?product_id=${product_id}`),
+  postQuestion: (body_params) => axios.post(`${url}/qa/questions`, body_params),
+  postAnswer: (question_id, body_params) => axios.post(`${url}/qa/questions/${question_id}/answers`, body_params),
+  putQuestionHelpful: (question_id) => axios.put(`${url}/qa/questions/${question_id}/helpful`),
+  putQuestionReport: (question_id) => axios.put(`${url}/qa/questions/${question_id}/report`),
+  putAnswerHelpful: (answer_id) => axios.put(`${url}/qa/answers/${answer_id}/helpful`),
+  putAnswerReport: (answer_id) => axios.put(`${url}/qa/answers/${answer_id}/report`)
 };

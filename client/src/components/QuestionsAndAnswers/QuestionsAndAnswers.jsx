@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'underscore';
+import axios from 'axios';
 import Search from './Search.jsx';
 import QuestionsList from './QuestionsList.jsx';
 import MoreAnsweredQuestions from './MoreAnsweredQuestions.jsx';
@@ -7,32 +9,52 @@ import AddQuestionButton from './AddQuestionButton.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import serverRequest from '../../../helperFunctions/serverRequest.js';
 
-const QuestionsAndAnswers = ({ productID }) => {
+const QuestionsAndAnswers = ({ productID, productName }) => {
+  const [ originalQuestions, setOriginalQuestions ] = useState([]);
   const [ questions, setQuestions ] = useState([]);
   const [ showAddQuestionModal, setShowAddQuestionModal ] = useState(false);
   const [ showMoreQuestionsButton, setShowMoreQuestionsButton ] = useState(false);
   const [ numDisplayedQuestions, setNumDisplayedQuestions ] = useState(0);
   const [ displayedQuestions, setDisplayedQuestions ] = useState([]);
+  const [ query, setQuery ] = useState('');
 
   useEffect(() => {
     serverRequest.get(
-      `http://localhost:404/Questions/${productID}`,
+      `http://localhost:404/questions/${productID}`,
       null,
       response => {
+        setOriginalQuestions(response.data);
         setQuestions(response.data);
 
         const totalNumberOfQuestions = response.data.length;
-        let num;
+        let numToDisplay;
         if (totalNumberOfQuestions > 2) {
           setShowMoreQuestionsButton(true);
-          num = 2;
+          numToDisplay = 2;
         } else {
-          num = totalNumberOfQuestions;
+          numToDisplay = totalNumberOfQuestions;
         }
-        setNumDisplayedQuestions(num);
-        setDisplayedQuestions(response.data.slice(0, num));
+        setNumDisplayedQuestions(numToDisplay);
+        setDisplayedQuestions(response.data.slice(0, numToDisplay));
       });
   }, []);
+
+  useEffect(() => {
+    if (query.length > 2) {
+      const filteredQuestions = _.filter(originalQuestions, (question) => {
+        return question.question_body.indexOf(query) !== -1;
+      });
+      setQuestions(filteredQuestions);
+    }
+
+    if (query.length < 3) {
+      setQuestions(originalQuestions)
+    };
+  }, [query]);
+
+  useEffect(() => setDisplayedQuestions(questions.slice(0, numDisplayedQuestions)), [questions]);
+
+  const handleQueryInput = e => setQuery(e.target.value);
 
   const handleShowMoreQuestions = e => {
     // there will not be any more questions to display
@@ -48,16 +70,17 @@ const QuestionsAndAnswers = ({ productID }) => {
     }
   };
 
-  const handleAddQuestionModal = () => {
-    setShowAddQuestionModal(!showAddQuestionModal);
-  };
+  const handleAddQuestionModal = () => setShowAddQuestionModal(!showAddQuestionModal);
 
   return (
-    <div>
+    <div className="QA">
       <h3>Questions &amp; Answers</h3>
-      <Search />
+      <Search
+        query={query}
+        handleQueryInput={handleQueryInput} />
       <QuestionsList
-        questions={displayedQuestions} />
+        questions={displayedQuestions}
+        productName={productName} />
       <div>
         {
           showMoreQuestionsButton ?
@@ -68,7 +91,7 @@ const QuestionsAndAnswers = ({ productID }) => {
       </div>
       {
         showAddQuestionModal ?
-        <AddQuestion handleAddQuestionModal={handleAddQuestionModal}/>
+        <AddQuestion productID={productID} handleAddQuestionModal={handleAddQuestionModal}/>
         : null
       }
     </div>
@@ -78,5 +101,6 @@ const QuestionsAndAnswers = ({ productID }) => {
 export default QuestionsAndAnswers;
 
 QuestionsAndAnswers.propTypes = {
-  productID: PropTypes.number
+  productID: PropTypes.number,
+  productName: PropTypes.string
 }

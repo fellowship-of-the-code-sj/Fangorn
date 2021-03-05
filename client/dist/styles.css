@@ -8,12 +8,13 @@
 }
 
 .relatedItemsList {
-  border: 1px solid black;
+  border: 1px solid black
+  /* border: 1px solid black;
   display:flex;
-  flex-direction:row;
+  flex-direction:row; */
 }
 
-.relatedItemCard {
+.relatedItemCard, .outfitAddItemCard {
   border: 1px solid black;
   margin: 5px;
 }
@@ -57,7 +58,7 @@
 }
 
 .outerModal {
-  z-index: 100;
+  z-index: 200;
   position: fixed;
   top: 0;
   left: 0;
@@ -67,36 +68,23 @@
 }
 
 .innerModal {
-  z-index: 200;
+  z-index: 300;
   position: fixed;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 200px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -60%);
   background-color: white;
+  padding: 50px;
 }
-.carouselButton {
+
+.carouselLeftButton, .carouselRightButton{
   width: 30px;
   height: 30px;
   position: relative;
   top: 150px;
-
 }
-
-
-
-
-
-.overview {
-  border: 1px solid black;
-  padding: 5px;
-  margin: 5px;
-}
-
-
-
-
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -333,12 +321,132 @@
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-***** Questions & Answers *****
+***** QUESTIONS & ANSWERS *****
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-.add-question-modal,
-.add-answer-modal {
+/* AOE */
+.QA textarea:focus,
+.QA input:focus{
+  outline: none;
+}
+
+/* reusable */
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.spacer {
+  padding: 0 10px;
+}
+
+.link-clear {
+  text-decoration: none;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.scrollable-content {
+  max-height: 45vh;
+  overflow: auto;
+}
+
+.disclaimer-small {
+  font-size: 0.8em;
+}
+
+.secondary-text {
+  font-size: 0.9em;
+  color: darkgray;
+}
+
+.secondary-text a:link,
+.secondary-text a:visited,
+.secondary-text a:hover,
+.secondary-text a:active {
+  color: darkgray;
+}
+
+/* Q&A reusable */
+.modal-label {
+  font-size: 1.25em;
+}
+
+.modal-user-data {
+  width: 75%;
+}
+
+.mandatory {
+  color: red;
+  font-size: 1em;
+}
+
+.QA-important {
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+/* Search bar */
+.QA-search-bar {
+  border: 1px solid #000;
+  padding: 15px;
+}
+
+.QA-search-bar ion-icon {
+  color: #000;
+}
+
+.QA-search-bar input {
+  font-size: 1.5em;
+  width: 95vw;
+  border: 0;
+  color: #000;
+}
+
+/* Question List */
+.question-list {
+  margin-bottom: 15px;
+}
+
+/* Question */
+.question-head {
+  margin: 17px 0;
+}
+
+/* Answer */
+.answer-body {
+  margin-bottom: 10px;
+}
+
+.answer {
+  margin-top: 17px;
+}
+
+.answer:first-child {
+  margin-top: 3px;
+}
+
+.question-buttons {
+  border: 1px solid #000;
+  background-color: transparent;
+  padding: 15px;
+  font-size: 1.5em;
+}
+
+.more-answers-button {
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+/* Q&A Modals */
+.modal-add {
   max-height: calc(100% - 100px);
   z-index: 200;
   position: fixed;
@@ -346,8 +454,10 @@
   left: 50%;
   transform: translate(-50%, -60%);
   padding: 25px;
-  border: 1px solid #000;
+  border: 1px solid darkgray;
+  border-radius: 10px;
   background-color: #fff;
+  width: 40vh;
 }
 
 .modal-focus {
@@ -360,11 +470,215 @@
   background-color: rgba(0, 0, 0, 0.425);
 }
 
-.add-question-modal textarea,
-.add-question-modal input,
-.add-question-modal label,
-.add-answer-modal textarea,
-.add-answer-modal input,
-.add-answer-modal label {
+.modal-add textarea,
+.modal-add input,
+.modal-add label {
   display: block;
+}
+
+.modal-add textarea,
+.modal-add input[type="text"] {
+  padding: 5px 7px;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  margin: 10px 0 5px auto;
+  font-size: 18px;
+}
+.modal-add textarea {
+  resize: none;
+  width: 100%;
+}
+
+.modal-add label {
+  margin-top: 10px;
+  margin-bottom: 3px;
+  margin-right: 7px;
+  text-align: left;
+}
+
+.modal-add input[type="text"] {
+  width: 100%;
+}
+
+.modal-add input[type="submit"] {
+  border: 0;
+  background-color: transparent;
+  margin: 10px 0 5px auto;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.overview {
+  border: 1px solid black;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+  display: grid;
+  grid-template: repeat(4, 1fr) / 65% 35% ;
+  grid-template-areas: 
+  "defaultView productInfo"
+  "defaultView styleSelector"
+  "defaultView addToCart"
+  "productSummary productSummary";
+}
+
+/***** Default View Component *****/
+.defaultView {
+  grid-area: defaultView;
+  display: grid;
+  grid-template-columns: 60px 50px 1fr 50px;
+  grid-template-rows: 1fr;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+#defaultViewImageContainer {
+  grid-row: 1 / 2;
+  grid-column: 1 / 5;
+  z-index: 0;
+  height: 725px;
+  width: 725px;
+}
+
+#defaultViewImage {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#defaultViewThumbnails {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.imageThumbnailContainer {
+  height: 50px;
+  width: 50px;
+}
+
+.imageThumbnail {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/***** Product Info Component *****/
+.productInfo {
+  grid-area: productInfo;
+  display: grid;
+  grid-template: 1fr 1fr 3fr 1fr / 1fr;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+#productInfoRating {
+  grid-row: 1 / 2;
+}
+
+#productInfoCategory {
+  grid-row: 2 / 3;
+}
+
+#productInfoName {
+  grid-row: 3 / 4;
+}
+
+#productInfoPrice {
+  grid-row: 4 / 5;
+}
+
+/***** Style Selector Component *****/
+.styleSelector {
+  grid-area: styleSelector;
+  display: grid;
+  grid-template-rows: 20px 1fr;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+#styleSelectorName {
+  grid-row: 1 / 2;  
+}
+
+#styleSelectorStyles {
+  grid-row: 2 / 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.styleContainer {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 5px 20px;
+}
+
+.styleThumbnail {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+}
+
+/***** Add To Cart Component *****/
+.addToCart {
+  grid-area: addToCart;
+  display: grid;
+  grid-template: 1fr 1fr / 65% 35%;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+#sizeSelect {
+  grid-area: 1 / 1 / 2 / 2;
+  margin: 30px 10px;
+  text-indent: 5px;
+}
+
+#quantitySelect {
+  grid-area: 1 / 2 / 2 / 3;
+  margin: 30px 10px;
+  text-indent: 5px;
+}
+
+#addToCartButton {
+  grid-area: 2 / 1 / 3 / 3;
+  margin: 30px 10px;
+}
+
+/***** Product Summary Component *****/
+.productSummary {
+  grid-area: productSummary;
+  display: grid;
+  grid-template-columns: 65% 35% ;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+#productOverview {
+  grid-column: 1 / 2;
+}
+
+#productShare {
+  grid-column: 2 / 3;
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import Overview from '../client/src/components/Overview/Overview.jsx';
+import DefaultView from '../client/src/components/Overview/DefaultView.jsx';
 import ProductInfo from '../client/src/components/Overview/ProductInfo.jsx';
 import StyleSelector from '../client/src/components/Overview/StyleSelector.jsx';
+import AddToCart from '../client/src/components/Overview/AddToCart.jsx';
 import ProductSummary from '../client/src/components/Overview/ProductSummary.jsx';
 import data from './dummyData.js';
 
@@ -10,6 +12,30 @@ describe('Overview', () => {
   it('should render Overview component', () => {
     const wrapper = shallow(<Overview/>);
     expect(wrapper.find('.overview').length).toBe(1);
+  })
+});
+
+describe('Default View', () => {
+  it('should render Default View component', () => {
+    const wrapper = shallow(<DefaultView/>);
+    expect(wrapper.find('.defaultView').length).toBe(1);
+  })
+
+  it('should display the first style image as the main image by default', () => {
+    const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
+    expect(wrapper.contains(<img 
+      src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80" id="defaultViewImage"
+    />)).toBe(true);
+  })
+
+  it('should have a thumbnail container', () => {
+    const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
+    expect(wrapper.find('#defaultViewThumbnails').length).toBe(1)
+  })
+  
+  it('should dynamically render thumbnail list with the correct amount of photos', () => {
+    const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
+    expect(wrapper.find('.imageThumbnail').length).toBe(6)
   })
 });
 
@@ -74,7 +100,7 @@ describe('Style Selector', () => {
       styles={ data.styles }
       currentStyle={ data.styles[0] }
     />);
-    expect(wrapper.contains(<div id="styleSelectorName">Style: Forest Green &amp; Black</div>)).toBe(true);
+    expect(wrapper.contains(<div id="styleSelectorName">Style &gt; Forest Green &amp; Black</div>)).toBe(true);
   })
 
   it('should render thumbnails of styles dynamically', () => {
@@ -86,8 +112,30 @@ describe('Style Selector', () => {
   })
 })
 
+describe('Add to Cart', () => {
+  it('should render Add To Cart component', () => {
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    expect(wrapper.find('.addToCart').length).toBe(1);
+  })
+  
+  it('should include a Select Size select element', () => {
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    expect(wrapper.find('#sizeSelect').length).toBe(1);
+  })
+
+  it('should include a Quantity select element', () => {
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    expect(wrapper.find('#quantitySelect').length).toBe(1);
+  })
+  
+  it('should include a Add to Cart button element', () => {
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    expect(wrapper.find('#addToCartButton').length).toBe(1);
+  })
+});
+
 describe('Product Summary', () => {
-  it('should render Product Summary', () => {
+  it('should render Product Summary component', () => {
     const wrapper = shallow(<ProductSummary product={data.products[0]} />);
     expect(wrapper.find('.productSummary').length).toBe(1);
   })
