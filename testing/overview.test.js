@@ -148,6 +148,6 @@ describe('Product Summary', () => {
 
   it('should display logos of Twitter, Facebook and Pinterest', () => {
     const wrapper = shallow(<ProductSummary product={data.products[0]} />);
-    expect(wrapper.find('img').length).toBe(3);
+    expect(wrapper.find('.shareIcon').length).toBe(3);
   })
 })
