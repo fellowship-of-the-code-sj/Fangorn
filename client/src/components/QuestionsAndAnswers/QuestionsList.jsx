@@ -4,7 +4,7 @@ import IndividualQuestion from './IndividualQuestion.jsx';
 
 const QuestionsList = ({ questions, productName }) => {
   return (
-    <div className="scrollable-content">
+    <div className="scrollable-content question-list">
       {
         questions.map(question => {
           return (

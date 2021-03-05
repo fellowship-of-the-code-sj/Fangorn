@@ -38,14 +38,12 @@ const IndividualAnswer = ({ answer }) => {
   };
 
   return (
-    <div>
+    <div className="answer">
       <div className="flex">
-        <div>A:&nbsp;</div>
-        <div>{answer.body}</div>
+        <div className="answer-body">{answer.body}</div>
         <div className="flex-grow"></div>
       </div>
-      <div className="flex">
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+      <div className="secondary-text flex">
         <div>
             by <span style={bolded}>{answer.answerer_name}</span>, {date}
           </div>

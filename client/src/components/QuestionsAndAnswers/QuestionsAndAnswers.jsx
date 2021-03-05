@@ -73,7 +73,7 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
   const handleAddQuestionModal = () => setShowAddQuestionModal(!showAddQuestionModal);
 
   return (
-    <div>
+    <div className="QA">
       <h3>Questions &amp; Answers</h3>
       <Search
         query={query}
