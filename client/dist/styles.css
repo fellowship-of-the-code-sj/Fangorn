@@ -558,6 +558,14 @@
   grid-row: 4 / 5;
 }
 
+#salePrice {
+  color: red;
+}
+
+#originalPrice {
+  text-decoration: line-through;
+}
+
 /***** Style Selector Component *****/
 .styleSelector {
   grid-area: styleSelector;

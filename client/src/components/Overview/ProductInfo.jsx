@@ -29,7 +29,10 @@ const ProductInfo = (props) => {
       </div>
       <div id="productInfoCategory">{props.product.category}</div>
       <div id="productInfoName">{props.product.name}</div>
-      <div id="productInfoPrice">${props.currentStyle.original_price}</div>
+      { props.currentStyle.sale_price ?
+        <div id="productInfoPrice"><span id="salePrice">${props.currentStyle.sale_price}</span> <span id="originalPrice">${props.currentStyle.original_price}</span></div> :
+        <div id="productInfoPrice">${props.currentStyle.original_price}</div>
+      }
     </div>
   )
 
@@ -41,5 +44,3 @@ const ProductInfo = (props) => {
 }
 
 export default ProductInfo;
-
-// <div id="productInfoRating">{ratingData.average} - Read all {ratingData.count} reviews</div>
