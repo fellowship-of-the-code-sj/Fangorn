@@ -1,5 +1,4 @@
 const createProductObjectData = (data) => {
-  console.log(data)
   data.productObj.default_style = findDefaultStyle(data.stylesArr);
   data.productObj.rating = ratingsAverage(data.ratingsObj);
   return data.productObj;
