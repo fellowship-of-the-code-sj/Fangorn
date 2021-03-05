@@ -12,7 +12,7 @@ const StyleSelector = (props) => {
               <img
                 className="styleThumbnail"
                 onClick={event => {
-                  props.handleStyleChange(event.target.attributes[3].value)
+                  props.handleStyleChange(event.target.attributes[3].value);
                 }}
                 src={style.photos[0].thumbnail_url}
                 alt={`Image Thumbnail ${style.name}`}
