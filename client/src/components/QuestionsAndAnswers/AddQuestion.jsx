@@ -19,8 +19,8 @@ var AddQuestion = ({ productID, handleAddQuestionModal }) => {
     e.preventDefault();
     let body_params = {
       product_id: productID,
-      name: nickname,
-      email,
+      name: _.escape(nickname),
+      email: _.escape(email),
       body: _.escape(question)
     };
     axios.post(`http://localhost:404/questions/add`, body_params)
