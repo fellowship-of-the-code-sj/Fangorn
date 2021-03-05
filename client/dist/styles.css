@@ -646,4 +646,12 @@
 
 #productShare {
   grid-column: 2 / 3;
+  margin: auto 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
+
+/* ion-icon .shareIcon {
+  font-size: 64px;
+} */
