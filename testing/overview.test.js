@@ -24,19 +24,18 @@ describe('Default View', () => {
   it('should display the first style image as the main image by default', () => {
     const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
     expect(wrapper.contains(<img 
-      src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80"
-      height="200"
+      src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80" id="defaultViewImage"
     />)).toBe(true);
   })
 
   it('should have a thumbnail container', () => {
     const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
-    expect(wrapper.find('#defaultViewThumbnailsContainer').length).toBe(1)
+    expect(wrapper.find('#defaultViewThumbnails').length).toBe(1)
   })
   
   it('should dynamically render thumbnail list with the correct amount of photos', () => {
     const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
-    expect(wrapper.find('.defaultViewThumbnail').length).toBe(6)
+    expect(wrapper.find('.imageThumbnail').length).toBe(6)
   })
 });
 
@@ -101,7 +100,7 @@ describe('Style Selector', () => {
       styles={ data.styles }
       currentStyle={ data.styles[0] }
     />);
-    expect(wrapper.contains(<div id="styleSelectorName">Style: Forest Green &amp; Black</div>)).toBe(true);
+    expect(wrapper.contains(<div id="styleSelectorName">Style &gt; Forest Green &amp; Black</div>)).toBe(true);
   })
 
   it('should render thumbnails of styles dynamically', () => {
