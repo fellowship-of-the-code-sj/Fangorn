@@ -5,7 +5,7 @@ import axios from 'axios';
 import AnswerList from './AnswerList.jsx';
 import AddAnswer from './AddAnswer.jsx';
 
-const IndividualQuestion = ({ question }) => {
+const IndividualQuestion = ({ question, productName }) => {
   const [ answers, setAnswers ] = useState([]);
   const [ showAddAnswerModal, setShowAddAnswerModal ] = useState(false);
   const [ showingMoreAnswers, setShowingMoreAnswers ] = useState(false);
@@ -112,7 +112,9 @@ const IndividualQuestion = ({ question }) => {
         {
           showAddAnswerModal ?
           <AddAnswer
-          question={question.question_body}
+            questionId={question.question_id}
+            questionBody={question.question_body}
+            productName={productName}
             handleAddAnswerModal={handleAddAnswerModal}/>
           : null
         }
@@ -123,5 +125,6 @@ const IndividualQuestion = ({ question }) => {
 export default IndividualQuestion;
 
 IndividualQuestion.propTypes = {
-  question: PropTypes.object
+  question: PropTypes.object,
+  productName: PropTypes.string
 };

@@ -8,9 +8,10 @@
 }
 
 .relatedItemsList {
-  border: 1px solid black;
+  border: 1px solid black
+  /* border: 1px solid black;
   display:flex;
-  flex-direction:row;
+  flex-direction:row; */
 }
 
 .relatedItemCard, .outfitAddItemCard {
@@ -57,7 +58,7 @@
 }
 
 .outerModal {
-  z-index: 100;
+  z-index: 200;
   position: fixed;
   top: 0;
   left: 0;
@@ -67,21 +68,22 @@
 }
 
 .innerModal {
-  z-index: 200;
+  z-index: 300;
   position: fixed;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 200px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -60%);
   background-color: white;
+  padding: 50px;
 }
+
 .carouselLeftButton, .carouselRightButton{
   width: 30px;
   height: 30px;
   position: relative;
   top: 150px;
-
 }
 
 /*
@@ -234,9 +236,26 @@
   overflow: auto;
 }
 
+.disclaimer-small {
+  font-size: 0.8em;
+}
+
+/* Q&A reusable */
+.modal-label {
+  font-size: 1.25em;
+}
+
+.modal-user-data {
+  width: 75%;
+}
+
+.mandatory {
+  color: red;
+  font-size: 1em;
+}
+
 /* Q&A Modals */
-.add-question-modal,
-.add-answer-modal {
+.modal-add {
   max-height: calc(100% - 100px);
   z-index: 200;
   position: fixed;
@@ -244,8 +263,10 @@
   left: 50%;
   transform: translate(-50%, -60%);
   padding: 25px;
-  border: 1px solid #000;
+  border: 1px solid darkgray;
+  border-radius: 10px;
   background-color: #fff;
+  width: 40vh;
 }
 
 .modal-focus {
@@ -258,20 +279,43 @@
   background-color: rgba(0, 0, 0, 0.425);
 }
 
-.add-question-modal textarea,
-.add-question-modal input,
-.add-question-modal label,
-.add-answer-modal textarea,
-.add-answer-modal input,
-.add-answer-modal label {
+.modal-add textarea,
+.modal-add input,
+.modal-add label {
   display: block;
 }
 
-/*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-***** Overview *****
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*/
+.modal-add textarea,
+.modal-add input[type="text"] {
+  padding: 5px 7px;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  margin: 10px 0 5px auto;
+  font-size: 18px;
+}
+.modal-add textarea {
+  resize: none;
+  width: 100%;
+}
+
+.modal-add label {
+  margin-top: 10px;
+  margin-bottom: 3px;
+  margin-right: 7px;
+  text-align: left;
+}
+
+.modal-add input[type="text"] {
+  width: 100%;
+}
+
+.modal-add input[type="submit"] {
+  border: 0;
+  background-color: transparent;
+  margin: 10px 0 5px auto;
+  font-size: 2.5em;
+  font-weight: bold;
+}
 
 .overview {
   border: 1px solid black;

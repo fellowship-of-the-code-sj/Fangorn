@@ -52,6 +52,7 @@ app.get('/OverviewOld', (req, res) => {
 
 app.get('/questions/:product_id', controller.questions.getQuestions);
 app.post('/questions/add', controller.questions.postQuestion);
+app.post('/questions/:question_id/answer/add', controller.questions.postAnswer);
 app.put('/questions/:question_id/helpful', controller.questions.putQuestionHelpful);
 app.put('/questions/:question_id/report', controller.questions.putQuestionReport);
 app.put('/answer/:answer_id/helpful', controller.questions.putAnswerHelpful);

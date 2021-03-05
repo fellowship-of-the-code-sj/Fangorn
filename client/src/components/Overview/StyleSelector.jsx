@@ -12,13 +12,10 @@ const StyleSelector = (props) => {
               <img
                 className="styleThumbnail"
                 onClick={event => {
-                  // console.log(event.target.attributes)
                   props.handleStyleChange(event.target.attributes[3].value)
                 }}
                 src={style.photos[0].thumbnail_url}
                 alt={`Image Thumbnail ${style.name}`}
-                // height="50"
-                // width="50"
                 index={index}
                 id={`styleThumbnail${index}`}
               />
