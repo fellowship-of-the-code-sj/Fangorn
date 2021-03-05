@@ -21,7 +21,7 @@ function ReviewsList(props) {
     })
       .then((response) => {
         setList(response.data);
-        setVisibleList(response.data.slice(0, 1))
+        setVisibleList(response.data.slice(0, 2))
       })
   }
 
@@ -30,7 +30,7 @@ function ReviewsList(props) {
   }
 
   const showMoreReviews = () => {
-    setVisibleList(list.slice(0, visibleList.length + 1));
+    setVisibleList(list.slice(0, visibleList.length + 2));
   }
 
   useEffect(() => {
