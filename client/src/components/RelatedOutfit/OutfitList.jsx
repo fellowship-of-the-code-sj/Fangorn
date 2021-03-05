@@ -40,7 +40,7 @@ const OutfitList = ({ productInfo }) => {
   return (
     <div className='relatedItemsList'>
       <Carousel responsive={helperFunctions.responsive}>
-        <div className='relatedItemCard' onClick={addOutfit} >{'ADD Outfit'}</div>
+        <div className='outfitAddItemCard' onClick={addOutfit} >{'ADD Outfit'}</div>
         {
           outfitList.list.length ?
           outfitList.list.map((item) => {
