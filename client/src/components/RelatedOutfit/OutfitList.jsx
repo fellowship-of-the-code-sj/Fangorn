@@ -7,8 +7,6 @@ import helperFunctions from '../../../helperFunctions/helperFunctions.js';
 
 const OutfitList = ({ productInfo }) => {
 
-  const [ carouselInput, setCarouselInput ] = useState({start: 0, end: 4});
-
   if (!window.localStorage.outfitList) {
     var list = [];
   } else {
@@ -17,12 +15,19 @@ const OutfitList = ({ productInfo }) => {
 
   const [ outfitList, setOutfitList ] = useState( { list } )
 
+  const [ partialView, setPartialView] = useState(list.length > 2? true: false);
+
   //Adds item to outfitList
   const addOutfit = () => {
 
     //check if the product already exists in the outfit list
     if (!outfitList.list.find(outfitItem => outfitItem.id === productInfo.id)) {
       outfitList.list.push(productInfo);
+
+      if (outfitList.list.length === 3) {
+        setPartialView(true);
+      }
+
       var outfitListArrayString = JSON.stringify(outfitList.list);
       window.localStorage.setItem('outfitList', outfitListArrayString);
       setOutfitList({ list: outfitList.list });
@@ -30,17 +35,37 @@ const OutfitList = ({ productInfo }) => {
   }
 
   const removeOutfitItem = (item) => {
-    var index = outfitList.list.indexOf({ id: item})
+    var index = helperFunctions.findIndex(outfitList.list, item)
+    console.log(index);
     outfitList.list.splice(index, 1);
+
+    if (outfitList.list.length === 2) {
+      setPartialView(false);
+    }
+
     var outfitListArrayString = JSON.stringify(outfitList.list);
     window.localStorage.setItem('outfitList', outfitListArrayString);
+
     setOutfitList({list: outfitList.list });
   }
 
   return (
-    <div className='relatedItemsList'>
-      <Carousel responsive={helperFunctions.responsive}>
-        <div className='outfitAddItemCard' onClick={addOutfit} >{'ADD Outfit'}</div>
+    <div className='itemsList'>
+      <h3 className='listTitle' >Your Outfit</h3>
+      <Carousel containerClass="carousel-container" itemClass='carouselItems'
+      draggable={false}
+      partialVisible={partialView}
+      responsive={helperFunctions.responsive}>
+        {outfitList.list.length? null:null}
+
+        <div className='outfitAddItemCard' onClick={addOutfit} >
+          <div className='addOutfitText'>
+            {'ADD OUFIT'}
+            <br></br>
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </div>
+
+        </div>
         {
           outfitList.list.length ?
           outfitList.list.map((item) => {
