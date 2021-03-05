@@ -2,10 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import IndividualQuestion from './IndividualQuestion.jsx';
 
-const QuestionsList = ({ questions }) => {
+const QuestionsList = ({ questions, productName }) => {
   return (
     <div className="scrollable-content">
-      {questions.map(question => <IndividualQuestion key={question.question_id} question={question} />)}
+      {
+        questions.map(question => {
+          return (
+            <IndividualQuestion
+              key={question.question_id}
+              productName={productName}
+              question={question} />
+          );
+        })
+      }
     </div>
   );
 };
@@ -13,5 +22,6 @@ const QuestionsList = ({ questions }) => {
 export default QuestionsList;
 
 QuestionsList.propTypes = {
-  questions: PropTypes.array
+  questions: PropTypes.array,
+  productName: PropTypes.string
 };

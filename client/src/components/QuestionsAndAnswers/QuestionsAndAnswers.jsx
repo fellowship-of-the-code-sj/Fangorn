@@ -9,7 +9,7 @@ import AddQuestionButton from './AddQuestionButton.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import serverRequest from '../../../helperFunctions/serverRequest.js';
 
-const QuestionsAndAnswers = ({ productID }) => {
+const QuestionsAndAnswers = ({ productID, productName }) => {
   const [ originalQuestions, setOriginalQuestions ] = useState([]);
   const [ questions, setQuestions ] = useState([]);
   const [ showAddQuestionModal, setShowAddQuestionModal ] = useState(false);
@@ -79,7 +79,8 @@ const QuestionsAndAnswers = ({ productID }) => {
         query={query}
         handleQueryInput={handleQueryInput} />
       <QuestionsList
-        questions={displayedQuestions} />
+        questions={displayedQuestions}
+        productName={productName} />
       <div>
         {
           showMoreQuestionsButton ?
@@ -100,5 +101,6 @@ const QuestionsAndAnswers = ({ productID }) => {
 export default QuestionsAndAnswers;
 
 QuestionsAndAnswers.propTypes = {
-  productID: PropTypes.number
+  productID: PropTypes.number,
+  productName: PropTypes.string
 }

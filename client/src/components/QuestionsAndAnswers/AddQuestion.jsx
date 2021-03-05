@@ -35,33 +35,45 @@ var AddQuestion = ({ productID, handleAddQuestionModal }) => {
   return (
     <React.Fragment>
       <div className="modal-focus" onClick={handleAddQuestionModal}></div>
-      <div className="add-question-modal">
+      <div className="modal-add">
         <h1>Your Question</h1>
         <form>
           <textarea
             name="question"
+            rows="7"
+            maxLength="1000"
             value={question}
             onChange={e => handleChange(e)}></textarea>
-          <label>
-            What is your nickname?
-            <input
-              type="text"
-              name="nickname"
-              placeholder="Example: jackson11!"
-              value={nickname}
-              onChange={e => handleChange(e)}></input>
-            For privacy reasons, do not use your full name or email address
-          </label>
-          <label>
-            Your email
-            <input
-              type="text"
-              name="email"
-              placeholder="Why did you like the product or not?"
-              value={email}
-              onChange={e => handleChange(e)}></input>
-            For authentication reasons, you will not be emailed
-          </label>
+          <div className="flex">
+            <div className="modal-user-data">
+              <label>
+                <span className="modal-label">What is your nickname?</span><sup className="mandatory">&nbsp;*</sup>
+                <input
+                  type="text"
+                  name="nickname"
+                  placeholder="Example: jackson11!"
+                  value={nickname}
+                  onChange={e => handleChange(e)}></input>
+                <span className="disclaimer-small">For privacy reasons, do not use your full name or email address</span>
+              </label>
+            </div>
+            <div className="flex-grow"></div>
+          </div>
+          <div className="flex">
+            <div className="modal-user-data">
+              <label>
+                <span className="modal-label">Your email</span><sup className="mandatory">&nbsp;*</sup>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Why did you like the product or not?"
+                  value={email}
+                  onChange={e => handleChange(e)}></input>
+                <span className="disclaimer-small">For authentication reasons, you will not be emailed</span>
+              </label>
+            </div>
+            <div className="flex-grow"></div>
+          </div>
           <input
             type="submit"
             value="Submit"
