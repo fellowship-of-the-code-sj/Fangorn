@@ -7,30 +7,32 @@ const DefaultView = (props) => {
 
   return (
     <div className="defaultView">
-      <div id="defaultViewImage">
+      <div id="defaultViewImageContainer">
         { props.photos ?
           <img 
             src={`${props.photos[imageIndex].url}`}
-            height="200"
+            // height="200"
             // width="200"
+            id="defaultViewImage"
           /> : <img src="" />
         }
         
       </div>
-      <div id="defaultViewThumbnailsContainer">
+      <div id="defaultViewThumbnails">
         {props.photos ?
           props.photos.map((photo, index) => (
-            <img
-              key={index}
-              className="defaultViewThumbnail"
-              src={photo.thumbnail_url}
-              alt={`Style Thumbnail`}
-              height="50"
-              // width="50"
-              index={index}
-              id={`defaultViewThumbnail${index}`}
-              onClick={(event) => {setImageIndex(event.target.attributes[4].value)}}
-            />
+            <div key={index} className="imageThumbnailContainer">
+              <img
+                className="imageThumbnail"
+                src={photo.thumbnail_url}
+                alt={`Style Thumbnail`}
+                // height="50"
+                // width="50"
+                index={index}
+                id={`imageThumbnail${index}`}
+                onClick={(event) => {setImageIndex(event.target.attributes[3].value)}}
+              />
+            </div>
           )) : null
         }
       </div>

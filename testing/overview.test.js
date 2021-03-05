@@ -31,12 +31,12 @@ describe('Default View', () => {
 
   it('should have a thumbnail container', () => {
     const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
-    expect(wrapper.find('#defaultViewThumbnailsContainer').length).toBe(1)
+    expect(wrapper.find('#defaultViewThumbnails').length).toBe(1)
   })
   
   it('should dynamically render thumbnail list with the correct amount of photos', () => {
     const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
-    expect(wrapper.find('.defaultViewThumbnail').length).toBe(6)
+    expect(wrapper.find('.imageThumbnail').length).toBe(6)
   })
 });
 

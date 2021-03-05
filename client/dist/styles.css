@@ -290,6 +290,8 @@
 /***** Default View Component *****/
 .defaultView {
   grid-area: defaultView;
+  display: grid;
+  grid-template-columns: 60px 50px 1fr 50px;
   margin: 5px;
   padding: 5px;
   border: 1px solid black;
