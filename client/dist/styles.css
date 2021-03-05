@@ -6,30 +6,30 @@
 .relatedItemsAndOutfits {
   padding: 0 200px;
   width: 67%;
-  min-width: 900px;
-  max-width: 1000px;
+  min-width: 850px;
+  max-width: 900px;
   margin: auto;
 }
 
 /* .itemsList {
   left: 0;
 } */
-.carousel-container {
-
-  justify-content: start;
-}
 
 .itemCard, .outfitAddItemCard {
   border: 1px solid grey;
   margin: 5px;
-  width: 250px;
+  width: 200px;
   height: 35vh;
   min-height: 300px;
 }
+/*
+.carousel-container {
 
-.carouselItems {
+  justify-content: start;
+} */
+/* .carouselItems {
 
-}
+} */
 
 .outfitAddItemCard {
   font-size: 20px;
@@ -44,7 +44,6 @@
   position: relative;
   top: 40%;
 }
-
 
 .itemCardImg {
   z-index: 1;
@@ -95,7 +94,7 @@
 .action-button {
   z-index: 2;
   position: fixed;
-  left: 220px;
+  left: 175px;
   top: 20px;
   font-size: 18px;
   color: rgb(165, 52, 52);

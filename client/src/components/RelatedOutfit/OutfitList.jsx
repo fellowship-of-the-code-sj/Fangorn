@@ -52,8 +52,12 @@ const OutfitList = ({ productInfo }) => {
   return (
     <div className='itemsList'>
       <h3 className='listTitle' >Your Outfit</h3>
-      <Carousel containerClass="carousel-container" itemClass='carouselItems' draggable={false} partialVisible={partialView} responsive={helperFunctions.responsive}>
+      <Carousel containerClass="carousel-container" itemClass='carouselItems'
+      draggable={false}
+      partialVisible={partialView}
+      responsive={helperFunctions.responsive}>
         {outfitList.list.length? null:null}
+
         <div className='outfitAddItemCard' onClick={addOutfit} >
           <div className='addOutfitText'>
             {'ADD OUFIT'}
