@@ -5,21 +5,18 @@ import RelatedActionButton from './RelatedActionButton.jsx';
 import helperFunctions from '../../../helperFunctions/helperFunctions.js';
 import ComparisonTable from './ComparisonTable.jsx';
 
-const RelatedItemCard = ({ cardData, productInfo }) => {
+const RelatedItemCard = ({ cardData, actionButtonListener }) => {
 
   //State for comparison table toggle
   const [ actionButtonToggle, setActionButtonToggle] = useState(false)
-
-  //event listener for action button
-  const actionButtonListener = () => {
-    setActionButtonToggle(!actionButtonToggle);
-  }
 
   return (
     <div className='relatedItemCard'>
 
       {/* Star Action Button */}
-      <RelatedActionButton actionButtonListener={actionButtonListener}/>
+      <RelatedActionButton actionButtonListener={() => {
+        actionButtonListener(cardData)
+      }}/>
       {
         //Checks to see if image exists, if not returns default image
         cardData.default_style.photos[0].url ?
@@ -42,19 +39,6 @@ const RelatedItemCard = ({ cardData, productInfo }) => {
         <StarRating rating={cardData.rating}/>
       </div>
 
-      {/* Modal Element */}
-      {
-        actionButtonToggle ?
-          <div>
-            <div className='outerModal' onClick={actionButtonListener}></div>
-            <ComparisonTable
-              comparisionList={ helperFunctions.comparisonTable(productInfo.features, cardData.features)}
-              currentProductName={productInfo.name}
-              relatedProductName={cardData.name}
-            />
-          </ div>
-          : null
-      }
     </div>
   )
 }
@@ -63,5 +47,5 @@ export default RelatedItemCard;
 
 RelatedItemCard.propTypes = {
   cardData: PropTypes.object,
-  productInfo: PropTypes.object
+  actionButtonListener: PropTypes.func
 }
