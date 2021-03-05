@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RelatedItemCard from './RelatedItemCard.jsx';
 
-const RelatedItemsList = ({ relatedItemsList }) => {
+const RelatedItemsList = ({ relatedItemsList, productInfo }) => {
 
   //state for controlling the carousel
   const [ carouselInput, setCarouselInput] = useState({start: 0, end: 4});
@@ -34,7 +34,7 @@ const RelatedItemsList = ({ relatedItemsList }) => {
       {
         relatedItemsList.length ?
         relatedItemsList.slice(carouselInput.start, carouselInput.end).map((item) => {
-          return <RelatedItemCard key={item.id} cardData={item}></RelatedItemCard>;
+          return <RelatedItemCard productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;
         })
         : null
       }
@@ -52,5 +52,6 @@ const RelatedItemsList = ({ relatedItemsList }) => {
 export default RelatedItemsList;
 
 RelatedItemsList.propTypes = {
-  relatedItemsList: PropTypes.array
+  relatedItemsList: PropTypes.array,
+  productInfo: PropTypes.object
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import OutfitListCard from './OutfitListCard.jsx';
-import dummyData from '../../../../testing/dummyData.js';
 
 const OutfitList = ({ productInfo }) => {
 
@@ -31,11 +30,14 @@ const OutfitList = ({ productInfo }) => {
 
   //Adds item to outfitList
   const addOutfit = () => {
-    outfitList.list.push(productInfo);
-    var outfitListArrayString = JSON.stringify(outfitList.list);
-    window.localStorage.setItem('outfitList', outfitListArrayString);
 
-    setOutfitList({ list: outfitList.list });
+    //check if the product already exists in the outfit list
+    if (!outfitList.list.find(outfitItem => outfitItem.id === productInfo.id)) {
+      outfitList.list.push(productInfo);
+      var outfitListArrayString = JSON.stringify(outfitList.list);
+      window.localStorage.setItem('outfitList', outfitListArrayString);
+      setOutfitList({ list: outfitList.list });
+    };
   }
 
   const removeOutfitItem = (item) => {
@@ -64,7 +66,7 @@ const OutfitList = ({ productInfo }) => {
       {
         outfitList.list.length ?
         outfitList.list.slice(carouselInput.start, carouselInput.end).map((item) => {
-          return <OutfitListCard cardData={item} removeOutfitItem={removeOutfitItem} ></OutfitListCard>
+          return <OutfitListCard key={item.id} cardData={item} removeOutfitItem={removeOutfitItem} ></OutfitListCard>
         })
         : null
       }

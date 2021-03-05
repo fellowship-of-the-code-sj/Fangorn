@@ -31,4 +31,27 @@ const ratingsAverage = (ratings) => {
   }
 }
 
-export default { createProductObjectData };
+const comparisonTable = (currentProduct, relatedProduct) => {
+
+  var resultObj = {};
+  currentProduct.forEach((product) => {
+    if (product.value) {
+      resultObj[product.value] = [true, false];
+    }
+  });
+
+  relatedProduct.forEach((product) => {
+    if (product.value) {
+      if (resultObj[product.value]) {
+        resultObj[product.value] = [true, true];
+      } else {
+        resultObj[product.value] = [false, true];
+      }
+    }
+
+  });
+  console.log(resultObj)
+  return resultObj;
+ }
+
+export default { createProductObjectData, comparisonTable };
