@@ -6,8 +6,13 @@ import axios from 'axios';
 import Review from './Review.jsx'
 
 function RatingsAndReviews(props) {
-  const [starSort, setStarSort] = useState(false);
-  const [test, setTest] = useState('weiner');
+  const [starSort, setStarSort] = useState({
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false
+  });
   const [fetchedMetaObject, willFetchMetaObject] = useState(false);
   const [metaObject, setMetaObject] = useState({
     recommended: {
@@ -34,15 +39,21 @@ function RatingsAndReviews(props) {
 
   })
 
-  const sortByStar = (star) => {
-    setStarSort(star);
+  const sortByStar = (star, sort) => {
+    var newStarSort = starSort;
+    if (sort) {
+      newStarSort[star] = true;
+    } else {
+      newStarSort[star] = false;
+    }
+    setStarSort(newStarSort);
   }
 
   return (
     <div className="ratings-and-reviews">
       <h3>Ratings and Reviews</h3><br></br>
       <Ratings sortByStar={sortByStar} metaObject={metaObject} />
-      <ReviewsList metaObject={metaObject} productID={props.productID} />
+      <ReviewsList starSort={starSort} metaObject={metaObject} productID={props.productID} />
     </div>
   )
 }

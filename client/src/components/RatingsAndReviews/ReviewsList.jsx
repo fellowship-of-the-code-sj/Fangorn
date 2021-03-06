@@ -11,12 +11,12 @@ function ReviewsList(props) {
   const [hasFetchedList, willFetchList] = useState(false);
 
   // make api call to update reviewsList
-  const getList = () => {
+  const getList = (sortQuery) => {
     axios.get('/RatingsAndReviews/getAll', {
       params: {
         page: 1,
-        count: 20,
-        sort: 'newest',
+        count: 50,
+        sort: sortQuery,
         product_id: props.productID
       }
     })
@@ -39,15 +39,26 @@ function ReviewsList(props) {
     setVisibleList(list.slice(0, visibleList.length + 2));
   }
 
+  const handleSortChange = (e) => {
+    e.preventDefault();
+    getList(e.target.value);
+  }
+
   useEffect(() => {
     if (!hasFetchedList) {
-      getList()
+      getList('relevant')
       willFetchList(true);
     }
   })
 
   return (
     <div className="reviews-list">
+      {list.length} reviews, sorted by
+      <select id="sortBy" onChange={handleSortChange}>
+        <option value="relevant">Relevance</option>
+        <option value="newest">Newest</option>
+        <option value="helpful">Most helpful</option>
+      </select>
       {visibleList.map((review) => {
         return <Review key={review.review_id} review={review} />
       })}
