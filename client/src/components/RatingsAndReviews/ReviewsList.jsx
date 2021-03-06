@@ -82,7 +82,7 @@ function ReviewsList(props) {
 
   const ClearFilter = () => {
     return (
-      <button onClick={props.resetStarSort} >Clear filtering</button>
+      <button onClick={props.resetStarSort} >&nbsp;Clear filtering&nbsp;</button>
     )
   }
 
@@ -99,25 +99,25 @@ function ReviewsList(props) {
         <option value="helpful">Most helpful</option>
       </select>
       {
-        isFiltering() ? <span>, filtering by {whichFilters()} reviews<ClearFilter /></span> : null
+        isFiltering() ? <span>, filtering by {whichFilters()} reviews&nbsp;<ClearFilter /></span> : null
       }
       <hr></hr>
       <div className="reviews-list-content">
         {visibleList.map((review) => {
           return <Review key={review.review_id} review={review} />
         })}
-        {
-          list.length > visibleList.length ?
-            <div className="review-list-buttons">
-              <button className="show-more-reviews-button" onClick={showMoreReviews}>Show more reviews</button>
-              <button className="new-review-button" onClick={showForm}>Leave a review</button>
-            </div> :
-            <div className="review-list-buttons">
-              <button className="new-review-button" onClick={showForm}>Leave a review</button>
-            </div>
-        }
-        <NewReview productName={props.productName} metaObject={props.metaObject} productID={props.productID} />
-      </div>
+      </div><br></br>
+      {
+        list.length > visibleList.length ?
+          <div className="review-list-buttons">
+            <button className="show-more-reviews-button" onClick={showMoreReviews}>Show more reviews</button>
+            <button className="new-review-button" onClick={showForm}>Leave a review</button>
+          </div> :
+          <div className="review-list-buttons">
+            <button className="new-review-button" onClick={showForm}>Leave a review</button>
+          </div>
+      }
+      <NewReview productName={props.productName} metaObject={props.metaObject} productID={props.productID} />
     </div >
   )
 }
