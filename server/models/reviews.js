@@ -44,5 +44,15 @@ module.exports = {
       .catch((err) => {
         callback(err, null)
       })
+  },
+  postReview: (params, callback) => {
+    axios.post(`${url}/reviews`, params)
+      .then(() => {
+        callback();
+      })
+
+      .catch((err) => {
+        callback(err)
+      })
   }
 }
