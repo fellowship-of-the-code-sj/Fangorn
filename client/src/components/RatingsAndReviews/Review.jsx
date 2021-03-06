@@ -86,7 +86,7 @@ function Review(props) {
       <div className="review-thumbnails"></div>
       {
         props.review.photos.map((image, i) => {
-          return <img onClick={handleImageClick} className="review-thumbnail" key={image.id} id={`${i}-${image.id}`} src={image.url}></img>
+          return <img style={{ "cursor": "pointer" }} onClick={handleImageClick} className="review-thumbnail" key={image.id} id={`${i}-${image.id}`} src={image.url}></img>
         })
       }
       {

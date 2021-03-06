@@ -464,6 +464,10 @@ input:checked + .slider:before {
   padding:10px;
 }
 
+.new-review-star-rating-form {
+  font-size: larger
+}
+
 .new-review-button {
   margin-left: 10px;
   margin-right: 10px;
@@ -491,11 +495,13 @@ input:checked + .slider:before {
 .helpful-toggle{
   margin: 5px;
   text-decoration: underline;
+  cursor:pointer;
 }
 
 .report{
   margin: 10px;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .response{
@@ -612,6 +618,7 @@ input:checked + .slider:before {
 .review-image-modal-content {
   background-color: #fefefe;
   margin: auto;
+  margin-bottom: 10px;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -675,6 +682,10 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
+.new-review-radio-array {
+  margin-left: 10px;
+}
+
 .new-review-radios {
   margin-left:5px;
   margin-right: 5px;
@@ -733,8 +744,9 @@ input:checked + .slider:before {
 
 .new-review-characteristic-meaning {
   position: relative;
-  left: 50px;
+  left: 4%;
   bottom: 10px;
+  font-style:italic;
 
 }
 

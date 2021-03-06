@@ -312,10 +312,10 @@ function NewReview(props) {
   return (
     <div className="new-review">
       <div id="newReviewForm" className="new-review-modal">
-        <div className="new-review-modal-content"> New Review
+        <div className="new-review-modal-content"> Write a review about {props.productName}
           <span onClick={hideForm} className="new-review-modal-close">&times;</span>
           <div className="review-form">
-            Rate this product<sup className="mandatory">&nbsp;*</sup><div className="star-rating-form">
+            Rate this product<sup className="mandatory">&nbsp;*</sup><div className="new-review-star-rating-form">
               <span className="new-review-star" onClick={() => { setRating(1) }} style={starColor(1)}>★</span>
               <span className="new-review-star" onClick={() => { setRating(2) }} style={starColor(2)}>★</span>
               <span className="new-review-star" onClick={() => { setRating(3) }} style={starColor(3)}>★</span>
@@ -325,11 +325,11 @@ function NewReview(props) {
             </div> <br></br>
             <div className="name-and-email-form">
               <form>
-                Name:<sup className="mandatory">&nbsp;*</sup><input className="new-review-name" placeholder="e.g. jackson11!" size="25" maxLength="60" onChange={(e) => { handleChange(e, setName) }} type="text" value={name}></input><br></br>
-                Email:<sup className="mandatory">&nbsp;*</sup><input className="new-review-email" placeholder="e.g. jackson11@email.com" size="25" maxLength="60" onChange={(e) => { handleChange(e, setEmail) }} type="text" value={email}></input> <br></br>
+                Name:<sup className="mandatory">&nbsp;*</sup><input className="new-review-name" placeholder=" e.g. jackson11!" size="25" maxLength="60" onChange={(e) => { handleChange(e, setName) }} type="text" value={name}></input><br></br>
+                Email:<sup className="mandatory">&nbsp;*</sup><input className="new-review-email" placeholder=" e.g. jackson11@email.com" size="25" maxLength="60" onChange={(e) => { handleChange(e, setEmail) }} type="text" value={email}></input> <br></br>
                 <span className="disclaimer-small">For authentication reasons, you will not be emailed</span><br></br><br></br>
-                Review summary:<br></br><textarea className="new-review-summary" placeholder="e.g. Best purchase ever!" maxLength="60" onChange={(e) => { handleChange(e, setSummary) }} type="text" value={summary} rows="1" cols="30" ></textarea> <br></br>
-                Enter your review:<sup className="mandatory">&nbsp;*</sup><br></br><textarea className="new-review-body" placeholder="Why did you like the product or not?" maxLength="500" onChange={(e) => { handleChange(e, setBody) }} type="text" value={body} rows="4" cols="50"></textarea><br></br>
+                Review summary:<br></br><textarea className="new-review-summary" placeholder=" e.g. Best purchase ever!" maxLength="60" onChange={(e) => { handleChange(e, setSummary) }} type="text" value={summary} rows="1" cols="30" ></textarea> <br></br><br></br>
+                Enter your review:<sup className="mandatory">&nbsp;*</sup><br></br><textarea className="new-review-body" placeholder=" Why did you like the product or not?" maxLength="500" onChange={(e) => { handleChange(e, setBody) }} type="text" value={body} rows="4" cols="50"></textarea><br></br>
                 {
                   body.length < 50 ? <span className="new-review-char-count" style={{ "fontSize": "small" }}>Minimum required characters: {50 - body.length}</span> : <span className="new-review-char-count" style={{ "fontSize": "small" }}>Minimum reached</span>
                 }
@@ -337,70 +337,78 @@ function NewReview(props) {
               Would you recommend this product?<sup className="mandatory">&nbsp;*</sup>
               <form className="new-review-recommend">
                 <input onClick={() => setRecommend(true)} type="radio" name="recommend" ></input>
-                <label >Yes</label><br></br>
+                <label >&nbsp;Yes</label><br></br>
                 <input onClick={() => setRecommend(false)} type="radio" name="recommend" ></input>
-                <label >No</label><br></br>
+                <label >&nbsp;No</label><br></br>
               </form>
               <form className="new-review-characteristics">Product characteristics<sup className="mandatory">&nbsp;*</sup>
                 {
                   props.metaObject.characteristics.Size ? <div className="new-review-size">
-                    Size: <input className="new-review-radios" onClick={() => { setSize(1) }} type="radio" name="size"></input><label>1</label>
-                    <input className="new-review-radios" onClick={() => { setSize(2) }} type="radio" name="size"></input><label>2</label>
-                    <input className="new-review-radios" onClick={() => { setSize(3) }} type="radio" name="size"></input><label>3</label>
-                    <input className="new-review-radios" onClick={() => { setSize(4) }} type="radio" name="size"></input><label>4</label>
-                    <input className="new-review-radios" onClick={() => { setSize(5) }} type="radio" name="size"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('size')}</span>
-                  </div> : <div></div>
+                    Size: <div className="new-review-radio-array">
+                      <input className="new-review-radios" onClick={() => { setSize(1) }} type="radio" name="size"></input><label>1</label>
+                      <input className="new-review-radios" onClick={() => { setSize(2) }} type="radio" name="size"></input><label>2</label>
+                      <input className="new-review-radios" onClick={() => { setSize(3) }} type="radio" name="size"></input><label>3</label>
+                      <input className="new-review-radios" onClick={() => { setSize(4) }} type="radio" name="size"></input><label>4</label>
+                      <input className="new-review-radios" onClick={() => { setSize(5) }} type="radio" name="size"></input><label>5</label><br></br>
+                      <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('size')}</span>
+                    </div></div> : <div></div>
                 }
                 {
                   props.metaObject.characteristics.Width ? <div className="new-review-width">
-                    Width: <input className="new-review-radios" onClick={() => { setWidth(1) }} type="radio" name="width"></input><label>1</label>
-                    <input className="new-review-radios" onClick={() => { setWidth(2) }} type="radio" name="width"></input><label>2</label>
-                    <input className="new-review-radios" onClick={() => { setWidth(3) }} type="radio" name="width"></input><label>3</label>
-                    <input className="new-review-radios" onClick={() => { setWidth(4) }} type="radio" name="width"></input><label>4</label>
-                    <input className="new-review-radios" onClick={() => { setWidth(5) }} type="radio" name="width"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('width')}</span>
-                  </div> : <div></div>
+                    Width:<div className="new-review-radio-array">
+                      <input className="new-review-radios" onClick={() => { setWidth(1) }} type="radio" name="width"></input><label>1</label>
+                      <input className="new-review-radios" onClick={() => { setWidth(2) }} type="radio" name="width"></input><label>2</label>
+                      <input className="new-review-radios" onClick={() => { setWidth(3) }} type="radio" name="width"></input><label>3</label>
+                      <input className="new-review-radios" onClick={() => { setWidth(4) }} type="radio" name="width"></input><label>4</label>
+                      <input className="new-review-radios" onClick={() => { setWidth(5) }} type="radio" name="width"></input><label>5</label><br></br>
+                      <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('width')}</span>
+                    </div> </div> : <div></div>
                 }
                 {
                   props.metaObject.characteristics.Comfort ? <div className="new-review-comfort">
-                    Comfort: <input className="new-review-radios" onClick={() => { setComfort(1) }} type="radio" name="comfort"></input><label>1</label>
-                    <input className="new-review-radios" onClick={() => { setComfort(2) }} type="radio" name="comfort"></input><label>2</label>
-                    <input className="new-review-radios" onClick={() => { setComfort(3) }} type="radio" name="comfort"></input><label>3</label>
-                    <input className="new-review-radios" onClick={() => { setComfort(4) }} type="radio" name="comfort"></input><label>4</label>
-                    <input className="new-review-radios" onClick={() => { setComfort(5) }} type="radio" name="comfort"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('comfort')}</span>
-                  </div> : <div></div>
+                    Comfort:<div className="new-review-radio-array">
+                      <input className="new-review-radios" onClick={() => { setComfort(1) }} type="radio" name="comfort"></input><label>1</label>
+                      <input className="new-review-radios" onClick={() => { setComfort(2) }} type="radio" name="comfort"></input><label>2</label>
+                      <input className="new-review-radios" onClick={() => { setComfort(3) }} type="radio" name="comfort"></input><label>3</label>
+                      <input className="new-review-radios" onClick={() => { setComfort(4) }} type="radio" name="comfort"></input><label>4</label>
+                      <input className="new-review-radios" onClick={() => { setComfort(5) }} type="radio" name="comfort"></input><label>5</label><br></br>
+                      <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('comfort')}</span>
+                    </div> </div> : <div></div>
                 }
                 {
                   props.metaObject.characteristics.Quality ? <div className="new-review-quality">
-                    Quality: <input className="new-review-radios" onClick={() => { setQuality(1) }} type="radio" name="quality"></input><label>1</label>
-                    <input className="new-review-radios" onClick={() => { setQuality(2) }} type="radio" name="quality"></input><label>2</label>
-                    <input className="new-review-radios" onClick={() => { setQuality(3) }} type="radio" name="quality"></input><label>3</label>
-                    <input className="new-review-radios" onClick={() => { setQuality(4) }} type="radio" name="quality"></input><label>4</label>
-                    <input className="new-review-radios" onClick={() => { setQuality(5) }} type="radio" name="quality"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('quality')}</span>
-                  </div> : <div></div>
+                    Quality:<div className="new-review-radio-array">
+                      <input className="new-review-radios" onClick={() => { setQuality(1) }} type="radio" name="quality"></input><label>1</label>
+                      <input className="new-review-radios" onClick={() => { setQuality(2) }} type="radio" name="quality"></input><label>2</label>
+                      <input className="new-review-radios" onClick={() => { setQuality(3) }} type="radio" name="quality"></input><label>3</label>
+                      <input className="new-review-radios" onClick={() => { setQuality(4) }} type="radio" name="quality"></input><label>4</label>
+                      <input className="new-review-radios" onClick={() => { setQuality(5) }} type="radio" name="quality"></input><label>5</label><br></br>
+                      <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('quality')}</span>
+                    </div> </div> : <div></div>
                 }
                 {
                   props.metaObject.characteristics.Length ? <div className="new-review-length">
-                    Length: <input className="new-review-radios" onClick={() => { setLength(1) }} type="radio" name="length"></input><label>1</label>
-                    <input className="new-review-radios" onClick={() => { setLength(2) }} type="radio" name="length"></input><label>2</label>
-                    <input className="new-review-radios" onClick={() => { setLength(3) }} type="radio" name="length"></input><label>3</label>
-                    <input className="new-review-radios" onClick={() => { setLength(4) }} type="radio" name="length"></input><label>4</label>
-                    <input className="new-review-radios" onClick={() => { setLength(5) }} type="radio" name="length"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('length')}</span>
-                  </div> : <div></div>
+                    Length:<div className="new-review-radio-array">
+                      <input className="new-review-radios" onClick={() => { setLength(1) }} type="radio" name="length"></input><label>1</label>
+                      <input className="new-review-radios" onClick={() => { setLength(2) }} type="radio" name="length"></input><label>2</label>
+                      <input className="new-review-radios" onClick={() => { setLength(3) }} type="radio" name="length"></input><label>3</label>
+                      <input className="new-review-radios" onClick={() => { setLength(4) }} type="radio" name="length"></input><label>4</label>
+                      <input className="new-review-radios" onClick={() => { setLength(5) }} type="radio" name="length"></input><label>5</label><br></br>
+                      <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('length')}</span>
+                    </div> </div>
+                    : <div></div>
                 }
                 {
                   props.metaObject.characteristics.Fit ? <div className="new-review-fit">
-                    Fit: <input className="new-review-radios" onClick={() => { setFit(1) }} type="radio" name="fit"></input><label>1</label>
-                    <input className="new-review-radios" onClick={() => { setFit(2) }} type="radio" name="fit"></input><label>2</label>
-                    <input className="new-review-radios" onClick={() => { setFit(3) }} type="radio" name="fit"></input><label>3</label>
-                    <input className="new-review-radios" onClick={() => { setFit(4) }} type="radio" name="fit"></input><label>4</label>
-                    <input className="new-review-radios" onClick={() => { setFit(5) }} type="radio" name="fit"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('fit')}</span>
-                  </div> : <div></div>
+                    Fit:<div className="new-review-radio-array">
+                      <input className="new-review-radios" onClick={() => { setFit(1) }} type="radio" name="fit"></input><label>1</label>
+                      <input className="new-review-radios" onClick={() => { setFit(2) }} type="radio" name="fit"></input><label>2</label>
+                      <input className="new-review-radios" onClick={() => { setFit(3) }} type="radio" name="fit"></input><label>3</label>
+                      <input className="new-review-radios" onClick={() => { setFit(4) }} type="radio" name="fit"></input><label>4</label>
+                      <input className="new-review-radios" onClick={() => { setFit(5) }} type="radio" name="fit"></input><label>5</label><br></br>
+                      <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('fit')}</span>
+                    </div> </div>
+                    : <div></div>
                 }
               </form>
               {
@@ -410,7 +418,7 @@ function NewReview(props) {
               }
               {
                 photos.length < 5 ? <div className="new-review-add-photo-button">
-                  <br></br><button onClick={handleAddPhoto}>Add a photo</button>
+                  <br></br><button onClick={handleAddPhoto}>&nbsp;Add a photo&nbsp;</button>
                 </div> : <div></div>
               }
               <div className="new-review-photo-modal" id="newReviewPhotoModal">
@@ -435,7 +443,7 @@ function NewReview(props) {
                   <div className="new-review-errors">{showErrors('characteristics')}</div>
                 </div> : <div></div>
               }
-              <button onClick={handleSubmit} className="new-review-submit-button">Submit</button>
+              <button onClick={handleSubmit} className="new-review-submit-button">&nbsp;Submit&nbsp;</button>
             </div>
           </div >
         </div>

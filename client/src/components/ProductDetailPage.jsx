@@ -25,8 +25,8 @@ class ProductDetailPage extends React.Component {
   }
 
   productSelect(id) {
-    this.setState({productId: id, listUpdate: !this.state.listUpdate});
-    serverRequest.get(`http://localhost:${PORT}/Overview`, {itemID: id}, (result) => {
+    this.setState({ productId: id, listUpdate: !this.state.listUpdate });
+    serverRequest.get(`http://localhost:${PORT}/Overview`, { itemID: id }, (result) => {
       this.setState({ productInfo: result.data })
     });
   }
@@ -68,18 +68,18 @@ class ProductDetailPage extends React.Component {
         </div>
 
         <div className='secondaryComponent'>
-        {
-          this.state.productInfo.productObj?
-          <RelatedAndOutfits productSelect={this.productSelect}
-          productID={this.state.productId}
-          productInfo={helperFunctions.createProductObjectData(this.state.productInfo)}
-          listUpdate={this.state.listUpdate}
-          />
-          : <RelatedAndOutfits productSelect={this.productSelect}
-          productID={this.state.productId} />
-        }
+          {
+            this.state.productInfo.productObj ?
+              <RelatedAndOutfits productSelect={this.productSelect}
+                productID={this.state.productId}
+                productInfo={helperFunctions.createProductObjectData(this.state.productInfo)}
+                listUpdate={this.state.listUpdate}
+              />
+              : <RelatedAndOutfits productSelect={this.productSelect}
+                productID={this.state.productId} />
+          }
           <QuestionsAndAnswers productID={13025} productName={this.state.productInfo.productObj?.name} />
-          <RatingsAndReviews productID={13027} />
+          <RatingsAndReviews productName={this.state.productInfo.productObj?.name} productID={this.state.productId} />
         </div>
       </div>
     )
