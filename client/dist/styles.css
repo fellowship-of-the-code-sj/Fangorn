@@ -534,6 +534,11 @@ input:checked + .slider:before {
   display:block;
 }
 
+.rating-number {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
 .rating-proportions {
   margin-bottom: 10px;
   margin-top: 10px;
@@ -547,7 +552,7 @@ input:checked + .slider:before {
 }
 
 .rating-proportion-fill {
-  background-color: rgb(44, 44, 44);
+  background-color: orange;
   background-position: 0 100%;
   float: left;
   height: 13px;
