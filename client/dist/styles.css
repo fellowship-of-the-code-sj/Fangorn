@@ -55,22 +55,35 @@ body { font-family: 'Lato', sans-serif; }
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          DARK THEME BUTTON
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
 .darkModeButton {
-  position: relative;
+  position: fixed;
   display: inline-block;
+  right: 50px;
+  top: 75px;
   width: 60px;
   height: 34px;
 }
 
-/* The switch - the box around the slider */
-/* .switch {
+.darkModeMoon {
   position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-} */
+  left: 35px;
+  top: 9px;
+  z-index: 2;
+  color: white;
+}
+
+
+.darkModeSun {
+  position: relative;
+  left: 5px;
+  top: 9px;
+  z-index: 2;
+  color: black;
+}
 
 /* Hide default HTML checkbox */
 .darkModeButton input {
@@ -87,7 +100,7 @@ body { font-family: 'Lato', sans-serif; }
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: rgb(0, 0, 0);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -99,17 +112,29 @@ body { font-family: 'Lato', sans-serif; }
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider.dark:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgb(0, 0, 0);
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #ffffff;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #ffffff;
 }
 
 input:checked + .slider:before {
@@ -155,29 +180,32 @@ input:checked + .slider:before {
 
 .relatedItemsAndOutfits {
   padding: 50px 0px;
+  display: block;
   left: 100px;
   width: 800px;
   min-width: 850px;
   max-width: 900px;
   margin: auto;
+  height: auto;
 }
 
 .itemsList {
-  height: 300px;
+  height: 350px;
   margin-bottom: 70px;
 }
 
 .itemCard, .itemCardRelated {
   border: 1px solid grey;
+  padding-top: 0;
   width: 200px;
-  height: 35vh;
-  min-height: 300px;
+  height: 325px;
+  min-height: 325px;
 }
 
 .outfitAddItemCard {
   border: 1px solid grey !important;
   width: 200px !important;
-  height: 35vh !important;
+  height: 325px !important;
   min-height: 300px !important;
 }
 
@@ -204,44 +232,46 @@ input:checked + .slider:before {
   top: 40%;
 }
 
-.itemCardImg {
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  display: block;
-  position:relative;
-  object-fit: cover;
-}
-
 .photoBorder {
-  z-index: 0;
+  z-index: 1;
   position: relative;
-  top: -6%;
+  top: -18px;
   left: 0;
   width: 100%;
   height: 65%;
   background-color: rgba(0, 0, 0, .1);
 }
 
+.itemCardImg {
+  z-index: 2;
+  display: block;
+  position:relative;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 .cardCategory {
   position: relative;
-  top: -4%;
-  left: 5%;
-  font-size: 1.4vh;
+  top: -5px;
+  left: 8px;
+  font-size: 13px;
+  font-weight: 300;
 }
 
 .cardItemName {
   position: relative;
-  top: -2%;
-  left: 5%;
-  font-size: 1.6vh;
+  top: -5px;
+  left: 8px;
+  font-size: 15px;
 }
 
 .cardItemPrice, .cardItemSalePrice{
   position: relative;
-  top: 0%;
-  left: 5%;
-  font-size: 1.4vh;
+  top: -2px;
+  left: 8px;
+  font-size: 13px;
+  font-weight: 300;
 }
 
 .cardItemsalePrice {
@@ -270,7 +300,7 @@ input:checked + .slider:before {
   width: 75px;
   padding: 0;
   position: relative;
-  top: 0%;
+  top: -2%;
   left: 5%;
 }
 
