@@ -5,17 +5,17 @@ import RelatedActionButton from './RelatedActionButton.jsx';
 import helperFunctions from '../../../helperFunctions/helperFunctions.js';
 import ComparisonTable from './ComparisonTable.jsx';
 
-const RelatedItemCard = ({ cardData, actionButtonListener }) => {
+const RelatedItemCard = ({ cardData, actionButtonListener, productSelect }) => {
 
   //State for comparison table toggle
   const [ actionButtonToggle, setActionButtonToggle] = useState(false)
 
   return (
-    <div className='itemCard'>
+    <div onClick={() => productSelect(cardData.id)} className='itemCard'>
 
       {/* Star Action Button */}
-      <RelatedActionButton actionButtonListener={() => {
-        actionButtonListener(cardData)
+      <RelatedActionButton actionButtonListener={(event) => {
+        actionButtonListener(event, cardData)
       }}/>
       <div className='photoBorder'>
         {
@@ -49,5 +49,6 @@ export default RelatedItemCard;
 
 RelatedItemCard.propTypes = {
   cardData: PropTypes.object,
-  actionButtonListener: PropTypes.func
+  actionButtonListener: PropTypes.func,
+  productSelect: PropTypes.func
 }

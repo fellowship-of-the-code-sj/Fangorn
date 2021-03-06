@@ -6,17 +6,22 @@ import "react-multi-carousel/lib/styles.css";
 import helperFunctions from '../../../helperFunctions/helperFunctions.js';
 import ComparisonTable from './ComparisonTable.jsx';
 
-const RelatedItemsList = ({ relatedItemsList, productInfo }) => {
+const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect }) => {
 
   const [ actionButtonToggle, setActionButtonToggle ] = useState(false);
 
   const [comparisonData, setComparisonData] = useState({});
 
    //event listener for action button
-  const actionButtonListener = (comparedItem) => {
+  const actionButtonListener = (event, comparedItem) => {
+
+    if (!actionButtonToggle) {
+      event.stopPropagation();
+    }
     setComparisonData(comparedItem);
     setActionButtonToggle(!actionButtonToggle);
   }
+
 
   return (
     <div className='itemsList'>
@@ -26,7 +31,7 @@ const RelatedItemsList = ({ relatedItemsList, productInfo }) => {
         <Carousel containerClass='carouselContainer' draggable={false} itemClass='carouselItems' partialVisible={true} responsive={helperFunctions.responsive}>
           {
             relatedItemsList.map((item) => {
-              return <RelatedItemCard actionButtonListener={actionButtonListener} productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;
+              return <RelatedItemCard productSelect={productSelect} actionButtonListener={actionButtonListener} productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;
             })
           }
 
@@ -53,5 +58,6 @@ export default RelatedItemsList;
 
 RelatedItemsList.propTypes = {
   relatedItemsList: PropTypes.array,
-  productInfo: PropTypes.object
+  productInfo: PropTypes.object,
+  productSelect: PropTypes.func
 }
