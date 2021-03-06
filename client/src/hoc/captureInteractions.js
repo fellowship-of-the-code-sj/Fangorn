@@ -3,7 +3,7 @@ import React from 'react';
 const captureInteractions = module => {
   return function decorator(WrappedComponent) {
     return function decoratedComponent(props) {
-      const doSomething = e => {
+      const logger = e => {
         const currentDate = new Date();
         console.log('stealing your data..');
         console.log('\telement:', e.target.nodeName);
