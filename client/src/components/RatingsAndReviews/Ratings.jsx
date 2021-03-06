@@ -78,35 +78,35 @@ function Ratings(props) {
       <div className="rating-proportions">
         {/*5 stars*/}
         <div className="rating-proportion">
-          <span className="star-label">5 stars</span>
+          <span onClick={() => { props.toggleStarSort(5) }} className="star-label">5 stars</span>
           <div className="rating-proportion-bar">
             <span className="rating-proportion-fill" style={{ "width": getRatingProportion(5) }}></span>
           </div>
         </div>
         {/*4 stars*/}
         <div className="rating-proportion">
-          <span className="star-label">4 stars</span>
+          <span onClick={() => { props.toggleStarSort(4) }} className="star-label">4 stars</span>
           <div className="rating-proportion-bar">
             <span className="rating-proportion-fill" style={{ "width": getRatingProportion(4) }}></span>
           </div>
         </div>
         {/*3 stars*/}
         <div className="rating-proportion">
-          <span className="star-label">3 stars</span>
+          <span onClick={() => { props.toggleStarSort(3) }} className="star-label">3 stars</span>
           <div className="rating-proportion-bar">
             <span className="rating-proportion-fill" style={{ "width": getRatingProportion(3) }}></span>
           </div>
         </div>
         {/*2 stars*/}
         <div className="rating-proportion">
-          <span className="star-label">2 stars</span>
+          <span onClick={() => { props.toggleStarSort(2) }} className="star-label">2 stars</span>
           <div className="rating-proportion-bar">
             <span className="rating-proportion-fill" style={{ "width": getRatingProportion(2) }}></span>
           </div>
         </div>
         {/*1 stars*/}
         <div className="rating-proportion">
-          <span className="star-label">1 star</span>
+          <span onClick={() => { props.toggleStarSort(1) }} className="star-label">1 star</span>
           <div className="rating-proportion-bar">
             <span className="rating-proportion-fill" style={{ "width": getRatingProportion(1) }}></span>
           </div>

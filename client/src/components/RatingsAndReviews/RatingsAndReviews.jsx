@@ -7,11 +7,11 @@ import Review from './Review.jsx'
 
 function RatingsAndReviews(props) {
   const [starSort, setStarSort] = useState({
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-    5: false
+    1: true,
+    2: true,
+    3: true,
+    4: true,
+    5: true
   });
   const [fetchedMetaObject, willFetchMetaObject] = useState(false);
   const [metaObject, setMetaObject] = useState({
@@ -39,20 +39,21 @@ function RatingsAndReviews(props) {
 
   })
 
-  const sortByStar = (star, sort) => {
+  const toggleStarSort = (star) => {
     var newStarSort = starSort;
-    if (sort) {
-      newStarSort[star] = true;
-    } else {
+    if (starSort[star]) {
       newStarSort[star] = false;
+    } else {
+      newStarSort[star] = true;
     }
+    console.log('newStarSort: ', newStarSort)
     setStarSort(newStarSort);
   }
 
   return (
     <div className="ratings-and-reviews">
       <h3>Ratings and Reviews</h3><br></br>
-      <Ratings sortByStar={sortByStar} metaObject={metaObject} />
+      <Ratings toggleStarSort={toggleStarSort} metaObject={metaObject} />
       <ReviewsList starSort={starSort} metaObject={metaObject} productID={props.productID} />
     </div>
   )

@@ -8,7 +8,7 @@ function ReviewsList(props) {
 
   const [list, setList] = useState([]);
   const [visibleList, setVisibleList] = useState([]);
-  const [hasFetchedList, willFetchList] = useState(false);
+  const [sortQuery, setSortQuery] = useState('relevant')
 
   // make api call to update reviewsList
   const getList = (sortQuery) => {
@@ -21,9 +21,19 @@ function ReviewsList(props) {
       }
     })
       .then((response) => {
-        setList(response.data);
-        setVisibleList(response.data.slice(0, 2))
+        setList(sortByStar(response.data));
+        setVisibleList(sortByStar(response.data).slice(0, 2))
       })
+  }
+
+  const sortByStar = (list) => {
+    var filteredList = [];
+    for (var i = 0; i < list.length; i++) {
+      if (props.starSort[list[i].rating]) {
+        filteredList.push(list[i])
+      }
+    }
+    return filteredList;
   }
 
   const handleNewReview = (event) => {
@@ -41,15 +51,14 @@ function ReviewsList(props) {
 
   const handleSortChange = (e) => {
     e.preventDefault();
+    setSortQuery(e.target.value);
     getList(e.target.value);
   }
 
   useEffect(() => {
-    if (!hasFetchedList) {
-      getList('relevant')
-      willFetchList(true);
-    }
-  })
+    getList(sortQuery);
+    console.log('useEffect');
+  }, [props.starSort, props.productID, props.metaObject]);
 
   return (
     <div className="reviews-list">
