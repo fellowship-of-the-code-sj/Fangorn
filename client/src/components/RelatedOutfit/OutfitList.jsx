@@ -7,8 +7,6 @@ import helperFunctions from '../../../helperFunctions/helperFunctions.js';
 
 const OutfitList = ({ productInfo }) => {
 
-  const [ carouselInput, setCarouselInput ] = useState({start: 0, end: 4});
-
   if (!window.localStorage.outfitList) {
     var list = [];
   } else {
@@ -17,12 +15,17 @@ const OutfitList = ({ productInfo }) => {
 
   const [ outfitList, setOutfitList ] = useState( { list } )
 
+  const [ listUpdate, setListUpdate] = useState(false);
+
   //Adds item to outfitList
   const addOutfit = () => {
 
     //check if the product already exists in the outfit list
     if (!outfitList.list.find(outfitItem => outfitItem.id === productInfo.id)) {
+      setListUpdate(!listUpdate);
+
       outfitList.list.push(productInfo);
+
       var outfitListArrayString = JSON.stringify(outfitList.list);
       window.localStorage.setItem('outfitList', outfitListArrayString);
       setOutfitList({ list: outfitList.list });
@@ -30,25 +33,41 @@ const OutfitList = ({ productInfo }) => {
   }
 
   const removeOutfitItem = (item) => {
-    var index = outfitList.list.indexOf({ id: item})
+    setListUpdate(!listUpdate);
+
+    var index = helperFunctions.findIndex(outfitList.list, item)
     outfitList.list.splice(index, 1);
+
     var outfitListArrayString = JSON.stringify(outfitList.list);
     window.localStorage.setItem('outfitList', outfitListArrayString);
+
     setOutfitList({list: outfitList.list });
   }
 
   return (
-    <div className='relatedItemsList'>
-      <Carousel responsive={helperFunctions.responsive}>
-        <div className='outfitAddItemCard' onClick={addOutfit} >{'ADD Outfit'}</div>
-        {
+    <div key={listUpdate} className='itemsList'>
+      <h3 className='listTitle' >Your Outfit</h3>
+        <Carousel containerClass="carousel-container" itemClass='carouselItems'
+        draggable={false}
+        partialVisible={true}
+        responsive={helperFunctions.responsive}>
+          {/* {outfitList.list.length? null:null} */}
+
+          <div className='outfitAddItemCard' onClick={addOutfit} >
+              <div className='addOutfitText'>
+                ADD TO OUTFIT
+                <br></br>
+                <ion-icon name="add-circle-outline"></ion-icon>
+              </div>
+          </div>
+          {
           outfitList.list.length ?
-          outfitList.list.map((item) => {
-            return <OutfitListCard key={item.id} cardData={item} removeOutfitItem={removeOutfitItem} ></OutfitListCard>
-          })
+            outfitList.list.map((item) => {
+              return <OutfitListCard key={item.id} cardData={item} removeOutfitItem={removeOutfitItem} ></OutfitListCard>
+            })
           : null
         }
-      </Carousel>
+        </Carousel>
 
     </div>
   )

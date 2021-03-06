@@ -4,28 +4,29 @@ import PropTypes from 'prop-types';
 const ComparisonTable = ({ comparisionList, currentProductName, relatedProductName }) => {
   return (
     <table className='innerModal'>
-      <thead>
+      <tr className='comparingTitle' >COMPARING</tr>
+      <thead className='modalHead'>
         <tr>
-          <th>{currentProductName}</th>
+          <th className='leftTitle' >{currentProductName}</th>
           <th></th>
-          <th>{relatedProductName}</th>
+          <th className='rightTitle' >{relatedProductName}</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className='modalBody'>
         {
           Object.keys(comparisionList).map((feature, index) => {
             return (
             <tr key={index}>
               {
                 comparisionList[feature][0]?
-                <td>✓</td>
-                : <td> </td>
+                <td className='leftCheckMark' ><ion-icon name="checkmark-outline"></ion-icon></td>
+                : <td className='leftCheckMark' > </td>
               }
-              <td>{feature}</td>
+              <td className='centerFeature' >{feature}</td>
               {
                 comparisionList[feature][1]?
-                <td>✓</td>
-                : <td> </td>
+                <td className='rightCheckMark' ><ion-icon name="checkmark-outline"></ion-icon></td>
+                : <td className='rightCheckMark' > </td>
               }
             </tr>
             )

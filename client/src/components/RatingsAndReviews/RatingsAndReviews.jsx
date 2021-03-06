@@ -53,9 +53,13 @@ function RatingsAndReviews(props) {
 
   return (
     <div className="ratings-and-reviews">
+
       <h3>Ratings and Reviews</h3><br></br>
+
       <Ratings toggleStarSort={toggleStarSort} metaObject={metaObject} />
       <ReviewsList tracker={tracker} starSort={starSort} metaObject={metaObject} productID={props.productID} />
+      <a name="randr"/>
+
     </div>
   )
 }
