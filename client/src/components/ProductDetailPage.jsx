@@ -41,7 +41,18 @@ class ProductDetailPage extends React.Component {
         <div className='darkModeButton'>
           <label>
             <input onClick={this.toggleDarkMode} type="checkbox"></input>
-            <span className="slider round"></span>
+            <span className={ this.state.darkMode? 'slider round dark': 'slider round' }>
+              {
+                !this.state.darkMode?
+                <div className='darkModeMoon'>
+                  <ion-icon name="moon"></ion-icon>
+                </div>
+                :
+                <div className='darkModeSun'>
+                  <ion-icon name="sunny"></ion-icon>
+                </div>
+              }
+            </span>
           </label>
         </div>
         <div className='primaryComponent'>

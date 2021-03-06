@@ -55,22 +55,35 @@ body { font-family: 'Lato', sans-serif; }
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          DARK THEME BUTTON
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
 .darkModeButton {
-  position: relative;
+  position: fixed;
   display: inline-block;
+  right: 50px;
+  top: 75px;
   width: 60px;
   height: 34px;
 }
 
-/* The switch - the box around the slider */
-/* .switch {
+.darkModeMoon {
   position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-} */
+  left: 35px;
+  top: 9px;
+  z-index: 2;
+  color: white;
+}
+
+
+.darkModeSun {
+  position: relative;
+  left: 5px;
+  top: 9px;
+  z-index: 2;
+  color: black;
+}
 
 /* Hide default HTML checkbox */
 .darkModeButton input {
