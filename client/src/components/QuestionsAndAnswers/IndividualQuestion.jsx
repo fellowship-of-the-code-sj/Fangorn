@@ -4,8 +4,9 @@ import _ from 'underscore';
 import axios from 'axios';
 import AnswerList from './AnswerList.jsx';
 import AddAnswer from './AddAnswer.jsx';
+import captureQandA from '../../hoc/captureQandA';
 
-const IndividualQuestion = ({ question, productName }) => {
+const IndividualQuestion = ({ question, productName, doSomething }) => {
   const [ answers, setAnswers ] = useState([]);
   const [ showAddAnswerModal, setShowAddAnswerModal ] = useState(false);
   const [ showingMoreAnswers, setShowingMoreAnswers ] = useState(false);
@@ -103,7 +104,12 @@ const IndividualQuestion = ({ question, productName }) => {
             </div>
             <div className="spacer">|</div>
             <div>
-              <a href="#" onClick={handleAddAnswerModal}>Add Answer</a>
+            <a
+                href="#"
+                onClick={e => {
+                  handleAddAnswerModal(e);
+                  doSomething(e);
+                }}>Add Answer</a>
             </div>
           </div>
         </div>
@@ -133,7 +139,7 @@ const IndividualQuestion = ({ question, productName }) => {
   );
 };
 
-export default IndividualQuestion;
+export default captureQandA(IndividualQuestion);
 
 IndividualQuestion.propTypes = {
   question: PropTypes.object,
