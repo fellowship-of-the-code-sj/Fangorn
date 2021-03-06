@@ -304,7 +304,7 @@ body { font-family: 'Lato', sans-serif; }
 }
 .reviews-list-content {
   overflow:auto;
-  max-height: 80%;
+  max-height: 65%;
 }
 
 .review {
