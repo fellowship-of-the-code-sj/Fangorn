@@ -1,6 +1,8 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+
   mode: 'development',
   entry: './client/src/index.jsx',
   output: {
@@ -37,6 +39,13 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '/public/icons/[name].[ext]'
+        }
       }
     ],
   },

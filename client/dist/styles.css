@@ -59,38 +59,47 @@ body { font-family: 'Lato', sans-serif; }
 ***** Related Items and Outfit *****
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
+
+.slick-prev:before, .slick-next:before {
+  color: black !important;
+}
+
 .relatedItemsAndOutfits {
   padding: 50px 0px;
+  left: 100px;
+  width: 800px;
   min-width: 850px;
   max-width: 900px;
   margin: auto;
 }
 
 .itemsList {
-  padding-bottom: 20px;
+  height: 300px;
+  margin-bottom: 70px;
 }
 
-.itemCard, .outfitAddItemCard {
+.itemCard, .itemCardRelated {
   border: 1px solid grey;
-  margin: 5px;
   width: 200px;
   height: 35vh;
   min-height: 300px;
 }
 
-.itemCard:hover {
+.outfitAddItemCard {
+  border: 1px solid grey !important;
+  width: 200px !important;
+  height: 35vh !important;
+  min-height: 300px !important;
+}
+
+.itemCardRelated:hover {
   cursor: pointer;
 }
-
-.carousel-container {
-}
-/* .carouselItems {
-
-} */
 
 .outfitAddItemCard {
   font-size: 20px;
   text-align: center;
+  margin-right: 10px;
 }
 
 .outfitAddItemCard:hover {
@@ -111,7 +120,6 @@ body { font-family: 'Lato', sans-serif; }
   height: 100%;
   width: 100%;
   display: block;
-  margin: auto;
   position:relative;
   object-fit: cover;
 }
@@ -119,7 +127,7 @@ body { font-family: 'Lato', sans-serif; }
 .photoBorder {
   z-index: 0;
   position: relative;
-  top: 0;
+  top: -6%;
   left: 0;
   width: 100%;
   height: 65%;
@@ -127,23 +135,23 @@ body { font-family: 'Lato', sans-serif; }
 }
 
 .cardCategory {
-  position: fixed;
-  top: 60%;
+  position: relative;
+  top: -4%;
   left: 5%;
   font-size: 1.4vh;
 }
 
 .cardItemName {
-  position: fixed;
-  top: 67%;
+  position: relative;
+  top: -2%;
   left: 5%;
   font-size: 1.6vh;
 
 }
 
 .cardItemPrice, .cardItemSalePrice{
-  position: fixed;
-  top: 75%;
+  position: relative;
+  top: 0%;
   left: 5%;
   font-size: 1.4vh;
 }
@@ -154,16 +162,16 @@ body { font-family: 'Lato', sans-serif; }
 
 .action-button {
   z-index: 2;
-  position: fixed;
-  left: 175px;
-  top: 20px;
+  position: relative;
+  left: 170px;
+  top: 10px;
   font-size: 18px;
   color: rgb(165, 52, 52);
 }
 
 .action-button:hover {
-  transform: scale(1.25);
   color: red;
+  cursor: pointer;
 }
 
 .star-ratings {
@@ -173,8 +181,8 @@ body { font-family: 'Lato', sans-serif; }
   height: 15px;
   width: 75px;
   padding: 0;
-  position: fixed;
-  top: 90%;
+  position: relative;
+  top: 0%;
   left: 5%;
 }
 
@@ -207,74 +215,71 @@ body { font-family: 'Lato', sans-serif; }
 
 .innerModal {
   z-index: 300;
-  position: fixed;
-  width: 40%;
-  height: auto;
-  max-height: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -60%);
-  background-color: white;
-  padding: 35px 10px;
   border: 1px black solid;
+  position: fixed;
+  top: 40%;
+  left: 30%;
+  height: auto;
+  background-color: white;
 }
 
-.modalHead {
-  position: relative;
-  top: 30px
+.innerModal table {
+  padding: 15px 10px;
+  width: 450px;
+  height: auto;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-bottom: 25px;;
 }
 
-.leftCheckMark {
-  text-align: left;
+.comparingItems {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.rightTitle {
+  position: absolute;
+  right: 10px;
+}
+
+.rightTitle {
+  position: absolute;
+  right: 10px;
+}
+
+
+.centerFeature {
+  position: absolute;
+  clear: left;
+  right: 125px;
+  text-align: center;
+  width: 210px;
+  font-size: 11px;
+}
+
+.modalHead th {
+  padding-bottom: 20px;
+}
+
+.modalBody td {
+  padding: 5px;
 }
 
 .rightCheckMark {
   text-align: right;
-}
-
-.centerFeature {
   position: relative;
-  text-align: center;
-  width: 150px;
+  right: 10px;
 }
 
-.leftTitle {
-  text-align: left;
-  position: relative;
-  left: 0px;
-  width: 300px;
+.leftTitle, .rightTitle {
+  font-size: 13px;
 }
 
-.rightTitle {
-  position: relative;
-  width: 300px;
-  right: 0px;
-  text-align: right;
+.comparingItems {
+  font-size: 11px;
 }
 
-.comparingTitle {
-  position: absolute;
-  left: 13px;
-  top: 15px;
-  font-size: 10px;
-}
-
-.leftCheckMark, .rightCheckMark, .centerFeature {
-  padding: 5px;
-}
-
-.rightTitle, .leftTitle {
-  padding-bottom: 40px;
-}
-
-.modalBody {
-  position: relative;
-  margin-top: 50px;
-  top: 200px;
-  max-height: 300px;
-  overflow-y:scroll;
-  font-weight: 250;
-}
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ***** Ratings and reviews *****
