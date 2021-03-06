@@ -16,7 +16,7 @@ var AddQuestion = ({ productID, handleAddQuestionModal }) => {
 
   useEffect(() => {
     if (isSubmitted) setIsSubmitted(false);
-  }, [ answer, nickname, email ]);
+  }, [ question, nickname, email ]);
 
   const handleChange = e => {
     let value = e.target.value
