@@ -105,6 +105,7 @@ function Review(props) {
           <img src={selectedPhoto.url} ></img>
         </div>
       </div>
+      <hr></hr>
     </div>
   )
 }
