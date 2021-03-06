@@ -24,6 +24,8 @@ app.get('/RatingsAndReviews/getAll', controller.ratingsAndReviews.getAll);
 
 app.get('/RatingsAndReviews/getMeta', controller.ratingsAndReviews.getMeta);
 
+app.post('/RatingsAndReviews/postReview', controller.ratingsAndReviews.postReview);
+
 app.get('/Overview', controller.overview.get)
 
 // Resolves get request for endpoint /Overview

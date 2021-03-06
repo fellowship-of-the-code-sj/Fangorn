@@ -18,6 +18,7 @@ class ProductDetailPage extends React.Component {
 
 
   componentDidMount() {
+
     serverRequest.get(`http://localhost:${PORT}/Overview`, {itemID: this.state.productId}, (result) => {
       this.setState({ productInfo: result.data })
     });
@@ -58,7 +59,7 @@ class ProductDetailPage extends React.Component {
           productID={this.state.productId} />
         }
           <QuestionsAndAnswers productID={13025} productName={this.state.productInfo.productObj?.name} />
-          <RatingsAndReviews productID={13023} />
+          <RatingsAndReviews productID={13027} />
         </div>
       </div>
     )

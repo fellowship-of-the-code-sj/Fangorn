@@ -44,5 +44,16 @@ module.exports = {
         res.send(results.data);
       }
     })
+  },
+  postReview: (req, res) => {
+    reviews.postReview(req.body, (err) => {
+      if (err) {
+        console.log('Error posting new review, error: ', err);
+        res.end();
+      } else {
+        console.log('Successfully posted new review');
+        res.end();
+      }
+    })
   }
 }

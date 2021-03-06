@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import NewReview from './NewReview.jsx'
 import Review from './Review.jsx';
 import axios from 'axios';
@@ -14,14 +15,14 @@ function ReviewsList(props) {
     axios.get('/RatingsAndReviews/getAll', {
       params: {
         page: 1,
-        count: 5,
+        count: 20,
         sort: 'newest',
         product_id: props.productID
       }
     })
       .then((response) => {
         setList(response.data);
-        setVisibleList(response.data.slice(0, 1))
+        setVisibleList(response.data.slice(0, 2))
       })
   }
 
@@ -29,8 +30,13 @@ function ReviewsList(props) {
     // call api and send new review, then update state
   }
 
+  const showForm = () => {
+    var modal = document.getElementById('newReviewForm');
+    modal.style.display = "block";
+  }
+
   const showMoreReviews = () => {
-    setVisibleList(list.slice(0, visibleList.length + 1));
+    setVisibleList(list.slice(0, visibleList.length + 2));
   }
 
   useEffect(() => {
@@ -46,9 +52,17 @@ function ReviewsList(props) {
         return <Review key={review.review_id} review={review} />
       })}
       {
-        list.length > visibleList.length ? <button className="show-more-reviews-button" onClick={showMoreReviews}>Show more reviews</button> : <div></div>
+        list.length > visibleList.length ?
+          <div className="review-list-buttons">
+            <button className="show-more-reviews-button" onClick={showMoreReviews}>Show more reviews</button>
+            <button className="new-review-button" onClick={showForm}>Leave a review</button>
+          </div> :
+          <div className="review-list-buttons">
+            <button className="new-review-button" onClick={showForm}>Leave a review</button>
+          </div>
       }
-    </div>
+      <NewReview metaObject={props.metaObject} productID={props.productID} />
+    </div >
   )
 }
 
