@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RelatedItemCard from './RelatedItemCard.jsx';
-import Carousel from 'react-multi-carousel';
-import "react-multi-carousel/lib/styles.css";
 import helperFunctions from '../../../helperFunctions/helperFunctions.js';
 import ComparisonTable from './ComparisonTable.jsx';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
+
 const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUpdate }) => {
+
+  var settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1
+  };
 
   const [ actionButtonToggle, setActionButtonToggle ] = useState(false);
 
@@ -28,14 +39,13 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
       <h3 className='listTitle' >Related Products</h3>
       {
         relatedItemsList.length?
-        <Carousel containerClass='carouselContainer' draggable={false} itemClass='carouselItems' partialVisible={true} responsive={helperFunctions.responsive}>
+        <Slider {...settings} draggable={false} >
           {
             relatedItemsList.map((item) => {
               return <RelatedItemCard listUpdate={listUpdate} productSelect={productSelect} actionButtonListener={actionButtonListener} productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;
             })
           }
-
-        </Carousel>
+        </Slider>
         : null
       }
       {

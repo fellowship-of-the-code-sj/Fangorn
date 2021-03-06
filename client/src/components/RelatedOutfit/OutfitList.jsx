@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import OutfitListCard from './OutfitListCard.jsx';
-import Carousel from 'react-multi-carousel';
-import "react-multi-carousel/lib/styles.css";
 import helperFunctions from '../../../helperFunctions/helperFunctions.js';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
+
 const OutfitList = ({ productInfo }) => {
+
+  var settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    className: 'carousel-cards'
+  };
+
 
   if (!window.localStorage.outfitList) {
     var list = [];
@@ -47,11 +60,7 @@ const OutfitList = ({ productInfo }) => {
   return (
     <div key={listUpdate} className='itemsList'>
       <h3 className='listTitle' >Your Outfit</h3>
-        <Carousel containerClass="carousel-container" itemClass='carouselItems'
-        draggable={false}
-        partialVisible={true}
-        responsive={helperFunctions.responsive}>
-          {/* {outfitList.list.length? null:null} */}
+        <Slider {...settings} draggable={false}>
 
           <div className='outfitAddItemCard' onClick={addOutfit} >
               <div className='addOutfitText'>
@@ -67,7 +76,7 @@ const OutfitList = ({ productInfo }) => {
             })
           : null
         }
-        </Carousel>
+        </Slider>
 
     </div>
   )
@@ -78,3 +87,28 @@ export default OutfitList;
 OutfitList.propTypes = {
   productInfo: PropTypes.object
 }
+
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 3,
+    partialVisibilityGutter: 40
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    partialVisibilityGutter: 40
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 3,
+    partialVisibilityGutter: 40
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 3,
+    partialVisibilityGutter: 40
+  }
+};

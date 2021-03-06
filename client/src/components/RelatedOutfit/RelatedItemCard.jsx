@@ -11,7 +11,7 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect }) => {
   const [ actionButtonToggle, setActionButtonToggle] = useState(false)
 
   return (
-    <div onClick={() => productSelect(cardData.id)} className='itemCard'>
+    <div onClick={() => productSelect(cardData.id)} className='itemCardRelated'>
 
       {/* Star Action Button */}
       <RelatedActionButton actionButtonListener={(event) => {
