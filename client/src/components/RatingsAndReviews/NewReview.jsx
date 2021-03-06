@@ -53,23 +53,79 @@ function NewReview(props) {
   }
 
   const handleSubmit = () => {
-    if (rating !== 0 && name !== '' && validateEmail(email) && body.length >= 50 && recommend !== null) {
+    if (isValidForm()) {
       sendReview();
       hideForm();
       alert('Review submitted');
       clickedSubmit(false);
-      setRating(0);
-      setName('');
-      setEmail('');
-      setSummary('');
-      setBody('');
-      setRecommend(null);
-      setCharCount(0);
-      setPhotos([]);
-      // TODO: set all characteristics
+      clearForm();
     } else {
       clickedSubmit(true);
     }
+  }
+
+  const isValidForm = () => {
+    if (rating !== 0 && name !== '' && validateEmail(email) && body.length >= 50 && recommend !== null && isValidCharacteristics()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  const isValidCharacteristics = () => {
+    var valid = 1;
+    if (size || !props.metaObject.characteristics.Size) {
+      valid *= 1
+    } else {
+      valid *= 0
+    }
+    if (width || !props.metaObject.characteristics.Width) {
+      valid *= 1
+    } else {
+      valid *= 0
+    }
+    if (comfort || !props.metaObject.characteristics.Comfort) {
+      valid *= 1
+    } else {
+      valid *= 0
+    }
+    if (quality || !props.metaObject.characteristics.Quality) {
+      valid *= 1
+    } else {
+      valid *= 0
+    }
+    if (length || !props.metaObject.characteristics.Length) {
+      valid *= 1
+    } else {
+      valid *= 0
+    }
+    if (fit || !props.metaObject.characteristics.Fit) {
+      valid *= 1
+    } else {
+      valid *= 0
+    }
+
+    if (valid) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  const clearForm = () => {
+    setRating(0);
+    setName('');
+    setEmail('');
+    setSummary('');
+    setBody('');
+    setRecommend(null);
+    setCharCount(0);
+    setPhotos([]);
+    setSize(null);
+    setWidth(null);
+    setComfort(null);
+    setQuality(null);
+    setLength(null);
+    setFit(null);
   }
 
   function validateEmail(email) {
@@ -93,6 +149,9 @@ function NewReview(props) {
     }
     if (input === 'recommend' && recommend === null) {
       return 'You must select a recommendation'
+    }
+    if (input === 'characteristics' && !isValidCharacteristics()) {
+      return 'You must fill out all the characteristics'
     }
   }
 
@@ -250,7 +309,7 @@ function NewReview(props) {
                 <input onClick={() => setRecommend(false)} type="radio" name="recommend" ></input>
                 <label >No</label><br></br>
               </form>
-              <form className="new-review-characteristics">
+              <form className="new-review-characteristics">Product characteristics<sup className="mandatory">&nbsp;*</sup>
                 {
                   props.metaObject.characteristics.Size ? <div className="new-review-size">
                     Size: <input onClick={() => { setSize(1) }} type="radio" name="size"></input><label>1</label>
@@ -319,6 +378,7 @@ function NewReview(props) {
                   <div className="new-review-errors">{showErrors('email')}</div>
                   <div className="new-review-errors">{showErrors('body')}</div>
                   <div className="new-review-errors">{showErrors('recommend')}</div>
+                  <div className="new-review-errors">{showErrors('characteristics')}</div>
                 </div> : <div></div>
               }
               <button onClick={handleSubmit} className="new-review-submit-button">Submit</button>
