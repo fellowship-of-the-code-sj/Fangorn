@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 export default function RelatedActionButton({ actionButtonListener }) {
 
   return (
-    <div className="star-action-button">
-      <span onClick={actionButtonListener}>★</span>
+    <div className="action-button">
+      <span onClick={actionButtonListener}>
+        <ion-icon name="star-outline"></ion-icon>
+      </span>
     </div>
   )
 }
