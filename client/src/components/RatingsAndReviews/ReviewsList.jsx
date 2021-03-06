@@ -82,7 +82,7 @@ function ReviewsList(props) {
 
   const ClearFilter = () => {
     return (
-      <button onClick={props.resetStarSort} >Clear filtering</button>
+      <button onClick={props.resetStarSort} >&nbsp;Clear filtering&nbsp;</button>
     )
   }
 
@@ -99,7 +99,7 @@ function ReviewsList(props) {
         <option value="helpful">Most helpful</option>
       </select>
       {
-        isFiltering() ? <span>, filtering by {whichFilters()} reviews<ClearFilter /></span> : null
+        isFiltering() ? <span>, filtering by {whichFilters()} reviews&nbsp;<ClearFilter /></span> : null
       }
       <hr></hr>
       <div className="reviews-list-content">
