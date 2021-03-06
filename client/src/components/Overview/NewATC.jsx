@@ -70,8 +70,11 @@ const ATC = ({ skus }) => {
           id="sizeSelect"
           onChange={(e) => {sizeChange(e.target.value)}}>
           <option>Select Size</option>
-          {sizes.map((size, i) => (
+          {/* {sizes.map((size, i) => (
             <option key={i}>{size}</option>
+          ))} */}
+          {Object.keys(skus).map((key, index) => (
+            <option key={key}>{skus[key].size}</option>
           ))}
         </select> :
         <select id="sizeSelect" disabled><option>OUT OF STOCK</option></select>
