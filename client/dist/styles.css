@@ -415,6 +415,8 @@ body { font-family: 'Lato', sans-serif; }
 }
 
 .star-label {
+  cursor: pointer;
+  background-color: none;
   text-decoration: underline;
   position: relative;
   top: 15px;
