@@ -40,9 +40,12 @@ function RatingsAndReviews(props) {
 
   return (
     <div className="ratings-and-reviews">
+
       <h3>Ratings and Reviews</h3><br></br>
       <Ratings sortByStar={sortByStar} metaObject={metaObject} />
       <ReviewsList metaObject={metaObject} productID={props.productID} />
+      <a name="randr"/>
+
     </div>
   )
 }

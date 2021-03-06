@@ -1,5 +1,4 @@
 const createProductObjectData = (data) => {
-
   data.productObj.default_style = findDefaultStyle(data.stylesArr);
   data.productObj.rating = ratingsAverage(data.ratingsObj);
   return data.productObj;
@@ -53,24 +52,38 @@ const comparisonTable = (currentProduct, relatedProduct) => {
   return resultObj;
  }
 
+
+const findIndex = (outfitList, id) => {
+  for (var i =0; i< outfitList.length; i++) {
+    if (outfitList[i].id === id) {
+      return i;
+    }
+  }
+}
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
-    items: 4
+    items: 3,
+    partialVisibilityGutter: 40
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 4
+    items: 3,
+    partialVisibilityGutter: 40
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 4
+    items: 3,
+    partialVisibilityGutter: 40
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 4
+    items: 3,
+    partialVisibilityGutter: 40
   }
 };
 
-export default { createProductObjectData, comparisonTable, responsive };
+
+export default { createProductObjectData, comparisonTable, responsive, findIndex };

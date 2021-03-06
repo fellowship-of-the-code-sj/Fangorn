@@ -5,23 +5,20 @@ import RelatedItemsList from './RelatedItemsList.jsx';
 import OutfitList from './OutfitList.jsx';
 const port = 404;
 
-const RelatedAndOutfits = ({ productID, productInfo }) => {
+const RelatedAndOutfits = ({ productID, productInfo, productSelect }) => {
 
   const [ relatedItems, setRelatedItems ] = useState([]);
   useEffect(() => {
     axiosHelper.get(`http://localhost:${port}/RelatedItems`, {itemId: productID}, (data) => {
       setRelatedItems(data.data);
     });
-  }, []);
-
+  }, [productID]);
 
   return (
     <div className='relatedItemsAndOutfits'>
-      <h3 className='relatedItemsHeader' >Related Products</h3>
-      <RelatedItemsList productInfo={productInfo} relatedItemsList={relatedItems}>
+      <RelatedItemsList productSelect={productSelect} productInfo={productInfo} relatedItemsList={relatedItems}>
 
       </RelatedItemsList>
-      <h3 className='yourOutfit' >Your Outfit</h3>
       <OutfitList productInfo={productInfo}>
 
       </OutfitList>
@@ -33,5 +30,6 @@ export default RelatedAndOutfits;
 
 RelatedAndOutfits.propTypes = {
   productID: PropTypes.number,
-  productInfo: PropTypes.object
+  productInfo: PropTypes.object,
+  productSelect: PropTypes.func
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import _ from 'underscore';
 
 const IndividualAnswer = ({ answer }) => {
   // this should really be handled by the API..
@@ -40,16 +41,16 @@ const IndividualAnswer = ({ answer }) => {
   return (
     <div className="answer">
       <div className="flex">
-        <div className="answer-body">{answer.body}</div>
+        <div className="answer-body">{_.unescape(answer.body)}</div>
         <div className="flex-grow"></div>
       </div>
       <div className="secondary-text flex">
         <div>
-            by <span style={bolded}>{answer.answerer_name}</span>, {date}
+            by <span style={bolded}>{_.unescape(answer.answerer_name)}</span>, {date}
           </div>
         <div className="spacer">|</div>
         <div>
-          Helpful?&nbsp;
+          Helpful?&nbsp;&nbsp;&nbsp;
           {
             submittedHelpful ?
             <span>Yes ({answer.helpfulness + 1})</span>
