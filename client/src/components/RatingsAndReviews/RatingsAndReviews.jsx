@@ -6,6 +6,7 @@ import axios from 'axios';
 import Review from './Review.jsx'
 
 function RatingsAndReviews(props) {
+  const [tracker, setTracker] = useState(0);
   const [starSort, setStarSort] = useState({
     1: true,
     2: true,
@@ -46,7 +47,7 @@ function RatingsAndReviews(props) {
     } else {
       newStarSort[star] = true;
     }
-    console.log('newStarSort: ', newStarSort)
+    setTracker(tracker + 1);
     setStarSort(newStarSort);
   }
 
@@ -54,7 +55,7 @@ function RatingsAndReviews(props) {
     <div className="ratings-and-reviews">
       <h3>Ratings and Reviews</h3><br></br>
       <Ratings toggleStarSort={toggleStarSort} metaObject={metaObject} />
-      <ReviewsList starSort={starSort} metaObject={metaObject} productID={props.productID} />
+      <ReviewsList tracker={tracker} starSort={starSort} metaObject={metaObject} productID={props.productID} />
     </div>
   )
 }

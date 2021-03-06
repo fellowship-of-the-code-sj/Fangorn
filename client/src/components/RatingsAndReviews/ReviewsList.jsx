@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 
 function ReviewsList(props) {
 
+  const [starSortTracker, setTracker] = useState({});
   const [list, setList] = useState([]);
   const [visibleList, setVisibleList] = useState([]);
   const [sortQuery, setSortQuery] = useState('relevant')
@@ -36,10 +37,6 @@ function ReviewsList(props) {
     return filteredList;
   }
 
-  const handleNewReview = (event) => {
-    // call api and send new review, then update state
-  }
-
   const showForm = () => {
     var modal = document.getElementById('newReviewForm');
     modal.style.display = "block";
@@ -57,8 +54,8 @@ function ReviewsList(props) {
 
   useEffect(() => {
     getList(sortQuery);
-    console.log('useEffect');
-  }, [props.starSort, props.productID, props.metaObject]);
+    console.log('useEffect, getList');
+  }, [props.tracker]);
 
   return (
     <div className="reviews-list">
