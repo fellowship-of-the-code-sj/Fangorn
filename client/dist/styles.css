@@ -1,5 +1,58 @@
-/* Project Wide */
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~
+***** PROJECT WIDE *****
+~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+/* header */
+header {
+  height: 75px;
+  max-width: 1124px;
+  margin: auto;
+  background-color: rgb(87, 87, 87);
+}
+
+.logo {
+  color: #fff;
+  font-size: 27px;
+}
+
+.vertical-centering {
+  margin: 20px 20px auto 20px;
+}
+
+.site-search input {
+  outline: none;
+  padding: 6px;
+  margin-right: 5px;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+header ion-icon {
+  color: #fff;
+}
+
 body { font-family: 'Lato', sans-serif; }
+
+/* Primary */
+.primaryComponent {
+  max-width: 1124px;
+  margin: 0 auto;
+}
+
+/* Secondary */
+.secondaryComponent {
+  max-width: 960px;
+  margin: 0 auto;
+}
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -7,17 +60,15 @@ body { font-family: 'Lato', sans-serif; }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 .relatedItemsAndOutfits {
-  padding: 0 200px;
-  width: 67%;
-  height: 1000px;
+  padding: 50px 0px;
   min-width: 850px;
   max-width: 900px;
   margin: auto;
 }
 
-/* .itemsList {
-  left: 0;
-} */
+.itemsList {
+  padding-bottom: 20px;
+}
 
 .itemCard, .outfitAddItemCard {
   border: 1px solid grey;
@@ -515,7 +566,7 @@ body { font-family: 'Lato', sans-serif; }
 
 .QA-search-bar input {
   font-size: 1.5em;
-  width: 90vw;
+  width: 100%;
   border: 0;
   color: #000;
 }
