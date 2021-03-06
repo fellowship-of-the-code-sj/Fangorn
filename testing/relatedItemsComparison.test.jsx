@@ -198,7 +198,7 @@ describe('render comparison table', () => {
   it('should render the comparison modal when a list is passed in', () => {
     const wrapper = shallow(<ComparisonTable comparisionList={dummyData.comparisonTable} currentProductName={'Morning Joggers'} relatedProductName={'Bright Future Sunglasses'} />)
     expect(wrapper.find('table')).toHaveLength(1);
-    expect(wrapper.find('tr')).toHaveLength(6);
+    expect(wrapper.find('tr')).toHaveLength(5);
     expect(wrapper.find('td')).toHaveLength(12);
   });
 
