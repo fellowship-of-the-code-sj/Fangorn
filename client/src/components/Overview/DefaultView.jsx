@@ -11,8 +11,6 @@ const DefaultView = (props) => {
         { props.photos ?
           <img 
             src={props.photos[imageIndex].url ? props.photos[imageIndex].url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
-            // height="200"
-            // width="200"
             id="defaultViewImage"
           /> : <img src="" />
         }
@@ -29,8 +27,6 @@ const DefaultView = (props) => {
                 className="imageThumbnail"
                 src={photo.thumbnail_url ? photo.thumbnail_url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
                 alt={`Style Thumbnail`}
-                // height="50"
-                // width="50"
                 index={index}
                 id={`imageThumbnail${index}`}
                 onClick={(event) => {setImageIndex(event.target.attributes[3].value)}}
