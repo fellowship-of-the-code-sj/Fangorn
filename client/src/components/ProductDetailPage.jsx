@@ -12,14 +12,14 @@ const PORT = 404;
 class ProductDetailPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { productId: 13023, productInfo: {}, listUpdate: false };
+    this.state = {productId: 13023, productInfo: {}, listUpdate: false, darkMode: false};
     this.productSelect = this.productSelect.bind(this);
+    this.toggleDarkMode = this.toggleDarkMode.bind(this);
   }
 
 
   componentDidMount() {
-
-    serverRequest.get(`http://localhost:${PORT}/Overview`, { itemID: this.state.productId }, (result) => {
+    serverRequest.get(`http://localhost:${PORT}/Overview`, {itemID: this.state.productId}, (result) => {
       this.setState({ productInfo: result.data })
     });
   }
@@ -31,19 +31,29 @@ class ProductDetailPage extends React.Component {
     });
   }
 
+  toggleDarkMode() {
+    this.setState({ darkMode: !this.state.darkMode})
+  }
+
   render() {
     return (
-      <div>
+      <div className={ this.state.darkMode? 'productDetailePageDark': 'productDetailePageLight' }>
+        <div className='darkModeButton'>
+          <label>
+            <input onClick={this.toggleDarkMode} type="checkbox"></input>
+            <span className="slider round"></span>
+          </label>
+        </div>
         <div className='primaryComponent'>
-          {
-            this.state.productInfo.productObj ?
-              <Overview
-                productObj={this.state.productInfo.productObj}
-                stylesArr={this.state.productInfo.stylesArr}
-                ratingsObj={this.state.productInfo.ratingsObj}
-              />
-              : <div className="overview"></div>
-          }
+        {
+          this.state.productInfo.productObj ?
+          <Overview
+            productObj={this.state.productInfo.productObj}
+            stylesArr={this.state.productInfo.stylesArr}
+            ratingsObj={this.state.productInfo.ratingsObj}
+          />
+          : <div className="overview"></div>
+        }
         </div>
 
         <div className='secondaryComponent'>
