@@ -14,7 +14,7 @@ const ATC = ({ skus }) => {
     const styleSizes = [];
     for (let key in skus) {
       if (skus[key].size) {
-        skusSizes.push(skus[key].size)
+        styleSizes.push(skus[key].size)
       }
     }
     setSizes(styleSizes)
@@ -32,10 +32,16 @@ const ATC = ({ skus }) => {
         id="sizeSelect"
         onChange={(event) => (console.log(sizes))}>
         <option>Select Size</option>
-        <option>Other</option>
+        {sizes.map((size, i) => (
+          <option key={i}>{size}</option>
+        ))}
       </select>
       :
-      <select id='sizeSelect' disabled><option>OUT OF STOCK</option></select>}
+      <select id="sizeSelect" disabled><option>OUT OF STOCK</option></select>}
+      <select id="quantitySelect">
+        <option>-</option>
+      </select>
+      <button id="addToCartButton">ADD TO CART +</button>
     </div>
   )
   ATC.propTypes = {

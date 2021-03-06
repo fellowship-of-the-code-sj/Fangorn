@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import AddToCart from './AddToCart.jsx';
+import ATC from './NewATC.jsx';
 import ProductSummary from './ProductSummary.jsx';
 import DefaultView from './DefaultView.jsx';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
@@ -37,7 +38,10 @@ const Overview = (props) => {
         currentStyle={ currentStyle }
         handleStyleChange={index => setCurrentStyle(styles[index])}
       />
-      <AddToCart
+      {/* <AddToCart
+        skus={ currentStyle.skus }
+      /> */}
+      <ATC
         skus={ currentStyle.skus }
       />
       <ProductSummary
