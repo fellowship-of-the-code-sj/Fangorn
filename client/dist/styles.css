@@ -7,6 +7,17 @@
   margin: 0;
   padding: 0;
 }
+
+.productDetailePageLight {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.productDetailePageDark {
+  background-color: rgb(41, 41, 41);
+  color: rgb(255, 255, 255);
+}
+
 /* header */
 header {
   height: 75px;
@@ -41,6 +52,84 @@ header ion-icon {
 }
 
 body { font-family: 'Lato', sans-serif; }
+
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+.darkModeButton {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* The switch - the box around the slider */
+/* .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+} */
+
+/* Hide default HTML checkbox */
+.darkModeButton input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
 
 /* Primary */
 .primaryComponent {
@@ -146,7 +235,6 @@ body { font-family: 'Lato', sans-serif; }
   top: -2%;
   left: 5%;
   font-size: 1.6vh;
-
 }
 
 .cardItemPrice, .cardItemSalePrice{
@@ -166,7 +254,7 @@ body { font-family: 'Lato', sans-serif; }
   left: 170px;
   top: 10px;
   font-size: 18px;
-  color: rgb(165, 52, 52);
+  color: rgb(165, 52, 52) !important;
 }
 
 .action-button:hover {
@@ -210,14 +298,14 @@ body { font-family: 'Lato', sans-serif; }
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(133, 133, 133, 0.479);
 }
 
 .innerModal {
   z-index: 300;
   border: 1px black solid;
   position: fixed;
-  top: 20%;
+  top: 30%;
   left: 30%;
   height: auto;
   background-color: white;
@@ -269,20 +357,6 @@ body { font-family: 'Lato', sans-serif; }
   text-align: center;
   font-size: 11px;
 }
-
-/*
-
-
-
-.modalBody td {
-  padding: 5px;
-}
-
-.rightCheckMark {
-  text-align: right;
-  position: relative;
-  right: 20px;
-} */
 
 .leftTitle, .rightTitle {
   font-size: 13px;
@@ -423,11 +497,7 @@ body { font-family: 'Lato', sans-serif; }
 
 .characteristic-icon {
   position: relative;
-<<<<<<< HEAD
-  top: 1px;
-=======
   bottom: 8px;
->>>>>>> e82c2e7b73e80e22aed2ee4d5ef17b7d193ba268
 }
 
 .characteristic-bar {
@@ -497,8 +567,6 @@ body { font-family: 'Lato', sans-serif; }
   cursor: pointer;
 }
 
-<<<<<<< HEAD
-=======
 .new-review-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -600,7 +668,6 @@ body { font-family: 'Lato', sans-serif; }
 
 }
 
->>>>>>> e82c2e7b73e80e22aed2ee4d5ef17b7d193ba268
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ***** QUESTIONS & ANSWERS *****
