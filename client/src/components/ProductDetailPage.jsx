@@ -25,7 +25,7 @@ class ProductDetailPage extends React.Component {
 
   productSelect(id) {
     this.setState({productId: id });
-    serverRequest.get(`http://localhost:${PORT}/Overview`, {itemID: this.state.productId}, (result) => {
+    serverRequest.get(`http://localhost:${PORT}/Overview`, {itemID: id}, (result) => {
       this.setState({ productInfo: result.data })
     });
   }
@@ -34,7 +34,16 @@ class ProductDetailPage extends React.Component {
     return (
       <div>
         <div className='primaryComponent'>
-          <Overview productID={13023} />
+        {
+          this.state.productInfo.productObj ?
+          <Overview
+            // productID={this.state.productInfo.productObj.id}
+            productObj={this.state.productInfo.productObj}
+            stylesArr={this.state.productInfo.stylesArr}
+            ratingsObj={this.state.productInfo.ratingsObj}
+          />
+          : <div className="overview"></div>/*<Overview productID={13023} />*/
+        }
         </div>
 
         <div className='secondaryComponent'>
@@ -75,3 +84,4 @@ const responsive = {
     items: 4
   }
 };
+
