@@ -16,5 +16,6 @@ const AddQuestionButton = ({ handleAddQuestionModal, logger }) => {
 export default captureQandA(AddQuestionButton);
 
 AddQuestionButton.propTypes = {
-  handleAddQuestionModal: PropTypes.func
+  handleAddQuestionModal: PropTypes.func,
+  logger: PropTypes.func
 }

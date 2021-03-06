@@ -143,5 +143,6 @@ AddAnswer.propTypes = {
   questionId: PropTypes.number,
   questionBody: PropTypes.string,
   productName: PropTypes.string,
-  handleAddAnswerModal: PropTypes.func
+  handleAddAnswerModal: PropTypes.func,
+  logger: PropTypes.func
 }

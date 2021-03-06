@@ -149,5 +149,6 @@ export default captureQandA(IndividualQuestion);
 
 IndividualQuestion.propTypes = {
   question: PropTypes.object,
-  productName: PropTypes.string
+  productName: PropTypes.string,
+  logger: PropTypes.func
 };

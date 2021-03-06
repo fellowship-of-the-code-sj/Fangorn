@@ -134,5 +134,6 @@ export default captureQandA(AddQuestion);
 
 AddQuestion.propTypes = {
   productID: PropTypes.number,
-  handleAddQuestionModal: PropTypes.func
+  handleAddQuestionModal: PropTypes.func,
+  logger: PropTypes.func
 }

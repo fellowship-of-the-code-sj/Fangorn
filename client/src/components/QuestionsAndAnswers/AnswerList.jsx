@@ -31,5 +31,6 @@ AnswerList.propTypes = {
   answers: PropTypes.array,
   showMoreAnswersButton: PropTypes.bool,
   handleShowMoreAnswers: PropTypes.func,
-  loadOrCollapseAnswers: PropTypes.string
+  loadOrCollapseAnswers: PropTypes.string,
+  logger: PropTypes.func
 };

@@ -16,5 +16,6 @@ const MoreAnsweredQuestions = ({ handleShowMoreQuestions, logger }) => {
 export default captureQandA(MoreAnsweredQuestions);
 
 MoreAnsweredQuestions.propTypes = {
-  handleShowMoreQuestions: PropTypes.func
+  handleShowMoreQuestions: PropTypes.func,
+  logger: PropTypes.func
 };

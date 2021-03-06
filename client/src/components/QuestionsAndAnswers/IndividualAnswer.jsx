@@ -86,5 +86,6 @@ const IndividualAnswer = ({ answer, logger }) => {
 export default captureQandA(IndividualAnswer);
 
 IndividualAnswer.propTypes = {
-  answer: PropTypes.object
+  answer: PropTypes.object,
+  logger: PropTypes.func
 }
