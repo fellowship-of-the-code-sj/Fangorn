@@ -296,21 +296,22 @@ body { font-family: 'Lato', sans-serif; }
 }
 
 .reviews-list {
-  border: 1px solid black;
   position: relative;
-  margin-left: 40%;
-  width: 50%;
-  bottom: 500px;
-  max-height: 100vh;
+  margin-left: 45%;
+  width: 60%;
+  bottom: 650px;
+  max-height: 80%;
+}
+.reviews-list-content {
   overflow:auto;
+  max-height: 80%;
 }
 
 .review {
   margin: auto;
   margin-bottom: 5px;
-  width: 80%;
+  width: 100%;
   padding: 10px;
-  border: 1px solid black;
 }
 
 .show-more-reviews-button {
@@ -433,7 +434,7 @@ body { font-family: 'Lato', sans-serif; }
 
 .characteristic-icon {
   position: relative;
-  bottom: 4px;
+  bottom: 8px;
 }
 
 .characteristic-bar {
@@ -490,6 +491,11 @@ body { font-family: 'Lato', sans-serif; }
   width: 80%;
 }
 
+.review-image-modal-img {
+  height: 95%;
+  width: 95%;
+}
+
 /* The Close Button */
 .review-image-modal-close {
   color: #aaaaaa;
@@ -509,7 +515,7 @@ body { font-family: 'Lato', sans-serif; }
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 1%; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -526,7 +532,7 @@ body { font-family: 'Lato', sans-serif; }
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
-  height: 80%;
+  height: 100%;
   overflow: auto;
 }
 
@@ -536,6 +542,16 @@ body { font-family: 'Lato', sans-serif; }
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.new-review-star {
+  cursor: pointer;
+}
+
+.new-review-radios {
+  margin-left:5px;
+  margin-right: 5px;
 }
 
 .new-review-photo-modal {
@@ -559,7 +575,7 @@ body { font-family: 'Lato', sans-serif; }
   padding: 20px;
   border: 1px solid #888;
   width: 40%;
-  height: 20%;
+  height: 40%;
   overflow: auto;
 }
 
@@ -569,6 +585,7 @@ body { font-family: 'Lato', sans-serif; }
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .new-review-modal-close:hover,
@@ -590,7 +607,9 @@ body { font-family: 'Lato', sans-serif; }
 
 .new-review-characteristic-meaning {
   position: relative;
-  left: 50;
+  left: 50px;
+  bottom: 10px;
+
 }
 
 /*
