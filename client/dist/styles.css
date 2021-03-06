@@ -697,6 +697,10 @@ body { font-family: 'Lato', sans-serif; }
   width: 100%;
 }
 
+#selectedStyleImage {
+  border: 2px solid black;
+}
+
 /***** Add To Cart Component *****/
 .addToCart {
   grid-area: addToCart;

@@ -8,10 +8,15 @@ const StyleSelector = (props) => {
       <div id="styleSelectorStyles">
         { props.styles.length > 0 ? 
           props.styles.map((style, index) => (
-            <div key={style.style_id} className="styleContainer">
+            <div 
+              key={style.style_id} 
+              className="styleContainer"
+              id={props.currentStyle.photos[0].thumbnail_url === style.photos[0].thumbnail_url ? 'selectedStyleImage' : null}>
               <img
                 className="styleThumbnail"
                 onClick={event => {
+                  event.persist();
+                  console.log(event.target.id);
                   props.handleStyleChange(event.target.attributes[3].value);
                 }}
                 src={style.photos[0].thumbnail_url}
