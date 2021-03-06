@@ -36,7 +36,6 @@ const OutfitList = ({ productInfo }) => {
 
   const removeOutfitItem = (item) => {
     var index = helperFunctions.findIndex(outfitList.list, item)
-    console.log(index);
     outfitList.list.splice(index, 1);
 
     if (outfitList.list.length === 2) {
@@ -60,7 +59,7 @@ const OutfitList = ({ productInfo }) => {
 
         <div className='outfitAddItemCard' onClick={addOutfit} >
           <div className='addOutfitText'>
-            {'ADD OUFIT'}
+            ADD TO OUTFIT
             <br></br>
             <ion-icon name="add-circle-outline"></ion-icon>
           </div>

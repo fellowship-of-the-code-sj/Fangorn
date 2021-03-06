@@ -50,7 +50,7 @@ const IndividualAnswer = ({ answer }) => {
           </div>
         <div className="spacer">|</div>
         <div>
-          Helpful?&nbsp;
+          Helpful?&nbsp;&nbsp;&nbsp;
           {
             submittedHelpful ?
             <span>Yes ({answer.helpfulness + 1})</span>
