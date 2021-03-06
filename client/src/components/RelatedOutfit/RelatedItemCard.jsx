@@ -50,5 +50,5 @@ export default RelatedItemCard;
 RelatedItemCard.propTypes = {
   cardData: PropTypes.object,
   actionButtonListener: PropTypes.func,
-  productSelect: PropTypes.func
+  productSelect: PropTypes.func,
 }

@@ -60,16 +60,15 @@ body { font-family: 'Lato', sans-serif; }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 .relatedItemsAndOutfits {
-  /* padding: 0 200px; */
-  /* width: 67%; */
+  padding: 50px 0px;
   min-width: 850px;
   max-width: 900px;
   margin: auto;
 }
 
-/* .itemsList {
-  left: 0;
-} */
+.itemsList {
+  padding-bottom: 20px;
+}
 
 .itemCard, .outfitAddItemCard {
   border: 1px solid grey;
@@ -78,11 +77,13 @@ body { font-family: 'Lato', sans-serif; }
   height: 35vh;
   min-height: 300px;
 }
-/*
-.carousel-container {
 
-  justify-content: start;
-} */
+.itemCard:hover {
+  cursor: pointer;
+}
+
+.carousel-container {
+}
 /* .carouselItems {
 
 } */
@@ -90,6 +91,10 @@ body { font-family: 'Lato', sans-serif; }
 .outfitAddItemCard {
   font-size: 20px;
   text-align: center;
+}
+
+.outfitAddItemCard:hover {
+  cursor: pointer;
 }
 
 .outfitAddItemCard:hover .addOutfitText{
@@ -203,15 +208,73 @@ body { font-family: 'Lato', sans-serif; }
 .innerModal {
   z-index: 300;
   position: fixed;
-  width: 400px;
+  width: 40%;
   height: auto;
+  max-height: 500px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -60%);
   background-color: white;
-  padding: 50px;
+  padding: 35px 10px;
+  border: 1px black solid;
 }
 
+.modalHead {
+  position: relative;
+  top: 30px
+}
+
+.leftCheckMark {
+  text-align: left;
+}
+
+.rightCheckMark {
+  text-align: right;
+}
+
+.centerFeature {
+  position: relative;
+  text-align: center;
+  width: 150px;
+}
+
+.leftTitle {
+  text-align: left;
+  position: relative;
+  left: 0px;
+  width: 300px;
+}
+
+.rightTitle {
+  position: relative;
+  width: 300px;
+  right: 0px;
+  text-align: right;
+}
+
+.comparingTitle {
+  position: absolute;
+  left: 13px;
+  top: 15px;
+  font-size: 10px;
+}
+
+.leftCheckMark, .rightCheckMark, .centerFeature {
+  padding: 5px;
+}
+
+.rightTitle, .leftTitle {
+  padding-bottom: 40px;
+}
+
+.modalBody {
+  position: relative;
+  margin-top: 50px;
+  top: 200px;
+  max-height: 300px;
+  overflow-y:scroll;
+  font-weight: 250;
+}
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ***** Ratings and reviews *****
