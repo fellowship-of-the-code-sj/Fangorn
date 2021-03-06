@@ -47,6 +47,24 @@ function ReviewsList(props) {
     return filteredList;
   }
 
+  const isFiltering = () => {
+    if (props.starSort[1] === false && props.starSort[2] === false && props.starSort[3] === false && props.starSort[4] === false && props.starSort[5] === false) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  const whichFilters = () => {
+    var output = '';
+    for (var i = 1; i <= 5; i++) {
+      if (props.starSort[i]) {
+        output += ` ${i} star,`
+      }
+    }
+    return output.slice(0, output.length - 1)
+  }
+
   const showForm = () => {
     var modal = document.getElementById('newReviewForm');
     modal.style.display = "block";
@@ -62,6 +80,12 @@ function ReviewsList(props) {
     getList(e.target.value);
   }
 
+  const ClearFilter = () => {
+    return (
+      <button onClick={props.resetStarSort} >Clear filtering</button>
+    )
+  }
+
   useEffect(() => {
     getList(sortQuery);
   }, [props.tracker]);
@@ -74,6 +98,9 @@ function ReviewsList(props) {
         <option value="newest">Newest</option>
         <option value="helpful">Most helpful</option>
       </select>
+      {
+        isFiltering() ? <span>, filtering by {whichFilters()} reviews<ClearFilter /></span> : null
+      }
       <hr></hr>
       <div className="reviews-list-content">
         {visibleList.map((review) => {
@@ -89,7 +116,7 @@ function ReviewsList(props) {
               <button className="new-review-button" onClick={showForm}>Leave a review</button>
             </div>
         }
-        <NewReview metaObject={props.metaObject} productID={props.productID} />
+        <NewReview productName={props.productName} metaObject={props.metaObject} productID={props.productID} />
       </div>
     </div >
   )

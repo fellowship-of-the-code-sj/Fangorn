@@ -312,7 +312,7 @@ function NewReview(props) {
   return (
     <div className="new-review">
       <div id="newReviewForm" className="new-review-modal">
-        <div className="new-review-modal-content"> New Review
+        <div className="new-review-modal-content"> Write a review about {props.productName}
           <span onClick={hideForm} className="new-review-modal-close">&times;</span>
           <div className="review-form">
             Rate this product<sup className="mandatory">&nbsp;*</sup><div className="star-rating-form">
@@ -328,7 +328,7 @@ function NewReview(props) {
                 Name:<sup className="mandatory">&nbsp;*</sup><input className="new-review-name" placeholder="e.g. jackson11!" size="25" maxLength="60" onChange={(e) => { handleChange(e, setName) }} type="text" value={name}></input><br></br>
                 Email:<sup className="mandatory">&nbsp;*</sup><input className="new-review-email" placeholder="e.g. jackson11@email.com" size="25" maxLength="60" onChange={(e) => { handleChange(e, setEmail) }} type="text" value={email}></input> <br></br>
                 <span className="disclaimer-small">For authentication reasons, you will not be emailed</span><br></br><br></br>
-                Review summary:<br></br><textarea className="new-review-summary" placeholder="e.g. Best purchase ever!" maxLength="60" onChange={(e) => { handleChange(e, setSummary) }} type="text" value={summary} rows="1" cols="30" ></textarea> <br></br>
+                Review summary:<br></br><textarea className="new-review-summary" placeholder="e.g. Best purchase ever!" maxLength="60" onChange={(e) => { handleChange(e, setSummary) }} type="text" value={summary} rows="1" cols="30" ></textarea> <br></br><br></br>
                 Enter your review:<sup className="mandatory">&nbsp;*</sup><br></br><textarea className="new-review-body" placeholder="Why did you like the product or not?" maxLength="500" onChange={(e) => { handleChange(e, setBody) }} type="text" value={body} rows="4" cols="50"></textarea><br></br>
                 {
                   body.length < 50 ? <span className="new-review-char-count" style={{ "fontSize": "small" }}>Minimum required characters: {50 - body.length}</span> : <span className="new-review-char-count" style={{ "fontSize": "small" }}>Minimum reached</span>

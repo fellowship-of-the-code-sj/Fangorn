@@ -349,11 +349,13 @@ body { font-family: 'Lato', sans-serif; }
 .helpful-toggle{
   margin: 5px;
   text-decoration: underline;
+  cursor:pointer;
 }
 
 .report{
   margin: 10px;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .response{
@@ -486,6 +488,7 @@ body { font-family: 'Lato', sans-serif; }
 .review-image-modal-content {
   background-color: #fefefe;
   margin: auto;
+  margin-bottom: 10px;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
