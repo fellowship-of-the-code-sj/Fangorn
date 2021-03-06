@@ -10,7 +10,7 @@ const DefaultView = (props) => {
       <div id="defaultViewImageContainer">
         { props.photos ?
           <img 
-            src={`${props.photos[imageIndex].url}`}
+            src={props.photos[imageIndex].url ? props.photos[imageIndex].url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
             // height="200"
             // width="200"
             id="defaultViewImage"
@@ -21,10 +21,13 @@ const DefaultView = (props) => {
       <div id="defaultViewThumbnails">
         {props.photos ?
           props.photos.map((photo, index) => (
-            <div key={index} className="imageThumbnailContainer">
+            <div
+              key={index}
+              className="imageThumbnailContainer"
+              id={props.photos[imageIndex].thumbnail_url === photo.thumbnail_url ? 'selectedThumbnailImage' : null}>
               <img
                 className="imageThumbnail"
-                src={photo.thumbnail_url}
+                src={photo.thumbnail_url ? photo.thumbnail_url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
                 alt={`Style Thumbnail`}
                 // height="50"
                 // width="50"

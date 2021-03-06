@@ -15,11 +15,9 @@ const StyleSelector = (props) => {
               <img
                 className="styleThumbnail"
                 onClick={event => {
-                  event.persist();
-                  console.log(event.target.id);
                   props.handleStyleChange(event.target.attributes[3].value);
                 }}
-                src={style.photos[0].thumbnail_url}
+                src={style.photos[0].thumbnail_url ? style.photos[0].thumbnail_url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' }
                 alt={`Image Thumbnail ${style.name}`}
                 index={index}
                 id={`styleThumbnail${index}`}

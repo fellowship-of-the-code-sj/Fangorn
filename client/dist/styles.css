@@ -609,6 +609,10 @@ body { font-family: 'Lato', sans-serif; }
   transform: translate(-50%, -50%);
 }
 
+#selectedThumbnailImage {
+  border: 2px solid black;
+}
+
 /***** Product Info Component *****/
 .productInfo {
   grid-area: productInfo;
