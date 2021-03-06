@@ -68,7 +68,7 @@ function ReviewsList(props) {
 
   return (
     <div className="reviews-list">
-      {list.length} reviews, sorted by
+      {list.length} reviews, sorted by &nbsp;
       <select id="sortBy" onChange={handleSortChange}>
         <option value="relevant">Relevance</option>
         <option value="newest">Newest</option>

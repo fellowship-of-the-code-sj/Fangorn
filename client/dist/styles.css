@@ -491,6 +491,11 @@ body { font-family: 'Lato', sans-serif; }
   width: 80%;
 }
 
+.review-image-modal-img {
+  height: 95%;
+  width: 95%;
+}
+
 /* The Close Button */
 .review-image-modal-close {
   color: #aaaaaa;
