@@ -28,9 +28,19 @@ function ReviewsList(props) {
   }
 
   const sortByStar = (list) => {
+    var trueSort = props.starSort;
+    if (props.starSort[1] === false && props.starSort[2] === false && props.starSort[3] === false && props.starSort[4] === false && props.starSort[5] === false) {
+      trueSort = {
+        1: true,
+        2: true,
+        3: true,
+        4: true,
+        5: true
+      }
+    }
     var filteredList = [];
     for (var i = 0; i < list.length; i++) {
-      if (props.starSort[list[i].rating]) {
+      if (trueSort[list[i].rating]) {
         filteredList.push(list[i])
       }
     }
@@ -54,7 +64,6 @@ function ReviewsList(props) {
 
   useEffect(() => {
     getList(sortQuery);
-    console.log('useEffect, getList');
   }, [props.tracker]);
 
   return (

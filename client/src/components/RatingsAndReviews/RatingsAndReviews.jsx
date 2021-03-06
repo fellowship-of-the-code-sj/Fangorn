@@ -8,11 +8,11 @@ import Review from './Review.jsx'
 function RatingsAndReviews(props) {
   const [tracker, setTracker] = useState(0);
   const [starSort, setStarSort] = useState({
-    1: true,
-    2: true,
-    3: true,
-    4: true,
-    5: true
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false
   });
   const [fetchedMetaObject, willFetchMetaObject] = useState(false);
   const [metaObject, setMetaObject] = useState({
