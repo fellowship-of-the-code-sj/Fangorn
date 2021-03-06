@@ -12,7 +12,7 @@ const captureInteractions = module => {
         console.log('thanks bro');
       };
 
-      return <WrappedComponent doSomething={doSomething} {...props} />
+      return <WrappedComponent logger={logger} {...props} />
     }
   };
 };
