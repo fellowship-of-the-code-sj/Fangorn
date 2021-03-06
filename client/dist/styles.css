@@ -226,6 +226,8 @@
 }
 
 .star-label {
+  cursor: pointer;
+  background-color: none;
   text-decoration: underline;
   position: relative;
   top: 15px;

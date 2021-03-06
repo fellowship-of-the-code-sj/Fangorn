@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -64,6 +65,16 @@ function Ratings(props) {
     return outputObj[request];
   }
 
+  const handleStarClick = (star, id) => {
+    props.toggleStarSort(star)
+    var clickedStar = document.getElementById(id);
+    if (clickedStar.style.backgroundColor === '') {
+      clickedStar.style.backgroundColor = 'gold'
+    } else {
+      clickedStar.style.backgroundColor = ''
+    }
+  }
+
   return (
     <div className="ratings">
       <div className="rating-summary">
@@ -78,35 +89,35 @@ function Ratings(props) {
       <div className="rating-proportions">
         {/*5 stars*/}
         <div className="rating-proportion">
-          <span onClick={() => { props.toggleStarSort(5) }} className="star-label">5 stars</span>
+          <span onClick={() => { handleStarClick(5, 'starFive') }} id="starFive" className="star-label">5 stars</span>
           <div className="rating-proportion-bar">
             <span className="rating-proportion-fill" style={{ "width": getRatingProportion(5) }}></span>
           </div>
         </div>
         {/*4 stars*/}
         <div className="rating-proportion">
-          <span onClick={() => { props.toggleStarSort(4) }} className="star-label">4 stars</span>
+          <span onClick={() => { handleStarClick(4, 'starFour') }} id="starFour" className="star-label">4 stars</span>
           <div className="rating-proportion-bar">
             <span className="rating-proportion-fill" style={{ "width": getRatingProportion(4) }}></span>
           </div>
         </div>
         {/*3 stars*/}
         <div className="rating-proportion">
-          <span onClick={() => { props.toggleStarSort(3) }} className="star-label">3 stars</span>
+          <span onClick={() => { handleStarClick(3, 'starThree') }} id="starThree" className="star-label">3 stars</span>
           <div className="rating-proportion-bar">
             <span className="rating-proportion-fill" style={{ "width": getRatingProportion(3) }}></span>
           </div>
         </div>
         {/*2 stars*/}
         <div className="rating-proportion">
-          <span onClick={() => { props.toggleStarSort(2) }} className="star-label">2 stars</span>
+          <span onClick={() => { handleStarClick(2, 'starTwo') }} id="starTwo" className="star-label">2 stars</span>
           <div className="rating-proportion-bar">
             <span className="rating-proportion-fill" style={{ "width": getRatingProportion(2) }}></span>
           </div>
         </div>
         {/*1 stars*/}
         <div className="rating-proportion">
-          <span onClick={() => { props.toggleStarSort(1) }} className="star-label">1 star</span>
+          <span onClick={() => { handleStarClick(1, 'starOne') }} id="starOne" className="star-label">1 star</span>
           <div className="rating-proportion-bar">
             <span className="rating-proportion-fill" style={{ "width": getRatingProportion(1) }}></span>
           </div>
