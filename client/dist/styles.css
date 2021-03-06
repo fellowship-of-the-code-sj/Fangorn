@@ -322,6 +322,10 @@ body { font-family: 'Lato', sans-serif; }
   padding:10px;
 }
 
+.new-review-star-rating-form {
+  font-size: larger
+}
+
 .new-review-button {
   margin-left: 10px;
   margin-right: 10px;
@@ -552,6 +556,10 @@ body { font-family: 'Lato', sans-serif; }
   cursor: pointer;
 }
 
+.new-review-radio-array {
+  margin-left: 10px;
+}
+
 .new-review-radios {
   margin-left:5px;
   margin-right: 5px;
@@ -610,8 +618,9 @@ body { font-family: 'Lato', sans-serif; }
 
 .new-review-characteristic-meaning {
   position: relative;
-  left: 50px;
+  left: 4%;
   bottom: 10px;
+  font-style:italic;
 
 }
 
