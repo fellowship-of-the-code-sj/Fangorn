@@ -59,7 +59,7 @@ describe('QuestionsList', () => {
 xdescribe('IndividualQuestion', () => {
 });
 
-describe('AnswerList', () => {
+xdescribe('AnswerList', () => {
   it('should render 5 IndividualAnswer components', () => {
     const dummyAnswer = dummyData.questions.results[1].answers;
     let has5Answers = _.values(dummyAnswer);
@@ -75,14 +75,14 @@ describe('AnswerList', () => {
   });
 });
 
-describe('MoreAnsweredQuestions', () => {
+xdescribe('MoreAnsweredQuestions', () => {
   it('should render a button', () => {
     const wrapper = shallow(<MoreAnsweredQuestions />);
     expect(wrapper.find('button').length).toEqual(1);
   });
 });
 
-describe('AddQuestions', () => {
+xdescribe('AddQuestions', () => {
   it('should render a button', () => {
     const wrapper = shallow(<AddQuestionButton />);
     expect(wrapper.find('button').length).toEqual(1);
