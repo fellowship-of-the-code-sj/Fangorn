@@ -12,7 +12,7 @@ const PORT = 404;
 class ProductDetailPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {productId: 13023, productInfo: {}};
+    this.state = {productId: 13023, productInfo: {}, listUpdate: false};
     this.productSelect= this.productSelect.bind(this);
   }
 
@@ -24,7 +24,7 @@ class ProductDetailPage extends React.Component {
   }
 
   productSelect(id) {
-    this.setState({productId: id });
+    this.setState({productId: id, listUpdate: !this.state.listUpdate});
     serverRequest.get(`http://localhost:${PORT}/Overview`, {itemID: id}, (result) => {
       this.setState({ productInfo: result.data })
     });
@@ -51,7 +51,9 @@ class ProductDetailPage extends React.Component {
           this.state.productInfo.productObj?
           <RelatedAndOutfits productSelect={this.productSelect}
           productID={this.state.productId}
-          productInfo={helperFunctions.createProductObjectData(this.state.productInfo)} />
+          productInfo={helperFunctions.createProductObjectData(this.state.productInfo)}
+          listUpdate={this.state.listUpdate}
+          />
           : <RelatedAndOutfits productSelect={this.productSelect}
           productID={this.state.productId} />
         }
