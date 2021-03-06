@@ -5,7 +5,7 @@ import RelatedItemsList from './RelatedItemsList.jsx';
 import OutfitList from './OutfitList.jsx';
 const port = 404;
 
-const RelatedAndOutfits = ({ productID, productInfo, productSelect }) => {
+const RelatedAndOutfits = ({ productID, productInfo, productSelect, listUpdate }) => {
 
   const [ relatedItems, setRelatedItems ] = useState([]);
   useEffect(() => {
@@ -31,5 +31,6 @@ export default RelatedAndOutfits;
 RelatedAndOutfits.propTypes = {
   productID: PropTypes.number,
   productInfo: PropTypes.object,
-  productSelect: PropTypes.func
+  productSelect: PropTypes.func,
+  listUpdate: PropTypes.bool
 }

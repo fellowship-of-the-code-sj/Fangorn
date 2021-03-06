@@ -6,7 +6,7 @@ import "react-multi-carousel/lib/styles.css";
 import helperFunctions from '../../../helperFunctions/helperFunctions.js';
 import ComparisonTable from './ComparisonTable.jsx';
 
-const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect }) => {
+const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUpdate }) => {
 
   const [ actionButtonToggle, setActionButtonToggle ] = useState(false);
 
@@ -24,14 +24,14 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect }) => {
 
 
   return (
-    <div className='itemsList'>
+    <div key={listUpdate} className='itemsList'>
       <h3 className='listTitle' >Related Products</h3>
       {
         relatedItemsList.length?
         <Carousel containerClass='carouselContainer' draggable={false} itemClass='carouselItems' partialVisible={true} responsive={helperFunctions.responsive}>
           {
             relatedItemsList.map((item) => {
-              return <RelatedItemCard productSelect={productSelect} actionButtonListener={actionButtonListener} productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;
+              return <RelatedItemCard listUpdate={listUpdate} productSelect={productSelect} actionButtonListener={actionButtonListener} productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;
             })
           }
 
@@ -59,5 +59,6 @@ export default RelatedItemsList;
 RelatedItemsList.propTypes = {
   relatedItemsList: PropTypes.array,
   productInfo: PropTypes.object,
-  productSelect: PropTypes.func
+  productSelect: PropTypes.func,
+  listUpdate: PropTypes.bool
 }
