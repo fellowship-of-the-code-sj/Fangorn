@@ -356,6 +356,11 @@
   color: red;
 }
 
+.new-review-characteristic-meaning {
+  position: relative;
+  left: 50;
+}
+
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ***** QUESTIONS & ANSWERS *****

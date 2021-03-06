@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import NewReview from './NewReview.jsx'
 import Review from './Review.jsx';
 import axios from 'axios';
@@ -14,7 +15,7 @@ function ReviewsList(props) {
     axios.get('/RatingsAndReviews/getAll', {
       params: {
         page: 1,
-        count: 10,
+        count: 20,
         sort: 'newest',
         product_id: props.productID
       }
@@ -60,7 +61,7 @@ function ReviewsList(props) {
             <button className="new-review-button" onClick={showForm}>Leave a review</button>
           </div>
       }
-      <NewReview productID={props.productID} />
+      <NewReview metaObject={props.metaObject} productID={props.productID} />
     </div >
   )
 }
