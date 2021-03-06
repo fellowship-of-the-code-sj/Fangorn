@@ -37,13 +37,12 @@ class ProductDetailPage extends React.Component {
         <div className='primaryComponent'>
         {
           this.state.productInfo.productObj ?
-          <Overview
-            // productID={this.state.productInfo.productObj.id}
+          <Overview 
             productObj={this.state.productInfo.productObj}
             stylesArr={this.state.productInfo.stylesArr}
             ratingsObj={this.state.productInfo.ratingsObj}
           />
-          : <div className="overview"></div>/*<Overview productID={13023} />*/
+          : <div className="overview"></div>
         }
         </div>
 
