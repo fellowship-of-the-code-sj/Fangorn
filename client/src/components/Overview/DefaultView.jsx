@@ -35,6 +35,16 @@ const DefaultView = (props) => {
           )) : null
         }
       </div>
+      { imageIndex > 0 ?
+        <div className="defaultButtonContainer" id="leftDefaultButton">
+          <button className="defaultViewButton" onClick={event => {let newIndex = imageIndex - 1; setImageIndex(newIndex)}}>{'<'}</button>
+        </div> : null
+      }
+      { props.photos && (imageIndex < (props.photos.length - 1)) ?
+        <div className="defaultButtonContainer" id="rightDefaultButton">
+          <button className="defaultViewButton"onClick={event => {let newIndex = imageIndex + 1; setImageIndex(newIndex)}}>{'>'}</button>
+        </div> : null
+      }
     </div>
   )
 

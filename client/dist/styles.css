@@ -896,6 +896,25 @@ body { font-family: 'Lato', sans-serif; }
   border: 2px solid black;
 }
 
+.defaultButtonContainer {
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  margin: auto 0px;
+}
+
+#leftDefaultButton {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  z-index: 1;
+}
+
+#rightDefaultButton {
+  grid-row: 1 / 2;
+  grid-column: 4 / 5;
+  z-index: 1;
+}
+
 /***** Product Info Component *****/
 .productInfo {
   grid-area: productInfo;
