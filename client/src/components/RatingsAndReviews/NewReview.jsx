@@ -18,6 +18,7 @@ function NewReview(props) {
   const [quality, setQuality] = useState(null);
   const [length, setLength] = useState(null);
   const [fit, setFit] = useState(null);
+  const [photoURL, setPhotoURL] = useState('');
 
 
   const sendReview = () => {
@@ -46,6 +47,8 @@ function NewReview(props) {
       rating, summary, body, recommend, name, email, photos, characteristics
     })
   }
+
+
 
   const hideForm = () => {
     var modal = document.getElementById('newReviewForm')
@@ -277,6 +280,34 @@ function NewReview(props) {
     }
   }
 
+  const handleAddPhoto = () => {
+    var modal = document.getElementById('newReviewPhotoModal');
+    modal.style.display = "block";
+  }
+
+  const closeAddPhoto = () => {
+    var modal = document.getElementById('newReviewPhotoModal');
+    modal.style.display = "none";
+  }
+
+  const submitPhoto = (e) => {
+    e.preventDefault();
+    if (checkURL(photoURL)) {
+      var newPhotos = photos;
+      newPhotos.push(photoURL);
+      setPhotos(newPhotos);
+      setPhotoURL('');
+      closeAddPhoto();
+    } else {
+      alert('Cannot submit URL, invalid extension');
+    }
+
+  }
+
+  function checkURL(url) {
+    return (url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+  }
+
   return (
     <div className="new-review">
       <div id="newReviewForm" className="new-review-modal">
@@ -371,6 +402,28 @@ function NewReview(props) {
                   </div> : <div></div>
                 }
               </form>
+              {
+                photos.map((image, i) => {
+                  return <img className="review-thumbnail" key={i} src={image}></img>
+                })
+              }
+              {
+                photos.length < 5 ? <div className="new-review-add-photo-button">
+                  <br></br><button onClick={handleAddPhoto}>Add a photo</button>
+                </div> : <div></div>
+              }
+              <div className="new-review-photo-modal" id="newReviewPhotoModal">
+                <div className="new-review-photo-modal-content">
+                  <span onClick={closeAddPhoto} className="new-review-photo-modal-close">&times;</span>
+                  <form className="new-review-photo-modal-form">Enter the URL of the image you would like to display<br></br><br></br>
+                    <input type="text" onChange={(e) => { handleChange(e, setPhotoURL) }} value={photoURL}></input><br></br><br></br>
+                    {
+                      photoURL !== '' ? <img className="review-thumbnail" src={photoURL}></img> : <div></div>
+                    }
+                    <br></br><br></br><button onClick={submitPhoto}>Submit photo</button>
+                  </form>
+                </div>
+              </div>
               {
                 hasClickedSubmit ? <div>
                   <div className="new-review-errors">{showErrors('rating')}</div>
