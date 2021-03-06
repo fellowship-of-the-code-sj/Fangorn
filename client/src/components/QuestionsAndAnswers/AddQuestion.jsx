@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import _ from 'underscore';
 import axios from 'axios';
 import regex from '../../../helperFunctions/regex';
+import captureQandA from '../../hoc/captureQandA';
 
-var AddQuestion = ({ productID, handleAddQuestionModal }) => {
+var AddQuestion = ({ productID, handleAddQuestionModal, logger }) => {
   const [ question, setQuestion ] = useState('');
   const [ nickname, setNickname ] = useState('');
   const [ email, setEmail ] = useState('');
@@ -85,7 +86,7 @@ var AddQuestion = ({ productID, handleAddQuestionModal }) => {
             rows="7"
             maxLength="1000"
             value={question}
-            onChange={e => handleChange(e)}></textarea>
+            onChange={handleChange}></textarea>
           <div className="flex">
             <div className="modal-user-data">
               <label>
@@ -95,7 +96,7 @@ var AddQuestion = ({ productID, handleAddQuestionModal }) => {
                   name="nickname"
                   placeholder="Example: jackson11!"
                   value={nickname}
-                  onChange={e => handleChange(e)}></input>
+                  onChange={handleChange}></input>
                 <span className="disclaimer-small">For privacy reasons, do not use your full name or email address</span>
               </label>
             </div>
@@ -110,7 +111,7 @@ var AddQuestion = ({ productID, handleAddQuestionModal }) => {
                   name="email"
                   placeholder="Example: jack@email.com"
                   value={email}
-                  onChange={e => handleChange(e)}></input>
+                  onChange={handleChange}></input>
                 <span className="disclaimer-small">For authentication reasons, you will not be emailed</span>
               </label>
             </div>
@@ -119,14 +120,17 @@ var AddQuestion = ({ productID, handleAddQuestionModal }) => {
           <input
             type="submit"
             value="Submit"
-            onClick={e => handleSubmit(e)}></input>
+            onClick={e => {
+              handleSubmit(e);
+              logger(e);
+            }}></input>
         </form>
       </div>
     </React.Fragment>
   );
 };
 
-export default AddQuestion;
+export default captureQandA(AddQuestion);
 
 AddQuestion.propTypes = {
   productID: PropTypes.number,

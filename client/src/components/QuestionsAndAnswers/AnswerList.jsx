@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IndividualAnswer from './IndividualAnswer.jsx';
+import captureQandA from '../../hoc/captureQandA';
 
-const AnswerList = ({ answers, showMoreAnswersButton, handleShowMoreAnswers, loadOrCollapseAnswers }) => {
+const AnswerList = ({ answers, showMoreAnswersButton, handleShowMoreAnswers, loadOrCollapseAnswers, logger }) => {
   return (
     <div>
       {answers.map(answer => <IndividualAnswer key={answer.id} answer={answer} />)}
@@ -12,7 +13,10 @@ const AnswerList = ({ answers, showMoreAnswersButton, handleShowMoreAnswers, loa
             <a
               href="#"
               className="link-clear"
-              onClick={handleShowMoreAnswers}>{loadOrCollapseAnswers}
+              onClick={e => {
+                handleShowMoreAnswers(e);
+                logger(e);
+              }}>{loadOrCollapseAnswers}
             </a>
           </div>
           : null
@@ -21,7 +25,7 @@ const AnswerList = ({ answers, showMoreAnswersButton, handleShowMoreAnswers, loa
   );
 };
 
-export default AnswerList;
+export default captureQandA(AnswerList);
 
 AnswerList.propTypes = {
   answers: PropTypes.array,
