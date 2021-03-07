@@ -41,6 +41,7 @@ describe('Rendering RelatedItems List Components', () => {
 
   it ('should render relatedItems list with dummy data passed', () => {
     const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
+    console.log(wrapper.debug());
     expect(wrapper.find('RelatedItemCard')).toHaveLength(6);
   });
 });
