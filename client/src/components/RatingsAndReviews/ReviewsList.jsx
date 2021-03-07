@@ -82,7 +82,7 @@ function ReviewsList(props) {
 
   const ClearFilter = () => {
     return (
-      <button onClick={props.resetStarSort} >&nbsp;Clear filtering&nbsp;</button>
+      <button style={{ color: "black" }} onClick={props.resetStarSort} >&nbsp;Clear filtering&nbsp;</button>
     )
   }
 
