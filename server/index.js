@@ -62,6 +62,7 @@ app.put('/questions/:question_id/report', controller.questions.putQuestionReport
 app.put('/answer/:answer_id/helpful', controller.questions.putAnswerHelpful);
 app.put('/answer/:answer_id/report', controller.questions.putAnswerReport);
 
+app.post('/interactions', controller.interactions.post)
 
 const PORT = 404;
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
