@@ -10,7 +10,11 @@
 
 /* Light Mode */
 .productDetailePageLight,
-.productDetailePageLight .modal-add {
+.productDetailePageLight select,
+.productDetailePageLight .modal-add,
+.productDetailePageLight .new-review-modal-content,
+.productDetailePageLight .new-review-photo-modal-content,
+.productDetailePageLight .review-image-modal-content {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
 }
@@ -20,8 +24,8 @@
 .productDetailePageLight a:hover,
 .productDetailePageLight a:active,
 .productDetailePageLight button,
-.productDetailePageLight .modal-add textarea,
-.productDetailePageLight .modal-add input {
+.productDetailePageLight textarea,
+.productDetailePageLight input {
   color: #000;
 }
 
@@ -32,7 +36,11 @@
 
 /* Dark Mode */
 .productDetailePageDark,
-.productDetailePageDark .modal-add {
+.productDetailePageDark select,
+.productDetailePageDark .modal-add,
+.productDetailePageDark .new-review-modal-content,
+.productDetailePageDark .new-review-photo-modal-content,
+.productDetailePageDark .review-image-modal-content {
   background-color: rgb(41, 41, 41);
   color: rgb(255, 255, 255);
 }
@@ -42,9 +50,8 @@
 .productDetailePageDark a:hover,
 .productDetailePageDark a:active,
 .productDetailePageDark button,
-.productDetailePageDark .QA-search-bar input,
-.productDetailePageDark .modal-add textarea,
-.productDetailePageDark .modal-add input {
+.productDetailePageDark textarea,
+.productDetailePageDark input {
   color: #fff;
 }
 
@@ -673,6 +680,12 @@ input:checked + .slider:before {
   width: 50%;
   height: 85%;
   overflow: auto;
+}
+
+.new-review-modal-content input,
+.new-review-modal-content textarea,
+.new-review-modal-content button {
+  background-color: transparent;
 }
 
 /* The Close Button */
