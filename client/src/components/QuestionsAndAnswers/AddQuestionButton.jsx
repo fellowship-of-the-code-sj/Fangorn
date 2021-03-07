@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import captureQandA from '../../hoc/captureQandA';
 
-const AddQuestionButton = ({ handleAddQuestionModal }) => {
+const AddQuestionButton = ({ handleAddQuestionModal, logger }) => {
   return (
     <button
       className="question-buttons"
-      onClick={handleAddQuestionModal}>ADD A QUESTION +</button>
+      onClick={e => {
+        handleAddQuestionModal(e);
+        logger(e);
+      }}>ADD A QUESTION +</button>
   );
 };
 
-export default AddQuestionButton;
+export default captureQandA(AddQuestionButton);
 
 AddQuestionButton.propTypes = {
-  handleAddQuestionModal: PropTypes.func
+  handleAddQuestionModal: PropTypes.func,
+  logger: PropTypes.func
 }

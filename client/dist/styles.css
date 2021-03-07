@@ -11,7 +11,10 @@
 /* Light Mode */
 .productDetailPageLight,
 .productDetailPageLight .modal-add,
-.productDetailPageLight .innerModal {
+.productDetailPageLight .innerModal
+.productDetailPageLight .new-review-modal-content,
+.productDetailPageLight .new-review-photo-modal-content,
+.productDetailPageLight .review-image-modal-content {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
 }
@@ -21,8 +24,8 @@
 .productDetailPageLight a:hover,
 .productDetailPageLight a:active,
 .productDetailPageLight button,
-.productDetailPageLight .modal-add textarea,
-.productDetailPageLight .modal-add input,
+.productDetailPageLight textarea,
+.productDetailPageLight input,
 .productDetailPageLight .innerModal {
   color: #000;
 }
@@ -35,7 +38,11 @@
 /* Dark Mode */
 .productDetailPageDark,
 .productDetailPageDark .modal-add,
-.productDetailPageDark .innerModal {
+.productDetailPageDark .innerModal,
+.productDetailPageDark select,
+.productDetailPageDark .new-review-modal-content,
+.productDetailPageDark .new-review-photo-modal-content,
+.productDetailPageDark .review-image-modal-content {
   background-color: rgb(41, 41, 41);
   color: rgb(255, 255, 255);
 }
@@ -45,9 +52,8 @@
 .productDetailPageDark a:hover,
 .productDetailPageDark a:active,
 .productDetailPageDark button,
-.productDetailPageDark .QA-search-bar input,
-.productDetailPageDark .modal-add textarea,
-.productDetailPageDark .modal-add input,
+.productDetailPageDark textarea,
+.productDetailPageDark input
 .productDetailPageDark .innerModal,
 .productDetailPageDark .modalHead,
 .productDetailPageDark .modalBody {
@@ -679,6 +685,12 @@ input:checked + .slider:before {
   width: 50%;
   height: 85%;
   overflow: auto;
+}
+
+.new-review-modal-content input,
+.new-review-modal-content textarea,
+.new-review-modal-content button {
+  background-color: transparent;
 }
 
 /* The Close Button */
