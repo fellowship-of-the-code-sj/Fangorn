@@ -6,7 +6,7 @@ import AnswerList from './AnswerList.jsx';
 import AddAnswer from './AddAnswer.jsx';
 import captureQandA from '../../hoc/captureQandA';
 
-const IndividualQuestion = ({ question, productName, doSomething }) => {
+const IndividualQuestion = ({ question, productName, logger }) => {
   const [ answers, setAnswers ] = useState([]);
   const [ showAddAnswerModal, setShowAddAnswerModal ] = useState(false);
   const [ showingMoreAnswers, setShowingMoreAnswers ] = useState(false);
@@ -89,7 +89,10 @@ const IndividualQuestion = ({ question, productName, doSomething }) => {
               {
                 submittedHelpful ?
                 <span>Yes ({question.question_helpfulness + 1})</span>
-                : <a href="#" className="link-clear" onClick={handleSubmitHelpful}>
+                : <a href="#" className="link-clear" onClick={e => {
+                  handleSubmitHelpful(e);
+                  logger(e);
+                }}>
                     <span className="underline">Yes</span> ({question.question_helpfulness})
                   </a>
               }
@@ -99,7 +102,10 @@ const IndividualQuestion = ({ question, productName, doSomething }) => {
               {
                 submittedReport ?
                 <span>Reported!</span>
-                : <a href="#" onClick={handleSubmitReport}>Report</a>
+                : <a href="#" onClick={e => {
+                  handleSubmitReport(e);
+                  logger(e);
+                }}>Report</a>
               }
             </div>
             <div className="spacer">|</div>
@@ -108,7 +114,7 @@ const IndividualQuestion = ({ question, productName, doSomething }) => {
                 href="#"
                 onClick={e => {
                   handleAddAnswerModal(e);
-                  doSomething(e);
+                  logger(e);
                 }}>Add Answer</a>
             </div>
           </div>
@@ -143,5 +149,6 @@ export default captureQandA(IndividualQuestion);
 
 IndividualQuestion.propTypes = {
   question: PropTypes.object,
-  productName: PropTypes.string
+  productName: PropTypes.string,
+  logger: PropTypes.func
 };
