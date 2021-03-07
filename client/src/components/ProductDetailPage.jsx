@@ -37,7 +37,7 @@ class ProductDetailPage extends React.Component {
 
   render() {
     return (
-      <div className={ this.state.darkMode? 'productDetailePageDark': 'productDetailePageLight' }>
+      <div className={ this.state.darkMode? 'productDetailPageDark': 'productDetailPageLight' }>
         <div className='darkModeButton'>
           <label>
             <input onClick={this.toggleDarkMode} type="checkbox"></input>

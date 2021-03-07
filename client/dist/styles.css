@@ -9,47 +9,53 @@
 }
 
 /* Light Mode */
-.productDetailePageLight,
-.productDetailePageLight .modal-add {
+.productDetailPageLight,
+.productDetailPageLight .modal-add,
+.productDetailPageLight .innerModal {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
 }
 
-.productDetailePageLight a:link,
-.productDetailePageLight a:visited,
-.productDetailePageLight a:hover,
-.productDetailePageLight a:active,
-.productDetailePageLight button,
-.productDetailePageLight .modal-add textarea,
-.productDetailePageLight .modal-add input {
+.productDetailPageLight a:link,
+.productDetailPageLight a:visited,
+.productDetailPageLight a:hover,
+.productDetailPageLight a:active,
+.productDetailPageLight button,
+.productDetailPageLight .modal-add textarea,
+.productDetailPageLight .modal-add input,
+.productDetailPageLight .innerModal {
   color: #000;
 }
 
-.productDetailePageLight .QA-search-bar,
-.productDetailePageLight .question-buttons {
+.productDetailPageLight .QA-search-bar,
+.productDetailPageLight .question-buttons {
   border: 1px solid #000;
 }
 
 /* Dark Mode */
-.productDetailePageDark,
-.productDetailePageDark .modal-add {
+.productDetailPageDark,
+.productDetailPageDark .modal-add,
+.productDetailPageDark .innerModal {
   background-color: rgb(41, 41, 41);
   color: rgb(255, 255, 255);
 }
 
-.productDetailePageDark a:link,
-.productDetailePageDark a:visited,
-.productDetailePageDark a:hover,
-.productDetailePageDark a:active,
-.productDetailePageDark button,
-.productDetailePageDark .QA-search-bar input,
-.productDetailePageDark .modal-add textarea,
-.productDetailePageDark .modal-add input {
+.productDetailPageDark a:link,
+.productDetailPageDark a:visited,
+.productDetailPageDark a:hover,
+.productDetailPageDark a:active,
+.productDetailPageDark button,
+.productDetailPageDark .QA-search-bar input,
+.productDetailPageDark .modal-add textarea,
+.productDetailPageDark .modal-add input,
+.productDetailPageDark .innerModal,
+.productDetailPageDark .modalHead,
+.productDetailPageDark .modalBody {
   color: #fff;
 }
 
-.productDetailePageDark .QA-search-bar,
-.productDetailePageDark .question-buttons {
+.productDetailPageDark .QA-search-bar,
+.productDetailPageDark .question-buttons {
   border: 1px solid #fff;
 }
 
@@ -319,11 +325,11 @@ input:checked + .slider:before {
   left: 170px;
   top: 10px;
   font-size: 18px;
-  color: rgb(165, 52, 52) !important;
+  color: rgb(255, 0, 0);
 }
 
 .action-button:hover {
-  color: red;
+  color: white;
   cursor: pointer;
 }
 
@@ -371,7 +377,7 @@ input:checked + .slider:before {
   border: 1px black solid;
   position: fixed;
   top: 30%;
-  left: 30%;
+  left: 40%;
   height: auto;
   background-color: white;
 }
