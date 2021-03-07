@@ -1,6 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 
-const captureInteractions = module => {
+const captureInteractions = widget => {
   return function decorator(WrappedComponent) {
     return function decoratedComponent(props) {
       const logger = e => {
@@ -8,7 +9,7 @@ const captureInteractions = module => {
         console.log('stealing your data..');
         console.log('\telement:', e.target.nodeName);
         console.log('\ttime:', currentDate.toUTCString());
-        console.log('\tmodule:', module);
+        console.log('\twidget:', widget);
         console.log('thanks bro');
       };
 
@@ -16,5 +17,27 @@ const captureInteractions = module => {
     }
   };
 };
+
+// const captureInteractions = widget => {
+//   return function decorator(WrappedComponent) {
+//     return function decoratedComponent(props) {
+//       const logger = e => {
+//         const currentDate = new Date();
+//         console.log('stealing your data..');
+//         const bodyParams = {
+//           element: e.target.nodeName,
+//           time: currentDate.toUTCString(),
+//           widget
+//         };
+
+//         axios.post('http://localhost:404/interactions/', bodyParams)
+//           .then(() => console.log('logged'))
+//           .catch(err => console.error(err));
+//       };
+
+//       return <WrappedComponent logger={logger} {...props} />
+//     }
+//   };
+// };
 
 export default captureInteractions;
