@@ -9,7 +9,7 @@ export default function OutfitActionButton ({ id, removeOutfitItem }) {
           removeOutfitItem(id)
         }
       }>
-        <ion-icon name="close-circle-outline"></ion-icon>
+        <ion-icon name="close-circle"></ion-icon>
       </div>
     </React.Fragment>
   )
