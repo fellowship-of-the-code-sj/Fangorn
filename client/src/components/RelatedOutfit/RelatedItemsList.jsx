@@ -3,20 +3,24 @@ import PropTypes from 'prop-types';
 import RelatedItemCard from './RelatedItemCard.jsx';
 import helperFunctions from '../../../helperFunctions/helperFunctions.js';
 import ComparisonTable from './ComparisonTable.jsx';
+import relatedAndOutfits from '../../hoc/relatedAndOutfits.js';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
-const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUpdate }) => {
+const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUpdate, logger }) => {
 
   var settings = {
     dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    beforeChange: () => {
+      logger({target: { nodeName: 'Slider' }})
+    }
   };
 
   const [ actionButtonToggle, setActionButtonToggle ] = useState(false);
@@ -64,11 +68,12 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
   )
 };
 
-export default RelatedItemsList;
+export default relatedAndOutfits(RelatedItemsList);
 
 RelatedItemsList.propTypes = {
   relatedItemsList: PropTypes.array,
   productInfo: PropTypes.object,
   productSelect: PropTypes.func,
-  listUpdate: PropTypes.bool
+  listUpdate: PropTypes.bool,
+  logger: PropTypes.func
 }
