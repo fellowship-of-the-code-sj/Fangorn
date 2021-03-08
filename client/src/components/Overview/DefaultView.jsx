@@ -33,7 +33,7 @@ const DefaultView = (props) => {
               event.preventDefault();
               scroll(-60);
             }}
-            >UP</button>
+            ><ion-icon name="caret-up-sharp"></ion-icon></button>
           </div> :
           null
         }
@@ -61,19 +61,25 @@ const DefaultView = (props) => {
               event.preventDefault();
               scroll(60);
             }}
-            >DOWN</button>
+            ><ion-icon name="caret-down-sharp"></ion-icon></button>
           </div> :
           null
         }
       </div>
       { imageIndex > 0 ?
         <div className="defaultImageButtonContainer" id="leftDefaultButton">
-          <button className="defaultViewButton" onClick={event => {let newIndex = imageIndex - 1; setImageIndex(newIndex)}}>{'<'}</button>
+          <button
+            className="defaultViewButton"
+            onClick={event => {let newIndex = imageIndex - 1; setImageIndex(newIndex)}}
+          ><ion-icon name="arrow-back-sharp"></ion-icon></button>
         </div> : null
       }
       { props.photos && (imageIndex < (props.photos.length - 1)) ?
         <div className="defaultImageButtonContainer" id="rightDefaultButton">
-          <button className="defaultViewButton"onClick={event => {let newIndex = imageIndex + 1; setImageIndex(newIndex)}}>{'>'}</button>
+          <button
+          className="defaultViewButton"
+          onClick={event => {let newIndex = imageIndex + 1; setImageIndex(newIndex)}}
+          ><ion-icon name="arrow-forward-sharp"></ion-icon></button>
         </div> : null
       }
     </div>
