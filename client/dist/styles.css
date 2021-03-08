@@ -637,7 +637,7 @@ input:checked + .slider:before {
 .review-image-modal-content {
   background-color: #fefefe;
   margin: auto;
-  margin-bottom: 10px;
+  margin-bottom: 10%;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -773,6 +773,10 @@ input:checked + .slider:before {
   bottom: 10px;
   font-style:italic;
 
+}
+
+.characteristics {
+  margin-top: 5%;
 }
 
 /*
