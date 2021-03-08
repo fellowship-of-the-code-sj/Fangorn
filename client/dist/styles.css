@@ -299,6 +299,24 @@ input:checked + .slider:before {
   object-fit: cover;
 }
 
+.relatedCarouselImage {
+  z-index: 3;
+  height: 50px;
+  width: 70%;
+  left: 30px;
+  position: absolute;
+  top: 150px;
+}
+
+.relatedImageCarousel {
+  display: block;
+  position:relative;
+  padding: 2px;
+  height: 100%;
+  object-fit: cover;
+
+}
+
 .cardCategory {
   position: relative;
   top: -5px;
@@ -329,6 +347,7 @@ input:checked + .slider:before {
 .action-button {
   z-index: 2;
   position: relative;
+  width: 10px;
   left: 170px;
   top: 10px;
   font-size: 18px;
