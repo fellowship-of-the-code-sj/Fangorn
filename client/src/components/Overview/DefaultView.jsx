@@ -16,24 +16,26 @@ const DefaultView = (props) => {
         }
         
       </div>
-      <div id="defaultViewThumbnails">
-        {props.photos ?
-          props.photos.map((photo, index) => (
-            <div
-              key={index}
-              className="imageThumbnailContainer"
-              id={props.photos[imageIndex].thumbnail_url === photo.thumbnail_url ? 'selectedThumbnailImage' : null}>
-              <img
-                className="imageThumbnail"
-                src={photo.thumbnail_url ? photo.thumbnail_url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
-                alt={`Style Thumbnail`}
-                index={index}
-                id={`imageThumbnail${index}`}
-                onClick={(event) => {setImageIndex(event.target.attributes[3].value)}}
-              />
-            </div>
-          )) : null
-        }
+      <div id="defaultViewThumbnailsScroll">
+        <div id="defaultViewThumbnailsContainer">
+          {props.photos ?
+            props.photos.map((photo, index) => (
+              <div
+                key={index}
+                className="imageThumbnailContainer"
+                id={props.photos[imageIndex].thumbnail_url === photo.thumbnail_url ? 'selectedThumbnailImage' : null}>
+                <img
+                  className="imageThumbnail"
+                  src={photo.thumbnail_url ? photo.thumbnail_url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
+                  alt={`Style Thumbnail`}
+                  index={index}
+                  id={`imageThumbnail${index}`}
+                  onClick={(event) => {setImageIndex(event.target.attributes[3].value)}}
+                />
+              </div>
+            )) : null
+          }
+        </div>
       </div>
       { imageIndex > 0 ?
         <div className="defaultButtonContainer" id="leftDefaultButton">
