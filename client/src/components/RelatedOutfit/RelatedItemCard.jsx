@@ -24,10 +24,6 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
     dots: false,
     slide: 'img',
     draggable: false,
-    // onReInit: (e) => {
-    //   console.log(e);
-    // },
-
   };
 
   const [ actionButtonToggle, setActionButtonToggle] = useState(false)
