@@ -795,39 +795,27 @@ input:checked + .slider:before {
   justify-content: space-between;
 }
 
-.flex-grow {
-  flex-grow: 1;
-}
+.flex-grow { flex-grow: 1; }
 
-.spacer {
-  padding: 0 10px;
-}
+.spacer { padding: 0 10px; }
 
-.link-clear {
-  text-decoration: none;
-}
+.link-clear { text-decoration: none; }
 
-.underline {
-  text-decoration: underline;
-}
+.underline { text-decoration: underline; }
 
 .scrollable-content {
   max-height: 45vh;
   overflow: auto;
 }
 
-.disclaimer-small {
-  font-size: 0.9em;
-}
+.disclaimer-small { font-size: 0.9em; }
 
 .secondary-text,
 .load-more-answers {
   font-size: 0.9em;
 }
 
-.secondary-text {
-  color: darkgray;
-}
+.secondary-text { color: darkgray; }
 
 .secondary-text a:link,
 .secondary-text a:visited,
@@ -842,22 +830,16 @@ input:checked + .slider:before {
 }
 
 /* Q&A reusable */
-.modal-label {
-  font-size: 1.25em;
-}
+.modal-label { font-size: 1.25em; }
 
-.modal-user-data {
-  width: 75%;
-}
+.modal-user-data { width: 75%; }
 
 .mandatory {
   color: red;
   font-size: 1em;
 }
 
-.center {
-  text-align: center;
-}
+.center { text-align: center; }
 
 .confirmed {
   color: green;
@@ -871,9 +853,7 @@ input:checked + .slider:before {
 }
 
 /* Search bar */
-.QA-search-bar {
-  padding: 20px;
-}
+.QA-search-bar { padding: 20px; }
 
 .QA-search-bar input {
   font-size: 1.5em;
@@ -883,14 +863,10 @@ input:checked + .slider:before {
 }
 
 /* Question List */
-.question-list {
-  margin: 15px 0;
-}
+.question-list { margin: 15px 0; }
 
 /* Question */
-.question-head {
-  margin: 17px 0;
-}
+.question-head { margin: 17px 0; }
 
 /* Answer */
 .answer-body {
@@ -898,13 +874,9 @@ input:checked + .slider:before {
   font-size: 1.1em;
 }
 
-.answer {
-  margin-top: 17px;
-}
+.answer { margin-top: 17px; }
 
-.answer:first-child {
-  margin-top: 3px;
-}
+.answer:first-child { margin-top: 3px; }
 
 .question-buttons {
   border: 1px solid #000;
@@ -933,6 +905,8 @@ input:checked + .slider:before {
   background-color: #fff;
   width: 40vh;
 }
+
+.modal-add ion-icon { float: right; }
 
 .modal-focus {
   z-index: 100;
@@ -971,9 +945,7 @@ input:checked + .slider:before {
   text-align: left;
 }
 
-.modal-add input[type="text"] {
-  width: 100%;
-}
+.modal-add input[type="text"] { width: 100%; }
 
 .modal-add input[type="submit"] {
   border: 0;
