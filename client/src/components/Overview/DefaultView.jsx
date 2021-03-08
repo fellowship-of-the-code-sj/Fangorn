@@ -42,7 +42,7 @@ const DefaultView = (props) => {
             {props.photos ?
               props.photos.map((photo, index) => (
                 <DefaultViewThumbnail
-                  key={ index }
+                  key={index}
                   photo={ photo }
                   index={ index }
                   imageIndex = { imageIndex }
