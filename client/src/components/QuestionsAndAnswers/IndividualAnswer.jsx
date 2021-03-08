@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import _ from 'underscore';
+import captureQandA from '../../hoc/captureQandA';
 
-const IndividualAnswer = ({ answer }) => {
+const IndividualAnswer = ({ answer, logger }) => {
   // this should really be handled by the API..
   const [ submittedHelpful, setSubmittedHelpful ] = useState(false);
   const [ submittedReport, setSubmittedReport ] = useState(false);
@@ -54,7 +55,13 @@ const IndividualAnswer = ({ answer }) => {
           {
             submittedHelpful ?
             <span>Yes ({answer.helpfulness + 1})</span>
-            : <a href="#" className="link-clear" onClick={handleSubmitHelpful}>
+            : <a
+              href="#"
+              className="link-clear"
+              onClick={e => {
+                handleSubmitHelpful(e);
+                logger(e);
+              }}>
                 <span className="underline">Yes</span> ({answer.helpfulness})
               </a>
           }
@@ -64,7 +71,10 @@ const IndividualAnswer = ({ answer }) => {
           {
             submittedReport ?
             <span>Reported!</span>
-            : <a href="#" onClick={handleSubmitReport}>Report</a>
+            : <a href="#" onClick={e => {
+              handleSubmitReport(e);
+              logger(e);
+            }}>Report</a>
           }
         </div>
         <div className="flex-grow"></div>
@@ -73,8 +83,9 @@ const IndividualAnswer = ({ answer }) => {
   );
 };
 
-export default IndividualAnswer;
+export default captureQandA(IndividualAnswer);
 
 IndividualAnswer.propTypes = {
-  answer: PropTypes.object
+  answer: PropTypes.object,
+  logger: PropTypes.func
 }

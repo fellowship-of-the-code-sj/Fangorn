@@ -7,8 +7,66 @@
   margin: 0;
   padding: 0;
 }
+
+/* Light Mode */
+.productDetailPageLight,
+.productDetailPageLight .modal-add,
+.productDetailPageLight .innerModal
+.productDetailPageLight .new-review-modal-content,
+.productDetailPageLight .new-review-photo-modal-content,
+.productDetailPageLight .review-image-modal-content {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.productDetailPageLight a:link,
+.productDetailPageLight a:visited,
+.productDetailPageLight a:hover,
+.productDetailPageLight a:active,
+.productDetailPageLight button,
+.productDetailPageLight textarea,
+.productDetailPageLight input,
+.productDetailPageLight .innerModal {
+  color: #000;
+}
+
+.productDetailPageLight .QA-search-bar,
+.productDetailPageLight .question-buttons {
+  border: 1px solid #000;
+}
+
+/* Dark Mode */
+.productDetailPageDark,
+.productDetailPageDark .modal-add,
+.productDetailPageDark .innerModal,
+.productDetailPageDark select,
+.productDetailPageDark .new-review-modal-content,
+.productDetailPageDark .new-review-photo-modal-content,
+.productDetailPageDark .review-image-modal-content {
+  background-color: rgb(41, 41, 41);
+  color: rgb(255, 255, 255);
+}
+
+.productDetailPageDark a:link,
+.productDetailPageDark a:visited,
+.productDetailPageDark a:hover,
+.productDetailPageDark a:active,
+.productDetailPageDark button,
+.productDetailPageDark textarea,
+.productDetailPageDark input,
+.productDetailPageDark .innerModal,
+.productDetailPageDark .modalHead,
+.productDetailPageDark .modalBody {
+  color: #fff;
+}
+
+.productDetailPageDark .QA-search-bar,
+.productDetailPageDark .question-buttons {
+  border: 1px solid #fff;
+}
+
 /* header */
-header {
+.banner {
   height: 75px;
   max-width: 1124px;
   margin: auto;
@@ -36,11 +94,115 @@ header {
   letter-spacing: 1px;
 }
 
-header ion-icon {
+.banner ion-icon {
   color: #fff;
 }
 
 body { font-family: 'Lato', sans-serif; }
+
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          DARK THEME BUTTON
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+.darkModeButton {
+  position: fixed;
+  display: inline-block;
+  right: 30px;
+  top: 80px;
+  width: 60px;
+  height: 34px;
+  z-index: 1000;
+}
+
+.darkModeMoon {
+  position: relative;
+  left: 35px;
+  top: 9px;
+  z-index: 2;
+  color: white;
+}
+
+
+.darkModeSun {
+  position: relative;
+  left: 5px;
+  top: 9px;
+  z-index: 2;
+  color: black;
+}
+
+/* Hide default HTML checkbox */
+.darkModeButton input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 0, 0);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgb(255, 255, 255);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider.dark:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgb(0, 0, 0);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #ffffff;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #ffffff;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
 
 /* Primary */
 .primaryComponent {
@@ -66,29 +228,32 @@ body { font-family: 'Lato', sans-serif; }
 
 .relatedItemsAndOutfits {
   padding: 50px 0px;
+  display: block;
   left: 100px;
   width: 800px;
   min-width: 850px;
   max-width: 900px;
   margin: auto;
+  height: auto;
 }
 
 .itemsList {
-  height: 300px;
+  height: 350px;
   margin-bottom: 70px;
 }
 
 .itemCard, .itemCardRelated {
   border: 1px solid grey;
+  padding-top: 0;
   width: 200px;
-  height: 35vh;
-  min-height: 300px;
+  height: 325px;
+  min-height: 325px;
 }
 
 .outfitAddItemCard {
   border: 1px solid grey !important;
   width: 200px !important;
-  height: 35vh !important;
+  height: 325px !important;
   min-height: 300px !important;
 }
 
@@ -115,45 +280,46 @@ body { font-family: 'Lato', sans-serif; }
   top: 40%;
 }
 
-.itemCardImg {
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  display: block;
-  position:relative;
-  object-fit: cover;
-}
-
 .photoBorder {
-  z-index: 0;
+  z-index: 1;
   position: relative;
-  top: -6%;
+  top: -18px;
   left: 0;
   width: 100%;
   height: 65%;
   background-color: rgba(0, 0, 0, .1);
 }
 
+.itemCardImg {
+  z-index: 2;
+  display: block;
+  position:relative;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 .cardCategory {
   position: relative;
-  top: -4%;
-  left: 5%;
-  font-size: 1.4vh;
+  top: -5px;
+  left: 8px;
+  font-size: 13px;
+  font-weight: 300;
 }
 
 .cardItemName {
   position: relative;
-  top: -2%;
-  left: 5%;
-  font-size: 1.6vh;
-
+  top: -5px;
+  left: 8px;
+  font-size: 15px;
 }
 
 .cardItemPrice, .cardItemSalePrice{
   position: relative;
-  top: 0%;
-  left: 5%;
-  font-size: 1.4vh;
+  top: -2px;
+  left: 8px;
+  font-size: 13px;
+  font-weight: 300;
 }
 
 .cardItemsalePrice {
@@ -166,11 +332,11 @@ body { font-family: 'Lato', sans-serif; }
   left: 170px;
   top: 10px;
   font-size: 18px;
-  color: rgb(165, 52, 52);
+  color: rgb(255, 0, 0);
 }
 
 .action-button:hover {
-  color: red;
+  color: white;
   cursor: pointer;
 }
 
@@ -182,7 +348,7 @@ body { font-family: 'Lato', sans-serif; }
   width: 75px;
   padding: 0;
   position: relative;
-  top: 0%;
+  top: -2%;
   left: 5%;
 }
 
@@ -210,27 +376,28 @@ body { font-family: 'Lato', sans-serif; }
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(133, 133, 133, 0.479);
 }
 
 .innerModal {
   z-index: 300;
   border: 1px black solid;
   position: fixed;
-  top: 40%;
-  left: 30%;
+  top: 30%;
+  left: 40%;
   height: auto;
   background-color: white;
 }
 
 .innerModal table {
+  display: block;
   padding: 15px 10px;
   width: 450px;
   height: auto;
+  max-height: 400px;
   margin-top: 20px;
-  margin-left: 10px;
-  margin-right: 5px;
-  margin-bottom: 25px;;
+  margin-bottom: 10px;
+  overflow: auto;
 }
 
 .comparingItems {
@@ -238,38 +405,35 @@ body { font-family: 'Lato', sans-serif; }
   margin-top: 10px;
 }
 
-.rightTitle {
-  position: absolute;
-  right: 10px;
-}
-
-.rightTitle {
-  position: absolute;
-  right: 10px;
-}
-
-
-.centerFeature {
-  position: absolute;
-  clear: left;
-  right: 125px;
-  text-align: center;
-  width: 210px;
-  font-size: 11px;
-}
-
 .modalHead th {
   padding-bottom: 20px;
 }
 
 .modalBody td {
-  padding: 5px;
+  padding-bottom: 10px;
 }
 
-.rightCheckMark {
-  text-align: right;
+.rightTitle, .rightCheckMark{
   position: relative;
-  right: 10px;
+  text-align: right;
+  display: block;
+  right:0px;
+  width: 125px;
+}
+
+.leftTitle, .leftCheckMark{
+  position: relative;
+  text-align: left;
+  display: block;
+  left:0px;
+  width: 125px;
+}
+
+.centerFeature {
+  position: relative;
+  width: 200px;
+  text-align: center;
+  font-size: 11px;
 }
 
 .leftTitle, .rightTitle {
@@ -286,31 +450,23 @@ body { font-family: 'Lato', sans-serif; }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-.ratings-and-reviews {
-  margin-top: 50px;
-}
-
-.ratings {
-  position: relative;
-  width: 50%
-}
-
 .reviews-list {
-  border: 1px solid black;
   position: relative;
-  margin-left: 40%;
-  width: 50%;
-  bottom: 500px;
-  max-height: 100vh;
+  margin-left: 45%;
+  width: 60%;
+  bottom: 650px;
+  max-height: 80%;
+}
+.reviews-list-content {
   overflow:auto;
+  max-height: 65%;
 }
 
 .review {
   margin: auto;
   margin-bottom: 5px;
-  width: 80%;
+  width: 100%;
   padding: 10px;
-  border: 1px solid black;
 }
 
 .show-more-reviews-button {
@@ -319,6 +475,10 @@ body { font-family: 'Lato', sans-serif; }
   border:1px solid black;
   background-color: transparent;
   padding:10px;
+}
+
+.new-review-star-rating-form {
+  font-size: larger
 }
 
 .new-review-button {
@@ -348,11 +508,13 @@ body { font-family: 'Lato', sans-serif; }
 .helpful-toggle{
   margin: 5px;
   text-decoration: underline;
+  cursor:pointer;
 }
 
 .report{
   margin: 10px;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .response{
@@ -364,20 +526,6 @@ body { font-family: 'Lato', sans-serif; }
 
 .recommend{
   margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.rating-number {
-  font-size: xx-large;
-}
-
-.rating-stars {
-  position: relative;
-  left: 50px;
-  bottom: 30px;
-}
-
-.rating-summary {
   margin-bottom: 10px;
 }
 
@@ -399,8 +547,13 @@ body { font-family: 'Lato', sans-serif; }
   display:block;
 }
 
+.rating-number {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
 .rating-proportions {
-  margin-bottom: 75px;
+  margin-bottom: 10px;
   margin-top: 10px;
 }
 
@@ -412,7 +565,7 @@ body { font-family: 'Lato', sans-serif; }
 }
 
 .rating-proportion-fill {
-  background-color: rgb(44, 44, 44);
+  background-color: orange;
   background-position: 0 100%;
   float: left;
   height: 13px;
@@ -433,7 +586,7 @@ body { font-family: 'Lato', sans-serif; }
 
 .characteristic-icon {
   position: relative;
-  bottom: 4px;
+  bottom: 8px;
 }
 
 .characteristic-bar {
@@ -462,7 +615,6 @@ body { font-family: 'Lato', sans-serif; }
 }
 
 .review-thumbnail {
-  margin:3px;
   height: 50px;
   width: 50px;
 }
@@ -485,9 +637,15 @@ body { font-family: 'Lato', sans-serif; }
 .review-image-modal-content {
   background-color: #fefefe;
   margin: auto;
+  margin-bottom: 10px;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+}
+
+.review-image-modal-img {
+  height: 95%;
+  width: 95%;
 }
 
 /* The Close Button */
@@ -509,7 +667,7 @@ body { font-family: 'Lato', sans-serif; }
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 1%; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -526,8 +684,14 @@ body { font-family: 'Lato', sans-serif; }
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
-  height: 80%;
+  height: 85%;
   overflow: auto;
+}
+
+.new-review-modal-content input,
+.new-review-modal-content textarea,
+.new-review-modal-content button {
+  background-color: transparent;
 }
 
 /* The Close Button */
@@ -536,6 +700,20 @@ body { font-family: 'Lato', sans-serif; }
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.new-review-star {
+  cursor: pointer;
+}
+
+.new-review-radio-array {
+  margin-left: 10px;
+}
+
+.new-review-radios {
+  margin-left:5px;
+  margin-right: 5px;
 }
 
 .new-review-photo-modal {
@@ -559,7 +737,7 @@ body { font-family: 'Lato', sans-serif; }
   padding: 20px;
   border: 1px solid #888;
   width: 40%;
-  height: 20%;
+  height: 40%;
   overflow: auto;
 }
 
@@ -569,6 +747,7 @@ body { font-family: 'Lato', sans-serif; }
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .new-review-modal-close:hover,
@@ -590,7 +769,10 @@ body { font-family: 'Lato', sans-serif; }
 
 .new-review-characteristic-meaning {
   position: relative;
-  left: 50;
+  left: 4%;
+  bottom: 10px;
+  font-style:italic;
+
 }
 
 /*
@@ -655,16 +837,8 @@ body { font-family: 'Lato', sans-serif; }
 }
 
 .load-more-answers {
-  color: #000;
   font-weight: 700;
   margin-top: 15px;
-}
-
-.load-more-answers a:link,
-.load-more-answers a:visited,
-.load-more-answers a:hover,
-.load-more-answers a:active {
-  color: #000;
 }
 
 /* Q&A reusable */
@@ -698,19 +872,14 @@ body { font-family: 'Lato', sans-serif; }
 
 /* Search bar */
 .QA-search-bar {
-  border: 1px solid #000;
   padding: 20px;
-}
-
-.QA-search-bar ion-icon {
-  color: #000;
 }
 
 .QA-search-bar input {
   font-size: 1.5em;
-  width: 100%;
+  width: 95%;
   border: 0;
-  color: #000;
+  background-color: transparent;
 }
 
 /* Question List */
@@ -760,7 +929,7 @@ body { font-family: 'Lato', sans-serif; }
   transform: translate(-50%, -60%);
   padding: 25px;
   border: 1px solid darkgray;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #fff;
   width: 40vh;
 }
@@ -788,6 +957,7 @@ body { font-family: 'Lato', sans-serif; }
   border-radius: 5px;
   margin: 10px 0 5px auto;
   font-size: 18px;
+  background-color: transparent;
 }
 .modal-add textarea {
   resize: none;
@@ -821,7 +991,7 @@ body { font-family: 'Lato', sans-serif; }
 
 .overview {
   border: 1px solid black;
-  /* width: 80%; */
+  width: 80%;
   margin: 10px auto;
   padding: 10px;
   display: grid;
@@ -850,8 +1020,8 @@ body { font-family: 'Lato', sans-serif; }
   z-index: 0;
   /* height: 90%; */
   /* width: 90%; */
-  height: 700px;
-  width: 700px;
+  height: 725px;
+  width: 725px;
 }
 
 #defaultViewImageContainer:hover {
@@ -861,7 +1031,7 @@ body { font-family: 'Lato', sans-serif; }
 #defaultViewImage {
   max-width: 100%;
   max-height: 100%;
-  margin: 0px;
+  margin: 0;
   position: relative;
   top: 50%;
   left: 50%;
@@ -890,10 +1060,6 @@ body { font-family: 'Lato', sans-serif; }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-#selectedThumbnailImage {
-  border: 2px solid black;
 }
 
 /***** Product Info Component *****/
@@ -960,12 +1126,9 @@ body { font-family: 'Lato', sans-serif; }
 
 #styleSelectorStyles {
   grid-row: 2 / 3;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-flow: row;
-  /* display: flex;
+  display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; */
+  justify-content: space-around;
 }
 
 .styleContainer {
@@ -982,10 +1145,6 @@ body { font-family: 'Lato', sans-serif; }
   margin: 0 auto;
   height: 100%;
   width: 100%;
-}
-
-#selectedStyleImage {
-  border: 2px solid black;
 }
 
 /***** Add To Cart Component *****/

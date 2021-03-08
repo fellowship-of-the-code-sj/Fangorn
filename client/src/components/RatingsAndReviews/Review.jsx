@@ -86,11 +86,11 @@ function Review(props) {
       <div className="review-thumbnails"></div>
       {
         props.review.photos.map((image, i) => {
-          return <img onClick={handleImageClick} className="review-thumbnail" key={image.id} id={`${i}-${image.id}`} src={image.url}></img>
+          return <img style={{ "cursor": "pointer" }} onClick={handleImageClick} className="review-thumbnail" key={image.id} id={`${i}-${image.id}`} src={image.url}></img>
         })
       }
       {
-        props.review.response ? <div className="response"><b>Response:</b><br></br>{props.review.response}</div> : <div></div>
+        props.review.response ? <div className="response"><b>Response from seller:</b><br></br>{props.review.response}</div> : <div></div>
       }
       {
         props.review.recommend ? <div className="recommend"> ✔ I recommend this product</div> : <div></div>
@@ -102,9 +102,10 @@ function Review(props) {
       <div id={"imageModal" + JSON.stringify(props.review.review_id)} className="review-image-modal">
         <div className="review-image-modal-content">
           <span onClick={handleImageClose} className="review-image-modal-close">&times;</span>
-          <img src={selectedPhoto.url} ></img>
+          <img className="review-image-modal-img" src={selectedPhoto.url} ></img>
         </div>
       </div>
+      <hr></hr>
     </div>
   )
 }

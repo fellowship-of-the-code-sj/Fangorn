@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Search = ({ query, handleQueryInput }) => {
   return (
     <div className="QA-search-bar flex">
-      <div>
+      <div className="flex-grow">
         <input
           type="text"
           name="search"
@@ -13,8 +13,9 @@ const Search = ({ query, handleQueryInput }) => {
           placeholder="Have a question? Search for answers…">
         </input>
       </div>
-      <div className="flex-grow"></div>
-      <ion-icon name="search-outline" size="large"></ion-icon>
+      <div>
+        <ion-icon name="search-outline" size="large"></ion-icon>
+      </div>
     </div>
   );
 };

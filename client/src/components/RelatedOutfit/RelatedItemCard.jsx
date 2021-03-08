@@ -4,18 +4,24 @@ import StarRating from './StarRating.jsx';
 import RelatedActionButton from './RelatedActionButton.jsx';
 import helperFunctions from '../../../helperFunctions/helperFunctions.js';
 import ComparisonTable from './ComparisonTable.jsx';
+import relatedAndOutfits from '../../hoc/relatedAndOutfits.js';
 
-const RelatedItemCard = ({ cardData, actionButtonListener, productSelect }) => {
+const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger }) => {
 
   //State for comparison table toggle
   const [ actionButtonToggle, setActionButtonToggle] = useState(false)
 
   return (
-    <div onClick={() => productSelect(cardData.id)} className='itemCardRelated'>
+    <div onClick={(e) => {
+          productSelect(cardData.id)
+          logger(e);
+        }
+      } className='itemCardRelated'>
 
       {/* Star Action Button */}
       <RelatedActionButton actionButtonListener={(event) => {
         actionButtonListener(event, cardData)
+        logger(event)
       }}/>
       <div className='photoBorder'>
         {
@@ -45,10 +51,11 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect }) => {
   )
 }
 
-export default RelatedItemCard;
+export default relatedAndOutfits(RelatedItemCard);
 
 RelatedItemCard.propTypes = {
   cardData: PropTypes.object,
   actionButtonListener: PropTypes.func,
   productSelect: PropTypes.func,
+  logger: PropTypes.func
 }
