@@ -5,15 +5,28 @@ import axios from 'axios';
 import regex from '../../../helperFunctions/regex';
 import captureQandA from '../../hoc/captureQandA';
 
-var AddQuestion = ({ productID, handleAddQuestionModal, logger }) => {
-  const [ question, setQuestion ] = useState('');
-  const [ nickname, setNickname ] = useState('');
-  const [ email, setEmail ] = useState('');
+var AddQuestion = (
+  {
+    productID, handleAddQuestionModal,
+    question, nickname, email,
+    setQuestion, setNickname, setEmail,
+    logger
+  }
+) => {
+  // const [ question, setQuestion ] = useState('');
+  // const [ nickname, setNickname ] = useState('');
+  // const [ email, setEmail ] = useState('');
   const [ isQuestionEmpty, setIsQuestionEmpty ] = useState(false);
   const [ isNicknameEmpty, setisNicknameEmpty ] = useState(false);
   const [ isEmailEmpty, setIsEmailEmpty ] = useState(false);
   const [ isEmailFormatInvalid, setIsEmailFormatInvalid ] = useState(false);
   const [ isSubmitted, setIsSubmitted ] = useState(false);
+
+  // useEffect(() => {
+  //   if (question) setQuestion(nickname);
+  //   if (nickname) setNickname(nickname);
+  //   if (email) setEmail(email);
+  // }, []);
 
   useEffect(() => {
     if (isSubmitted) setIsSubmitted(false);
@@ -54,7 +67,7 @@ var AddQuestion = ({ productID, handleAddQuestionModal, logger }) => {
           setEmail('');
           setIsSubmitted(true);
         })
-        .catch(() => console.error('error'));
+        .catch(err => console.error('error', err));
     } else {
       if (!questionHasContent) setIsQuestionEmpty(true);
       if (!nicknameHasContent) setisNicknameEmpty(true);
@@ -67,6 +80,10 @@ var AddQuestion = ({ productID, handleAddQuestionModal, logger }) => {
     <React.Fragment>
       <div className="modal-focus" onClick={handleAddQuestionModal}></div>
       <div className="modal-add">
+        <ion-icon
+          size="large"
+          name="close-outline"
+          onClick={handleAddQuestionModal}></ion-icon>
         <div className="center">
           <h1>Your Question</h1>
           { isSubmitted ? <div className="confirmed">Question submitted <ion-icon name="checkmark-outline"></ion-icon></div> : null }
@@ -135,5 +152,11 @@ export default captureQandA(AddQuestion);
 AddQuestion.propTypes = {
   productID: PropTypes.number,
   handleAddQuestionModal: PropTypes.func,
+  question: PropTypes.string,
+  nickname: PropTypes.string,
+  email: PropTypes.string,
+  setQuestion: PropTypes.func,
+  setNickname: PropTypes.func,
+  setEmail: PropTypes.func,
   logger: PropTypes.func
 }

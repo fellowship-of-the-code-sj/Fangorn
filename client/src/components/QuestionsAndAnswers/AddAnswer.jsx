@@ -5,10 +5,14 @@ import _ from 'underscore';
 import regex from '../../../helperFunctions/regex';
 import captureQandA from '../../hoc/captureQandA';
 
-var AddAnswer = ({ questionId, questionBody, productName, handleAddAnswerModal, logger }) => {
-  const [ answer, setAnswer ] = useState('');
-  const [ nickname, setNickname ] = useState('');
-  const [ email, setEmail ] = useState('');
+var AddAnswer = (
+  {
+    questionId, questionBody, productName, handleAddAnswerModal,
+    answer, nickname, email,
+    setAnswer, setNickname, setEmail,
+    logger
+  }
+) => {
   const [ isAnswerEmpty, setIsAnswerEmpty ] = useState(false);
   const [ isNicknameEmpty, setisNicknameEmpty ] = useState(false);
   const [ isEmailEmpty, setIsEmailEmpty ] = useState(false);
@@ -66,12 +70,16 @@ var AddAnswer = ({ questionId, questionBody, productName, handleAddAnswerModal, 
     <React.Fragment>
       <div className="modal-focus" onClick={handleAddAnswerModal}></div>
       <div className="modal-add">
+        <ion-icon
+          size="large"
+          name="close-outline"
+          onClick={handleAddAnswerModal}></ion-icon>
         <div className="center">
           <h1>Submit your Answer</h1>
           <h2>{productName}: {questionBody}</h2>
           {
             isSubmitted ?
-            <div className="confirmed">Question submitted <ion-icon name="checkmark-outline"></ion-icon></div>
+            <div className="confirmed">Answer submitted <ion-icon name="checkmark-outline"></ion-icon></div>
             : null
           }
         </div>
@@ -144,5 +152,11 @@ AddAnswer.propTypes = {
   questionBody: PropTypes.string,
   productName: PropTypes.string,
   handleAddAnswerModal: PropTypes.func,
+  answer: PropTypes.string,
+  nickname: PropTypes.string,
+  email: PropTypes.string,
+  setAnswer: PropTypes.func,
+  setNickname: PropTypes.func,
+  setEmail: PropTypes.func,
   logger: PropTypes.func
 }
