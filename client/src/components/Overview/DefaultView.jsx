@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 const DefaultView = (props) => {
 
   const [ imageIndex, setImageIndex ] = useState(0);
+  
+  const ref = useRef(null);
+  
+  const scroll = (scrollDistance) => {
+    ref.current.scrollTop += scrollDistance;
+  }
 
   return (
     <div className="defaultView">
@@ -16,34 +22,62 @@ const DefaultView = (props) => {
         }
         
       </div>
-      <div id="defaultViewThumbnailsScroll">
-        <div id="defaultViewThumbnailsContainer">
-          {props.photos ?
-            props.photos.map((photo, index) => (
-              <div
-                key={index}
-                className="imageThumbnailContainer"
-                id={props.photos[imageIndex].thumbnail_url === photo.thumbnail_url ? 'selectedThumbnailImage' : null}>
-                <img
-                  className="imageThumbnail"
-                  src={photo.thumbnail_url ? photo.thumbnail_url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
-                  alt={`Style Thumbnail`}
-                  index={index}
-                  id={`imageThumbnail${index}`}
-                  onClick={(event) => {setImageIndex(event.target.attributes[3].value)}}
-                />
-              </div>
-            )) : null
-          }
+      <div id="defaultViewThumbnailsContainer" >
+        {props.photos && props.photos.length > 7 ? 
+          <div className="scrollButtonContainer">
+            <button
+            className="scrollButton"
+            id="scrollUp"
+            onClick={(e) => {
+              event.preventDefault();
+              scroll(-60);
+            }}
+            >UP</button>
+          </div> :
+          null
+        }
+        <div id="defaultViewThumbnailsScroll" ref={ ref }>
+          <div id="defaultViewThumbnails">
+            {props.photos ?
+              props.photos.map((photo, index) => (
+                <div
+                  key={index}
+                  className="imageThumbnailContainer"
+                  id={props.photos[imageIndex].thumbnail_url === photo.thumbnail_url ? 'selectedThumbnailImage' : null}>
+                  <img
+                    className="imageThumbnail"
+                    src={photo.thumbnail_url ? photo.thumbnail_url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
+                    alt={`Style Thumbnail`}
+                    index={index}
+                    id={`imageThumbnail${index}`}
+                    onClick={(event) => {setImageIndex(event.target.attributes[3].value)}}
+                  />
+                </div>
+              )) : null
+            }
+          </div>
         </div>
+        {props.photos && props.photos.length > 7 ? 
+          <div className="scrollButtonContainer">
+            <button
+            className="scrollButton"
+            id="scrollDown"
+            onClick={(e) => {
+              event.preventDefault();
+              scroll(60);
+            }}
+            >DOWN</button>
+          </div> :
+          null
+        }
       </div>
       { imageIndex > 0 ?
-        <div className="defaultButtonContainer" id="leftDefaultButton">
+        <div className="defaultImageButtonContainer" id="leftDefaultButton">
           <button className="defaultViewButton" onClick={event => {let newIndex = imageIndex - 1; setImageIndex(newIndex)}}>{'<'}</button>
         </div> : null
       }
       { props.photos && (imageIndex < (props.photos.length - 1)) ?
-        <div className="defaultButtonContainer" id="rightDefaultButton">
+        <div className="defaultImageButtonContainer" id="rightDefaultButton">
           <button className="defaultViewButton"onClick={event => {let newIndex = imageIndex + 1; setImageIndex(newIndex)}}>{'>'}</button>
         </div> : null
       }

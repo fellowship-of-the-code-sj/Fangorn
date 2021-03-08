@@ -870,15 +870,23 @@ body { font-family: 'Lato', sans-serif; }
   transform: translate(-50%, -50%);
 }
 
-#defaultViewThumbnailsScroll {
+#defaultViewThumbnailsContainer {
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   z-index: 1;
-  height: 420;
-  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
-#defaultViewThumbnailsContainer {
+#defaultViewThumbnailsScroll {
+  height: 425;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+
+#defaultViewThumbnails {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -907,12 +915,17 @@ body { font-family: 'Lato', sans-serif; }
   border: 2px solid black;
 }
 
-.defaultButtonContainer {
+.defaultImageButtonContainer {
   box-sizing: border-box;
   height: 40px;
   width: 40px;
   text-align: center;
   margin: auto 0px;
+}
+
+.defaultViewButton {
+  height: 100%;
+  width: 100%;
 }
 
 #leftDefaultButton {
