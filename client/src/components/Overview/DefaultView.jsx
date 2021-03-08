@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import DefaultViewThumbnail from './DefaultViewThumbnail.jsx';
 
 const DefaultView = (props) => {
 
@@ -40,19 +41,13 @@ const DefaultView = (props) => {
           <div id="defaultViewThumbnails">
             {props.photos ?
               props.photos.map((photo, index) => (
-                <div
-                  key={index}
-                  className="imageThumbnailContainer"
-                  id={props.photos[imageIndex].thumbnail_url === photo.thumbnail_url ? 'selectedThumbnailImage' : null}>
-                  <img
-                    className="imageThumbnail"
-                    src={photo.thumbnail_url ? photo.thumbnail_url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
-                    alt={`Style Thumbnail`}
-                    index={index}
-                    id={`imageThumbnail${index}`}
-                    onClick={(event) => {setImageIndex(event.target.attributes[3].value)}}
-                  />
-                </div>
+                <DefaultViewThumbnail
+                  key={ index }
+                  photo={ photo }
+                  index={ index }
+                  imageIndex = { imageIndex }
+                  setImageIndex = { setImageIndex }
+                />
               )) : null
             }
           </div>
@@ -90,3 +85,17 @@ const DefaultView = (props) => {
 }
 
 export default DefaultView;
+
+{/* <div
+  key={index}
+  className="imageThumbnailContainer"
+  id={props.photos[imageIndex].thumbnail_url === photo.thumbnail_url ? 'selectedThumbnailImage' : null}>
+  <img
+    className="imageThumbnail"
+    src={photo.thumbnail_url ? photo.thumbnail_url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
+    alt={`Style Thumbnail`}
+    index={index}
+    id={`imageThumbnail${index}`}
+    onClick={(event) => {setImageIndex(event.target.attributes[3].value)}}
+  />
+</div> */}
