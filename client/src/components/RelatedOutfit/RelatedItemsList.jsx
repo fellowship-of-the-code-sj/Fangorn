@@ -19,7 +19,7 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
     slidesToShow: 4,
     slidesToScroll: 1,
     beforeChange: () => {
-      logger({target: { nodeName: 'Slider' }})
+      logger({target: { nodeName: 'RelatedItemsList Slider' }})
     }
   };
 
