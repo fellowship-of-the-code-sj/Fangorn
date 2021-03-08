@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
 import PropTypes from 'prop-types';
 import OutfitActionButton from './OutfitActionButton.jsx';
+import relatedAndOutfits from '../../hoc/relatedAndOutfits.js';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
-const OutfitListCard = ({ cardData, removeOutfitItem}) => {
+const OutfitListCard = ({ cardData, removeOutfitItem, logger}) => {
 
   var settings = {
     dots: true,
@@ -19,6 +20,9 @@ const OutfitListCard = ({ cardData, removeOutfitItem}) => {
     dots: false,
     slide: 'img',
     draggable: false,
+    beforeChange: () => {
+      logger({target: { nodeName: 'OutfitCard Image Slider' }})
+    }
   };
 
   const [ carouselImages, setCarouselImages ] = useState(false);
@@ -50,7 +54,11 @@ const OutfitListCard = ({ cardData, removeOutfitItem}) => {
             <Slider {...settings}>
               {
                 cardData.default_style.photos.map((image, index) => {
-                  return <img onClick={(e) => updateCardImage(e, index)} className='relatedImageCarousel' key={index} src={image.thumbnail_url}></img>
+                  return <img onClick={(e) => {
+                    updateCardImage(e, index)
+                    logger(e)
+                  }}
+                  className='relatedImageCarousel' key={index} src={image.thumbnail_url}></img>
                 })
               }
             </Slider>
@@ -78,9 +86,10 @@ const OutfitListCard = ({ cardData, removeOutfitItem}) => {
   )
 }
 
-export default OutfitListCard;
+export default relatedAndOutfits(OutfitListCard);
 
 OutfitListCard.propTypes = {
   cardData: PropTypes.object,
-  removeOutfitItem: PropTypes.func
+  removeOutfitItem: PropTypes.func,
+  logger: PropTypes.func
 }
