@@ -5,6 +5,11 @@ import DefaultViewThumbnail from './DefaultViewThumbnail.jsx';
 const DefaultView = (props) => {
 
   const [ imageIndex, setImageIndex ] = useState(0);
+
+  const handleImageIndexChange = (increment) => {
+    let newIndex = imageIndex + increment;
+    setImageIndex(newIndex);
+  }
   
   const ref = useRef(null);
   
@@ -70,7 +75,7 @@ const DefaultView = (props) => {
         <div className="defaultImageButtonContainer" id="leftDefaultButton">
           <button
             className="defaultViewButton"
-            onClick={event => {let newIndex = imageIndex - 1; setImageIndex(newIndex)}}
+            onClick={() => {handleImageIndexChange(-1)}}
           ><ion-icon name="arrow-back-sharp"></ion-icon></button>
         </div> : null
       }
@@ -78,7 +83,7 @@ const DefaultView = (props) => {
         <div className="defaultImageButtonContainer" id="rightDefaultButton">
           <button
           className="defaultViewButton"
-          onClick={event => {let newIndex = imageIndex + 1; setImageIndex(newIndex)}}
+          onClick={() => {handleImageIndexChange(1)}}
           ><ion-icon name="arrow-forward-sharp"></ion-icon></button>
         </div> : null
       }
