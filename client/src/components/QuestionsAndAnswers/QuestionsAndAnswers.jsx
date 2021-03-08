@@ -10,13 +10,19 @@ import AddQuestion from './AddQuestion.jsx';
 import serverRequest from '../../../helperFunctions/serverRequest.js';
 
 const QuestionsAndAnswers = ({ productID, productName }) => {
+  // Search
+  const [ query, setQuery ] = useState('');
+  // QuestionsList
   const [ originalQuestions, setOriginalQuestions ] = useState([]);
   const [ questions, setQuestions ] = useState([]);
   const [ showAddQuestionModal, setShowAddQuestionModal ] = useState(false);
   const [ showMoreQuestionsButton, setShowMoreQuestionsButton ] = useState(false);
   const [ numDisplayedQuestions, setNumDisplayedQuestions ] = useState(0);
   const [ displayedQuestions, setDisplayedQuestions ] = useState([]);
-  const [ query, setQuery ] = useState('');
+  // Add Question
+  const [ question, setQuestion ] = useState('');
+  const [ nickname, setNickname ] = useState('');
+  const [ email, setEmail ] = useState('');
 
   useEffect(() => {
     serverRequest.get(
@@ -93,7 +99,15 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
       </div>
       {
         showAddQuestionModal ?
-        <AddQuestion productID={productID} handleAddQuestionModal={handleAddQuestionModal}/>
+        <AddQuestion
+          productID={productID}
+          handleAddQuestionModal={handleAddQuestionModal}
+          question={question}
+          nickname={nickname}
+          email={email}
+          setQuestion={setQuestion}
+          setNickname={setNickname}
+          setEmail={setEmail} />
         : null
       }
     </div>

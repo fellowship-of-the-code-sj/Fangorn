@@ -11,20 +11,20 @@ import data from './dummyData.js';
 
 describe('Overview', () => {
   it('should render Overview component', () => {
-    const wrapper = shallow(<Overview/>);
+    const wrapper = shallow(<Overview />);
     expect(wrapper.find('.overview').length).toBe(1);
   })
 });
 
 describe('Default View', () => {
   it('should render Default View component', () => {
-    const wrapper = shallow(<DefaultView/>);
+    const wrapper = shallow(<DefaultView />);
     expect(wrapper.find('.defaultView').length).toBe(1);
   })
 
   it('should display the first style image as the main image by default', () => {
     const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
-    expect(wrapper.contains(<img 
+    expect(wrapper.contains(<img
       src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80" id="defaultViewImage"
     />)).toBe(true);
   })
@@ -38,46 +38,46 @@ describe('Default View', () => {
 
 describe('Product Information', () => {
   it('should render ProductInfo component with data', () => {
-    const wrapper = shallow(<ProductInfo 
-      product={ data.products[0] }
-      currentStyle={ data.styles[0] }
-      ratings={ data.reviewMeta.ratings }
+    const wrapper = shallow(<ProductInfo
+      product={data.products[0]}
+      currentStyle={data.styles[0]}
+      ratings={data.reviewMeta.ratings}
     />);
     expect(wrapper.find('.productInfo').length).toBe(1);
   })
 
   it('should display the average rating and # of ratings', () => {
-    const wrapper = shallow(<ProductInfo 
-      product={ data.products[0] }
-      currentStyle={ data.styles[0] }
-      ratings={ data.reviewMeta.ratings }
+    const wrapper = shallow(<ProductInfo
+      product={data.products[0]}
+      currentStyle={data.styles[0]}
+      ratings={data.reviewMeta.ratings}
     />);
     expect(wrapper.find('#productInfoRating').length).toBe(1);
   })
 
   it('should display the product category', () => {
-    const wrapper = shallow(<ProductInfo 
-      product={ data.products[0] }
-      currentStyle={ data.styles[0] }
-      ratings={ data.reviewMeta.ratings }
+    const wrapper = shallow(<ProductInfo
+      product={data.products[0]}
+      currentStyle={data.styles[0]}
+      ratings={data.reviewMeta.ratings}
     />);
     expect(wrapper.find('#productInfoCategory').length).toBe(1);
   })
 
   it('should display the product name', () => {
-    const wrapper = shallow(<ProductInfo 
-      product={ data.products[0] }
-      currentStyle={ data.styles[0] }
-      ratings={ data.reviewMeta.ratings }
+    const wrapper = shallow(<ProductInfo
+      product={data.products[0]}
+      currentStyle={data.styles[0]}
+      ratings={data.reviewMeta.ratings}
     />);
     expect(wrapper.find('#productInfoName').length).toBe(1);
   })
 
   it('should display the product price', () => {
-    const wrapper = shallow(<ProductInfo 
-      product={ data.products[0] }
-      currentStyle={ data.styles[0] }
-      ratings={ data.reviewMeta.ratings }
+    const wrapper = shallow(<ProductInfo
+      product={data.products[0]}
+      currentStyle={data.styles[0]}
+      ratings={data.reviewMeta.ratings}
     />);
     expect(wrapper.find('#productInfoPrice').length).toBe(1);
   })
@@ -86,24 +86,24 @@ describe('Product Information', () => {
 describe('Style Selector', () => {
   it('should render Style Selector component', () => {
     const wrapper = shallow(<StyleSelector
-      styles={ data.styles }
-      currentStyle={ data.styles[0] }
+      styles={data.styles}
+      currentStyle={data.styles[0]}
     />);
     expect(wrapper.find('.styleSelector').length).toBe(1);
   })
 
   it('should display the current style', () => {
     const wrapper = shallow(<StyleSelector
-      styles={ data.styles }
-      currentStyle={ data.styles[0] }
+      styles={data.styles}
+      currentStyle={data.styles[0]}
     />);
     expect(wrapper.contains(<div id="styleSelectorName">Style &gt; Forest Green &amp; Black</div>)).toBe(true);
   })
 
   it('should render thumbnails of styles dynamically', () => {
     const wrapper = shallow(<StyleSelector
-      styles={ data.styles }
-      currentStyle={ data.styles[0] }
+      styles={data.styles}
+      currentStyle={data.styles[0]}
     />);
     expect(wrapper.find('.styleThumbnail').length).toBe(2)
   })
@@ -111,22 +111,22 @@ describe('Style Selector', () => {
 
 describe('Add to Cart', () => {
   it('should render Add To Cart component', () => {
-    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus} />);
     expect(wrapper.find('.addToCart').length).toBe(1);
   })
-  
+
   it('should include a Select Size select element', () => {
-    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus} />);
     expect(wrapper.find('#sizeSelect').length).toBe(1);
   })
 
   it('should include a Quantity select element', () => {
-    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus} />);
     expect(wrapper.find('#quantitySelect').length).toBe(1);
   })
-  
+
   it('should include a Add to Cart button element', () => {
-    const wrapper = shallow(<AddToCart skus={data.styles[0].skus}/>);
+    const wrapper = shallow(<AddToCart skus={data.styles[0].skus} />);
     expect(wrapper.find('#addToCartButton').length).toBe(1);
   })
 });
