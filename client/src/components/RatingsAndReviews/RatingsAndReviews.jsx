@@ -40,6 +40,17 @@ function RatingsAndReviews(props) {
 
   })
 
+  const resetStarSort = () => {
+    setTracker(tracker + 1);
+    setStarSort({
+      1: false,
+      2: false,
+      3: false,
+      4: false,
+      5: false
+    })
+  }
+
   const toggleStarSort = (star) => {
     var newStarSort = starSort;
     if (starSort[star]) {
@@ -53,13 +64,10 @@ function RatingsAndReviews(props) {
 
   return (
     <div className="ratings-and-reviews">
-
       <h3>Ratings and Reviews</h3><br></br>
-
-      <Ratings toggleStarSort={toggleStarSort} metaObject={metaObject} />
-      <ReviewsList tracker={tracker} starSort={starSort} metaObject={metaObject} productID={props.productID} />
-      <a name="randr"/>
-
+      <a name="randr" />
+      <Ratings starSort={starSort} toggleStarSort={toggleStarSort} metaObject={metaObject} />
+      <ReviewsList resetStarSort={resetStarSort} productName={props.productName} tracker={tracker} starSort={starSort} metaObject={metaObject} productID={props.productID} />
     </div>
   )
 }

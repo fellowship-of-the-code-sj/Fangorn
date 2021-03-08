@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import OutfitListCard from './OutfitListCard.jsx';
 import helperFunctions from '../../../helperFunctions/helperFunctions.js';
+import relatedAndOutfits from '../../hoc/relatedAndOutfits.js';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
-const OutfitList = ({ productInfo }) => {
+const OutfitList = ({ productInfo, logger }) => {
 
   var settings = {
     dots: true,
@@ -16,7 +17,10 @@ const OutfitList = ({ productInfo }) => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    className: 'carousel-cards'
+    className: 'carousel-cards',
+    beforeChange: () => {
+      logger({target: { nodeName: 'Slider' }})
+    }
   };
 
 
@@ -62,7 +66,11 @@ const OutfitList = ({ productInfo }) => {
       <h3 className='listTitle' >Your Outfit</h3>
         <Slider {...settings} draggable={false}>
 
-          <div className='outfitAddItemCard' onClick={addOutfit} >
+          <div className='outfitAddItemCard' onClick={ (e) => {
+            addOutfit();
+            logger(e);
+            }
+          } >
               <div className='addOutfitText'>
                 ADD TO OUTFIT
                 <br></br>
@@ -82,10 +90,11 @@ const OutfitList = ({ productInfo }) => {
   )
 }
 
-export default OutfitList;
+export default relatedAndOutfits(OutfitList);
 
 OutfitList.propTypes = {
-  productInfo: PropTypes.object
+  productInfo: PropTypes.object,
+  logger: PropTypes.func
 }
 
 

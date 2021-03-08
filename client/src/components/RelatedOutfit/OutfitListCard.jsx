@@ -3,8 +3,7 @@ import StarRating from './StarRating.jsx';
 import PropTypes from 'prop-types';
 import OutfitActionButton from './OutfitActionButton.jsx';
 
-
-const OutfitListCard = ({ cardData, removeOutfitItem }) => {
+const OutfitListCard = ({ cardData, removeOutfitItem}) => {
   return (
 
     <div className='itemCard'>

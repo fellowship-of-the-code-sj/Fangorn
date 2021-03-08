@@ -47,6 +47,24 @@ function ReviewsList(props) {
     return filteredList;
   }
 
+  const isFiltering = () => {
+    if (props.starSort[1] === false && props.starSort[2] === false && props.starSort[3] === false && props.starSort[4] === false && props.starSort[5] === false) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  const whichFilters = () => {
+    var output = '';
+    for (var i = 1; i <= 5; i++) {
+      if (props.starSort[i]) {
+        output += ` ${i} star,`
+      }
+    }
+    return output.slice(0, output.length - 1)
+  }
+
   const showForm = () => {
     var modal = document.getElementById('newReviewForm');
     modal.style.display = "block";
@@ -62,21 +80,33 @@ function ReviewsList(props) {
     getList(e.target.value);
   }
 
+  const ClearFilter = () => {
+    return (
+      <button style={{ color: "black" }} onClick={props.resetStarSort} >&nbsp;Clear filtering&nbsp;</button>
+    )
+  }
+
   useEffect(() => {
     getList(sortQuery);
   }, [props.tracker]);
 
   return (
     <div className="reviews-list">
-      {list.length} reviews, sorted by
+      {list.length} reviews, sorted by &nbsp;
       <select id="sortBy" onChange={handleSortChange}>
         <option value="relevant">Relevance</option>
         <option value="newest">Newest</option>
         <option value="helpful">Most helpful</option>
       </select>
-      {visibleList.map((review) => {
-        return <Review key={review.review_id} review={review} />
-      })}
+      {
+        isFiltering() ? <span>, filtering by {whichFilters()} reviews&nbsp;<ClearFilter /></span> : null
+      }
+      <hr></hr>
+      <div className="reviews-list-content">
+        {visibleList.map((review) => {
+          return <Review key={review.review_id} review={review} />
+        })}
+      </div><br></br>
       {
         list.length > visibleList.length ?
           <div className="review-list-buttons">
@@ -87,7 +117,7 @@ function ReviewsList(props) {
             <button className="new-review-button" onClick={showForm}>Leave a review</button>
           </div>
       }
-      <NewReview metaObject={props.metaObject} productID={props.productID} />
+      <NewReview productName={props.productName} metaObject={props.metaObject} productID={props.productID} />
     </div >
   )
 }

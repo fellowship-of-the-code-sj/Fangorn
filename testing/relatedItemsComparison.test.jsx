@@ -14,7 +14,8 @@ import OutfitListCard from '../client/src/components/RelatedOutfit/OutfitListCar
 import StarRating from '../client/src/components/RelatedOutfit/StarRating.jsx';
 import RelatedActionButton from '../client/src/components/RelatedOutfit/RelatedActionButton.jsx';
 import OutfitActionButton from '../client/src/components/RelatedOutfit/OutfitActionButton.jsx';
-import ComparisonTable from '../client/src/components/RelatedOutfit/ComparisonTable.jsx'
+import ComparisonTable from '../client/src/components/RelatedOutfit/ComparisonTable.jsx';
+
 
 const port = 404;
 
@@ -39,15 +40,15 @@ describe('Rendering RelatedItems List Components', () => {
     expect(wrapper.find('.relatedItemsAndOutfits')).toHaveLength(1);
   });
 
-  it ('should render relatedItems list with dummy data passed', () => {
-    const wrapper = shallow(<RelatedItemsList relatedItemsList={dummyData.products}/>);
+  it ('should render relatedItems list with dummy data passed', async () => {
+    const wrapper = await mount(<RelatedItemsList relatedItemsList={dummyData.products}/>);
     expect(wrapper.find('RelatedItemCard')).toHaveLength(6);
   });
 });
 
 describe('Rendering RelatedItems Card Components', () => {
-  it ('should render relatedItemsCard div', () => {
-    const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
+  it ('should render relatedItemsCard div', async () => {
+    const wrapper = await mount(<RelatedItemCard cardData={dummyData.products[0]} />);
     expect(wrapper.containsAllMatchingElements([
       <div className="photoBorder">
         <img className="itemCardImg" src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png" />
@@ -58,23 +59,23 @@ describe('Rendering RelatedItems Card Components', () => {
     ])).toBe(true);
   });
 
-  it ('should render the sales price if it exists in relatedItemsCard', () => {
+  it ('should render the sales price if it exists in relatedItemsCard', async () => {
     //component isn't on sale
-    const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
+    const wrapper = await mount(<RelatedItemCard cardData={dummyData.products[0]} />);
     expect(wrapper.contains(<h6 className="cardItemPrice">$69.00</h6>)).toBe(true);
 
     //component is on sale
-    const wrapper2 = shallow(<RelatedItemCard cardData={dummyData.products[1]} />);
+    const wrapper2 = await mount(<RelatedItemCard cardData={dummyData.products[1]} />);
     expect(wrapper2.contains(<h6 className="cardItemSalePrice">$30.00</h6>)).toBe(true);
   });
 
-  it('should render the image if it exists in the relatedItemsCard', () => {
+  it('should render the image if it exists in the relatedItemsCard', async () => {
     //component contains no images
-    const wrapper = shallow(<RelatedItemCard cardData={dummyData.products[0]} />);
+    const wrapper = await mount(<RelatedItemCard cardData={dummyData.products[0]} />);
     expect(wrapper.contains(<img className='itemCardImg' src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
 
     //component containes images
-    const wrapper2 = shallow(<RelatedItemCard cardData={dummyData.products[1]} />);
+    const wrapper2 = await mount(<RelatedItemCard cardData={dummyData.products[1]} />);
     expect(wrapper2.contains(<img className='itemCardImg' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"></img>)).toBe(true);
 
   });
@@ -115,8 +116,8 @@ describe('Rendering RelatedActionButton Component', () => {
 
 describe('Rendering OutfitList List Component', () => {
 
-  it ('should render outfitList list with dummy data passed', () => {
-    const wrapper = shallow(<OutfitList />);
+  it ('should render outfitList list with dummy data passed', async () => {
+    const wrapper = await mount(<OutfitList />);
     expect(wrapper.find('.itemsList')).toHaveLength(1);
   });
 });
@@ -158,14 +159,14 @@ describe('Rendering OutfitList List Card Component', () => {
 
 describe('Rendering Outfit List Behavior', () => {
 
-  it ('should render outfit card component when it is added to outfit list', () => {
-    const wrapper = shallow(<OutfitList productInfo={dummyData.products[0]} />);
+  it ('should render outfit card component when it is added to outfit list', async () => {
+    const wrapper = await mount(<OutfitList productInfo={dummyData.products[0]} />);
     wrapper.find('.outfitAddItemCard').simulate('click');
     expect(wrapper.find('OutfitListCard')).toHaveLength(1);
   });
 
-  it ('should render not render the same outfit card', () => {
-    const wrapper = shallow(<OutfitList productInfo={dummyData.products[0]} />);
+  it ('should render not render the same outfit card', async () => {
+    const wrapper = await mount(<OutfitList productInfo={dummyData.products[0]} />);
     wrapper.find('.outfitAddItemCard').simulate('click');
     wrapper.find('.outfitAddItemCard').simulate('click');
     expect(wrapper.find('OutfitListCard')).toHaveLength(1);
@@ -175,19 +176,19 @@ describe('Rendering Outfit List Behavior', () => {
 
 describe('rendering action button', () => {
 
-  it ('should render the action button', () => {
-    const wrapper = shallow(<OutfitActionButton />);
+  it ('should render the action button', async () => {
+    const wrapper = await mount(<OutfitActionButton />);
     expect(wrapper.find('.action-button')).toHaveLength(1);
   });
 
-  it ('should excecute event listener function that is passed it', () => {
+  it ('should excecute event listener function that is passed it', async () => {
 
     var tempState = false;
     var changeState = () => {
       tempState = !tempState;
     }
 
-    const wrapper = shallow(<OutfitActionButton removeOutfitItem={changeState}/>);
+    const wrapper = await mount(<OutfitActionButton removeOutfitItem={changeState}/>);
     wrapper.find('.action-button').simulate('click');
     expect(tempState).toBe(true);
   })
