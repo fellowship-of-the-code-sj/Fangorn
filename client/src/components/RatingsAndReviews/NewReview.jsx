@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react'
 import axios from 'axios';
+import captureRandR from '../../hoc/captureRandR.js';
+
+//; props.logger(e)
 
 function NewReview(props) {
 
@@ -313,14 +316,14 @@ function NewReview(props) {
     <div className="new-review">
       <div id="newReviewForm" className="new-review-modal">
         <div className="new-review-modal-content"> Write a review about {props.productName}
-          <span onClick={hideForm} className="new-review-modal-close">&times;</span>
+          <span onClick={(e) => { hideForm(e); props.logger(e) }} className="new-review-modal-close">&times;</span>
           <div className="review-form">
             Rate this product<sup className="mandatory">&nbsp;*</sup><div className="new-review-star-rating-form">
-              <span className="new-review-star" onClick={() => { setRating(1) }} style={starColor(1)}>★</span>
-              <span className="new-review-star" onClick={() => { setRating(2) }} style={starColor(2)}>★</span>
-              <span className="new-review-star" onClick={() => { setRating(3) }} style={starColor(3)}>★</span>
-              <span className="new-review-star" onClick={() => { setRating(4) }} style={starColor(4)}>★</span>
-              <span className="new-review-star" onClick={() => { setRating(5) }} style={starColor(5)}>★</span>
+              <span className="new-review-star" onClick={(e) => { setRating(1); props.logger(e) }} style={starColor(1)}>★</span>
+              <span className="new-review-star" onClick={(e) => { setRating(2); props.logger(e) }} style={starColor(2)}>★</span>
+              <span className="new-review-star" onClick={(e) => { setRating(3); props.logger(e) }} style={starColor(3)}>★</span>
+              <span className="new-review-star" onClick={(e) => { setRating(4); props.logger(e) }} style={starColor(4)}>★</span>
+              <span className="new-review-star" onClick={(e) => { setRating(5); props.logger(e) }} style={starColor(5)}>★</span>
               <span className="star-rating-desc">{' ' + starRatingDesc()}</span>
             </div> <br></br>
             <div className="name-and-email-form">
@@ -336,64 +339,64 @@ function NewReview(props) {
               </form>
               Would you recommend this product?<sup className="mandatory">&nbsp;*</sup>
               <form className="new-review-recommend">
-                <input onClick={() => setRecommend(true)} type="radio" name="recommend" ></input>
+                <input onClick={(e) => { setRecommend(true); props.logger(e) }} type="radio" name="recommend" ></input>
                 <label >&nbsp;Yes</label><br></br>
-                <input onClick={() => setRecommend(false)} type="radio" name="recommend" ></input>
+                <input onClick={(e) => { setRecommend(false); props.logger(e) }} type="radio" name="recommend" ></input>
                 <label >&nbsp;No</label><br></br>
               </form>
               <form className="new-review-characteristics">Product characteristics<sup className="mandatory">&nbsp;*</sup>
                 {
                   props.metaObject.characteristics.Size ? <div className="new-review-size">
                     Size: <div className="new-review-radio-array">
-                      <input className="new-review-radios" onClick={() => { setSize(1) }} type="radio" name="size"></input><label>1</label>
-                      <input className="new-review-radios" onClick={() => { setSize(2) }} type="radio" name="size"></input><label>2</label>
-                      <input className="new-review-radios" onClick={() => { setSize(3) }} type="radio" name="size"></input><label>3</label>
-                      <input className="new-review-radios" onClick={() => { setSize(4) }} type="radio" name="size"></input><label>4</label>
-                      <input className="new-review-radios" onClick={() => { setSize(5) }} type="radio" name="size"></input><label>5</label><br></br>
+                      <input className="new-review-radios" onClick={(e) => { setSize(1); props.logger(e) }} type="radio" name="size"></input><label>1</label>
+                      <input className="new-review-radios" onClick={(e) => { setSize(2); props.logger(e) }} type="radio" name="size"></input><label>2</label>
+                      <input className="new-review-radios" onClick={(e) => { setSize(3); props.logger(e) }} type="radio" name="size"></input><label>3</label>
+                      <input className="new-review-radios" onClick={(e) => { setSize(4); props.logger(e) }} type="radio" name="size"></input><label>4</label>
+                      <input className="new-review-radios" onClick={(e) => { setSize(5); props.logger(e) }} type="radio" name="size"></input><label>5</label><br></br>
                       <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('size')}</span>
                     </div></div> : <div></div>
                 }
                 {
                   props.metaObject.characteristics.Width ? <div className="new-review-width">
                     Width:<div className="new-review-radio-array">
-                      <input className="new-review-radios" onClick={() => { setWidth(1) }} type="radio" name="width"></input><label>1</label>
-                      <input className="new-review-radios" onClick={() => { setWidth(2) }} type="radio" name="width"></input><label>2</label>
-                      <input className="new-review-radios" onClick={() => { setWidth(3) }} type="radio" name="width"></input><label>3</label>
-                      <input className="new-review-radios" onClick={() => { setWidth(4) }} type="radio" name="width"></input><label>4</label>
-                      <input className="new-review-radios" onClick={() => { setWidth(5) }} type="radio" name="width"></input><label>5</label><br></br>
+                      <input className="new-review-radios" onClick={(e) => { setWidth(1); props.logger(e) }} type="radio" name="width"></input><label>1</label>
+                      <input className="new-review-radios" onClick={(e) => { setWidth(2); props.logger(e) }} type="radio" name="width"></input><label>2</label>
+                      <input className="new-review-radios" onClick={(e) => { setWidth(3); props.logger(e) }} type="radio" name="width"></input><label>3</label>
+                      <input className="new-review-radios" onClick={(e) => { setWidth(4); props.logger(e) }} type="radio" name="width"></input><label>4</label>
+                      <input className="new-review-radios" onClick={(e) => { setWidth(5); props.logger(e) }} type="radio" name="width"></input><label>5</label><br></br>
                       <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('width')}</span>
                     </div> </div> : <div></div>
                 }
                 {
                   props.metaObject.characteristics.Comfort ? <div className="new-review-comfort">
                     Comfort:<div className="new-review-radio-array">
-                      <input className="new-review-radios" onClick={() => { setComfort(1) }} type="radio" name="comfort"></input><label>1</label>
-                      <input className="new-review-radios" onClick={() => { setComfort(2) }} type="radio" name="comfort"></input><label>2</label>
-                      <input className="new-review-radios" onClick={() => { setComfort(3) }} type="radio" name="comfort"></input><label>3</label>
-                      <input className="new-review-radios" onClick={() => { setComfort(4) }} type="radio" name="comfort"></input><label>4</label>
-                      <input className="new-review-radios" onClick={() => { setComfort(5) }} type="radio" name="comfort"></input><label>5</label><br></br>
+                      <input className="new-review-radios" onClick={(e) => { setComfort(1); props.logger(e) }} type="radio" name="comfort"></input><label>1</label>
+                      <input className="new-review-radios" onClick={(e) => { setComfort(2); props.logger(e) }} type="radio" name="comfort"></input><label>2</label>
+                      <input className="new-review-radios" onClick={(e) => { setComfort(3); props.logger(e) }} type="radio" name="comfort"></input><label>3</label>
+                      <input className="new-review-radios" onClick={(e) => { setComfort(4); props.logger(e) }} type="radio" name="comfort"></input><label>4</label>
+                      <input className="new-review-radios" onClick={(e) => { setComfort(5); props.logger(e) }} type="radio" name="comfort"></input><label>5</label><br></br>
                       <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('comfort')}</span>
                     </div> </div> : <div></div>
                 }
                 {
                   props.metaObject.characteristics.Quality ? <div className="new-review-quality">
                     Quality:<div className="new-review-radio-array">
-                      <input className="new-review-radios" onClick={() => { setQuality(1) }} type="radio" name="quality"></input><label>1</label>
-                      <input className="new-review-radios" onClick={() => { setQuality(2) }} type="radio" name="quality"></input><label>2</label>
-                      <input className="new-review-radios" onClick={() => { setQuality(3) }} type="radio" name="quality"></input><label>3</label>
-                      <input className="new-review-radios" onClick={() => { setQuality(4) }} type="radio" name="quality"></input><label>4</label>
-                      <input className="new-review-radios" onClick={() => { setQuality(5) }} type="radio" name="quality"></input><label>5</label><br></br>
+                      <input className="new-review-radios" onClick={(e) => { setQuality(1); props.logger(e) }} type="radio" name="quality"></input><label>1</label>
+                      <input className="new-review-radios" onClick={(e) => { setQuality(2); props.logger(e) }} type="radio" name="quality"></input><label>2</label>
+                      <input className="new-review-radios" onClick={(e) => { setQuality(3); props.logger(e) }} type="radio" name="quality"></input><label>3</label>
+                      <input className="new-review-radios" onClick={(e) => { setQuality(4); props.logger(e) }} type="radio" name="quality"></input><label>4</label>
+                      <input className="new-review-radios" onClick={(e) => { setQuality(5); props.logger(e) }} type="radio" name="quality"></input><label>5</label><br></br>
                       <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('quality')}</span>
                     </div> </div> : <div></div>
                 }
                 {
                   props.metaObject.characteristics.Length ? <div className="new-review-length">
                     Length:<div className="new-review-radio-array">
-                      <input className="new-review-radios" onClick={() => { setLength(1) }} type="radio" name="length"></input><label>1</label>
-                      <input className="new-review-radios" onClick={() => { setLength(2) }} type="radio" name="length"></input><label>2</label>
-                      <input className="new-review-radios" onClick={() => { setLength(3) }} type="radio" name="length"></input><label>3</label>
-                      <input className="new-review-radios" onClick={() => { setLength(4) }} type="radio" name="length"></input><label>4</label>
-                      <input className="new-review-radios" onClick={() => { setLength(5) }} type="radio" name="length"></input><label>5</label><br></br>
+                      <input className="new-review-radios" onClick={(e) => { setLength(1); props.logger(e) }} type="radio" name="length"></input><label>1</label>
+                      <input className="new-review-radios" onClick={(e) => { setLength(2); props.logger(e) }} type="radio" name="length"></input><label>2</label>
+                      <input className="new-review-radios" onClick={(e) => { setLength(3); props.logger(e) }} type="radio" name="length"></input><label>3</label>
+                      <input className="new-review-radios" onClick={(e) => { setLength(4); props.logger(e) }} type="radio" name="length"></input><label>4</label>
+                      <input className="new-review-radios" onClick={(e) => { setLength(5); props.logger(e) }} type="radio" name="length"></input><label>5</label><br></br>
                       <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('length')}</span>
                     </div> </div>
                     : <div></div>
@@ -401,11 +404,11 @@ function NewReview(props) {
                 {
                   props.metaObject.characteristics.Fit ? <div className="new-review-fit">
                     Fit:<div className="new-review-radio-array">
-                      <input className="new-review-radios" onClick={() => { setFit(1) }} type="radio" name="fit"></input><label>1</label>
-                      <input className="new-review-radios" onClick={() => { setFit(2) }} type="radio" name="fit"></input><label>2</label>
-                      <input className="new-review-radios" onClick={() => { setFit(3) }} type="radio" name="fit"></input><label>3</label>
-                      <input className="new-review-radios" onClick={() => { setFit(4) }} type="radio" name="fit"></input><label>4</label>
-                      <input className="new-review-radios" onClick={() => { setFit(5) }} type="radio" name="fit"></input><label>5</label><br></br>
+                      <input className="new-review-radios" onClick={(e) => { setFit(1); props.logger(e) }} type="radio" name="fit"></input><label>1</label>
+                      <input className="new-review-radios" onClick={(e) => { setFit(2); props.logger(e) }} type="radio" name="fit"></input><label>2</label>
+                      <input className="new-review-radios" onClick={(e) => { setFit(3); props.logger(e) }} type="radio" name="fit"></input><label>3</label>
+                      <input className="new-review-radios" onClick={(e) => { setFit(4); props.logger(e) }} type="radio" name="fit"></input><label>4</label>
+                      <input className="new-review-radios" onClick={(e) => { setFit(5); props.logger(e) }} type="radio" name="fit"></input><label>5</label><br></br>
                       <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('fit')}</span>
                     </div> </div>
                     : <div></div>
@@ -418,18 +421,18 @@ function NewReview(props) {
               }
               {
                 photos.length < 5 ? <div className="new-review-add-photo-button">
-                  <br></br><button onClick={handleAddPhoto}>&nbsp;Add a photo&nbsp;</button>
+                  <br></br><button onClick={(e) => { handleAddPhoto(e) }}>&nbsp;Add a photo&nbsp;</button>
                 </div> : <div></div>
               }
               <div className="new-review-photo-modal" id="newReviewPhotoModal">
                 <div className="new-review-photo-modal-content">
-                  <span onClick={closeAddPhoto} className="new-review-photo-modal-close">&times;</span>
+                  <span onClick={(e) => { closeAddPhoto(e) }} className="new-review-photo-modal-close">&times;</span>
                   <form className="new-review-photo-modal-form">Enter the URL of the image you would like to display<br></br><br></br>
-                    <input type="text" onChange={(e) => { handleChange(e, setPhotoURL) }} value={photoURL}></input><br></br><br></br>
+                    <input type="text" onChange={(e) => { handleChange(e, setPhotoURL); props.logger(e) }} value={photoURL}></input><br></br><br></br>
                     {
                       photoURL !== '' ? <img className="review-thumbnail" src={photoURL}></img> : <div></div>
                     }
-                    <br></br><br></br><button onClick={submitPhoto}>Submit photo</button>
+                    <br></br><br></br><button onClick={(e) => { submitPhoto(e); props.logger(e) }}>Submit photo</button>
                   </form>
                 </div>
               </div>
@@ -452,4 +455,4 @@ function NewReview(props) {
   )
 }
 
-export default NewReview;
+export default captureRandR(NewReview);
