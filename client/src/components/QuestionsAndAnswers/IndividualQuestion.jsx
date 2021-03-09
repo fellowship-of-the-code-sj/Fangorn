@@ -7,14 +7,19 @@ import AddAnswer from './AddAnswer.jsx';
 import captureQandA from '../../hoc/captureQandA';
 
 const IndividualQuestion = ({ question, productName, logger }) => {
+  // Answer List
   const [ answers, setAnswers ] = useState([]);
   const [ showAddAnswerModal, setShowAddAnswerModal ] = useState(false);
   const [ showingMoreAnswers, setShowingMoreAnswers ] = useState(false);
   const [ showMoreAnswersButton, setShowMoreAnswersButton ] = useState(false);
   const [ displayedAnswers, setDisplayedAnswers ] = useState([]);
-  // this should really be handled by the API..
+  /* this should really be handled by the API.. */
   const [ submittedHelpful, setSubmittedHelpful ] = useState(false);
   const [ submittedReport, setSubmittedReport ] = useState(false);
+  // Add Answer
+  const [ answer, setAnswer ] = useState('');
+  const [ nickname, setNickname ] = useState('');
+  const [ email, setEmail ] = useState('');
 
   useEffect(() => {
     const allAnswers = _.values(question.answers);
@@ -138,6 +143,12 @@ const IndividualQuestion = ({ question, productName, logger }) => {
             questionId={question.question_id}
             questionBody={question.question_body}
             productName={productName}
+            answer={answer}
+            nickname={nickname}
+            email={email}
+            setAnswer={setAnswer}
+            setNickname={setNickname}
+            setEmail={setEmail}
             handleAddAnswerModal={handleAddAnswerModal}/>
           : null
         }

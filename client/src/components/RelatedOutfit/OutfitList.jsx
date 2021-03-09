@@ -19,7 +19,7 @@ const OutfitList = ({ productInfo, logger }) => {
     slidesToScroll: 1,
     className: 'carousel-cards',
     beforeChange: () => {
-      logger({target: { nodeName: 'Slider' }})
+      logger({target: { nodeName: 'OutfitList Slider' }})
     }
   };
 

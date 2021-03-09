@@ -18,12 +18,12 @@ import mockResponse from './__mocks__/QA-request.js';
 
 describe('QuestionsAndAnswers', () => {
   it('should render an Search component', () => {
-    const wrapper = shallow(<QuestionsAndAnswers productID={1}/>);
+    const wrapper = shallow(<QuestionsAndAnswers productID={1} />);
     expect(wrapper.containsMatchingElement(<Search />)).toEqual(true);
   });
 
   it('should render an QuestionsList component', () => {
-    const wrapper = shallow(<QuestionsAndAnswers productID={1}/>);
+    const wrapper = shallow(<QuestionsAndAnswers productID={1} />);
     expect(wrapper.containsMatchingElement(<QuestionsList />)).toEqual(true);
   });
 
@@ -48,7 +48,7 @@ describe('QuestionsAndAnswers', () => {
   });
 
   it('should render an AddQuestion component', () => {
-    const wrapper = shallow(<QuestionsAndAnswers productID={1}/>);
+    const wrapper = shallow(<QuestionsAndAnswers productID={1} />);
     expect(wrapper.containsMatchingElement(<AddQuestionButton />)).toEqual(true);
   });
 
