@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffectm, useRef } from 'react';
 import PropTypes from 'prop-types';
 import RelatedItemCard from './RelatedItemCard.jsx';
 import helperFunctions from '../../../helperFunctions/helperFunctions.js';
@@ -11,6 +11,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
 const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUpdate, logger }) => {
+
+  var slider = useRef();
 
   var settings = {
     dots: true,
@@ -37,16 +39,20 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
     setActionButtonToggle(!actionButtonToggle);
   }
 
+  const resetSliderStart = () => {
+    slider.current.slickGoTo(0, true)
+  }
+
 
   return (
     <div key={listUpdate} className='itemsList'>
       <h3 className='listTitle' >Related Products</h3>
       {
         relatedItemsList.length?
-        <Slider {...settings} draggable={false} >
+        <Slider ref={slider} {...settings} draggable={false} >
           {
             relatedItemsList.map((item) => {
-              return <RelatedItemCard listUpdate={listUpdate} productSelect={productSelect} actionButtonListener={actionButtonListener} productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;
+              return <RelatedItemCard resetSliderStart={resetSliderStart} listUpdate={listUpdate} productSelect={productSelect} actionButtonListener={actionButtonListener} productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;
             })
           }
         </Slider>

@@ -11,7 +11,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
-const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger }) => {
+const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, resetSliderStart, logger }) => {
 
   //State for comparison table toggle
 
@@ -38,18 +38,26 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
   }
 
   const updateCardImage = (e, index) => {
+    setCardImage(0)
     e.stopPropagation();
     setCardImage(index);
   }
 
+  const updateInitialImage = () => {
 
-  useEffect(() => {
-    setCardImage(0);
-  }, [cardData]);
+  }
 
+  // useEffect(() => {
+  //   setCardImage(0);
+  // }, [cardData]);
+
+
+  console.log(cardImage, cardData.default_style.photos);
   return (
     <div onClick={(e) => {
           productSelect(cardData.id)
+          resetSliderStart()
+          setCardImage(0)
           logger(e);
         }
       } className='itemCardRelated'>
@@ -57,6 +65,7 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
       {/* Star Action Button */}
       <RelatedActionButton actionButtonListener={(event) => {
         actionButtonListener(event, cardData)
+
         logger(event)
       }}/>
       <div onMouseEnter={pictureCarousel} onMouseLeave={pictureCarousel} className='photoBorder'>
@@ -74,9 +83,9 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
               {
                 cardData.default_style.photos.map((image, index) => {
                   return <img onClick={(e) => {
-                    updateCardImage(e, index)
-                    logger(e);
-                  }}
+                      updateCardImage(e, index)
+                      logger(e);
+                    }}
                   className='relatedImageCarousel' key={index} src={image.thumbnail_url}></img>
                 })
               }
@@ -111,5 +120,6 @@ RelatedItemCard.propTypes = {
   cardData: PropTypes.object,
   actionButtonListener: PropTypes.func,
   productSelect: PropTypes.func,
+  resetSliderStart: PropTypes.func,
   logger: PropTypes.func
 }
