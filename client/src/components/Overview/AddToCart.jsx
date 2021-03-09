@@ -21,7 +21,7 @@ const AddToCart = ({ skus }) => {
     setSizes(styleSizes)
     setCurrentSku({
       sku: null,
-      size: '',
+      size: 'Select Size',
       quantities: []
     });
     setCurrentQty(null);
@@ -30,6 +30,7 @@ const AddToCart = ({ skus }) => {
   const sizeChange = (sizeString) => {
     if (sizeString === 'Select Size') {
       setCurrentSku({
+        sku: null,
         size: sizeString,
         quantities: []
       })
@@ -38,6 +39,7 @@ const AddToCart = ({ skus }) => {
       if (skus[key].size === sizeString) {
         setCurrentSku({
           sku: Number(key),
+          size: sizeString,
           quantities: createArray(skus[key].quantity)
         })
         if (!currentQty) {
