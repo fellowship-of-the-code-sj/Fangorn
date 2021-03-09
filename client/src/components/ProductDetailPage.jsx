@@ -90,7 +90,7 @@ class ProductDetailPage extends React.Component {
               : <RelatedAndOutfits productSelect={this.productSelect}
                 productID={this.state.productId} />
           }
-          <QuestionsAndAnswers productID={13025} productName={this.state.productInfo.productObj?.name} />
+          <QuestionsAndAnswers productID={this.state.productId} productName={this.state.productInfo.productObj?.name} />
           <RatingsAndReviews productName={this.state.productInfo.productObj?.name} productID={this.state.productId} />
         </div>
       </div>

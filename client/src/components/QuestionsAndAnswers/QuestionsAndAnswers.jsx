@@ -39,7 +39,7 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
         setNumDisplayedQuestions(numToDisplay);
         setDisplayedQuestions(sortedList.slice(0, numToDisplay));
       });
-  }, []);
+  }, [productID]);
 
   useEffect(() => {
     if (query.length > 2) {
