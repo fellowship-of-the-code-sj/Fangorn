@@ -17,6 +17,7 @@ const StyleSelector = (props) => {
                 className="styleThumbnail"
                 onClick={event => {
                   props.handleStyleChange(event.target.attributes[3].value);
+                  props.logger(event);
                 }}
                 src={style.photos[0].thumbnail_url ? style.photos[0].thumbnail_url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' }
                 alt={`Image Thumbnail ${style.name}`}
@@ -32,7 +33,8 @@ const StyleSelector = (props) => {
   StyleSelector.propTypes = {
     styles: PropTypes.array,
     currentStyle: PropTypes.object,
-    handleStyleChange: PropTypes.func
+    handleStyleChange: PropTypes.func,
+    logger: PropTypes.func
   }
 }
 
