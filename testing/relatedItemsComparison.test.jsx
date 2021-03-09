@@ -34,18 +34,18 @@ describe('Rendering Components', () => {
 
 });
 
-// describe('Rendering RelatedAndOutfits Component', async() => {
-//   it ('should render RelatedAndOutfits with server request complete', async () => {
-//     axios.get = jest.fn().mockResolvedValue(mockResponse.relatedAndOutfits);
+describe('Rendering RelatedAndOutfits Component', () => {
 
-//     let wrapper;
-//     await act(async () => {
-//       const wrapper = await mount(<RelatedAndOutfits productID={13024}/>)
-//       wrapper.update();
-//       expect(wrapper.containsMatchingElement(<RelatedItemCard/>)).toEqual(true);
-//     });
-//   })
-// });
+  it ('should render RelatedAndOutfits when server request is complete', async () => {
+    axios.get = jest.fn().mockResolvedValue(mockResponse);
+
+    let wrapper;
+    await act(async () => wrapper = await mount(<RelatedAndOutfits productID={13024}/>));
+    wrapper.update();
+    expect(wrapper.containsMatchingElement(<RelatedItemCard/>)).toEqual(true);
+
+  });
+});
 
 describe('Rendering RelatedItems List Components', () => {
 
