@@ -13,20 +13,11 @@ var AddQuestion = (
     logger
   }
 ) => {
-  // const [ question, setQuestion ] = useState('');
-  // const [ nickname, setNickname ] = useState('');
-  // const [ email, setEmail ] = useState('');
   const [ isQuestionEmpty, setIsQuestionEmpty ] = useState(false);
   const [ isNicknameEmpty, setisNicknameEmpty ] = useState(false);
   const [ isEmailEmpty, setIsEmailEmpty ] = useState(false);
   const [ isEmailFormatInvalid, setIsEmailFormatInvalid ] = useState(false);
   const [ isSubmitted, setIsSubmitted ] = useState(false);
-
-  // useEffect(() => {
-  //   if (question) setQuestion(nickname);
-  //   if (nickname) setNickname(nickname);
-  //   if (email) setEmail(email);
-  // }, []);
 
   useEffect(() => {
     if (isSubmitted) setIsSubmitted(false);
