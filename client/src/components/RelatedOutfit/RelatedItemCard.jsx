@@ -48,7 +48,7 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, resetS
           productSelect(cardData.id)
           resetSliderStart()
           setCardImage(0)
-          logger(e);
+          logger(e)
         }
       } className='itemCardRelated'>
 
