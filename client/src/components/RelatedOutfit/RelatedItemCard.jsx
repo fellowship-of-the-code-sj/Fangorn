@@ -47,12 +47,6 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, resetS
 
   }
 
-  // useEffect(() => {
-  //   setCardImage(0);
-  // }, [cardData]);
-
-
-  console.log(cardImage, cardData.default_style.photos);
   return (
     <div onClick={(e) => {
           productSelect(cardData.id)

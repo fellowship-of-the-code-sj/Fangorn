@@ -22,6 +22,7 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
     slidesToScroll: 1,
     beforeChange: () => {
       logger({target: { nodeName: 'RelatedItemsList Slider' }})
+
     }
   };
 
