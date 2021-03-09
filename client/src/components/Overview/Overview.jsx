@@ -16,6 +16,12 @@ const Overview = (props) => {
   const [ ratings, setRatings ] = useState({});
   const [ currentStyle, setCurrentStyle ] = useState({});
   const [ isExpanded, setIsExpanded ] = useState(false);
+  const [ imageIndex, setImageIndex ] = useState(0);
+
+  const handleImageIndexChange = (increment) => {
+    let newIndex = imageIndex + increment;
+    setImageIndex(newIndex);
+  }
 
   useEffect(() => {
     setProduct(props.productObj);
@@ -34,10 +40,16 @@ const Overview = (props) => {
         <ExpandedView
           photos={ currentStyle.photos }
           changeView = {changeView}
+          imageIndex = {imageIndex}
+          setImageIndex = {setImageIndex}
+          handleImageIndexChange = {handleImageIndexChange}
         />
       : <DefaultView
           photos={ currentStyle.photos }
           changeView = {changeView}
+          imageIndex = {imageIndex}
+          setImageIndex = { setImageIndex }
+          handleImageIndexChange = {handleImageIndexChange}
         />
       }
       <ProductInfo
