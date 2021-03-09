@@ -23,14 +23,20 @@ describe('Default View', () => {
   })
 
   it('should display the first style image as the main image by default', () => {
-    const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
+    const wrapper = shallow(<DefaultView
+      photos={data.styles[0].photos}
+      imageIndex={0}
+    />);
     expect(wrapper.contains(<img
       src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80" id="defaultViewImage"
     />)).toBe(true);
   })
 
   it('should have a thumbnail container', () => {
-    const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
+    const wrapper = shallow(<DefaultView
+      photos={data.styles[0].photos}
+      imageIndex={0}
+    />);
     expect(wrapper.find('#defaultViewThumbnails').length).toBe(1)
   })
   
