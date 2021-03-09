@@ -24,6 +24,9 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
     dots: false,
     slide: 'img',
     draggable: false,
+    beforeChange: () => {
+      logger({target: { nodeName: 'RelatedCard Image Slider' }})
+    }
   };
 
   const [ actionButtonToggle, setActionButtonToggle] = useState(false)
@@ -65,7 +68,11 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
             <Slider {...settings}>
               {
                 cardData.default_style.photos.map((image, index) => {
-                  return <img onClick={(e) => updateCardImage(e, index)} className='relatedImageCarousel' key={index} src={image.thumbnail_url}></img>
+                  return <img onClick={(e) => {
+                    updateCardImage(e, index)
+                    logger(e);
+                  }}
+                  className='relatedImageCarousel' key={index} src={image.thumbnail_url}></img>
                 })
               }
             </Slider>
