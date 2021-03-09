@@ -13,20 +13,11 @@ var AddQuestion = (
     logger
   }
 ) => {
-  // const [ question, setQuestion ] = useState('');
-  // const [ nickname, setNickname ] = useState('');
-  // const [ email, setEmail ] = useState('');
   const [ isQuestionEmpty, setIsQuestionEmpty ] = useState(false);
   const [ isNicknameEmpty, setisNicknameEmpty ] = useState(false);
   const [ isEmailEmpty, setIsEmailEmpty ] = useState(false);
   const [ isEmailFormatInvalid, setIsEmailFormatInvalid ] = useState(false);
   const [ isSubmitted, setIsSubmitted ] = useState(false);
-
-  // useEffect(() => {
-  //   if (question) setQuestion(nickname);
-  //   if (nickname) setNickname(nickname);
-  //   if (email) setEmail(email);
-  // }, []);
 
   useEffect(() => {
     if (isSubmitted) setIsSubmitted(false);
@@ -88,15 +79,17 @@ var AddQuestion = (
           <h1>Your Question</h1>
           { isSubmitted ? <div className="confirmed">Question submitted <ion-icon name="checkmark-outline"></ion-icon></div> : null }
         </div>
-        {
-          isQuestionEmpty || isNicknameEmpty || isEmailEmpty || isEmailFormatInvalid ?
-          <div>You must enter the following:</div>
-          : null
-        }
-        { isQuestionEmpty ? <div className="mandatory">Question cannot be empty</div> : null }
-        { isNicknameEmpty ? <div className="mandatory">Nickname cannot be empty</div> : null }
-        { isEmailEmpty ? <div className="mandatory">Email cannot be empty</div> : null }
-        { isEmailFormatInvalid ? <div className="mandatory">Email must be a valid email address</div> : null }
+        <div className="error-messages">
+          {
+            isQuestionEmpty || isNicknameEmpty || isEmailEmpty || isEmailFormatInvalid ?
+            <div>You must enter the following:</div>
+            : null
+          }
+          { isQuestionEmpty ? <div className="mandatory">Question cannot be empty</div> : null }
+          { isNicknameEmpty ? <div className="mandatory">Nickname cannot be empty</div> : null }
+          { isEmailEmpty ? <div className="mandatory">Email cannot be empty</div> : null }
+          { isEmailFormatInvalid ? <div className="mandatory">Email must be a valid email address</div> : null }
+        </div>
         <form>
           <textarea
             name="question"

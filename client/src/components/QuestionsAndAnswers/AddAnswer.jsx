@@ -83,15 +83,17 @@ var AddAnswer = (
             : null
           }
         </div>
-        {
-          isAnswerEmpty || isNicknameEmpty || isEmailEmpty || isEmailFormatInvalid ?
-          <div>You must enter the following:</div>
-          : null
-        }
-        { isAnswerEmpty ? <div className="mandatory">Answer cannot be empty</div> : null }
-        { isNicknameEmpty ? <div className="mandatory">Nickname cannot be empty</div> : null }
-        { isEmailEmpty ? <div className="mandatory">Email cannot be empty</div> : null }
-        { isEmailFormatInvalid ? <div className="mandatory">Email must be a valid email address</div> : null }
+        <div className="error-messages">
+          {
+            isAnswerEmpty || isNicknameEmpty || isEmailEmpty || isEmailFormatInvalid ?
+            <div>You must enter the following:</div>
+            : null
+          }
+          { isAnswerEmpty ? <div className="mandatory">Answer cannot be empty</div> : null }
+          { isNicknameEmpty ? <div className="mandatory">Nickname cannot be empty</div> : null }
+          { isEmailEmpty ? <div className="mandatory">Email cannot be empty</div> : null }
+          { isEmailFormatInvalid ? <div className="mandatory">Email must be a valid email address</div> : null }
+        </div>
         <form>
           <label>
             <span className="modal-label">Your Answer</span><sup className="mandatory">&nbsp;*</sup>
