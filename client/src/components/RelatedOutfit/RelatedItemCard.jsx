@@ -42,6 +42,11 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
     setCardImage(index);
   }
 
+
+  useEffect(() => {
+    setCardImage(0);
+  }, [cardData]);
+
   return (
     <div onClick={(e) => {
           productSelect(cardData.id)

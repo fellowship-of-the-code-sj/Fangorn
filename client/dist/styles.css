@@ -43,7 +43,7 @@
 .productDetailPageDark .new-review-modal-content,
 .productDetailPageDark .new-review-photo-modal-content,
 .productDetailPageDark .review-image-modal-content {
-  background-color: rgb(41, 41, 41);
+  background-color: rgb(46, 46, 46);
   color: rgb(255, 255, 255);
 }
 
@@ -109,8 +109,8 @@ body { font-family: 'Lato', sans-serif; }
 .darkModeButton {
   position: fixed;
   display: inline-block;
-  right: 30px;
-  top: 80px;
+  right: 5px;
+  top: 30px;
   width: 60px;
   height: 34px;
   z-index: 1000;
@@ -238,7 +238,7 @@ input:checked + .slider:before {
 }
 
 .itemsList {
-  height: 350px;
+  height: 450px;
   margin-bottom: 70px;
 }
 
@@ -246,14 +246,14 @@ input:checked + .slider:before {
   border: 1px solid grey;
   padding-top: 0;
   width: 200px;
-  height: 325px;
+  height: 450px;
   min-height: 325px;
 }
 
 .outfitAddItemCard {
   border: 1px solid grey !important;
   width: 200px !important;
-  height: 325px !important;
+  height: 450px !important;
   min-height: 300px !important;
 }
 
@@ -286,7 +286,7 @@ input:checked + .slider:before {
   top: -18px;
   left: 0;
   width: 100%;
-  height: 65%;
+  height: 77%;
   background-color: rgba(0, 0, 0, .1);
 }
 
@@ -305,7 +305,7 @@ input:checked + .slider:before {
   width: 70%;
   left: 30px;
   position: absolute;
-  top: 150px;
+  top: 275px;
 }
 
 .relatedImageCarousel {
@@ -402,8 +402,9 @@ input:checked + .slider:before {
   z-index: 300;
   border: 1px black solid;
   position: fixed;
-  top: 30%;
-  left: 40%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   height: auto;
   background-color: white;
 }
