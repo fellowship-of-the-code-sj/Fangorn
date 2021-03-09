@@ -5,7 +5,7 @@ import axiosHelper from '../client/helperFunctions/serverRequest.js';
 import axios from 'axios';
 import dummyData from './dummyData.js';
 import { act } from 'react-dom/test-utils';
-import mockResponse from './__mocks__/'
+import mockResponse from './__mocks__/RelatedAndOutfitsRequest.js';
 
 import RelatedAndOutfits from '../client/src/components/RelatedOutfit/RelatedAndOutfits.jsx';
 import RelatedItemsList from '../client/src/components/RelatedOutfit/RelatedItemsList.jsx';
@@ -34,9 +34,18 @@ describe('Rendering Components', () => {
 
 });
 
-describe('Rendering RelatedAndOutfits Component', async() => {
+// describe('Rendering RelatedAndOutfits Component', async() => {
+//   it ('should render RelatedAndOutfits with server request complete', async () => {
+//     axios.get = jest.fn().mockResolvedValue(mockResponse.relatedAndOutfits);
 
-});
+//     let wrapper;
+//     await act(async () => {
+//       const wrapper = await mount(<RelatedAndOutfits productID={13024}/>)
+//       wrapper.update();
+//       expect(wrapper.containsMatchingElement(<RelatedItemCard/>)).toEqual(true);
+//     });
+//   })
+// });
 
 describe('Rendering RelatedItems List Components', () => {
 
