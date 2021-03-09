@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import Overview from '../client/src/components/Overview/Overview.jsx';
 import DefaultView from '../client/src/components/Overview/DefaultView.jsx';
+import DefaultViewThumbnail from '../client/src/components/Overview/DefaultViewThumbnail.jsx';
 import ProductInfo from '../client/src/components/Overview/ProductInfo.jsx';
 import StyleSelector from '../client/src/components/Overview/StyleSelector.jsx';
 import AddToCart from '../client/src/components/Overview/AddToCart.jsx';
@@ -32,11 +33,7 @@ describe('Default View', () => {
     const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
     expect(wrapper.find('#defaultViewThumbnails').length).toBe(1)
   })
-
-  it('should dynamically render thumbnail list with the correct amount of photos', () => {
-    const wrapper = shallow(<DefaultView photos={data.styles[0].photos} />);
-    expect(wrapper.find('.imageThumbnail').length).toBe(6)
-  })
+  
 });
 
 describe('Product Information', () => {
