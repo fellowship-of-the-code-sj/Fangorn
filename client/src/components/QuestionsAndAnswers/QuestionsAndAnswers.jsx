@@ -42,14 +42,8 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
         }
         setNumDisplayedQuestions(numToDisplay);
         setDisplayedQuestions(sortedList.slice(0, numToDisplay));
-<<<<<<< HEAD
       });
   }, [productID]);
-=======
-      })
-      .catch(err => console.error('Failed to fetch questions:\n', err));
-  }, []);
->>>>>>> 37f5c11791afd31f5b3489a3e0e92eb6a75c4d10
 
   useEffect(() => {
     if (query.length > 2) {
