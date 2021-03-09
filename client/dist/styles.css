@@ -1053,6 +1053,11 @@ input:checked + .slider:before {
   justify-content: space-evenly;
 }
 
+#selectedIcon {
+  padding-bottom: 2px;
+  border-bottom: 2px solid black;
+}
+
 /***** Default View Component *****/
 .defaultView {
   box-sizing: border-box;
@@ -1132,6 +1137,7 @@ input:checked + .slider:before {
 }
 
 #selectedThumbnailImage {
+  padding: 2px;
   border: 2px solid black;
 }
 
