@@ -174,25 +174,37 @@ describe('IndividualQuestion', () => {
   });
 });
 
-xdescribe('AnswerList', () => {
-  it('should render 5 IndividualAnswer components', () => {
+describe('AnswerList', () => {
+  it('should render 5 IndividualAnswer components', async () => {
     const dummyAnswer = dummyData.questions.results[1].answers;
     let has5Answers = _.values(dummyAnswer);
-    const wrapper = shallow(<AnswerList answers={has5Answers} />);
+    let wrapper;
+    await act(async () => {
+      wrapper = await mount(<AnswerList answers={has5Answers} />);
+      wrapper.update();
+    });
     expect(wrapper.find(IndividualAnswer).length).toEqual(5);
   });
 
-  it('should not render an AnswerList component when there are no answers', () => {
+  it('should not render an AnswerList component when there are no answers', async () => {
     const dummyAnswer = dummyData.questions.results[0].answers;
     let hasNoAnswers = _.values(dummyAnswer);
-    const wrapper = shallow(<AnswerList answers={hasNoAnswers} />);
+    let wrapper;
+    await act(async () => {
+      wrapper = await mount(<AnswerList answers={hasNoAnswers} />);
+      wrapper.update();
+    });
     expect(wrapper.find(IndividualAnswer).length).toEqual(0);
   });
 });
 
-xdescribe('MoreAnsweredQuestions', () => {
-  it('should render a button', () => {
-    const wrapper = shallow(<MoreAnsweredQuestions />);
+describe('MoreAnsweredQuestions', () => {
+  it('should render a button', async () => {
+    let wrapper;
+    await act(async () => {
+      wrapper = await mount(<MoreAnsweredQuestions />);
+      wrapper.update();
+    });
     expect(wrapper.find('button').length).toEqual(1);
   });
 });
@@ -203,8 +215,128 @@ describe('AddQuestion', () => {
     expect(wrapper.find('input[type="submit"]').length).toEqual(1);
   });
 
+  it('should render the correct error messages when the Submit button is clicked and there are no content in all input fields', async () => {
+    const props = { question: '', nickname: '', email: '' };
+    const wrapper = mount(<AddQuestion {...props} />);
+    await act(async () => {
+      await wrapper.find('input[type="submit"]').simulate('click');
+      wrapper.update();
+    });
+    expect(wrapper.find('div.error-messages div').at(0).text()).toEqual('You must enter the following:');
+    expect(wrapper.find('div.error-messages div').at(1).text()).toEqual('Question cannot be empty');
+    expect(wrapper.find('div.error-messages div').at(2).text()).toEqual('Nickname cannot be empty');
+    expect(wrapper.find('div.error-messages div').at(3).text()).toEqual('Email cannot be empty');
+    expect(wrapper.find('div.error-messages div').at(4).text()).toEqual('Email must be a valid email address');
+  });
+
+  it('should render "Question cannot be empty" when only the question field is empty upon submission', async () => {
+    const props = { question: '', nickname: 'something', email: 'something@something.com' };
+    const wrapper = mount(<AddQuestion {...props} />);
+    await act(async () => {
+      await wrapper.find('input[type="submit"]').simulate('click');
+      wrapper.update();
+    });
+    expect(wrapper.find('div.error-messages div').at(0).text()).toEqual('You must enter the following:');
+    expect(wrapper.find('div.error-messages div').at(1).text()).toEqual('Question cannot be empty');
+  });
+
+  it('should render "Nickname cannot be empty" when only the nickname field is empty upon submission', async () => {
+    const props = { question: 'something', nickname: '', email: 'something@something.com' };
+    const wrapper = mount(<AddQuestion {...props} />);
+    await act(async () => {
+      await wrapper.find('input[type="submit"]').simulate('click');
+      wrapper.update();
+    });
+    expect(wrapper.find('div.error-messages div').at(0).text()).toEqual('You must enter the following:');
+    expect(wrapper.find('div.error-messages div').at(1).text()).toEqual('Nickname cannot be empty');
+  });
+
+  it('should render "Email cannot be empty" and "Email must be a valid email address" when only the email field is empty upon submission', async () => {
+    const props = { question: 'something', nickname: 'something', email: '' };
+    const wrapper = mount(<AddQuestion {...props} />);
+    await act(async () => {
+      await wrapper.find('input[type="submit"]').simulate('click');
+      wrapper.update();
+    });
+    expect(wrapper.find('div.error-messages div').at(0).text()).toEqual('You must enter the following:');
+    expect(wrapper.find('div.error-messages div').at(1).text()).toEqual('Email cannot be empty');
+    expect(wrapper.find('div.error-messages div').at(2).text()).toEqual('Email must be a valid email address');
+  });
+
+  it('should render "Email must be a valid email address" when the email is invalid upon submission', async () => {
+    const props = { question: 'something', nickname: 'something', email: 'something' };
+    const wrapper = mount(<AddQuestion {...props} />);
+    await act(async () => {
+      await wrapper.find('input[type="submit"]').simulate('click');
+      wrapper.update();
+    });
+    expect(wrapper.find('div.error-messages div').at(0).text()).toEqual('You must enter the following:');
+    expect(wrapper.find('div.error-messages div').at(1).text()).toEqual('Email must be a valid email address');
+  });
+});
+
+describe('AddAnswer', () => {
   it('should render a Submit button', () => {
-    const wrapper = mount(<AddQuestion />);
+    const wrapper = mount(<AddAnswer />);
     expect(wrapper.find('input[type="submit"]').length).toEqual(1);
+  });
+
+  it('should render the correct error messages when the Submit button is clicked and there are no content in all input fields', async () => {
+    const props = { answer: '', nickname: '', email: '' };
+    const wrapper = mount(<AddAnswer {...props} />);
+    await act(async () => {
+      await wrapper.find('input[type="submit"]').simulate('click');
+      wrapper.update();
+    });
+    expect(wrapper.find('div.error-messages div').at(0).text()).toEqual('You must enter the following:');
+    expect(wrapper.find('div.error-messages div').at(1).text()).toEqual('Answer cannot be empty');
+    expect(wrapper.find('div.error-messages div').at(2).text()).toEqual('Nickname cannot be empty');
+    expect(wrapper.find('div.error-messages div').at(3).text()).toEqual('Email cannot be empty');
+    expect(wrapper.find('div.error-messages div').at(4).text()).toEqual('Email must be a valid email address');
+  });
+
+  it('should render "Answer cannot be empty" when only the answer field is empty upon submission', async () => {
+    const props = { answer: '', nickname: 'something', email: 'something@something.com' };
+    const wrapper = mount(<AddAnswer {...props} />);
+    await act(async () => {
+      await wrapper.find('input[type="submit"]').simulate('click');
+      wrapper.update();
+    });
+    expect(wrapper.find('div.error-messages div').at(0).text()).toEqual('You must enter the following:');
+    expect(wrapper.find('div.error-messages div').at(1).text()).toEqual('Answer cannot be empty');
+  });
+
+  it('should render "Nickname cannot be empty" when only the nickname field is empty upon submission', async () => {
+    const props = { answer: 'something', nickname: '', email: 'something@something.com' };
+    const wrapper = mount(<AddAnswer {...props} />);
+    await act(async () => {
+      await wrapper.find('input[type="submit"]').simulate('click');
+      wrapper.update();
+    });
+    expect(wrapper.find('div.error-messages div').at(0).text()).toEqual('You must enter the following:');
+    expect(wrapper.find('div.error-messages div').at(1).text()).toEqual('Nickname cannot be empty');
+  });
+
+  it('should render "Email cannot be empty" and "Email must be a valid email address" when only the email field is empty upon submission', async () => {
+    const props = { answer: 'something', nickname: 'something', email: '' };
+    const wrapper = mount(<AddAnswer {...props} />);
+    await act(async () => {
+      await wrapper.find('input[type="submit"]').simulate('click');
+      wrapper.update();
+    });
+    expect(wrapper.find('div.error-messages div').at(0).text()).toEqual('You must enter the following:');
+    expect(wrapper.find('div.error-messages div').at(1).text()).toEqual('Email cannot be empty');
+    expect(wrapper.find('div.error-messages div').at(2).text()).toEqual('Email must be a valid email address');
+  });
+
+  it('should render "Email must be a valid email address" when the email is invalid upon submission', async () => {
+    const props = { answer: 'something', nickname: 'something', email: 'something' };
+    const wrapper = mount(<AddAnswer {...props} />);
+    await act(async () => {
+      await wrapper.find('input[type="submit"]').simulate('click');
+      wrapper.update();
+    });
+    expect(wrapper.find('div.error-messages div').at(0).text()).toEqual('You must enter the following:');
+    expect(wrapper.find('div.error-messages div').at(1).text()).toEqual('Email must be a valid email address');
   });
 });
