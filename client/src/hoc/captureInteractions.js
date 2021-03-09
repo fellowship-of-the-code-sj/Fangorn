@@ -6,11 +6,11 @@ const captureInteractions = widget => {
     return function decoratedComponent(props) {
       const logger = e => {
         const currentDate = new Date();
-        // console.log('stealing your data..');
-        // console.log('\telement:', e.target.nodeName);
-        // console.log('\ttime:', currentDate.toUTCString());
-        // console.log('\twidget:', widget);
-        // console.log('thanks bro');
+        console.log('stealing your data..');
+        console.log('\telement:', e.target.nodeName);
+        console.log('\ttime:', currentDate.toUTCString());
+        console.log('\twidget:', widget);
+        console.log('thanks bro');
       };
 
       return <WrappedComponent logger={logger} {...props} />
