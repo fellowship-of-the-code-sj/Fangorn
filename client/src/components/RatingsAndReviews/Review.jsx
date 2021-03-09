@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import captureRandR from '../../hoc/captureRandR.js';
+
 const port = 404;
 
 function Review(props) {
@@ -86,7 +88,7 @@ function Review(props) {
       <div className="review-thumbnails"></div>
       {
         props.review.photos.map((image, i) => {
-          return <img style={{ "cursor": "pointer" }} onClick={handleImageClick} className="review-thumbnail" key={image.id} id={`${i}-${image.id}`} src={image.url}></img>
+          return <img style={{ "cursor": "pointer" }} onClick={(e) => { handleImageClick(e); props.logger(e); }} className="review-thumbnail" key={image.id} id={`${i}-${image.id}`} src={image.url}></img>
         })
       }
       {
@@ -110,4 +112,4 @@ function Review(props) {
   )
 }
 
-export default Review;
+export default captureRandR(Review);

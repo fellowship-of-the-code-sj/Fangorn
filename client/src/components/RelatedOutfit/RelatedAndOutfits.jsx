@@ -8,6 +8,7 @@ const port = 404;
 const RelatedAndOutfits = ({ productID, productInfo, productSelect, listUpdate }) => {
 
   const [ relatedItems, setRelatedItems ] = useState([]);
+
   useEffect(() => {
     axiosHelper.get(`http://localhost:${port}/RelatedItems`, {itemId: productID}, (data) => {
       setRelatedItems(data.data);
