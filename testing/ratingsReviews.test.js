@@ -32,10 +32,6 @@ describe('Rendering Components', () => {
 });
 
 describe('NewReview', () => {
-  it('should render two buttons', () => {
-    const wrapper = shallow(<NewReview productName={dummyData.products[0].name} metaObject={dummyData.reviewMeta} productID={dummyData.products[0].id} />);
-    expect(wrapper.find('button').length).toEqual(3);
-  })
   it('should have three forms', () => {
 
   })
@@ -83,6 +79,33 @@ describe('Ratings', () => {
 
   })
   it('should display the product breakdown', () => {
+
+  })
+})
+
+describe('Review', () => {
+  it('should have a rating', () => {
+
+  })
+  it('should have a review body', () => {
+
+  })
+  it('should have a summary', () => {
+
+  })
+  it('should render clickable images', () => {
+
+  })
+  it('should have a clickable helpful span', () => {
+
+  })
+  it('should have a clickable report span', () => {
+
+  })
+  it('should have a name and date', () => {
+
+  })
+  it('should display a recommendation', () => {
 
   })
 })
