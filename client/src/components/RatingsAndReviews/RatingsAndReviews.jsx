@@ -25,6 +25,7 @@ function RatingsAndReviews(props) {
   })
 
   const getMetaObject = () => {
+    setTracker(tracker + 1);
     var ratingObject = {};
     axios.get(`/RatingsAndReviews/getMeta?product_id=${props.productID}`)
       .then((response) => {
@@ -39,6 +40,10 @@ function RatingsAndReviews(props) {
     }
 
   })
+
+  useEffect(() => {
+    getMetaObject();
+  }, [props.productID])
 
   const resetStarSort = () => {
     setTracker(tracker + 1);
@@ -66,7 +71,7 @@ function RatingsAndReviews(props) {
     <div className="ratings-and-reviews">
       <h3>Ratings and Reviews</h3><br></br>
       <a name="randr" />
-      <Ratings starSort={starSort} toggleStarSort={toggleStarSort} metaObject={metaObject} />
+      <Ratings starSort={starSort} toggleStarSort={toggleStarSort} tracker={tracker} metaObject={metaObject} />
       <ReviewsList resetStarSort={resetStarSort} productName={props.productName} tracker={tracker} starSort={starSort} metaObject={metaObject} productID={props.productID} />
     </div>
   )
