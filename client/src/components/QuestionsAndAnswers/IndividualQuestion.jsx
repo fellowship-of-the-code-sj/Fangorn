@@ -110,12 +110,12 @@ const IndividualQuestion = ({ question, productName, logger }) => {
             </div>
             <div className="spacer">|</div>
             <div>
-            <a
-                href="#"
-                onClick={e => {
-                  handleAddAnswerModal(e);
-                  logger(e);
-                }}>Add Answer</a>
+              <a
+                  href="#"
+                  onClick={e => {
+                    handleAddAnswerModal(e);
+                    logger(e);
+                  }}>Add Answer</a>
             </div>
           </div>
         </div>
