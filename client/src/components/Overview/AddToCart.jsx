@@ -10,6 +10,7 @@ const AddToCart = ({ skus }) => {
   });
   const [currentQty, setCurrentQty] = useState(null);
   const [sizes, setSizes] = useState([]);
+  const [failedAddToCart, setFailedAddToCart] = useState(false)
 
   useEffect(() => {
     const styleSizes = [];
@@ -67,18 +68,32 @@ const AddToCart = ({ skus }) => {
     return quantities;
   }
 
+  const handleAddToCart = () => {
+    if (currentSku.size === "Select Size") {
+      setFailedAddToCart(true);
+    } else {
+      setFailedAddToCart(false);
+      console.log({sku: currentSku.sku, quantity: currentQty})
+    }
+  }
+
   return (
     <div className="addToCart">
       {sizes.length > 0 ?
-        <select 
-          id="sizeSelect"
-          onChange={(e) => {sizeChange(e.target.value)}}>
-          <option>Select Size</option>
-          {Object.keys(skus).map((key, index) => (
-            <option key={key}>{skus[key].size}</option>
-          ))}
-        </select> :
-        <select id="sizeSelect" disabled><option>OUT OF STOCK</option></select>
+        <div id="sizeSelectContainer">
+          {failedAddToCart ? <p id="sizeError">Please select size</p> : null}
+          <select 
+            id="sizeSelect"
+            onChange={(e) => {sizeChange(e.target.value)}}>
+            <option>Select Size</option>
+            {Object.keys(skus).map((key, index) => (
+              <option key={key}>{skus[key].size}</option>
+            ))}
+          </select> 
+        </div> :
+        <div>
+          <select id="sizeSelect" disabled><option>OUT OF STOCK</option></select>
+        </div>
       }
       {currentSku.quantities.length > 0 ? 
         <select
@@ -91,7 +106,7 @@ const AddToCart = ({ skus }) => {
         <select id="quantitySelect"><option>-</option></select>
       }
       <button id="addToCartButton"
-        onClick={(e) => {event.preventDefault(); console.log({sku: currentSku.sku, quantity: currentQty})}}
+        onClick={(e) => {event.preventDefault(); handleAddToCart()}}
       >ADD TO CART +</button>
     </div>
   )

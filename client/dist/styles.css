@@ -1304,11 +1304,23 @@ input:checked + .slider:before {
   border: 1px solid black;
 }
 
-#sizeSelect {
+#sizeSelectContainer {
   box-sizing: border-box;
   grid-area: 1 / 1 / 2 / 2;
-  margin: 30px 10px;
+  display: grid;
+  grid-template: 25px 1fr / 1fr ;
+}
+
+#sizeSelect {
+  grid-row: 2 / 3;
+  margin: 5px 5px 30px;
   text-indent: 5px;
+}
+
+#sizeError {
+  grid-row: 1 / 2;
+  margin: 2px auto;
+  color: red;
 }
 
 #quantitySelect {
