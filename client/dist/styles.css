@@ -992,7 +992,7 @@ input:checked + .slider:before {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 50px 1fr 50px;
-  grid-template-rows: 1fr 20px;
+  grid-template-rows: 50px 1fr 25px;
   padding: 5px;
   margin: 5px;
   border: 1px solid black;
@@ -1018,6 +1018,27 @@ input:checked + .slider:before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.expandedButtonContainer {
+  box-sizing: border-box;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  margin: auto 0px;
+  z-index: 102;
+}
+
+#closeExpandedButtonContainer {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+#leftExpandedButtonContainer {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+#rightExpandedButtonContainer {
+  grid-area: 2 / 3 / 3 / 4;
 }
 
 /***** Default View Component *****/

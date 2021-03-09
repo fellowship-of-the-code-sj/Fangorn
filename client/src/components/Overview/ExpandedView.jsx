@@ -6,7 +6,7 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
   const [ isZoomed, setIsZoom ] = useState(false)
 
   return (
-    <div className="expandedView" onClick={() => changeView()}>
+    <div className="expandedView">
     { !isZoomed ? 
       <div id="noZoomExpanded">
         <div id="expandedViewImageContainer">
@@ -15,10 +15,35 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
             id ="expandedViewImage"
           />
         </div>
-        <div id="closeExpandedButton"></div>
-        <div id="leftExpandedButton"></div>
-        <div id="rightExpandedButton"></div>
-        <div id="expandedViewIcons"></div>
+        <div className="expandedButtonContainer" id="closeExpandedButtonContainer">
+          <button
+            className="expandedButton"
+            id="closeExpandedButton"
+            onClick={() => changeView()}
+            ><ion-icon name="close-sharp"></ion-icon>
+          </button>
+        </div>
+        { imageIndex > 0 ?
+          <div className="expandedButtonContainer"id="leftExpandedButtonContainer">
+            <button
+              className="expandedButton"
+              id="leftExpandedButton"
+              onClick={() => {handleImageIndexChange(-1)}}
+              ><ion-icon name="arrow-back-sharp"></ion-icon>
+            </button>
+          </div> : null
+        }
+        { imageIndex < (photos.length - 1) ?
+          <div className="expandedButtonContainer"id="rightExpandedButtonContainer">
+            <button
+              className="expandedButton"
+              id="rightExpandedButton"
+              onClick={() => {handleImageIndexChange(1)}}
+              ><ion-icon name="arrow-forward-sharp"></ion-icon>
+            </button>
+          </div> : null
+        }
+        <div id="expandedViewIconsContainer"></div>
       </div> :
       <div id="zoomExpanded">
         <div></div>
