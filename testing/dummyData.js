@@ -25,9 +25,11 @@ module.exports = {
           url: null
         }],
         sale_price: null,
-        skus: {null: {
-          quantity: null, size: null
-        }},
+        skus: {
+          null: {
+            quantity: null, size: null
+          }
+        },
         style_id: 64138
       }
     },
@@ -48,19 +50,19 @@ module.exports = {
         ],
         sale_price: "30.00",
         skus: {
-          370357: {quantity: 8, size: "XS"},
-          370358: {quantity: 16, size: "S"},
-          370359: {quantity: 17, size: "M"},
-          370360: {quantity: 10, size: "L"},
-          370361: {quantity: 15, size: "XL"},
-          370362: {quantity: 6, size: "XXL"}
+          370357: { quantity: 8, size: "XS" },
+          370358: { quantity: 16, size: "S" },
+          370359: { quantity: 17, size: "M" },
+          370360: { quantity: 10, size: "L" },
+          370361: { quantity: 15, size: "XL" },
+          370362: { quantity: 6, size: "XXL" }
         },
         style_id: 64141,
       },
       description: "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
       features: [
-        {feature: "Fabric", value: "100% Cotton"},
-        {feature: "Cut", value: "Skinny"}
+        { feature: "Fabric", value: "100% Cotton" },
+        { feature: "Cut", value: "Skinny" }
       ],
       id: 13025,
       name: "Morning Joggers",
@@ -93,9 +95,11 @@ module.exports = {
           url: null
         }],
         sale_price: null,
-        skus: {null: {
-          quantity: null, size: null
-        }},
+        skus: {
+          null: {
+            quantity: null, size: null
+          }
+        },
         style_id: 64138
       }
     },
@@ -116,19 +120,19 @@ module.exports = {
         ],
         sale_price: "30.00",
         skus: {
-          370357: {quantity: 8, size: "XS"},
-          370358: {quantity: 16, size: "S"},
-          370359: {quantity: 17, size: "M"},
-          370360: {quantity: 10, size: "L"},
-          370361: {quantity: 15, size: "XL"},
-          370362: {quantity: 6, size: "XXL"}
+          370357: { quantity: 8, size: "XS" },
+          370358: { quantity: 16, size: "S" },
+          370359: { quantity: 17, size: "M" },
+          370360: { quantity: 10, size: "L" },
+          370361: { quantity: 15, size: "XL" },
+          370362: { quantity: 6, size: "XXL" }
         },
         style_id: 64141,
       },
       description: "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
       features: [
-        {feature: "Fabric", value: "100% Cotton"},
-        {feature: "Cut", value: "Skinny"}
+        { feature: "Fabric", value: "100% Cotton" },
+        { feature: "Cut", value: "Skinny" }
       ],
       id: 13025,
       name: "Morning Joggers",
@@ -161,9 +165,11 @@ module.exports = {
           url: null
         }],
         sale_price: null,
-        skus: {null: {
-          quantity: null, size: null
-        }},
+        skus: {
+          null: {
+            quantity: null, size: null
+          }
+        },
         style_id: 64138
       }
     },
@@ -184,19 +190,19 @@ module.exports = {
         ],
         sale_price: "30.00",
         skus: {
-          370357: {quantity: 8, size: "XS"},
-          370358: {quantity: 16, size: "S"},
-          370359: {quantity: 17, size: "M"},
-          370360: {quantity: 10, size: "L"},
-          370361: {quantity: 15, size: "XL"},
-          370362: {quantity: 6, size: "XXL"}
+          370357: { quantity: 8, size: "XS" },
+          370358: { quantity: 16, size: "S" },
+          370359: { quantity: 17, size: "M" },
+          370360: { quantity: 10, size: "L" },
+          370361: { quantity: 15, size: "XL" },
+          370362: { quantity: 6, size: "XXL" }
         },
         style_id: 64141,
       },
       description: "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
       features: [
-        {feature: "Fabric", value: "100% Cotton"},
-        {feature: "Cut", value: "Skinny"}
+        { feature: "Fabric", value: "100% Cotton" },
+        { feature: "Cut", value: "Skinny" }
       ],
       id: 13025,
       name: "Morning Joggers",
@@ -453,5 +459,75 @@ module.exports = {
     'LightCompose': [false, true],
     'Skinny': [true, false],
     'Ultrasheen': [false, true]
-  }
+  },
+
+  reviews: [
+    {
+      "product": "13027",
+      "page": 0,
+      "count": 5,
+      "results": [
+        {
+          "review_id": 111389,
+          "rating": 4,
+          "summary": "Great shoes!",
+          "recommend": true,
+          "response": "",
+          "body": "Now I can get to stomping!",
+          "date": "2019-05-04T00:00:00.000Z",
+          "reviewer_name": "chingy",
+          "helpfulness": 13,
+          "photos": []
+        },
+        {
+          "review_id": 111390,
+          "rating": 3,
+          "summary": "They're heavy but great",
+          "recommend": true,
+          "response": "",
+          "body": "I like them but they run wide.",
+          "date": "2019-04-13T00:00:00.000Z",
+          "reviewer_name": "thinfootjim",
+          "helpfulness": 3,
+          "photos": []
+        },
+        {
+          "review_id": 288092,
+          "rating": 3,
+          "summary": "not bad",
+          "recommend": false,
+          "response": null,
+          "body": "not great",
+          "date": "2021-03-05T00:00:00.000Z",
+          "reviewer_name": "evan",
+          "helpfulness": 2,
+          "photos": []
+        },
+        {
+          "review_id": 288422,
+          "rating": 5,
+          "summary": "Nice kicks",
+          "recommend": true,
+          "response": null,
+          "body": "These shoes look great, and they really make me want to show them off to all the other cool monkey fans.",
+          "date": "2021-03-08T00:00:00.000Z",
+          "reviewer_name": "MonkeyShoeMatt",
+          "helpfulness": 0,
+          "photos": []
+        },
+        {
+          "review_id": 288396,
+          "rating": 3,
+          "summary": "This is a shoe",
+          "recommend": true,
+          "response": null,
+          "body": "I like this because it's a shoe. At the same time, the worst thing about this product is the fact that it is a shoe.",
+          "date": "2021-03-08T00:00:00.000Z",
+          "reviewer_name": "BareFootFred",
+          "helpfulness": 0,
+          "photos": []
+        }
+      ]
+    }
+  ]
 }
