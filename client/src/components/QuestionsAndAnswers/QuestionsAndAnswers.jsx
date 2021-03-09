@@ -19,10 +19,8 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
   const [ query, setQuery ] = useState('');
 
   useEffect(() => {
-    serverRequest.get(
-      `http://localhost:404/questions/${productID}`,
-      null,
-      response => {
+    axios.get(`http://localhost:404/questions/${productID}`)
+      .then(response => {
         const sortedList = _.sortBy(response.data, question => question.question_helpfulness).reverse();
 
         setOriginalQuestions(sortedList);
@@ -38,7 +36,8 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
         }
         setNumDisplayedQuestions(numToDisplay);
         setDisplayedQuestions(sortedList.slice(0, numToDisplay));
-      });
+      })
+      .catch(err => console.error('Failed to fetch questions:\n', err));
   }, []);
 
   useEffect(() => {
