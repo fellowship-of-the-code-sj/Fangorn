@@ -43,7 +43,17 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
             </button>
           </div> : null
         }
-        <div id="expandedViewIconsContainer"></div>
+        <div id="expandedViewIconsContainer">
+          {photos.map((photo, i) => (
+            <div key={i} id={i === imageIndex ? 'selectedIcon' : null}>
+              <ion-icon 
+                name="stop-sharp"
+                index={i}
+                onClick={(e) => {setImageIndex(Number(event.target.attributes[1].value))}}
+              ></ion-icon>
+            </div>
+          ))}
+        </div>
       </div> :
       <div id="zoomExpanded">
         <div></div>
