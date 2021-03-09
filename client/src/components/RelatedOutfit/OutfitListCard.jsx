@@ -2,18 +2,68 @@ import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
 import PropTypes from 'prop-types';
 import OutfitActionButton from './OutfitActionButton.jsx';
+import relatedAndOutfits from '../../hoc/relatedAndOutfits.js';
 
-const OutfitListCard = ({ cardData, removeOutfitItem}) => {
+import 'bootstrap/dist/css/bootstrap.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
+
+const OutfitListCard = ({ cardData, removeOutfitItem, logger}) => {
+
+  var settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: false,
+    slide: 'img',
+    draggable: false,
+    beforeChange: () => {
+      logger({target: { nodeName: 'OutfitCard Image Slider' }})
+    }
+  };
+
+  const [ carouselImages, setCarouselImages ] = useState(false);
+  const [ cardImage, setCardImage ] = useState(0);
+
+  const pictureCarousel = () => {
+    setCarouselImages(!carouselImages);
+  }
+
+  const updateCardImage = (e, index) => {
+    e.stopPropagation();
+    setCardImage(index);
+  }
+
   return (
 
     <div className='itemCard'>
       <OutfitActionButton id={cardData.id} removeOutfitItem={removeOutfitItem}/>
-      <div className='photoBorder'>
+      <div onMouseEnter={pictureCarousel} onMouseLeave={pictureCarousel} className='photoBorder'>
         {
           //Checks to see if image exists, if not returns default image
           cardData.default_style.photos[0].url ?
-          <img className='itemCardImg' src={cardData.default_style.photos[0].url}></img>
+          <img className='itemCardImg' src={cardData.default_style.photos[cardImage].url}></img>
           : <img className='itemCardImg' src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'></img>
+        }
+        {
+          carouselImages?
+          <div onClick={(e) => {e.stopPropagation()}} className='relatedCarouselImage'>
+            <Slider {...settings}>
+              {
+                cardData.default_style.photos.map((image, index) => {
+                  return <img onClick={(e) => {
+                    updateCardImage(e, index)
+                    logger(e)
+                  }}
+                  className='relatedImageCarousel' key={index} src={image.thumbnail_url}></img>
+                })
+              }
+            </Slider>
+          </div>
+          : null
         }
       </div>
 
@@ -36,9 +86,10 @@ const OutfitListCard = ({ cardData, removeOutfitItem}) => {
   )
 }
 
-export default OutfitListCard;
+export default relatedAndOutfits(OutfitListCard);
 
 OutfitListCard.propTypes = {
   cardData: PropTypes.object,
-  removeOutfitItem: PropTypes.func
+  removeOutfitItem: PropTypes.func,
+  logger: PropTypes.func
 }

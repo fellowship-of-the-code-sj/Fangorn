@@ -10,19 +10,23 @@ import AddQuestion from './AddQuestion.jsx';
 import serverRequest from '../../../helperFunctions/serverRequest.js';
 
 const QuestionsAndAnswers = ({ productID, productName }) => {
+  // Search
+  const [ query, setQuery ] = useState('');
+  // QuestionsList
   const [ originalQuestions, setOriginalQuestions ] = useState([]);
   const [ questions, setQuestions ] = useState([]);
   const [ showAddQuestionModal, setShowAddQuestionModal ] = useState(false);
   const [ showMoreQuestionsButton, setShowMoreQuestionsButton ] = useState(false);
   const [ numDisplayedQuestions, setNumDisplayedQuestions ] = useState(0);
   const [ displayedQuestions, setDisplayedQuestions ] = useState([]);
-  const [ query, setQuery ] = useState('');
+  // Add Question
+  const [ question, setQuestion ] = useState('');
+  const [ nickname, setNickname ] = useState('');
+  const [ email, setEmail ] = useState('');
 
   useEffect(() => {
-    serverRequest.get(
-      `http://localhost:404/questions/${productID}`,
-      null,
-      response => {
+    axios.get(`http://localhost:404/questions/${productID}`)
+      .then(response => {
         const sortedList = _.sortBy(response.data, question => question.question_helpfulness).reverse();
 
         setOriginalQuestions(sortedList);
@@ -38,8 +42,14 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
         }
         setNumDisplayedQuestions(numToDisplay);
         setDisplayedQuestions(sortedList.slice(0, numToDisplay));
+<<<<<<< HEAD
       });
   }, [productID]);
+=======
+      })
+      .catch(err => console.error('Failed to fetch questions:\n', err));
+  }, []);
+>>>>>>> 37f5c11791afd31f5b3489a3e0e92eb6a75c4d10
 
   useEffect(() => {
     if (query.length > 2) {
@@ -93,7 +103,15 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
       </div>
       {
         showAddQuestionModal ?
-        <AddQuestion productID={productID} handleAddQuestionModal={handleAddQuestionModal}/>
+        <AddQuestion
+          productID={productID}
+          handleAddQuestionModal={handleAddQuestionModal}
+          question={question}
+          nickname={nickname}
+          email={email}
+          setQuestion={setQuestion}
+          setNickname={setNickname}
+          setEmail={setEmail} />
         : null
       }
     </div>

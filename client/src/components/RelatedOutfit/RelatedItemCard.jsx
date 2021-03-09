@@ -6,10 +6,46 @@ import helperFunctions from '../../../helperFunctions/helperFunctions.js';
 import ComparisonTable from './ComparisonTable.jsx';
 import relatedAndOutfits from '../../hoc/relatedAndOutfits.js';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
+
 const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger }) => {
 
   //State for comparison table toggle
+
+  var settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: false,
+    slide: 'img',
+    draggable: false,
+    beforeChange: () => {
+      logger({target: { nodeName: 'RelatedCard Image Slider' }})
+    }
+  };
+
   const [ actionButtonToggle, setActionButtonToggle] = useState(false)
+  const [ carouselImages, setCarouselImages ] = useState(false);
+  const [ cardImage, setCardImage ] = useState(0);
+
+  const pictureCarousel = () => {
+    setCarouselImages(!carouselImages);
+  }
+
+  const updateCardImage = (e, index) => {
+    e.stopPropagation();
+    setCardImage(index);
+  }
+
+
+  useEffect(() => {
+    setCardImage(0);
+  }, [cardData]);
 
   return (
     <div onClick={(e) => {
@@ -23,12 +59,30 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
         actionButtonListener(event, cardData)
         logger(event)
       }}/>
-      <div className='photoBorder'>
+      <div onMouseEnter={pictureCarousel} onMouseLeave={pictureCarousel} className='photoBorder'>
         {
           //Checks to see if image exists, if not returns default image
             cardData.default_style.photos[0].url ?
-            <img className='itemCardImg' src={cardData.default_style.photos[0].url}></img>
+            <img className='itemCardImg' src={cardData.default_style.photos[cardImage].url}>
+            </img>
             : <img className='itemCardImg' src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'></img>
+        }
+        {
+          carouselImages?
+          <div onClick={(e) => {e.stopPropagation()}} className='relatedCarouselImage'>
+            <Slider {...settings}>
+              {
+                cardData.default_style.photos.map((image, index) => {
+                  return <img onClick={(e) => {
+                    updateCardImage(e, index)
+                    logger(e);
+                  }}
+                  className='relatedImageCarousel' key={index} src={image.thumbnail_url}></img>
+                })
+              }
+            </Slider>
+          </div>
+          : null
         }
       </div>
       {/* category and name */}

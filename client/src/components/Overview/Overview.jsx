@@ -4,6 +4,7 @@ import ProductInfo from './ProductInfo.jsx';
 import AddToCart from './AddToCart.jsx';
 import ProductSummary from './ProductSummary.jsx';
 import DefaultView from './DefaultView.jsx';
+import ExpandedView from './ExpandedView.jsx';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
 import PropTypes from 'prop-types';
 const port = 404;
@@ -14,6 +15,13 @@ const Overview = (props) => {
   const [ styles, setStyles ] = useState([]);
   const [ ratings, setRatings ] = useState({});
   const [ currentStyle, setCurrentStyle ] = useState({});
+  const [ isExpanded, setIsExpanded ] = useState(false);
+  const [ imageIndex, setImageIndex ] = useState(0);
+
+  const handleImageIndexChange = (increment) => {
+    let newIndex = imageIndex + increment;
+    setImageIndex(newIndex);
+  }
 
   useEffect(() => {
     setProduct(props.productObj);
@@ -22,11 +30,28 @@ const Overview = (props) => {
     setCurrentStyle(props.stylesArr[0]);
   }, [])
 
+  const changeView = () => {
+    setIsExpanded(!isExpanded)
+  }
+
   return (
     <div className="overview">
-      <DefaultView
-        photos={ currentStyle.photos }
-      />
+      { isExpanded ?
+        <ExpandedView
+          photos={ currentStyle.photos }
+          changeView = {changeView}
+          imageIndex = {imageIndex}
+          setImageIndex = {setImageIndex}
+          handleImageIndexChange = {handleImageIndexChange}
+        />
+      : <DefaultView
+          photos={ currentStyle.photos }
+          changeView = {changeView}
+          imageIndex = {imageIndex}
+          setImageIndex = { setImageIndex }
+          handleImageIndexChange = {handleImageIndexChange}
+        />
+      }
       <ProductInfo
         product={ product }
         currentStyle={ currentStyle }
