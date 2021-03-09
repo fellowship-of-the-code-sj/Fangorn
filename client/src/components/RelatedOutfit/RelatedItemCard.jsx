@@ -43,10 +43,6 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, resetS
     setCardImage(index);
   }
 
-  const updateInitialImage = () => {
-
-  }
-
   return (
     <div onClick={(e) => {
           productSelect(cardData.id)

@@ -22,7 +22,6 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
     slidesToScroll: 1,
     beforeChange: () => {
       logger({target: { nodeName: 'RelatedItemsList Slider' }})
-
     }
   };
 
@@ -41,7 +40,7 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
   }
 
   const resetSliderStart = () => {
-    slider.current.slickGoTo(0, true)
+    slider.current.slickGoTo(0, false)
   }
 
 
