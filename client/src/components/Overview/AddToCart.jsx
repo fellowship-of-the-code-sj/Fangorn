@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const AddToCart = ({ skus }) => {
 
   const [currentSku, setCurrentSku] = useState({
+    sku: null,
     size: '',
     quantities: []
   });
@@ -19,6 +20,7 @@ const AddToCart = ({ skus }) => {
     }
     setSizes(styleSizes)
     setCurrentSku({
+      sku: null,
       size: '',
       quantities: []
     });
@@ -35,18 +37,18 @@ const AddToCart = ({ skus }) => {
     for (let key in skus) {
       if (skus[key].size === sizeString) {
         setCurrentSku({
-          size: sizeString,
+          sku: Number(key),
           quantities: createArray(skus[key].quantity)
         })
         if (!currentQty) {
-          setCurrentQty('1')
+          setCurrentQty(1)
         }
       }
     }
   }
 
   const quantityChange = (qtyString) => {
-    setCurrentQty(qtyString);
+    setCurrentQty(Number(qtyString));
   }
 
   const createArray = (qty) => {
@@ -70,9 +72,6 @@ const AddToCart = ({ skus }) => {
           id="sizeSelect"
           onChange={(e) => {sizeChange(e.target.value)}}>
           <option>Select Size</option>
-          {/* {sizes.map((size, i) => (
-            <option key={i}>{size}</option>
-          ))} */}
           {Object.keys(skus).map((key, index) => (
             <option key={key}>{skus[key].size}</option>
           ))}
@@ -82,14 +81,16 @@ const AddToCart = ({ skus }) => {
       {currentSku.quantities.length > 0 ? 
         <select
           id="quantitySelect"
-          onChange={(e) => {setCurrentQty(e.target.value)}}>
+          onChange={(e) => {quantityChange(e.target.value)}}>
           {currentSku.quantities.map((quantity, i) => (
             <option key={i}>{quantity}</option>
           ))}
         </select> :
         <select id="quantitySelect"><option>-</option></select>
       }
-      <button id="addToCartButton">ADD TO CART +</button>
+      <button id="addToCartButton"
+        onClick={(e) => {event.preventDefault(); console.log({sku: currentSku.sku, quantity: currentQty})}}
+      >ADD TO CART +</button>
     </div>
   )
   AddToCart.propTypes = {
