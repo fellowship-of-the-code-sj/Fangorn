@@ -91,7 +91,7 @@ const AddToCart = ({ skus }) => {
             ))}
           </select> 
         </div> :
-        <div>
+        <div id="sizeSelectContainer">
           <select id="sizeSelect" disabled><option>OUT OF STOCK</option></select>
         </div>
       }
