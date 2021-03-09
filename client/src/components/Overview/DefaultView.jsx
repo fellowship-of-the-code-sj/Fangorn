@@ -19,7 +19,7 @@ const DefaultView = (props) => {
 
   return (
     <div className="defaultView">
-      <div id="defaultViewImageContainer">
+      <div id="defaultViewImageContainer" onClick={() => props.changeView()}>
         { props.photos ?
           <img 
             src={props.photos[imageIndex].url ? props.photos[imageIndex].url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
@@ -91,7 +91,8 @@ const DefaultView = (props) => {
   )
 
   DefaultView.propTypes = {
-    photos: PropTypes.array
+    photos: PropTypes.array,
+    changeView: PropTypes.func
   }
 }
 
