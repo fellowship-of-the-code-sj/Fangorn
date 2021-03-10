@@ -109,7 +109,7 @@ const AddToCart = ({ skus }) => {
       <button id="addToCartButton"
         onClick={(e) => {event.preventDefault(); handleAddToCart()}}
         >ADD TO CART +
-      </button> : null
+      </button> : <div id="addToCartButton"></div>
       }
     </div>
   )
