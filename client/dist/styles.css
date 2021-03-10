@@ -600,6 +600,11 @@ input:checked + .slider:before {
   top: 15px;
 }
 
+.ratings{
+  height: 650px;
+  overflow: visible;
+}
+
 .characteristic{
   margin-bottom: 30px;
 }

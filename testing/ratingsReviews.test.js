@@ -63,6 +63,9 @@ describe('ReviewsList', () => {
   it('should only display 2 reviews at a time', () => {
 
   })
+  it('should be sortable', () => {
+
+  })
 })
 
 describe('Ratings', () => {
