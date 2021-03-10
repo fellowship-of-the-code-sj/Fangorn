@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import URL from '../URL';
 
 // const captureInteractions = widget => {
 //   return function decorator(WrappedComponent) {
@@ -30,7 +31,7 @@ const captureInteractions = widget => {
           widget
         };
 
-        axios.post('http://localhost:404/interactions/', bodyParams)
+        axios.post(`${URL}/interactions/`, bodyParams)
           .then(() => console.log('logged'))
           .catch(err => console.error(err));
       };

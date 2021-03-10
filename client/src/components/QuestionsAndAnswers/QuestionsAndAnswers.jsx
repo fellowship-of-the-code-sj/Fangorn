@@ -8,6 +8,7 @@ import MoreAnsweredQuestions from './MoreAnsweredQuestions.jsx';
 import AddQuestionButton from './AddQuestionButton.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import serverRequest from '../../../helperFunctions/serverRequest.js';
+import URL from '../../URL';
 
 const QuestionsAndAnswers = ({ productID, productName }) => {
   // Search
@@ -25,7 +26,7 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
   const [ email, setEmail ] = useState('');
 
   useEffect(() => {
-    axios.get(`http://localhost:404/questions/${productID}`)
+    axios.get(`${URL}/questions/${productID}`)
       .then(response => {
         const sortedList = _.sortBy(response.data, question => question.question_helpfulness).reverse();
 

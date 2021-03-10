@@ -4,6 +4,7 @@ import _ from 'underscore';
 import axios from 'axios';
 import regex from '../../../helperFunctions/regex';
 import captureQandA from '../../hoc/captureQandA';
+import URL from '../../URL';
 
 var AddQuestion = (
   {
@@ -51,7 +52,7 @@ var AddQuestion = (
         email: _.escape(email),
         body: _.escape(question)
       };
-      axios.post(`http://localhost:404/questions/add`, body_params)
+      axios.post(`${URL}/questions/add`, body_params)
         .then(() => {
           setQuestion('');
           setNickname('');

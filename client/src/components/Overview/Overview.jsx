@@ -7,7 +7,6 @@ import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
 import PropTypes from 'prop-types';
-const port = 404;
 
 const Overview = (props) => {
 

@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
 import RelatedItemsList from './RelatedItemsList.jsx';
 import OutfitList from './OutfitList.jsx';
-const port = 404;
+import URL from '../../URL';
 
 const RelatedAndOutfits = ({ productID, productInfo, productSelect, listUpdate }) => {
 
   const [ relatedItems, setRelatedItems ] = useState([]);
 
   useEffect(() => {
-    axiosHelper.get(`http://localhost:${port}/RelatedItems`, {itemId: productID}, (data) => {
+    axiosHelper.get(`${URL}/RelatedItems`, {itemId: productID}, (data) => {
       setRelatedItems(data.data);
     });
   }, [productID]);
