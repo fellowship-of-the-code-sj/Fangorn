@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest testing --collectCoverage",
     "testO": "jest overview.test.js",
+    "testRAR": "jest ratingsReviews.test.js --collectCoverage",
     "react-dev": "npx webpack --watch",
     "start": "nodemon server/index.js"
   },
