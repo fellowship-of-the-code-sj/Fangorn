@@ -47,14 +47,17 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
 
   useEffect(() => {
     if (query.length > 2) {
-      const filteredQuestions = _.filter(originalQuestions, (question) => {
-        return question.question_body.indexOf(query) !== -1;
-      });
+      const filteredQuestions = _.filter(originalQuestions, (question) => question.question_body.indexOf(query) !== -1);
       setQuestions(filteredQuestions);
+      setDisplayedQuestions(filteredQuestions.slice(0, numDisplayedQuestions));
+      if ((filteredQuestions.length - numDisplayedQuestions) < 3) setShowMoreQuestionsButton(false);
+      setDisplayedQuestions(filteredQuestions.slice(0, numDisplayedQuestions));
     }
 
     if (query.length < 3) {
-      setQuestions(originalQuestions)
+      setQuestions(originalQuestions);
+      if ((originalQuestions.length - numDisplayedQuestions) > 0) setShowMoreQuestionsButton(true);
+      setDisplayedQuestions(originalQuestions.slice(0, numDisplayedQuestions));
     };
   }, [query]);
 
@@ -62,14 +65,12 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
 
   const handleQueryInput = e => setQuery(e.target.value);
 
-  const handleShowMoreQuestions = e => {
-    // there will not be any more questions to display
+  const handleShowMoreQuestions = () => {
     if ((questions.length - numDisplayedQuestions) < 3) {
       setShowMoreQuestionsButton(false);
       setNumDisplayedQuestions(questions.length);
       setDisplayedQuestions(questions.slice(0, questions.length));
     } else {
-    // there will be more questions to display
       const updatedNum = numDisplayedQuestions + 2;
       setNumDisplayedQuestions(updatedNum);
       setDisplayedQuestions(questions.slice(0, updatedNum));
