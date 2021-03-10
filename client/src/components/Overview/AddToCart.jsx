@@ -73,7 +73,7 @@ const AddToCart = ({ skus }) => {
       setFailedAddToCart(true);
     } else {
       setFailedAddToCart(false);
-      console.log({sku: currentSku.sku, quantity: currentQty})
+      console.log({sku_id: currentSku.sku, count: currentQty})
     }
   }
 
