@@ -105,9 +105,12 @@ const AddToCart = ({ skus }) => {
         </select> :
         <select id="quantitySelect"><option>-</option></select>
       }
+      {sizes.length > 0 ?
       <button id="addToCartButton"
         onClick={(e) => {event.preventDefault(); handleAddToCart()}}
-      >ADD TO CART +</button>
+        >ADD TO CART +
+      </button> : null
+      }
     </div>
   )
   AddToCart.propTypes = {
