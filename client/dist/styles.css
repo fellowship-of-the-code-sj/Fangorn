@@ -1083,6 +1083,11 @@ input:checked + .slider:before {
   border-bottom: 2px solid black;
 }
 
+#zoomViewImageContainer:hover {
+  cursor: url('./public/icons/dash.png'), not-allowed;
+  /* cursor: crosshair; */
+}
+
 /***** Default View Component *****/
 .defaultView {
   box-sizing: border-box;
@@ -1283,6 +1288,8 @@ input:checked + .slider:before {
   overflow: hidden;
   border-radius: 50%;
   margin: 5px 20px;
+  display: grid;
+  grid-template: 20px 1fr / 1fr 20px;
 }
 
 .styleThumbnail {
@@ -1291,11 +1298,18 @@ input:checked + .slider:before {
   margin: 0 auto;
   height: 100%;
   width: 100%;
+  grid-area: 1 / 1 / 3 / 3;
 }
 
 #selectedStyleImage {
   box-sizing: border-box;
   border: 2px solid black;
+}
+
+#selectedStyleCheckmark {
+  color: white;
+  grid-area: 1 / 2 / 2 / 3;
+  z-index: 1;
 }
 
 /***** Add To Cart Component *****/
@@ -1309,11 +1323,23 @@ input:checked + .slider:before {
   border: 1px solid black;
 }
 
-#sizeSelect {
+#sizeSelectContainer {
   box-sizing: border-box;
   grid-area: 1 / 1 / 2 / 2;
-  margin: 30px 10px;
+  display: grid;
+  grid-template: 25px 1fr / 1fr ;
+}
+
+#sizeSelect {
+  grid-row: 2 / 3;
+  margin: 5px 5px 30px;
   text-indent: 5px;
+}
+
+#sizeError {
+  grid-row: 1 / 2;
+  margin: 2px auto;
+  color: red;
 }
 
 #quantitySelect {

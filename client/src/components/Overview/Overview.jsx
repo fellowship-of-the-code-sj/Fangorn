@@ -28,7 +28,8 @@ const Overview = (props) => {
     setStyles(props.stylesArr);
     setRatings(props.ratingsObj);
     setCurrentStyle(props.stylesArr[0]);
-  }, [])
+    setImageIndex(0);
+  }, [props.productObj])
 
   const changeView = () => {
     setIsExpanded(!isExpanded)

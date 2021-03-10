@@ -68,7 +68,7 @@ const DefaultView = ({ photos, changeView, imageIndex, handleImageIndexChange, s
         <div className="defaultImageButtonContainer" id="leftDefaultButton">
           <button
             className="defaultViewButton"
-            onClick={() => {handleImageIndexChange(-1)}}
+            onClick={() => {handleImageIndexChange(-1); scroll(-60)}}
           ><ion-icon name="arrow-back-sharp"></ion-icon></button>
         </div> : null
       }
@@ -76,7 +76,7 @@ const DefaultView = ({ photos, changeView, imageIndex, handleImageIndexChange, s
         <div className="defaultImageButtonContainer" id="rightDefaultButton">
           <button
           className="defaultViewButton"
-          onClick={() => {handleImageIndexChange(1)}}
+          onClick={() => {handleImageIndexChange(1); scroll(60)}}
           ><ion-icon name="arrow-forward-sharp"></ion-icon></button>
         </div> : null
       }
