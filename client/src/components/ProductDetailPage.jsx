@@ -17,14 +17,14 @@ class ProductDetailPage extends React.Component {
 
 
   componentDidMount() {
-    serverRequest.get(`${URL}/Overview`, {itemID: this.state.productId}, (result) => {
+    serverRequest.get(`http://localhost:1337/Overview`, {itemID: this.state.productId}, (result) => {
       this.setState({ productInfo: result.data })
     });
   }
 
   productSelect(id) {
     this.setState({ productId: id, listUpdate: !this.state.listUpdate });
-    serverRequest.get(`${URL}/Overview`, { itemID: id }, (result) => {
+    serverRequest.get(`http://localhost:1337/Overview`, { itemID: id }, (result) => {
       this.setState({ productInfo: result.data })
     });
   }
