@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import captureOverview from '../../hoc/captureOverview'
 
 const StyleSelector = (props) => {
   return (
@@ -42,4 +41,4 @@ const StyleSelector = (props) => {
   }
 }
 
-export default captureOverview(StyleSelector);
+export default StyleSelector;
