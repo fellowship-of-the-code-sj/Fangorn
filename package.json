@@ -51,6 +51,7 @@
     "postcss-loader": "^5.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-img-zoom": "^0.1.0",
     "react-multi-carousel": "^2.6.2",
     "react-slick": "^0.28.0",
     "sass-loader": "^11.0.1",

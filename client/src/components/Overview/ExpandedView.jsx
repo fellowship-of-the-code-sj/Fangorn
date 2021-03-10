@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import Zoom from 'react-img-zoom';
 
 const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, setImageIndex }) => {
 
-  const [ isZoomed, setIsZoom ] = useState(false)
+  const [ isZoomed, setIsZoomed ] = useState(false)
 
   return (
     <div className="expandedView">
@@ -13,6 +14,7 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
           <img
             src={photos[imageIndex] ? photos[imageIndex].url : "https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"}
             id ="expandedViewImage"
+            onClick={()=>{setIsZoomed(true)}}
           />
         </div>
         <div className="expandedButtonContainer" id="closeExpandedButtonContainer">
@@ -56,7 +58,17 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
         </div>
       </div> :
       <div id="zoomExpanded">
-        <div></div>
+        <div
+          id="zoomViewImageContainer"
+          onClick={() => {setIsZoomed(false)}}
+        >
+          <Zoom
+            img={photos[imageIndex].url}
+            zoomScale={2.5}
+            width={1110}
+            height={700}
+          />
+        </div>
       </div>
     }
     </div>
