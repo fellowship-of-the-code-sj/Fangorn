@@ -7,7 +7,8 @@
     "test": "jest testing --collectCoverage",
     "testO": "jest overview.test.js",
     "testRAR": "jest ratingsReviews.test.js --collectCoverage",
-    "react-dev": "npx webpack --watch",
+    "react-dev": "npx webpack --watch --mode=development",
+    "react-prod": "npx webpack --mode=production",
     "start": "nodemon server/index.js"
   },
   "jest": {
