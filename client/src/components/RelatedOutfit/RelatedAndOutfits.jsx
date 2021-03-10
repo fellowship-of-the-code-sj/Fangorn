@@ -10,7 +10,7 @@ const RelatedAndOutfits = ({ productID, productInfo, productSelect, listUpdate }
   const [ relatedItems, setRelatedItems ] = useState([]);
 
   useEffect(() => {
-    axiosHelper.get(`http://localhost:1337/RelatedItems`, {itemId: productID}, (data) => {
+    axiosHelper.get(`http://localhost/RelatedItems`, {itemId: productID}, (data) => {
       setRelatedItems(data.data);
     });
   }, [productID]);
