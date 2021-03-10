@@ -39,7 +39,7 @@ class ProductDetailPage extends React.Component {
     return (
       <div className={ this.state.darkMode? 'productDetailPageDark': 'productDetailPageLight' }>
         <div className="flex banner">
-          <div className="vertical-centering logo">Logo</div>
+          <div className="vertical-centering logo">Fangorn</div>
           <div className="flex-grow"></div>
           <div className="flex vertical-centering">
             <div className="site-search">
