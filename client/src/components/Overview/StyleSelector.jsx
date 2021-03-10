@@ -12,7 +12,11 @@ const StyleSelector = (props) => {
             <div 
               key={style.style_id} 
               className="styleContainer"
-              id={props.currentStyle.photos[0].thumbnail_url === style.photos[0].thumbnail_url ? 'selectedStyleImage' : null}>
+              id={props.currentStyle.photos[0].thumbnail_url === style.photos[0].thumbnail_url ? 'selectedStyleImage': null}
+            >
+              {props.currentStyle.photos[0].thumbnail_url === style.photos[0].thumbnail_url ?
+              <div id="selectedStyleCheckmark"><ion-icon name="checkmark-circle"></ion-icon></div>
+              : null}
               <img
                 className="styleThumbnail"
                 onClick={event => {
