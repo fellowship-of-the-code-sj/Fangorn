@@ -18,7 +18,7 @@ import OutfitActionButton from '../client/src/components/RelatedOutfit/OutfitAct
 import ComparisonTable from '../client/src/components/RelatedOutfit/ComparisonTable.jsx';
 
 
-const port = 404;
+const port = 1337;
 
 describe('Rendering Components', () => {
 

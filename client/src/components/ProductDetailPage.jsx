@@ -5,9 +5,7 @@ import RelatedAndOutfits from './RelatedOutfit/RelatedAndOutfits.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import helperFunctions from '../../helperFunctions/helperFunctions.js';
-
-
-const PORT = 404;
+import URL from '../URL';
 
 class ProductDetailPage extends React.Component {
   constructor(props) {
@@ -19,14 +17,14 @@ class ProductDetailPage extends React.Component {
 
 
   componentDidMount() {
-    serverRequest.get(`http://localhost:${PORT}/Overview`, {itemID: this.state.productId}, (result) => {
+    serverRequest.get(`${URL}/Overview`, {itemID: this.state.productId}, (result) => {
       this.setState({ productInfo: result.data })
     });
   }
 
   productSelect(id) {
     this.setState({ productId: id, listUpdate: !this.state.listUpdate });
-    serverRequest.get(`http://localhost:${PORT}/Overview`, { itemID: id }, (result) => {
+    serverRequest.get(`${URL}/Overview`, { itemID: id }, (result) => {
       this.setState({ productInfo: result.data })
     });
   }

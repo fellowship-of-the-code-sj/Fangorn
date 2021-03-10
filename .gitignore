@@ -4,3 +4,4 @@ coverage
 configure.js
 client/dist/bundle.js
 client/dist/bundle.js.LICENSE.txt
+# SERVER_URL.js
