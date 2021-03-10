@@ -1302,10 +1302,9 @@ input:checked + .slider:before {
 }
 
 #selectedStyleCheckmark {
-  color: green;
+  color: white;
   grid-area: 1 / 2 / 2 / 3;
   z-index: 1;
-  border: 1px solid black;
 }
 
 /***** Add To Cart Component *****/
