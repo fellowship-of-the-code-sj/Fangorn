@@ -21,12 +21,14 @@ const ProductInfo = (props) => {
 
   return (
     <div className="productInfo">
-      <div id="productInfoRating"> 
-        <div id="overviewRating">
-          <StarRating rating={ratingData.average}/>
-        </div>
-        &nbsp;- Read all&nbsp;<a href="#randr">{ratingData.count}</a>&nbsp;reviews
-      </div>
+      {ratingData.count > 0 ? 
+        <div id="productInfoRating"> 
+          <div id="overviewRating">
+            <StarRating rating={ratingData.average}/>
+          </div>
+          &nbsp;- Read all&nbsp;<a href="#randr">{ratingData.count}</a>&nbsp;reviews
+        </div> : null
+      }
       <div id="productInfoCategory">{props.product.category}</div>
       <div id="productInfoName">{props.product.name}</div>
       { props.currentStyle.sale_price ?

@@ -7,7 +7,6 @@ import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
 import PropTypes from 'prop-types';
-const port = 404;
 
 const Overview = (props) => {
 
@@ -28,7 +27,8 @@ const Overview = (props) => {
     setStyles(props.stylesArr);
     setRatings(props.ratingsObj);
     setCurrentStyle(props.stylesArr[0]);
-  }, [])
+    setImageIndex(0);
+  }, [props.productObj])
 
   const changeView = () => {
     setIsExpanded(!isExpanded)

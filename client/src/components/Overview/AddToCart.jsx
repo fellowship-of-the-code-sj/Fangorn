@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 const AddToCart = ({ skus }) => {
 
   const [currentSku, setCurrentSku] = useState({
+    sku: null,
     size: '',
     quantities: []
   });
   const [currentQty, setCurrentQty] = useState(null);
   const [sizes, setSizes] = useState([]);
+  const [failedAddToCart, setFailedAddToCart] = useState(false)
 
   useEffect(() => {
     const styleSizes = [];
@@ -19,7 +21,8 @@ const AddToCart = ({ skus }) => {
     }
     setSizes(styleSizes)
     setCurrentSku({
-      size: '',
+      sku: null,
+      size: 'Select Size',
       quantities: []
     });
     setCurrentQty(null);
@@ -28,6 +31,7 @@ const AddToCart = ({ skus }) => {
   const sizeChange = (sizeString) => {
     if (sizeString === 'Select Size') {
       setCurrentSku({
+        sku: null,
         size: sizeString,
         quantities: []
       })
@@ -35,18 +39,19 @@ const AddToCart = ({ skus }) => {
     for (let key in skus) {
       if (skus[key].size === sizeString) {
         setCurrentSku({
+          sku: Number(key),
           size: sizeString,
           quantities: createArray(skus[key].quantity)
         })
         if (!currentQty) {
-          setCurrentQty('1')
+          setCurrentQty(1)
         }
       }
     }
   }
 
   const quantityChange = (qtyString) => {
-    setCurrentQty(qtyString);
+    setCurrentQty(Number(qtyString));
   }
 
   const createArray = (qty) => {
@@ -63,33 +68,49 @@ const AddToCart = ({ skus }) => {
     return quantities;
   }
 
+  const handleAddToCart = () => {
+    if (currentSku.size === "Select Size") {
+      setFailedAddToCart(true);
+    } else {
+      setFailedAddToCart(false);
+      console.log({sku_id: currentSku.sku, count: currentQty})
+    }
+  }
+
   return (
     <div className="addToCart">
       {sizes.length > 0 ?
-        <select 
-          id="sizeSelect"
-          onChange={(e) => {sizeChange(e.target.value)}}>
-          <option>Select Size</option>
-          {/* {sizes.map((size, i) => (
-            <option key={i}>{size}</option>
-          ))} */}
-          {Object.keys(skus).map((key, index) => (
-            <option key={key}>{skus[key].size}</option>
-          ))}
-        </select> :
-        <select id="sizeSelect" disabled><option>OUT OF STOCK</option></select>
+        <div id="sizeSelectContainer">
+          {failedAddToCart ? <p id="sizeError">Please select size</p> : null}
+          <select 
+            id="sizeSelect"
+            onChange={(e) => {sizeChange(e.target.value)}}>
+            <option>Select Size</option>
+            {Object.keys(skus).map((key, index) => (
+              <option key={key}>{skus[key].size}</option>
+            ))}
+          </select> 
+        </div> :
+        <div id="sizeSelectContainer">
+          <select id="sizeSelect" disabled><option>OUT OF STOCK</option></select>
+        </div>
       }
       {currentSku.quantities.length > 0 ? 
         <select
           id="quantitySelect"
-          onChange={(e) => {setCurrentQty(e.target.value)}}>
+          onChange={(e) => {quantityChange(e.target.value)}}>
           {currentSku.quantities.map((quantity, i) => (
             <option key={i}>{quantity}</option>
           ))}
         </select> :
         <select id="quantitySelect"><option>-</option></select>
       }
-      <button id="addToCartButton">ADD TO CART +</button>
+      {sizes.length > 0 ?
+      <button id="addToCartButton"
+        onClick={(e) => {event.preventDefault(); handleAddToCart()}}
+        >ADD TO CART +
+      </button> : <div id="addToCartButton"></div>
+      }
     </div>
   )
   AddToCart.propTypes = {

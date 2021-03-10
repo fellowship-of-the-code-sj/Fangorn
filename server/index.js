@@ -64,5 +64,5 @@ app.put('/answer/:answer_id/report', controller.questions.putAnswerReport);
 
 app.post('/interactions', controller.interactions.post)
 
-const PORT = 404;
+const PORT = 1337;
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));

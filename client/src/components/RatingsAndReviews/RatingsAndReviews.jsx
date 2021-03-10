@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Ratings from './Ratings.jsx';
 import ReviewsList from './ReviewsList.jsx';
 import axios from 'axios';
+import URL from '../../URL';
 
 import Review from './Review.jsx'
 
@@ -27,7 +28,7 @@ function RatingsAndReviews(props) {
   const getMetaObject = () => {
     setTracker(tracker + 1);
     var ratingObject = {};
-    axios.get(`/RatingsAndReviews/getMeta?product_id=${props.productID}`)
+    axios.get(`${URL}/RatingsAndReviews/getMeta?product_id=${props.productID}`)
       .then((response) => {
         setMetaObject(response.data)
       })

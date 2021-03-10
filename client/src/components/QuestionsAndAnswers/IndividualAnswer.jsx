@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import _ from 'underscore';
 import captureQandA from '../../hoc/captureQandA';
+import URL from '../../URL';
 
 const IndividualAnswer = ({ answer, logger }) => {
   // this should really be handled by the API..
@@ -19,7 +20,7 @@ const IndividualAnswer = ({ answer, logger }) => {
 
   const handleSubmitHelpful = e => {
     e.preventDefault();
-    axios.put(`http://localhost:404/answer/${answer.id}/helpful`)
+    axios.put(`${URL}/answer/${answer.id}/helpful`)
       .then(() => {
         setSubmittedHelpful(true);
       })
@@ -30,7 +31,7 @@ const IndividualAnswer = ({ answer, logger }) => {
 
   const handleSubmitReport = e => {
     e.preventDefault();
-    axios.put(`http://localhost:404/answer/${answer.id}/report`)
+    axios.put(`${URL}/answer/${answer.id}/report`)
       .then(() => {
         setSubmittedReport(true);
       })

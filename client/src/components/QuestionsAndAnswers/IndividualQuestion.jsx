@@ -5,6 +5,7 @@ import axios from 'axios';
 import AnswerList from './AnswerList.jsx';
 import AddAnswer from './AddAnswer.jsx';
 import captureQandA from '../../hoc/captureQandA';
+import URL from '../../URL';
 
 const IndividualQuestion = ({ question, productName, logger }) => {
   // Answer List
@@ -45,7 +46,7 @@ const IndividualQuestion = ({ question, productName, logger }) => {
   const handleSubmitHelpful = e => {
     e.preventDefault();
     const { question_id } = question;
-    axios.put(`http://localhost:404/questions/${question_id}/helpful`)
+    axios.put(`${URL}/questions/${question_id}/helpful`)
       .then(() => {
         setSubmittedHelpful(true);
       })
@@ -57,7 +58,7 @@ const IndividualQuestion = ({ question, productName, logger }) => {
   const handleSubmitReport = e => {
     e.preventDefault();
     const { question_id } = question;
-    axios.put(`http://localhost:404/questions/${question_id}/report`)
+    axios.put(`${URL}/questions/${question_id}/report`)
       .then(() => {
         setSubmittedReport(true);
       })
