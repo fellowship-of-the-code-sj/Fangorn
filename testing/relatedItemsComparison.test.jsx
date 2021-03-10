@@ -36,13 +36,13 @@ describe('Rendering Components', () => {
 
 describe('Rendering RelatedAndOutfits Component', () => {
 
-  it ('should render RelatedAndOutfits when server request is complete', async () => {
+  it('should render RelatedAndOutfits when server request is complete', async () => {
     axios.get = jest.fn().mockResolvedValue(mockResponse);
 
     let wrapper;
-    await act(async () => wrapper = await mount(<RelatedAndOutfits productID={13024}/>));
+    await act(async () => wrapper = await mount(<RelatedAndOutfits productID={13024} />));
     wrapper.update();
-    expect(wrapper.containsMatchingElement(<RelatedItemCard/>)).toEqual(true);
+    expect(wrapper.containsMatchingElement(<RelatedItemCard />)).toEqual(true);
 
   });
 });
@@ -127,7 +127,7 @@ describe('Rendering RelatedActionButton Component', () => {
   });
 
   it('should render comparison table when action button is click', async () => {
-    var state = {productId: 13023, productInfo: {}, listUpdate: false, darkMode: false};
+    var state = { productId: 13023, productInfo: {}, listUpdate: false, darkMode: false };
 
     const actionButtonListener = (event, comparedItem) => {
 

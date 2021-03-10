@@ -32,14 +32,12 @@ describe('Rendering Components', () => {
 });
 
 describe('NewReview', () => {
-  it('should have three forms', () => {
-
-  })
   it('should display the name of the product being reviewed', () => {
 
   })
-  it('should only display characteristics relevant to the product', () => {
-
+  it('should display characteristic radio buttons', () => {
+    const wrapper = mount(<NewReview productName={dummyData.products[0].name} metaObject={dummyData.reviewMeta} productID={dummyData.products[0].id} />)
+    expect(wrapper.find('new-review-radio-array')).toHaveLength(0)
   })
   it('should not allow submission if the mandatory qualities are not met', () => {
 
@@ -54,47 +52,47 @@ describe('NewReview', () => {
 })
 
 describe('ReviewsList', () => {
-  it('should render a modal window when \'Leave a review\' is pressed', () => {
-
+  it('should render a modal window when \'Leave a review\' is pressed', async () => {
+    const wrapper = await mount(<ReviewsList metaObject={dummyData.reviewMeta} productID={dummyData.products[0].id} starSort={{ 1: false, 2: false, 3: false, 4: false, 5: false }} />);
+    wrapper.find('.new-review-button').simulate('click');
+    expect(wrapper.find('.new-review-modal-content')).toHaveLength(1) //broke
   })
-  it('should display a list of reviews', () => {
 
+  it('should display a list of 2 reviews', async () => {
+    const wrapper = await mount(<ReviewsList metaObject={dummyData.reviewMeta} productID={dummyData.products[0].id} starSort={{ 1: false, 2: false, 3: false, 4: false, 5: false }} />);
+    expect(wrapper.find('.review')).toHaveLength(2); //broke
   })
-  it('should only display 2 reviews at a time', () => {
 
-  })
-  it('should be sortable', () => {
-
+  it('should be sortable', async () => {
+    const wrapper = await mount(<ReviewsList metaObject={dummyData.reviewMeta} productID={dummyData.products[0].id} starSort={{ 1: false, 2: false, 3: false, 4: false, 5: false }} />);
+    expect(wrapper.find('.sort-by')).toHaveLength(1);
   })
 })
 
 describe('Ratings', () => {
-  it('should display the average rating', () => {
-
+  it('should display the rating breakdown', async () => {
+    const wrapper = await mount(<Ratings metaObject={dummyData.reviewMeta} starSort={{ 1: false, 2: false, 3: false, 4: false, 5: false }} />)
+    expect(wrapper.find('.rating-proportions')).toHaveLength(1)
   })
-  it('should display a percentage of recommendendations', () => {
 
-  })
-  it('should display the rating stars, partially filled in', () => {
-
-  })
-  it('should display the rating breakdown', () => {
-
-  })
-  it('should display the product breakdown', () => {
-
+  it('should display the product breakdown', async () => {
+    const wrapper = await mount(<Ratings metaObject={dummyData.reviewMeta} starSort={{ 1: false, 2: false, 3: false, 4: false, 5: false }} />)
+    expect(wrapper.find('.characteristic')).toHaveLength(4)
   })
 })
 
 describe('Review', () => {
-  it('should have a rating', () => {
-
+  it('should have a rating', async () => {
+    const wrapper = await mount(<Review key={dummyData.products[0].id} review={dummyData.reviews[0].results[0]} />)
+    expect(wrapper.find('rating-sprite')).toHaveLength(1) //broke
   })
   it('should have a review body', () => {
-
+    const wrapper = mount(<Review key={dummyData.products[0].id} review={dummyData.reviews[0].results[0]} />)
+    expect(wrapper.find('review-body')).toHaveLength(1) //broke
   })
   it('should have a summary', () => {
-
+    const wrapper = mount(<Review key={dummyData.products[0].id} review={dummyData.reviews[0].results[0]} />)
+    expect(wrapper.find('review-summary')).toHaveLength(1) //broke
   })
   it('should render clickable images', () => {
 
