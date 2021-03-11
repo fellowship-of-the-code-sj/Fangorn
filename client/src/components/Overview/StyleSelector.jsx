@@ -1,25 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import captureOverview from '../../hoc/captureOverview';
 
-const StyleSelector = (props) => {
+const StyleSelector = ({ styles, currentStyle, handleStyleChange, logger }) => {
   return (
     <div className="styleSelector">
-      <div id="styleSelectorName">Style &gt; {props.currentStyle.name}</div>
+      <div id="styleSelectorName">Style &gt; {currentStyle.name}</div>
       <div id="styleSelectorStyles">
-        { props.styles.length > 0 ? 
-          props.styles.map((style, index) => (
+        { styles.length > 0 ? 
+          styles.map((style, index) => (
             <div 
               key={style.style_id} 
               className="styleContainer"
-              id={props.currentStyle.photos[0].thumbnail_url === style.photos[0].thumbnail_url ? 'selectedStyleImage': null}
+              id={currentStyle.photos[0].thumbnail_url === style.photos[0].thumbnail_url ? 'selectedStyleImage': null}
             >
-              {props.currentStyle.photos[0].thumbnail_url === style.photos[0].thumbnail_url ?
+              {currentStyle.photos[0].thumbnail_url === style.photos[0].thumbnail_url ?
               <div id="selectedStyleCheckmark"><ion-icon name="checkmark-circle"></ion-icon></div>
               : null}
               <img
                 className="styleThumbnail"
-                onClick={event => {
-                  props.handleStyleChange(event.target.attributes[3].value);
+                onClick={e => {
+                  handleStyleChange(e.target.attributes[3].value);
+                  logger(e);
                 }}
                 src={style.photos[0].thumbnail_url ? style.photos[0].thumbnail_url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' }
                 alt={`Image Thumbnail ${style.name}`}
@@ -35,8 +37,9 @@ const StyleSelector = (props) => {
   StyleSelector.propTypes = {
     styles: PropTypes.array,
     currentStyle: PropTypes.object,
-    handleStyleChange: PropTypes.func
+    handleStyleChange: PropTypes.func,
+    logger: PropTypes.func
   }
 }
 
-export default StyleSelector;
+export default captureOverview(StyleSelector);

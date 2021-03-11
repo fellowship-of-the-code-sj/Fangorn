@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import Overview from '../client/src/components/Overview/Overview.jsx';
 import DefaultView from '../client/src/components/Overview/DefaultView.jsx';
+import ExpandedView from '../client/src/components/Overview/ExpandedView.jsx';
 import DefaultViewThumbnail from '../client/src/components/Overview/DefaultViewThumbnail.jsx';
 import ProductInfo from '../client/src/components/Overview/ProductInfo.jsx';
 import StyleSelector from '../client/src/components/Overview/StyleSelector.jsx';
@@ -17,25 +18,31 @@ describe('Overview', () => {
 });
 
 describe('Default View', () => {
-  it('should render Default View component', () => {
-    const wrapper = shallow(<DefaultView />);
+  it('should render Default View component', async () => {
+    const wrapper = await mount(<DefaultView />);
     expect(wrapper.find('.defaultView').length).toBe(1);
   })
 
-  it('should display the first style image as the main image by default', () => {
-    const wrapper = shallow(<DefaultView
+  it('should display the first style image as the main image by default', async () => {
+    const wrapper = await mount(<DefaultView
       photos={data.styles[0].photos}
       imageIndex={0}
+      changeView = { () => {} }
+      setImageIndex = { () => {} }
+      handleImageIndexChange = { () => {} }
     />);
     expect(wrapper.contains(<img
       src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80" id="defaultViewImage"
     />)).toBe(true);
   })
 
-  it('should have a thumbnail container', () => {
-    const wrapper = shallow(<DefaultView
+  it('should have a thumbnail container', async () => {
+    const wrapper = await mount(<DefaultView
       photos={data.styles[0].photos}
       imageIndex={0}
+      changeView = { () => {} }
+      setImageIndex = { () => {} }
+      handleImageIndexChange = { () => {} }
     />);
     expect(wrapper.find('#defaultViewThumbnails').length).toBe(1)
   })
