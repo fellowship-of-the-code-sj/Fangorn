@@ -126,23 +126,23 @@ describe('Style Selector', () => {
 })
 
 describe('Add to Cart', () => {
-  it('should render Add To Cart component', () => {
-    const wrapper = shallow(<AddToCart skus={data.styles[0].skus} />);
+  it('should render Add To Cart component', async () => {
+    const wrapper = await mount(<AddToCart skus={data.styles[0].skus} />);
     expect(wrapper.find('.addToCart').length).toBe(1);
   })
 
-  it('should include a Select Size select element', () => {
-    const wrapper = shallow(<AddToCart skus={data.styles[0].skus} />);
+  it('should include a Select Size select element', async () => {
+    const wrapper = await mount(<AddToCart skus={data.styles[0].skus} />);
     expect(wrapper.find('#sizeSelect').length).toBe(1);
   })
 
-  it('should include a Quantity select element', () => {
-    const wrapper = shallow(<AddToCart skus={data.styles[0].skus} />);
+  it('should include a Quantity select element', async () => {
+    const wrapper = await mount(<AddToCart skus={data.styles[0].skus} />);
     expect(wrapper.find('#quantitySelect').length).toBe(1);
   })
 
-  it('should include a Add to Cart button element', () => {
-    const wrapper = shallow(<AddToCart skus={data.styles[0].skus} />);
+  it('should include a Add to Cart button element', async () => {
+    const wrapper = await mount(<AddToCart skus={data.styles[0].skus} />);
     expect(wrapper.find('#addToCartButton').length).toBe(1);
   })
 });
