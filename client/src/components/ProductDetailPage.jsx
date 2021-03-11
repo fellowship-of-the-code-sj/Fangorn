@@ -41,13 +41,13 @@ class ProductDetailPage extends React.Component {
           <Route key={this.state.productId} path="/">
             <div className={ this.state.darkMode? 'productDetailPageDark': 'productDetailPageLight' }>
               <div className="flex banner">
-                <div className="vertical-centering logo">Logo</div>
+                <div className="vertical-centering logo">Fangorn</div>
                 <div className="flex-grow"></div>
                 <div className="flex vertical-centering">
                   <div className="site-search">
                     <label>
                       Search
-                      <input name='search' type="text"></input>
+                    <input name='search' type="text"></input>
                     </label>
                   </div>
                   <div>
