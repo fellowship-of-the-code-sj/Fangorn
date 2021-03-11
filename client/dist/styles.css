@@ -14,7 +14,8 @@
 .productDetailPageLight .innerModal
 .productDetailPageLight .new-review-modal-content,
 .productDetailPageLight .new-review-photo-modal-content,
-.productDetailPageLight .review-image-modal-content {
+.productDetailPageLight .review-image-modal-content,
+.productDetailPageLight .outfitAddItemCard {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
 }
@@ -42,7 +43,8 @@
 .productDetailPageDark select,
 .productDetailPageDark .new-review-modal-content,
 .productDetailPageDark .new-review-photo-modal-content,
-.productDetailPageDark .review-image-modal-content {
+.productDetailPageDark .review-image-modal-content,
+.productDetailPageDark .outfitAddItemCard {
   background-color: rgb(46, 46, 46);
   color: rgb(255, 255, 255);
 }
@@ -250,18 +252,29 @@ input:checked + .slider:before {
   min-height: 325px;
 }
 
-.outfitAddItemCard {
+.outfitAddItemCardBackground {
   border: 1px solid grey !important;
   width: 200px !important;
   height: 450px !important;
   min-height: 300px !important;
-}
-
-.itemCardRelated:hover {
-  cursor: pointer;
+  z-index: 2;
 }
 
 .outfitAddItemCard {
+  border: 1px solid grey !important;
+  width: 200px !important;
+  height: 450px !important;
+  position: absolute;
+  z-index: 3;
+  /* background-color: white;
+  color: #000; */
+}
+
+.outfitAddItemCard, .outfitAddItemCardBackground:hover {
+  cursor: pointer;
+}
+
+.outfitAddItemCard, .outfitAddItemCardBackground {
   font-size: 20px;
   text-align: center;
   margin-right: 10px;
@@ -272,6 +285,10 @@ input:checked + .slider:before {
 }
 
 .outfitAddItemCard:hover .addOutfitText{
+  transform: scale(1.15);
+}
+
+.outfitAddItemCardBackground:hover .addOutfitText{
   transform: scale(1.15);
 }
 
@@ -299,6 +316,10 @@ input:checked + .slider:before {
   object-fit: cover;
 }
 
+.itemCardImg.related, .relatedCarouselImage:hover {
+  cursor: pointer;
+}
+
 .relatedCarouselImage {
   z-index: 3;
   height: 50px;
@@ -314,7 +335,10 @@ input:checked + .slider:before {
   padding: 2px;
   height: 100%;
   object-fit: cover;
+}
 
+.relatedImageCarousel:hover {
+  cursor: pointer;
 }
 
 .cardCategory {
