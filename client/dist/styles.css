@@ -1140,6 +1140,10 @@ input:checked + .slider:before {
   overflow-y: scroll;
 }
 
+#defaultViewThumbnailsScroll::-webkit-scrollbar { 
+  display: none;
+}
+
 #defaultViewThumbnails {
   box-sizing: border-box;
   display: flex;
