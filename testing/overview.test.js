@@ -97,26 +97,29 @@ describe('Product Information', () => {
 })
 
 describe('Style Selector', () => {
-  it('should render Style Selector component', () => {
-    const wrapper = shallow(<StyleSelector
+  it('should render Style Selector component', async () => {
+    const wrapper = await mount(<StyleSelector
       styles={data.styles}
       currentStyle={data.styles[0]}
+      handleStyleChange={() => {}}
     />);
     expect(wrapper.find('.styleSelector').length).toBe(1);
   })
 
-  it('should display the current style', () => {
-    const wrapper = shallow(<StyleSelector
+  it('should display the current style', async () => {
+    const wrapper = await mount(<StyleSelector
       styles={data.styles}
       currentStyle={data.styles[0]}
+      handleStyleChange={() => {}}
     />);
     expect(wrapper.contains(<div id="styleSelectorName">Style &gt; Forest Green &amp; Black</div>)).toBe(true);
   })
 
-  it('should render thumbnails of styles dynamically', () => {
-    const wrapper = shallow(<StyleSelector
+  it('should render thumbnails of styles dynamically', async () => {
+    const wrapper = await mount(<StyleSelector
       styles={data.styles}
       currentStyle={data.styles[0]}
+      handleStyleChange={() => {}}
     />);
     expect(wrapper.find('.styleThumbnail').length).toBe(2)
   })
