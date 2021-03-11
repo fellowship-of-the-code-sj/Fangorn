@@ -708,9 +708,9 @@ input:checked + .slider:before {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 50%;
-  height: 85%;
-  overflow: auto;
+  width: 60%;
+  height: 96%;
+  /* overflow: auto; */
 }
 
 .new-review-modal-content input,
@@ -718,6 +718,38 @@ input:checked + .slider:before {
 .new-review-modal-content button {
   background-color: transparent;
 }
+
+.new-review-modal-title {
+  font-size: x-large;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.new-review-characteristics {
+  position: relative;
+  bottom: 500px;
+  left: 500px;
+}
+
+.review-thumbnail-spacer {
+  height: 50px;
+}
+
+.new-review-images{
+  position: relative;
+  bottom: 360px;
+}
+
+.new-review-submit-button {
+  position: relative;
+  bottom: 390px;
+  float:right
+}
+
+.new-review-add-photo-button-spacer{
+  height: 28px;
+}
+
 
 /* The Close Button */
 .new-review-modal-close {
@@ -739,6 +771,11 @@ input:checked + .slider:before {
 .new-review-radios {
   margin-left:5px;
   margin-right: 5px;
+}
+
+.new-review-char-tracker {
+  position:relative;
+  left:5px;
 }
 
 .new-review-photo-modal {
@@ -782,14 +819,24 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
-.new-review-submit-button {
-  position: relative;
-  bottom: 30px;
-  float:right
-}
+
 
 .new-review-errors {
   color: red;
+  font-size: small;
+}
+
+.new-review-star{
+  font-size: larger;
+}
+
+.new-review-errors-spacer {
+  height:19px;
+}
+
+.new-review-form-title{
+  font-weight: bolder;
+  font-size: large;
 }
 
 .new-review-characteristic-meaning {
