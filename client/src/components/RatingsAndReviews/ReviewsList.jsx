@@ -95,7 +95,7 @@ function ReviewsList(props) {
   return (
     <div className="reviews-list">
       {list.length} reviews, sorted by &nbsp;
-      <select id="sortBy" onChange={handleSortChange}>
+      <select className="sort-by" id="sortBy" onChange={handleSortChange}>
         <option value="relevant">Relevance</option>
         <option value="newest">Newest</option>
         <option value="helpful">Most helpful</option>
@@ -116,7 +116,7 @@ function ReviewsList(props) {
             <button className="new-review-button" onClick={(e) => { showForm(e); props.logger(e) }}>Leave a review</button>
           </div> :
           <div className="review-list-buttons">
-            <button className="new-review-button" onClick={() => { showForm(e); props.logger(e) }}>Leave a review</button>
+            <button className="new-review-button" onClick={(e) => { showForm(e); props.logger(e) }}>Leave a review</button>
           </div>
       }
       <NewReview productName={props.productName} metaObject={props.metaObject} productID={props.productID} />
