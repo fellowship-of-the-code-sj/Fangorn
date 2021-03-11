@@ -64,19 +64,35 @@ const OutfitList = ({ productInfo, logger }) => {
   return (
     <div key={listUpdate} className='itemsList'>
       <h3 className='listTitle' >Your Outfit</h3>
+      {console.log(outfitList.list.length)}
+      {
+        outfitList.list.length > 3 ?
+        <div className='outfitAddItemCard' onClick={ (e) => {
+          addOutfit();
+          logger(e);
+          }
+        } >
+            <div className='addOutfitText'>
+              ADD TO OUTFIT
+              <br></br>
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </div>
+        </div>: null
+      }
+
         <Slider {...settings} draggable={false}>
 
-          <div className='outfitAddItemCard' onClick={ (e) => {
-            addOutfit();
-            logger(e);
-            }
-          } >
-              <div className='addOutfitText'>
-                ADD TO OUTFIT
-                <br></br>
-                <ion-icon name="add-circle-outline"></ion-icon>
-              </div>
-          </div>
+        <div className='outfitAddItemCardBackground' onClick={ (e) => {
+          addOutfit();
+          logger(e);
+          }
+        } >
+            <div className='addOutfitText'>
+              ADD TO OUTFIT
+              <br></br>
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </div>
+        </div>
           {
           outfitList.list.length ?
             outfitList.list.map((item) => {
@@ -96,28 +112,3 @@ OutfitList.propTypes = {
   productInfo: PropTypes.object,
   logger: PropTypes.func
 }
-
-
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 3,
-    partialVisibilityGutter: 40
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    partialVisibilityGutter: 40
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 3,
-    partialVisibilityGutter: 40
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 3,
-    partialVisibilityGutter: 40
-  }
-};

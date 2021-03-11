@@ -55,6 +55,8 @@
     "react-dom": "^16.14.0",
     "react-img-zoom": "^0.1.0",
     "react-multi-carousel": "^2.6.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-slick": "^0.28.0",
     "sass-loader": "^11.0.1",
     "slick-carousel": "^1.8.1",
