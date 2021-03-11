@@ -32,21 +32,19 @@ describe('Rendering Components', () => {
 });
 
 describe('NewReview', () => {
-  it('should display the name of the product being reviewed', () => {
-
-  })
   it('should display characteristic radio buttons', () => {
     const wrapper = mount(<NewReview productName={dummyData.products[0].name} metaObject={dummyData.reviewMeta} productID={dummyData.products[0].id} />)
-    expect(wrapper.find('new-review-radio-array')).toHaveLength(0)
+    expect(wrapper.find('.new-review-radio-array')).toHaveLength(4)
   })
   it('should not allow submission if the mandatory qualities are not met', () => {
-
+    const wrapper = mount(<NewReview productName={dummyData.products[0].name} metaObject={dummyData.reviewMeta} productID={dummyData.products[0].id} />)
+    wrapper.find('.new-review-submit-button').simulate('click');
+    expect(wrapper.find('.new-review-errors')).toHaveLength(6)
   })
   it('should render a modal window for adding photos', () => {
-
-  })
-  it('should submit the review', () => {
-
+    const wrapper = mount(<NewReview productName={dummyData.products[0].name} metaObject={dummyData.reviewMeta} productID={dummyData.products[0].id} />)
+    wrapper.find('.new-review-add-photo-button').simulate('click');
+    expect(wrapper.find('.new-review-photo-modal-content')).toHaveLength(1)
   })
 
 })
@@ -84,29 +82,34 @@ describe('Ratings', () => {
 describe('Review', () => {
   it('should have a rating', async () => {
     const wrapper = await mount(<Review key={dummyData.products[0].id} review={dummyData.reviews[0].results[0]} />)
-    expect(wrapper.find('rating-sprite')).toHaveLength(1) //broke
+    expect(wrapper.find('.rating-sprite')).toHaveLength(1) //broke
   })
   it('should have a review body', () => {
     const wrapper = mount(<Review key={dummyData.products[0].id} review={dummyData.reviews[0].results[0]} />)
-    expect(wrapper.find('review-body')).toHaveLength(1) //broke
+    expect(wrapper.find('.review-body')).toHaveLength(1) //broke
   })
   it('should have a summary', () => {
     const wrapper = mount(<Review key={dummyData.products[0].id} review={dummyData.reviews[0].results[0]} />)
-    expect(wrapper.find('review-summary')).toHaveLength(1) //broke
+    expect(wrapper.find('.review-summary')).toHaveLength(1) //broke
   })
-  it('should render clickable images', () => {
-
+  it('should render images', () => {
+    const wrapper = mount(<Review key={dummyData.products[0].id} review={dummyData.reviews[0].results[0]} />)
+    expect(wrapper.find('.review-thumbnail')).toHaveLength(1)
   })
-  it('should have a clickable helpful span', () => {
-
+  it('should have a helpful span', () => {
+    const wrapper = mount(<Review key={dummyData.products[0].id} review={dummyData.reviews[0].results[0]} />)
+    expect(wrapper.find('.helpful-toggle')).toHaveLength(1)
   })
-  it('should have a clickable report span', () => {
-
+  it('should have a report span', () => {
+    const wrapper = mount(<Review key={dummyData.products[0].id} review={dummyData.reviews[0].results[0]} />)
+    expect(wrapper.find('.report')).toHaveLength(1)
   })
   it('should have a name and date', () => {
-
+    const wrapper = mount(<Review key={dummyData.products[0].id} review={dummyData.reviews[0].results[0]} />)
+    expect(wrapper.find('.reviewer-name-and-date')).toHaveLength(1)
   })
   it('should display a recommendation', () => {
-
+    const wrapper = mount(<Review key={dummyData.products[0].id} review={dummyData.reviews[0].results[0]} />)
+    expect(wrapper.find('.recommend')).toHaveLength(1)
   })
 })
