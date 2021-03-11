@@ -39,9 +39,9 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
     setActionButtonToggle(!actionButtonToggle);
   }
 
-  const resetSliderStart = () => {
-    slider.current.slickGoTo(0, false)
-  }
+  // const resetSliderStart = () => {
+  //   slider.current.slickGoTo(0, true)
+  // }
 
 
   return (
@@ -52,7 +52,7 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
         <Slider ref={slider} {...settings} draggable={false} >
           {
             relatedItemsList.map((item) => {
-              return <RelatedItemCard resetSliderStart={resetSliderStart} listUpdate={listUpdate} productSelect={productSelect} actionButtonListener={actionButtonListener} productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;
+              return <RelatedItemCard  listUpdate={listUpdate} productSelect={productSelect} actionButtonListener={actionButtonListener} productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;
             })
           }
         </Slider>
