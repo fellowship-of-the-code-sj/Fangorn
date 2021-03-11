@@ -50,8 +50,8 @@ describe('Default View', () => {
 });
 
 describe('Product Information', () => {
-  it('should render ProductInfo component with data', () => {
-    const wrapper = shallow(<ProductInfo
+  it('should render ProductInfo component with data', async () => {
+    const wrapper = await mount(<ProductInfo
       product={data.products[0]}
       currentStyle={data.styles[0]}
       ratings={data.reviewMeta.ratings}
@@ -59,8 +59,8 @@ describe('Product Information', () => {
     expect(wrapper.find('.productInfo').length).toBe(1);
   })
 
-  it('should display the average rating and # of ratings', () => {
-    const wrapper = shallow(<ProductInfo
+  it('should display the average rating and # of ratings', async () => {
+    const wrapper = await mount(<ProductInfo
       product={data.products[0]}
       currentStyle={data.styles[0]}
       ratings={data.reviewMeta.ratings}
@@ -68,8 +68,8 @@ describe('Product Information', () => {
     expect(wrapper.find('#productInfoRating').length).toBe(1);
   })
 
-  it('should display the product category', () => {
-    const wrapper = shallow(<ProductInfo
+  it('should display the product category', async () => {
+    const wrapper = await mount(<ProductInfo
       product={data.products[0]}
       currentStyle={data.styles[0]}
       ratings={data.reviewMeta.ratings}
@@ -77,8 +77,8 @@ describe('Product Information', () => {
     expect(wrapper.find('#productInfoCategory').length).toBe(1);
   })
 
-  it('should display the product name', () => {
-    const wrapper = shallow(<ProductInfo
+  it('should display the product name', async () => {
+    const wrapper = await mount(<ProductInfo
       product={data.products[0]}
       currentStyle={data.styles[0]}
       ratings={data.reviewMeta.ratings}
@@ -86,8 +86,8 @@ describe('Product Information', () => {
     expect(wrapper.find('#productInfoName').length).toBe(1);
   })
 
-  it('should display the product price', () => {
-    const wrapper = shallow(<ProductInfo
+  it('should display the product price', async () => {
+    const wrapper = await mount(<ProductInfo
       product={data.products[0]}
       currentStyle={data.styles[0]}
       ratings={data.reviewMeta.ratings}
