@@ -66,7 +66,7 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
         {
           //Checks to see if image exists, if not returns default image
             cardData.default_style.photos[0].url ?
-            <img className='itemCardImg related' src={cardData.default_style.photos[cardImage].url } alt='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'>
+            <img className='itemCardImg related' src={cardData.default_style.photos[cardImage].thumbnail_url } alt='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'>
             </img>
             : <img className='itemCardImg related' src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' alt='No Image'></img>
         }
