@@ -23,7 +23,9 @@ module.exports = {
 
           } else {
             res.status(data.status);
+            res.setHeader('Content-Type', 'text/event-stream');
             res.send(productsData);
+            res.flush();
           }
         });
       }
