@@ -85,17 +85,11 @@ function Review(props) {
       <div className="review-summary">{props.review.summary}</div>
       <div className="review-body">{props.review.body}</div>
       <div className="review-thumbnails"></div>
-      {
-        props.review.photos.map((image, i) => {
-          return <img style={{ "cursor": "pointer" }} onClick={(e) => { handleImageClick(e); props.logger(e); }} className="review-thumbnail" key={image.id} id={`${i}-${image.id}`} src={image.url}></img>
-        })
-      }
-      {
-        props.review.response ? <div className="response"><b>Response from seller:</b><br></br>{props.review.response}</div> : <div></div>
-      }
-      {
-        props.review.recommend ? <div className="recommend"> ✔ I recommend this product</div> : <div></div>
-      }
+      {props.review.photos.map((image, i) => {
+        return <img style={{ "cursor": "pointer" }} onClick={(e) => { handleImageClick(e); props.logger(e); }} className="review-thumbnail" key={image.id} id={`${i}-${image.id}`} src={image.url}></img>
+      })}
+      { props.review.response ? <div className="response"><b>Response from seller:</b><br></br>{props.review.response}</div> : <div></div>}
+      { props.review.recommend ? <div className="recommend"> ✔ I recommend this product</div> : <div></div>}
       <span className="helpful">Helpful?</span>
       <span className="helpful-toggle" onClick={sendHelpful} >Yes</span>
       <span className="helpful-count">({helpfulNum()}) </span>

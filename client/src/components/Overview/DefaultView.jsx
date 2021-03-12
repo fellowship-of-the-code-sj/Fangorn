@@ -6,7 +6,7 @@ import captureOverview from '../../hoc/captureOverview';
 const DefaultView = ({ photos, changeView, imageIndex, handleImageIndexChange, setImageIndex, logger }) => {
 
   const ref = useRef(null);
-  
+
   const scroll = (scrollDistance) => {
     ref.current.scrollTop += scrollDistance;
   }
@@ -15,15 +15,16 @@ const DefaultView = ({ photos, changeView, imageIndex, handleImageIndexChange, s
     <div className="defaultView">
       <div id="defaultViewImageContainer" onClick={e => {changeView(); logger(e);}}>
         { photos ?
-          <img 
+          <img
+            rel="preload"
             src={photos[imageIndex].url ? photos[imageIndex].url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
             id="defaultViewImage"
           /> : <img src="" />
         }
-        
+
       </div>
       <div id="defaultViewThumbnailsContainer" >
-        {photos && photos.length > 7 ? 
+        {photos && photos.length > 7 ?
           <div className="scrollButtonContainer">
             <button
             className="scrollButton"
@@ -51,7 +52,7 @@ const DefaultView = ({ photos, changeView, imageIndex, handleImageIndexChange, s
             }
           </div>
         </div>
-        {photos && photos.length > 7 ? 
+        {photos && photos.length > 7 ?
           <div className="scrollButtonContainer">
             <button
             className="scrollButton"

@@ -7,7 +7,9 @@ module.exports = {
     questionsModel.getAllQuestions(product_id)
       .then(response => {
         const questions = response.data.results;
+        res.setHeader('Content-Type', 'text/event-stream');
         res.status(200).send(questions);
+        res.flush();
       })
       .catch(error => {
         res.sendStatus(404);

@@ -45,8 +45,8 @@ const OutfitListCard = ({ cardData, removeOutfitItem, logger}) => {
         {
           //Checks to see if image exists, if not returns default image
           cardData.default_style.photos[0].url ?
-          <img className='itemCardImg' src={cardData.default_style.photos[cardImage].url}></img>
-          : <img className='itemCardImg' src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'></img>
+          <img className='itemCardImg' src={cardData.default_style.photos[cardImage].thumbnail_url} alt='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'></img>
+          : <img className='itemCardImg' src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' alt='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'></img>
         }
         {
           carouselImages?
@@ -58,7 +58,7 @@ const OutfitListCard = ({ cardData, removeOutfitItem, logger}) => {
                     updateCardImage(e, index)
                     logger(e)
                   }}
-                  className='relatedImageCarousel' key={index} src={image.thumbnail_url}></img>
+                  className='relatedImageCarousel' key={index} src={image.thumbnail_url} alt='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'></img>
                 })
               }
             </Slider>
@@ -68,14 +68,14 @@ const OutfitListCard = ({ cardData, removeOutfitItem, logger}) => {
       </div>
 
       {/* category and name */}
-      <h6 className='cardCategory' >{cardData.category}</h6>
-      <h5 className='cardItemName' >{cardData.name}</h5>
+      <h2 className='cardCategory' >{cardData.category}</h2>
+      <h3 className='cardItemName' >{cardData.name}</h3>
 
       {
         //checks to see if product contains sales price, if so, displays sales price, else original price
         cardData.default_style.sale_price ?
-        <h6 className='cardItemSalePrice' >{'$' + cardData.default_style.sale_price}</h6>
-        : <h6 className='cardItemPrice' >{'$' + cardData.default_style.original_price}</h6>
+        <h4 className='cardItemSalePrice' >{'$' + cardData.default_style.sale_price}</h4>
+        : <h4 className='cardItemPrice' >{'$' + cardData.default_style.original_price}</h4>
       }
 
       {/* Star Rating */}

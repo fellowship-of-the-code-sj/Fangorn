@@ -14,7 +14,8 @@
 .productDetailPageLight .innerModal
 .productDetailPageLight .new-review-modal-content,
 .productDetailPageLight .new-review-photo-modal-content,
-.productDetailPageLight .review-image-modal-content {
+.productDetailPageLight .review-image-modal-content,
+.productDetailPageLight .outfitAddItemCard {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
 }
@@ -42,7 +43,8 @@
 .productDetailPageDark select,
 .productDetailPageDark .new-review-modal-content,
 .productDetailPageDark .new-review-photo-modal-content,
-.productDetailPageDark .review-image-modal-content {
+.productDetailPageDark .review-image-modal-content,
+.productDetailPageDark .outfitAddItemCard {
   background-color: rgb(46, 46, 46);
   color: rgb(255, 255, 255);
 }
@@ -250,18 +252,29 @@ input:checked + .slider:before {
   min-height: 325px;
 }
 
-.outfitAddItemCard {
+.outfitAddItemCardBackground {
   border: 1px solid grey !important;
   width: 200px !important;
   height: 450px !important;
   min-height: 300px !important;
-}
-
-.itemCardRelated:hover {
-  cursor: pointer;
+  z-index: 2;
 }
 
 .outfitAddItemCard {
+  border: 1px solid grey !important;
+  width: 200px !important;
+  height: 450px !important;
+  position: absolute;
+  z-index: 3;
+  /* background-color: white;
+  color: #000; */
+}
+
+.outfitAddItemCard, .outfitAddItemCardBackground:hover {
+  cursor: pointer;
+}
+
+.outfitAddItemCard, .outfitAddItemCardBackground {
   font-size: 20px;
   text-align: center;
   margin-right: 10px;
@@ -272,6 +285,10 @@ input:checked + .slider:before {
 }
 
 .outfitAddItemCard:hover .addOutfitText{
+  transform: scale(1.15);
+}
+
+.outfitAddItemCardBackground:hover .addOutfitText{
   transform: scale(1.15);
 }
 
@@ -299,6 +316,10 @@ input:checked + .slider:before {
   object-fit: cover;
 }
 
+.itemCardImg.related, .relatedCarouselImage:hover {
+  cursor: pointer;
+}
+
 .relatedCarouselImage {
   z-index: 3;
   height: 50px;
@@ -314,7 +335,10 @@ input:checked + .slider:before {
   padding: 2px;
   height: 100%;
   object-fit: cover;
+}
 
+.relatedImageCarousel:hover {
+  cursor: pointer;
 }
 
 .cardCategory {
@@ -605,6 +629,11 @@ input:checked + .slider:before {
   overflow: visible;
 }
 
+.ratings-and-reviews {
+  margin: auto;
+  height: 1000px;
+}
+
 .characteristic{
   margin-bottom: 30px;
 }
@@ -642,6 +671,7 @@ input:checked + .slider:before {
 .review-thumbnail {
   height: 50px;
   width: 50px;
+  margin-right: 3px;
 }
 
 .review-image-modal {
@@ -653,6 +683,7 @@ input:checked + .slider:before {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
+  margin-right: -28px;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -663,20 +694,24 @@ input:checked + .slider:before {
   background-color: #fefefe;
   margin: auto;
   margin-bottom: 10%;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #888;
   width: 80%;
 }
 
 .review-image-modal-img {
-  height: 95%;
-  width: 95%;
+  height: 100%;
+  width: 100%;
 }
 
 /* The Close Button */
 .review-image-modal-close {
   color: #aaaaaa;
   float: right;
+  position:relative;
+  left: 3px;
+  bottom: 35px;
+  width: 0px;
   font-size: 28px;
   font-weight: bold;
 }
@@ -708,9 +743,10 @@ input:checked + .slider:before {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 50%;
-  height: 85%;
-  overflow: auto;
+  width: 803px;
+  height: 752px;
+  border-radius: 5px;
+  /* overflow: auto; */
 }
 
 .new-review-modal-content input,
@@ -718,6 +754,38 @@ input:checked + .slider:before {
 .new-review-modal-content button {
   background-color: transparent;
 }
+
+.new-review-modal-title {
+  font-size: x-large;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.new-review-characteristics {
+  position: relative;
+  bottom: 500px;
+  left: 500px;
+}
+
+.review-thumbnail-spacer {
+  height: 50px;
+}
+
+.new-review-thumbnails{
+  position: relative;
+  bottom: 360px;
+}
+
+.new-review-submit-button {
+  position: relative;
+  bottom: 390px;
+  float:right
+}
+
+.new-review-add-photo-button-spacer{
+  height: 28px;
+}
+
 
 /* The Close Button */
 .new-review-modal-close {
@@ -739,6 +807,11 @@ input:checked + .slider:before {
 .new-review-radios {
   margin-left:5px;
   margin-right: 5px;
+}
+
+.new-review-char-tracker {
+  position:relative;
+  left:5px;
 }
 
 .new-review-photo-modal {
@@ -782,14 +855,24 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
-.new-review-submit-button {
-  position: relative;
-  bottom: 30px;
-  float:right
-}
+
 
 .new-review-errors {
   color: red;
+  font-size: small;
+}
+
+.new-review-star{
+  font-size: larger;
+}
+
+.new-review-errors-spacer {
+  height:19px;
+}
+
+.new-review-form-title{
+  font-weight: bolder;
+  font-size: large;
 }
 
 .new-review-characteristic-meaning {

@@ -30,7 +30,9 @@ module.exports = {
         res.end();
       } else {
         console.log('successfully got all reviews')
+        res.setHeader('Content-Type', 'text/event-stream');
         res.send(results.data.results);
+        res.flush();
       }
     })
   },
@@ -41,7 +43,9 @@ module.exports = {
         res.end();
       } else {
         console.log('Successfully got review metadata')
+        res.setHeader('Content-Type', 'text/event-stream');
         res.send(results.data);
+        res.flush();
       }
     })
   },
