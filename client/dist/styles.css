@@ -1396,6 +1396,17 @@ input:checked + .slider:before {
   box-sizing: border-box;
   grid-column: 1 / 2;
   display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+
+#productOverviewSlogan {
+  text-align: center;
+  margin: auto 10px;
+}
+
+#productOverviewDescription {
+  text-align: center;
+  margin: auto 10px;
 }
 
 #productShare {
