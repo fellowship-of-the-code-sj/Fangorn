@@ -1246,7 +1246,7 @@ input:checked + .slider:before {
   box-sizing: border-box;
   grid-row: 3 / 4;
   margin: auto 0px;
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 700;
 }
 
@@ -1395,6 +1395,7 @@ input:checked + .slider:before {
 #productOverview {
   box-sizing: border-box;
   grid-column: 1 / 2;
+  display: grid;
 }
 
 #productShare {
