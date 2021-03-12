@@ -481,7 +481,7 @@ module.exports = {
           "date": "2019-05-04T00:00:00.000Z",
           "reviewer_name": "chingy",
           "helpfulness": 13,
-          "photos": []
+          "photos": ['https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png']
         },
         {
           "review_id": 111390,

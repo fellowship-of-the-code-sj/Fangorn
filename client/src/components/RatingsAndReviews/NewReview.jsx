@@ -52,8 +52,6 @@ function NewReview(props) {
     })
   }
 
-
-
   const hideForm = () => {
     var modal = document.getElementById('newReviewForm')
     modal.style.display = "none";
@@ -118,6 +116,7 @@ function NewReview(props) {
       return false;
     }
   }
+
   const clearForm = () => {
     setRating(0);
     setName('');
@@ -158,8 +157,9 @@ function NewReview(props) {
       return 'You must select a recommendation'
     }
     if (input === 'characteristics' && !isValidCharacteristics()) {
-      return 'You must fill out all the characteristics'
+      return 'You must fill out of all the characteristics'
     }
+    return (<div className="new-review-errors-spacer"></div>)
   }
 
   const starColor = (num) => {
@@ -312,39 +312,65 @@ function NewReview(props) {
     return (url.match(/\.(jpeg|jpg|gif|png)$/) != null);
   }
 
+  function Mstar() {
+    return (
+      <sup className="mandatory">&nbsp;*</sup>
+    )
+  }
+
   return (
     <div className="new-review">
       <div id="newReviewForm" className="new-review-modal">
-        <div className="new-review-modal-content"> Write a review about {props.productName}
-          <span onClick={(e) => { hideForm(e); props.logger(e) }} className="new-review-modal-close">&times;</span>
+        <div className="new-review-modal-content">
+          <span className="new-review-modal-close" onClick={(e) => { hideForm(e); props.logger(e) }} >&times;</span>
+          <div className="new-review-modal-title">Write a review about {props.productName}</div>
           <div className="review-form">
-            Rate this product<sup className="mandatory">&nbsp;*</sup><div className="new-review-star-rating-form">
-              <span className="new-review-star" onClick={(e) => { setRating(1); props.logger(e) }} style={starColor(1)}>★</span>
-              <span className="new-review-star" onClick={(e) => { setRating(2); props.logger(e) }} style={starColor(2)}>★</span>
-              <span className="new-review-star" onClick={(e) => { setRating(3); props.logger(e) }} style={starColor(3)}>★</span>
-              <span className="new-review-star" onClick={(e) => { setRating(4); props.logger(e) }} style={starColor(4)}>★</span>
-              <span className="new-review-star" onClick={(e) => { setRating(5); props.logger(e) }} style={starColor(5)}>★</span>
-              <span className="star-rating-desc">{' ' + starRatingDesc()}</span>
-            </div> <br></br>
-            <div className="name-and-email-form">
-              <form>
-                Name:<sup className="mandatory">&nbsp;*</sup><input className="new-review-name" placeholder=" e.g. jackson11!" size="25" maxLength="60" onChange={(e) => { handleChange(e, setName) }} type="text" value={name}></input><br></br>
-                Email:<sup className="mandatory">&nbsp;*</sup><input className="new-review-email" placeholder=" e.g. jackson11@email.com" size="25" maxLength="60" onChange={(e) => { handleChange(e, setEmail) }} type="text" value={email}></input> <br></br>
+            <div className="new-review-rating">
+              <span className="new-review-form-title">Rate this product</span> <Mstar />
+              <div className="new-review-star-rating-form">
+                <span className="new-review-star" onClick={(e) => { setRating(1); props.logger(e) }} style={starColor(1)}>★</span>
+                <span className="new-review-star" onClick={(e) => { setRating(2); props.logger(e) }} style={starColor(2)}>★</span>
+                <span className="new-review-star" onClick={(e) => { setRating(3); props.logger(e) }} style={starColor(3)}>★</span>
+                <span className="new-review-star" onClick={(e) => { setRating(4); props.logger(e) }} style={starColor(4)}>★</span>
+                <span className="new-review-star" onClick={(e) => { setRating(5); props.logger(e) }} style={starColor(5)}>★</span>
+                <span className="star-rating-desc">{' ' + starRatingDesc()}</span>
+              </div>
+              {hasClickedSubmit ? <div className="new-review-errors">{showErrors('rating')}</div> : <div className="new-review-errors-spacer"></div>}
+            </div>
+            <form>
+              <div className="new-review-name">
+                <span className="new-review-form-title">Name:&nbsp;</span><input className="new-review-name" placeholder=" e.g. jackson11!" size="25" maxLength="60" onChange={(e) => { handleChange(e, setName) }} type="text" value={name}></input><Mstar /><br></br>
+                {hasClickedSubmit ? <div className="new-review-errors">{showErrors('name')}</div> : <div className="new-review-errors-spacer"></div>}
+              </div>
+              <div className="new-review-email">
+                <span className="new-review-form-title">Email:&nbsp;&nbsp;</span><input className="new-review-email" placeholder=" e.g. jackson11@email.com" size="25" maxLength="60" onChange={(e) => { handleChange(e, setEmail) }} type="text" value={email}></input><Mstar /><br></br>
+                {hasClickedSubmit ? <div className="new-review-errors">{showErrors('email')}</div> : <div className="new-review-errors-spacer"></div>}
                 <span className="disclaimer-small">For authentication reasons, you will not be emailed</span><br></br><br></br>
-                Review summary:<br></br><textarea className="new-review-summary" placeholder=" e.g. Best purchase ever!" maxLength="60" onChange={(e) => { handleChange(e, setSummary) }} type="text" value={summary} rows="1" cols="30" ></textarea> <br></br><br></br>
-                Enter your review:<sup className="mandatory">&nbsp;*</sup><br></br><textarea className="new-review-body" placeholder=" Why did you like the product or not?" maxLength="500" onChange={(e) => { handleChange(e, setBody) }} type="text" value={body} rows="4" cols="50"></textarea><br></br>
-                {
-                  body.length < 50 ? <span className="new-review-char-count" style={{ "fontSize": "small" }}>Minimum required characters: {50 - body.length}</span> : <span className="new-review-char-count" style={{ "fontSize": "small" }}>Minimum reached</span>
-                }
-              </form>
-              Would you recommend this product?<sup className="mandatory">&nbsp;*</sup>
-              <form className="new-review-recommend">
+              </div>
+              <div className="new-review-summary">
+                <span className="new-review-form-title">Review summary:</span> <Mstar /><br></br><textarea className="new-review-summary" placeholder=" e.g. Best purchase ever!" maxLength="60" onChange={(e) => { handleChange(e, setSummary) }} type="text" value={summary} rows="1" cols="30" ></textarea> <br></br><br></br>
+              </div>
+              <div className="new-review-body">
+                <span className="new-review-form-title">Enter your review: </span><Mstar />
+                <br></br><textarea className="new-review-body" placeholder=" Why did you like the product or not?" maxLength="500" onChange={(e) => { handleChange(e, setBody) }} type="text" value={body} rows="4" cols="50"></textarea><br></br>
+                <div className="new-review-char-tracker">
+                  {body.length < 50 ? <span className="new-review-char-count" style={{ "fontSize": "small" }}>Minimum required characters: {50 - body.length}</span> : <span className="new-review-char-count" style={{ "fontSize": "small" }}>Minimum reached</span>}
+                </div>
+                {hasClickedSubmit ? <div className="new-review-errors">{showErrors('body')}</div> : <div className="new-review-errors-spacer"></div>}
+              </div>
+            </form>
+            <div className="new-review-recommend">
+              <span className="new-review-form-title">Would you recommend this product?</span> <Mstar />
+              <form>
                 <input onClick={(e) => { setRecommend(true); props.logger(e) }} type="radio" name="recommend" ></input>
                 <label >&nbsp;Yes</label><br></br>
                 <input onClick={(e) => { setRecommend(false); props.logger(e) }} type="radio" name="recommend" ></input>
                 <label >&nbsp;No</label><br></br>
               </form>
-              <form className="new-review-characteristics">Product characteristics<sup className="mandatory">&nbsp;*</sup>
+              {hasClickedSubmit ? <div className="new-review-errors">{showErrors('recommend')}</div> : <div className="new-review-errors-spacer"></div>}
+            </div>
+            <div className="new-review-characteristics">
+              <form><span className="new-review-form-title">Product characteristics:</span> <Mstar />
                 {
                   props.metaObject.characteristics.Size ? <div className="new-review-size">
                     Size: <div className="new-review-radio-array">
@@ -414,40 +440,34 @@ function NewReview(props) {
                     : <div></div>
                 }
               </form>
-              {
-                photos.map((image, i) => {
-                  return <img className="review-thumbnail" key={i} src={image}></img>
-                })
-              }
-              {
-                photos.length < 5 ? <div className="new-review-add-photo-button">
-                  <br></br><button onClick={(e) => { handleAddPhoto(e) }}>&nbsp;Add a photo&nbsp;</button>
-                </div> : <div></div>
-              }
-              <div className="new-review-photo-modal" id="newReviewPhotoModal">
-                <div className="new-review-photo-modal-content">
-                  <span onClick={(e) => { closeAddPhoto(e) }} className="new-review-photo-modal-close">&times;</span>
-                  <form className="new-review-photo-modal-form">Enter the URL of the image you would like to display<br></br><br></br>
-                    <input type="text" onChange={(e) => { handleChange(e, setPhotoURL); props.logger(e) }} value={photoURL}></input><br></br><br></br>
-                    {
-                      photoURL !== '' ? <img className="review-thumbnail" src={photoURL}></img> : <div></div>
-                    }
-                    <br></br><br></br><button onClick={(e) => { submitPhoto(e); props.logger(e) }}>Submit photo</button>
-                  </form>
-                </div>
-              </div>
-              {
-                hasClickedSubmit ? <div>
-                  <div className="new-review-errors">{showErrors('rating')}</div>
-                  <div className="new-review-errors">{showErrors('name')}</div>
-                  <div className="new-review-errors">{showErrors('email')}</div>
-                  <div className="new-review-errors">{showErrors('body')}</div>
-                  <div className="new-review-errors">{showErrors('recommend')}</div>
-                  <div className="new-review-errors">{showErrors('characteristics')}</div>
-                </div> : <div></div>
-              }
-              <button onClick={handleSubmit} className="new-review-submit-button">&nbsp;Submit&nbsp;</button>
+              {hasClickedSubmit ? <div className="new-review-errors">{showErrors('characteristics')}</div> : <div className="new-review-errors-spacer"></div>}
             </div>
+            <div className="new-review-images">
+              <div className="new-review-thumbnails">
+                {photos.map((image, i) => {
+                  return <img className="review-thumbnail" key={i} src={image}></img>
+                })}
+                {photos[0] ? null : <div className="review-thumbnail-spacer"></div>}
+                {
+                  photos.length < 5 ? <div className="new-review-add-photo-button">
+                    <br></br><button onClick={(e) => { handleAddPhoto(e) }}>&nbsp;Add a photo&nbsp;</button>
+                  </div> : <div><br></br><div className="new-review-add-photo-button-spacer"></div></div>
+                }
+              </div>
+            </div>
+            <div className="new-review-photo-modal" id="newReviewPhotoModal">
+              <div className="new-review-photo-modal-content">
+                <span onClick={(e) => { closeAddPhoto(e) }} className="new-review-photo-modal-close">&times;</span>
+                <form className="new-review-photo-modal-form">Enter the URL of the image you would like to display<br></br><br></br>
+                  <input type="text" onChange={(e) => { handleChange(e, setPhotoURL); props.logger(e) }} value={photoURL}></input><br></br><br></br>
+                  {
+                    photoURL ? <img className="review-thumbnail" src={photoURL}></img> : <div></div>
+                  }
+                  <br></br><br></br><button onClick={(e) => { submitPhoto(e); props.logger(e) }}>Submit photo</button>
+                </form>
+              </div>
+            </div>
+            <button onClick={handleSubmit} className="new-review-submit-button">&nbsp;Submit&nbsp;</button>
           </div >
         </div>
       </div>
