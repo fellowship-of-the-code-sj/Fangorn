@@ -90,7 +90,7 @@ describe('Rendering RelatedItems Card Components', () => {
 
     //component containes images
     const wrapper2 = await mount(<RelatedItemCard cardData={dummyData.products[1]} />);
-    expect(wrapper2.contains(<img className='itemCardImg related' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
+    expect(wrapper2.contains(<img className='itemCardImg related' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png" ></img>)).toBe(true);
 
   });
 
@@ -189,7 +189,7 @@ describe('Rendering OutfitList List Card Component', () => {
 
     //component containes images
     const wrapper2 = await mount(<OutfitListCard cardData={dummyData.products[1]} />);
-    expect(wrapper2.contains(<img className='itemCardImg' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
+    expect(wrapper2.contains(<img className='itemCardImg' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
 
   });
 

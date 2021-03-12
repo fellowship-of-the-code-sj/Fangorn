@@ -66,7 +66,6 @@ const OutfitList = ({ productInfo, logger }) => {
   return (
     <div key={listUpdate} className='itemsList'>
       <h3 className='listTitle' >Your Outfit</h3>
-      {console.log(outfitList.list.length)}
       {
         outfitList.list.length > 3 ?
         <div className='outfitAddItemCard' onClick={ (e) => {

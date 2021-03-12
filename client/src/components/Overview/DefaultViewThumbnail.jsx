@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import captureOverview from '../../hoc/captureOverview';
 
-const DefaultViewThumbnail = ({ photo, index, imageIndex, setImageIndex }) => {
+const DefaultViewThumbnail = ({ photo, index, imageIndex, setImageIndex, logger }) => {
 
   useEffect(() => {
     setImageIndex(imageIndex);
@@ -18,7 +19,10 @@ const DefaultViewThumbnail = ({ photo, index, imageIndex, setImageIndex }) => {
           alt={`Style Thumbnail`}
           index={index}
           id={`imageThumbnail${index}`}
-          onClick={(event) => {setImageIndex(Number(event.target.attributes[3].value))}}
+          onClick={e => {
+            setImageIndex(Number(e.target.attributes[3].value));
+            logger(e)
+          }}
         />
     </div>
   )
@@ -27,8 +31,9 @@ const DefaultViewThumbnail = ({ photo, index, imageIndex, setImageIndex }) => {
     photo: PropTypes.object,
     index: PropTypes.number,
     imageIndex: PropTypes.number,
-    setImageIndex: PropTypes.func
+    setImageIndex: PropTypes.func,
+    logger: PropTypes.func
   }
 }
 
-export default DefaultViewThumbnail
+export default captureOverview(DefaultViewThumbnail);

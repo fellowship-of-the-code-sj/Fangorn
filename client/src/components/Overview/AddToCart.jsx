@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import captureOverview from '../../hoc/captureOverview';
 
-const AddToCart = ({ skus }) => {
+const AddToCart = ({ skus, logger }) => {
 
   const [currentSku, setCurrentSku] = useState({
     sku: null,
@@ -84,7 +85,7 @@ const AddToCart = ({ skus }) => {
           {failedAddToCart ? <p id="sizeError">Please select size</p> : null}
           <select 
             id="sizeSelect"
-            onChange={(e) => {sizeChange(e.target.value)}}>
+            onChange={e => {sizeChange(e.target.value)}}>
             <option>Select Size</option>
             {Object.keys(skus).map((key, index) => (
               <option key={key}>{skus[key].size}</option>
@@ -98,7 +99,7 @@ const AddToCart = ({ skus }) => {
       {currentSku.quantities.length > 0 ? 
         <select
           id="quantitySelect"
-          onChange={(e) => {quantityChange(e.target.value)}}>
+          onChange={e => {quantityChange(e.target.value)}}>
           {currentSku.quantities.map((quantity, i) => (
             <option key={i}>{quantity}</option>
           ))}
@@ -107,15 +108,16 @@ const AddToCart = ({ skus }) => {
       }
       {sizes.length > 0 ?
       <button id="addToCartButton"
-        onClick={(e) => {event.preventDefault(); handleAddToCart()}}
+        onClick={e => {e.preventDefault(); handleAddToCart(); logger(e)}}
         >ADD TO CART +
       </button> : <div id="addToCartButton"></div>
       }
     </div>
   )
   AddToCart.propTypes = {
-    skus: PropTypes.object
+    skus: PropTypes.object,
+    logger: PropTypes.func
   }
 };
 
-export default AddToCart;
+export default captureOverview(AddToCart);
