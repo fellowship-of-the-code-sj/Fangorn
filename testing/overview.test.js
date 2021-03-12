@@ -13,7 +13,9 @@ import data from './dummyData.js';
 const initialProps = {
   productObj: data.products[0],
   stylesArr: data.styles,
-  ratingsObj: data.reviewMeta.ratings
+  ratingsObj: data.reviewMeta.ratings,
+  productId: data.products[0].id,
+  productInfo: data.products[0]
 };
 
 describe('Overview', () => {

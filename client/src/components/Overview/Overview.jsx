@@ -107,7 +107,10 @@ const Overview = (props) => {
     productId: PropTypes.number,
     productObj: PropTypes.object,
     stylesArr: PropTypes.array,
-    ratingsObj: PropTypes.object
+    ratingsObj: PropTypes.object,
+    productInfo: PropTypes.object,
+    productSelect: PropTypes.object,
+    listUpdate: PropTypes.func
   }
 }
 
