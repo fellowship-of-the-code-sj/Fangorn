@@ -10,10 +10,37 @@ import AddToCart from '../client/src/components/Overview/AddToCart.jsx';
 import ProductSummary from '../client/src/components/Overview/ProductSummary.jsx';
 import data from './dummyData.js';
 
+const initialProps = {
+  productObj: data.products[0],
+  stylesArr: data.styles,
+  ratingsObj: data.reviewMeta.ratings
+};
+
 describe('Overview', () => {
+  const wrapper = mount(<Overview {...initialProps} />);
+
   it('should render Overview component', () => {
-    const wrapper = shallow(<Overview />);
     expect(wrapper.find('.overview').length).toBe(1);
+  });
+  
+  it('should render a Default View component', () => {
+    expect(wrapper.containsMatchingElement(<DefaultView />)).toEqual(true);
+  })
+
+  it('should render a Product Info component', () => {
+    expect(wrapper.containsMatchingElement(<ProductInfo />)).toEqual(true);
+  })
+
+  it('should render a Style Selector component', () => {
+    expect(wrapper.containsMatchingElement(<StyleSelector />)).toEqual(true);
+  })
+
+  it('should render an Add To Cart component', () => {
+    expect(wrapper.containsMatchingElement(<AddToCart />)).toEqual(true);
+  })
+
+  it('should render a Product Summary component', () => {
+    expect(wrapper.containsMatchingElement(<ProductSummary />)).toEqual(true);
   })
 });
 
@@ -21,6 +48,17 @@ describe('Default View', () => {
   it('should render Default View component', async () => {
     const wrapper = await mount(<DefaultView />);
     expect(wrapper.find('.defaultView').length).toBe(1);
+  })
+
+  it('should display an image', async () => {
+    const wrapper = await mount(<DefaultView
+      photos={data.styles[0].photos}
+      imageIndex={0}
+      changeView = { () => {} }
+      setImageIndex = { () => {} }
+      handleImageIndexChange = { () => {} }
+    />);
+    expect(wrapper.find('#defaultViewImage').length).toBe(1);
   })
 
   it('should display the first style image as the main image by default', async () => {

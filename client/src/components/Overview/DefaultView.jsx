@@ -66,9 +66,10 @@ const DefaultView = ({ photos, changeView, imageIndex, handleImageIndexChange, s
         }
       </div>
       { imageIndex > 0 ?
-        <div className="defaultImageButtonContainer" id="leftDefaultButton">
+        <div className="defaultImageButtonContainer" id="leftDefaultButtonContainer">
           <button
             className="defaultViewButton"
+            id="leftDefaultButton"
             onClick={e => {
               handleImageIndexChange(-1);
               scroll(-60);
@@ -78,9 +79,10 @@ const DefaultView = ({ photos, changeView, imageIndex, handleImageIndexChange, s
         </div> : null
       }
       { photos && (imageIndex < (photos.length - 1)) ?
-        <div className="defaultImageButtonContainer" id="rightDefaultButton">
+        <div className="defaultImageButtonContainer" id="rightDefaultButtonContainer">
           <button
           className="defaultViewButton"
+          id="rightDefaultButton"
           onClick={e => {
             handleImageIndexChange(1);
             scroll(60);
