@@ -38,7 +38,6 @@ const Overview = (props) => {
 
   useEffect(() => {
     setHasPrimaryLoaded(true);
-    console.log('hit');
   }, [product])
 
   const changeView = () => {
