@@ -629,6 +629,11 @@ input:checked + .slider:before {
   overflow: visible;
 }
 
+.ratings-and-reviews {
+  margin: auto;
+  height: 1000px;
+}
+
 .characteristic{
   margin-bottom: 30px;
 }
@@ -666,6 +671,7 @@ input:checked + .slider:before {
 .review-thumbnail {
   height: 50px;
   width: 50px;
+  margin-right: 3px;
 }
 
 .review-image-modal {
@@ -677,6 +683,7 @@ input:checked + .slider:before {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
+  margin-right: -28px;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -687,20 +694,24 @@ input:checked + .slider:before {
   background-color: #fefefe;
   margin: auto;
   margin-bottom: 10%;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #888;
   width: 80%;
 }
 
 .review-image-modal-img {
-  height: 95%;
-  width: 95%;
+  height: 100%;
+  width: 100%;
 }
 
 /* The Close Button */
 .review-image-modal-close {
   color: #aaaaaa;
   float: right;
+  position:relative;
+  left: 3px;
+  bottom: 35px;
+  width: 0px;
   font-size: 28px;
   font-weight: bold;
 }
@@ -732,7 +743,7 @@ input:checked + .slider:before {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 60%;
+  width: 803px;
   height: 752px;
   /* overflow: auto; */
 }
@@ -759,7 +770,7 @@ input:checked + .slider:before {
   height: 50px;
 }
 
-.new-review-images{
+.new-review-thumbnails{
   position: relative;
   bottom: 360px;
 }
