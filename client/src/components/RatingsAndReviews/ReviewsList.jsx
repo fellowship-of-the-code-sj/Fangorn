@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 
 function ReviewsList(props) {
 
+  const [listSize, setListSize] = useState(2);
   const [starSortTracker, setTracker] = useState({});
   const [list, setList] = useState([]);
   const [visibleList, setVisibleList] = useState([]);
@@ -24,7 +25,7 @@ function ReviewsList(props) {
     })
       .then((response) => {
         setList(sortByStar(response.data));
-        setVisibleList(sortByStar(response.data).slice(0, 2))
+        setVisibleList(sortByStar(response.data).slice(0, listSize))
       })
   }
 
@@ -47,6 +48,17 @@ function ReviewsList(props) {
     }
     return filteredList;
   }
+
+  // update list when starSort changes
+  useEffect(() => {
+    //getList(sortQuery);
+    setVisibleList(sortByStar(list).slice(0, listSize))
+  }, [props.tracker]);
+
+  // update list on first load
+  useEffect(() => {
+    getList(sortQuery);
+  }, []);
 
   const isFiltering = () => {
     if (props.starSort[1] === false && props.starSort[2] === false && props.starSort[3] === false && props.starSort[4] === false && props.starSort[5] === false) {
@@ -72,7 +84,8 @@ function ReviewsList(props) {
   }
 
   const showMoreReviews = () => {
-    setVisibleList(list.slice(0, visibleList.length + 2));
+    setVisibleList(list.slice(0, listSize + 2));
+    setListSize(listSize + 2);
   }
 
   const handleSortChange = (e) => {
@@ -82,15 +95,10 @@ function ReviewsList(props) {
   }
 
   const ClearFilter = () => {
-
     return (
       <button style={{ fontSize: "70%", color: "black" }} onClick={(e) => { props.resetStarSort(e); props.logger(e) }} >&nbsp;Clear filtering&nbsp;</button>
     )
   }
-
-  useEffect(() => {
-    getList(sortQuery);
-  }, [props.tracker]);
 
   return (
     <div className="reviews-list">
