@@ -10,7 +10,7 @@ import URL from '../URL';
 class ProductDetailPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {productId: 13023, productInfo: {}, listUpdate: false, darkMode: false};
+    this.state = {productId: 13027, productInfo: {}, listUpdate: false, darkMode: false};
     this.productSelect = this.productSelect.bind(this);
     this.toggleDarkMode = this.toggleDarkMode.bind(this);
   }
