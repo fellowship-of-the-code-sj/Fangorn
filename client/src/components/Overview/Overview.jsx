@@ -104,7 +104,7 @@ const Overview = (props) => {
   )
 
   Overview.propTypes = {
-    productID: PropTypes.number,
+    productId: PropTypes.number,
     productObj: PropTypes.object,
     stylesArr: PropTypes.array,
     ratingsObj: PropTypes.object

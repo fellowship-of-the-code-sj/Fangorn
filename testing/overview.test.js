@@ -22,7 +22,7 @@ describe('Overview', () => {
   it('should render Overview component', () => {
     expect(wrapper.find('.overview').length).toBe(1);
   });
-  
+
   it('should render a Default View component', () => {
     expect(wrapper.containsMatchingElement(<DefaultView />)).toEqual(true);
   })
@@ -70,6 +70,7 @@ describe('Default View', () => {
       handleImageIndexChange = { () => {} }
     />);
     expect(wrapper.contains(<img
+      rel="preload"
       src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80" id="defaultViewImage"
     />)).toBe(true);
   })
@@ -84,7 +85,7 @@ describe('Default View', () => {
     />);
     expect(wrapper.find('#defaultViewThumbnails').length).toBe(1)
   })
-  
+
 });
 
 describe('Product Information', () => {
