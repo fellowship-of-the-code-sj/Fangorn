@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StarRating from '../RelatedOutfit/StarRating.jsx';
+import captureOverview from '../../hoc/captureOverview';
 
-const ProductInfo = (props) => {
+const ProductInfo = ({ product, currentStyle, ratings, logger }) => {
 
   var average = (obj) => {
     var total = 0;
@@ -17,7 +18,7 @@ const ProductInfo = (props) => {
     }
   };
 
-  const ratingData = average(props.ratings);
+  const ratingData = average(ratings);
 
   return (
     <div className="productInfo">
@@ -26,14 +27,15 @@ const ProductInfo = (props) => {
           <div id="overviewRating">
             <StarRating rating={ratingData.average}/>
           </div>
-          &nbsp;- Read all&nbsp;<a href="#randr">{ratingData.count}</a>&nbsp;reviews
+          &nbsp;-&nbsp;
+          <a href="#randr" onClick={e => {logger(e)}}>Read all&nbsp;{ratingData.count}&nbsp;reviews</a>
         </div> : null
       }
-      <div id="productInfoCategory">{props.product.category}</div>
-      <div id="productInfoName">{props.product.name}</div>
-      { props.currentStyle.sale_price ?
-        <div id="productInfoPrice"><span id="salePrice">${props.currentStyle.sale_price}</span> <span id="originalPrice">${props.currentStyle.original_price}</span></div> :
-        <div id="productInfoPrice">${props.currentStyle.original_price}</div>
+      <div id="productInfoCategory">{product.category}</div>
+      <div id="productInfoName">{product.name}</div>
+      { currentStyle.sale_price ?
+        <div id="productInfoPrice"><span id="salePrice">${currentStyle.sale_price}</span> <span id="originalPrice">${currentStyle.original_price}</span></div> :
+        <div id="productInfoPrice">${currentStyle.original_price}</div>
       }
     </div>
   )
@@ -41,8 +43,9 @@ const ProductInfo = (props) => {
   ProductInfo.propTypes = {
     ratings: PropTypes.object,
     product: PropTypes.object,
-    currentStyle: PropTypes.object
+    currentStyle: PropTypes.object,
+    logger: PropTypes.func
   }
 }
 
-export default ProductInfo;
+export default captureOverview(ProductInfo);
