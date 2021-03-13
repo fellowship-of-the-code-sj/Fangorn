@@ -55,10 +55,10 @@ function ReviewsList(props) {
     setVisibleList(sortByStar(list).slice(0, listSize))
   }, [props.tracker]);
 
-  // update list on first load
+  // update list on first load and productID change
   useEffect(() => {
     getList(sortQuery);
-  }, []);
+  }, [props.productID]);
 
   const isFiltering = () => {
     if (props.starSort[1] === false && props.starSort[2] === false && props.starSort[3] === false && props.starSort[4] === false && props.starSort[5] === false) {
@@ -109,14 +109,14 @@ function ReviewsList(props) {
         <option value="helpful">Most helpful</option>
       </select>
       {
-        isFiltering() ? <span>, filtering by <br></br><ClearFilter /> {whichFilters()} reviews&nbsp;</span> : <span><br></br><br></br></span>
+        isFiltering() ? <span>, filtering by <br></br><ClearFilter /> {whichFilters()} reviews&nbsp;</span> : <div className="reviews-list-double-spacer"></div>
       }
       <hr></hr>
       <div className="reviews-list-content">
         {visibleList.map((review) => {
           return <Review key={review.review_id} review={review} />
         })}
-      </div><br></br>
+      </div>
       {
         list.length > visibleList.length ?
           <div className="review-list-buttons">

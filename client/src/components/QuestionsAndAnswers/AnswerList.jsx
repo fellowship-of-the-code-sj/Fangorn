@@ -5,7 +5,7 @@ import captureQandA from '../../hoc/captureQandA';
 
 const AnswerList = ({ answers, showMoreAnswersButton, handleShowMoreAnswers, loadOrCollapseAnswers, logger }) => {
   return (
-    <div>
+    <div className="answer-list">
       {answers.map(answer => <IndividualAnswer key={answer.id} answer={answer} />)}
       {
           showMoreAnswersButton ?
