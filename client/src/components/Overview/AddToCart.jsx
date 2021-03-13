@@ -4,13 +4,11 @@ import captureOverview from '../../hoc/captureOverview';
 
 const AddToCart = ({ skus, logger }) => {
 
-  const [currentSku, setCurrentSku] = useState({
-    sku: null,
-    size: '',
-    quantities: []
-  });
-  const [currentQty, setCurrentQty] = useState(null);
+  const [selectedSku, setSelectedSku] = useState(null);
+  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedQty, setSelectedQty] = useState(null);
   const [sizes, setSizes] = useState([]);
+  const [quantities, setQuantities] = useState([]);
   const [failedAddToCart, setFailedAddToCart] = useState(false)
 
   useEffect(() => {
@@ -21,38 +19,32 @@ const AddToCart = ({ skus, logger }) => {
       }
     }
     setSizes(styleSizes)
-    setCurrentSku({
-      sku: null,
-      size: 'Select Size',
-      quantities: []
-    });
-    setCurrentQty(null);
+    setSelectedSku(null);
+    setSelectedSize('Select Size');
+    setSelectedQty(null);
+    setQuantities([]);
   }, [skus])
 
   const sizeChange = (sizeString) => {
     if (sizeString === 'Select Size') {
-      setCurrentSku({
-        sku: null,
-        size: sizeString,
-        quantities: []
-      })
+      setSelectedSku(null);
+      setSelectedSize(sizeString)
+      setQuantities([]);
     }
     for (let key in skus) {
       if (skus[key].size === sizeString) {
-        setCurrentSku({
-          sku: Number(key),
-          size: sizeString,
-          quantities: createArray(skus[key].quantity)
-        })
-        if (!currentQty) {
-          setCurrentQty(1)
+        setSelectedSku(Number(key));
+        setSelectedSize(sizeString)
+        setQuantities(createArray(skus[key].quantity));
+        if (!selectedQty) {
+          setSelectedQty(1)
         }
       }
     }
   }
 
   const quantityChange = (qtyString) => {
-    setCurrentQty(Number(qtyString));
+    setSelectedQty(Number(qtyString));
   }
 
   const createArray = (qty) => {
@@ -70,11 +62,11 @@ const AddToCart = ({ skus, logger }) => {
   }
 
   const handleAddToCart = () => {
-    if (currentSku.size === "Select Size") {
+    if (selectedSize === "Select Size") {
       setFailedAddToCart(true);
     } else {
       setFailedAddToCart(false);
-      console.log({sku_id: currentSku.sku, count: currentQty})
+      console.log({sku_id: selectedSku, count: selectedQty})
     }
   }
 
@@ -96,11 +88,11 @@ const AddToCart = ({ skus, logger }) => {
           <select id="sizeSelect" disabled><option>OUT OF STOCK</option></select>
         </div>
       }
-      {currentSku.quantities.length > 0 ? 
+      {quantities.length > 0 ? 
         <select
           id="quantitySelect"
           onChange={e => {quantityChange(e.target.value)}}>
-          {currentSku.quantities.map((quantity, i) => (
+          {quantities.map((quantity, i) => (
             <option key={i}>{quantity}</option>
           ))}
         </select> :
