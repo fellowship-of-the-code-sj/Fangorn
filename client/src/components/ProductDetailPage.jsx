@@ -35,8 +35,8 @@ class ProductDetailPage extends React.Component {
 
   render() {
     return (
-      // <BrowserRouter>
-      //     <Route key={this.state.productId} path="/">
+      <BrowserRouter>
+          <Route key={this.state.productId} path="/">
             <div className={ this.state.darkMode? 'productDetailPageDark': 'productDetailPageLight' }>
               <div className="flex banner">
                 <div className="vertical-centering logo">Fangorn</div>
@@ -44,7 +44,6 @@ class ProductDetailPage extends React.Component {
                 <div className="flex vertical-centering">
                   <div className="site-search">
                     <label>
-                      Search
                     <input name='search' type="text"></input>
                     </label>
                   </div>
@@ -52,8 +51,7 @@ class ProductDetailPage extends React.Component {
                     <ion-icon size="large" name="search-outline"></ion-icon>
                   </div>
                 </div>
-              </div>
-              <div className='primaryComponent'>
+
                 <div className='darkModeButton'>
                   <label>
                     <input onClick={this.toggleDarkMode} type="checkbox"></input>
@@ -71,6 +69,8 @@ class ProductDetailPage extends React.Component {
                     </span>
                   </label>
                 </div>
+              </div>
+              <div className='primaryComponent'>
                 {
                   this.state.productInfo?.productObj ?
                   <Overview
@@ -104,8 +104,8 @@ class ProductDetailPage extends React.Component {
                 : null
               } */}
             </div>
-      //     </Route>
-      // </BrowserRouter>
+          </Route>
+      </BrowserRouter>
     )
   }
 }
