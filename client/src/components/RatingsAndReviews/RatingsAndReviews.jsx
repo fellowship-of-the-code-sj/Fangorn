@@ -72,8 +72,14 @@ function RatingsAndReviews(props) {
     <div className="ratings-and-reviews">
       <h3>Ratings and Reviews</h3><br></br>
       <a name="randr" />
-      <Ratings starSort={starSort} toggleStarSort={toggleStarSort} tracker={tracker} metaObject={metaObject} />
-      <ReviewsList resetStarSort={resetStarSort} productName={props.productName} tracker={tracker} starSort={starSort} metaObject={metaObject} productID={props.productID} />
+      <div className="flex">
+        <div>
+          <Ratings starSort={starSort} toggleStarSort={toggleStarSort} tracker={tracker} metaObject={metaObject} />
+        </div>
+        <div>
+          <ReviewsList resetStarSort={resetStarSort} productName={props.productName} tracker={tracker} starSort={starSort} metaObject={metaObject} productID={props.productID} />
+        </div>
+      </div>
     </div>
   )
 }

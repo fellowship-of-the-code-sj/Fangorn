@@ -504,16 +504,28 @@ input:checked + .slider:before {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
+
+.ratings{
+  height: 650px;
+  overflow: visible;
+
+}
+
+.reviews-list-double-spacer {
+  margin-top: 40px;
+
+}
+
 .reviews-list {
-  position: relative;
-  margin-left: 45%;
-  width: 60%;
-  bottom: 650px;
+  margin-left: 20%;
+  width: 560px;
+  margin-top: 10%;
   max-height: 80%;
 }
 .reviews-list-content {
   overflow:auto;
-  max-height: 65%;
+  max-height: 650px;
+  margin-bottom: 18px;
 }
 
 .review {
@@ -534,6 +546,7 @@ input:checked + .slider:before {
 .new-review-star-rating-form {
   font-size: larger
 }
+
 
 .new-review-button {
   margin-left: 10px;
@@ -634,10 +647,7 @@ input:checked + .slider:before {
   top: 15px;
 }
 
-.ratings{
-  height: 650px;
-  overflow: visible;
-}
+
 
 .ratings-and-reviews {
   margin: auto;
@@ -755,7 +765,7 @@ input:checked + .slider:before {
   border: 1px solid #888;
   width: 803px;
   height: 752px;
-  border-radius: 5px;
+  border-radius: 30px;
   /* overflow: auto; */
 }
 
@@ -792,8 +802,13 @@ input:checked + .slider:before {
   float:right
 }
 
+.new-review-summary {
+  margin-top: 25px;
+  margin-bottom: 25px
+}
+
 .new-review-add-photo-button-spacer{
-  height: 28px;
+  height: 52px;
 }
 
 
