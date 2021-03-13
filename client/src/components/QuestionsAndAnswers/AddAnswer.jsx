@@ -71,6 +71,10 @@ var AddAnswer = (
     }
   }
 
+  let highlightErrorAnswer = isAnswerEmpty ? {borderColor: '#eb643f', boxShadow: '0 0 10px #eb643f' } : {};
+  let highlightErrorNickname = isNicknameEmpty ? {borderColor: '#eb643f', boxShadow: '0 0 10px #eb643f' } : {};
+  let highlightErrorEmail = isEmailEmpty || isEmailFormatInvalid ? {borderColor: '#eb643f', boxShadow: '0 0 10px #eb643f' } : {};
+
   return (
     <React.Fragment>
       <div className="modal-focus" onClick={handleAddAnswerModal}></div>
@@ -106,6 +110,7 @@ var AddAnswer = (
               name="answer"
               rows="5"
               maxLength="1000"
+              style={highlightErrorAnswer}
               value={answer}
               onChange={handleChange}></textarea>
           </label>
@@ -117,6 +122,7 @@ var AddAnswer = (
                   type="text"
                   name="nickname"
                   placeholder="Example: jackson11!"
+                  style={highlightErrorNickname}
                   value={nickname}
                   onChange={handleChange}></input>
                 <span className="disclaimer-small">For privacy reasons, do not use your full name or email address</span>
@@ -132,6 +138,7 @@ var AddAnswer = (
                   type="text"
                   name="email"
                   placeholder="Example: jack@email.com"
+                  style={highlightErrorEmail}
                   value={email}
                   onChange={handleChange}></input>
                 <span className="disclaimer-small">For authentication reasons, you will not be emailed</span>
