@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import _ from 'underscore';
-import regex from '../../../helperFunctions/regex';
+// import regex from '../../../helperFunctions/regex';
 import captureQandA from '../../hoc/captureQandA';
 import URL from '../../URL';
 
@@ -31,13 +31,18 @@ var AddAnswer = (
     if (e.target.name === 'email') setEmail(value);
   };
 
+  const validateEmail = email => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
 
     let answerHasContent = answer.length > 0;
     let nicknameHasContent = nickname.length > 0;
     let emailHasContent = email.length > 0;
-    let emailFormatIsValid = regex.email.test(email);
+    let emailFormatIsValid = validateEmail(email);
     let allValid = answerHasContent && nicknameHasContent && emailHasContent && emailFormatIsValid;
 
     setIsAnswerEmpty(false);
@@ -77,7 +82,7 @@ var AddAnswer = (
           onClick={handleAddAnswerModal}></ion-icon>
         <div className="center">
           <h1>Submit your Answer</h1>
-          <h2>{productName}: {questionBody}</h2>
+          <div className="qa-body">{productName}: {questionBody}</div>
           {
             isSubmitted ?
             <div className="confirmed">Answer submitted <ion-icon name="checkmark-outline"></ion-icon></div>
