@@ -192,96 +192,73 @@ function NewReview(props) {
   }
 
   const getCharacteristicMeaning = (characteristic) => {
+
     if (characteristic === 'size') {
-      if (size === null) {
-        return 'none selected';
-      } else if (size === 1) {
-        return 'A size too small';
-      } else if (size === 2) {
-        return '½ a size too small';
-      } else if (size === 3) {
-        return 'Perfect';
-      } else if (size === 4) {
-        return '½ a size too big';
-      } else if (size === 5) {
-        return 'A size too big';
+      switch (size) {
+        case null: return 'none selected';
+        case 1: return 'A size too small';
+        case 2: return '½ a size too small';
+        case 3: return 'Perfect';
+        case 4: return '½ a size too big';
+        case 5: return 'A size too big';
       }
     }
+
     if (characteristic === 'width') {
-      if (width === null) {
-        return 'none selected';
-      } else if (width === 1) {
-        return 'Too narrow';
-      } else if (width === 2) {
-        return 'Slightly narrow';
-      } else if (width === 3) {
-        return 'Perfect';
-      } else if (width === 4) {
-        return 'Slightly wide';
-      } else if (width === 5) {
-        return 'Too wide';
+      switch (width) {
+        case null: return 'none selected';
+        case 1: return 'Too narrow';
+        case 2: return 'Slightly narrow';
+        case 3: return 'Perfect';
+        case 4: return 'Slightly wide';
+        case 5: return 'Too wide';
       }
     }
+
     if (characteristic === 'comfort') {
-      if (comfort === null) {
-        return 'none selected';
-      } else if (comfort === 1) {
-        return 'Uncomfortable';
-      } else if (comfort === 2) {
-        return 'Slightly uncomfortable';
-      } else if (comfort === 3) {
-        return 'Ok';
-      } else if (comfort === 4) {
-        return 'Comfortable';
-      } else if (comfort === 5) {
-        return 'Perfect';
+      switch (comfort) {
+        case null: return 'none selected';
+        case 1: return 'Uncomfortable';
+        case 2: return 'Slightly uncomfortable';
+        case 3: return 'Ok';
+        case 4: return 'Comfortable';
+        case 5: return 'Perfect';
       }
     }
+
     if (characteristic === 'quality') {
-      if (quality === null) {
-        return 'none selected';
-      } else if (quality === 1) {
-        return 'Poor';
-      } else if (quality === 2) {
-        return 'Below average';
-      } else if (quality === 3) {
-        return 'What I expected';
-      } else if (quality === 4) {
-        return 'Pretty great';
-      } else if (quality === 5) {
-        return 'Perfect';
+      switch (quality) {
+        case null: return 'none selected';
+        case 1: return 'Poor';
+        case 2: return 'Below average';
+        case 3: return 'What I expected';
+        case 4: return 'Pretty great';
+        case 5: return 'Perfect';
       }
     }
+
     if (characteristic === 'length') {
-      if (length === null) {
-        return 'none selected';
-      } else if (length === 1) {
-        return 'Runs short';
-      } else if (length === 2) {
-        return 'Runs slightly short';
-      } else if (length === 3) {
-        return 'Perfect';
-      } else if (length === 4) {
-        return 'Runs slightly long';
-      } else if (length === 5) {
-        return 'Runs long';
+      switch (length) {
+        case null: return 'none selected';
+        case 1: return 'Runs short';
+        case 2: return 'Runs slightly short';
+        case 3: return 'Perfect';
+        case 4: return 'Runs slightly long';
+        case 5: return 'Runs long';
       }
     }
+
     if (characteristic === 'fit') {
-      if (fit === null) {
-        return 'none selected';
-      } else if (fit === 1) {
-        return 'Runs tight';
-      } else if (fit === 2) {
-        return 'Runs slightly tight';
-      } else if (fit === 3) {
-        return 'Perfect';
-      } else if (fit === 4) {
-        return 'Runs slightly loose';
-      } else if (fit === 5) {
-        return 'Runs loose';
+      switch (fit) {
+        case null: return 'none selected';
+        case 1: return 'Runs tight';
+        case 2: return 'Runs slightly tight';
+        case 3: return 'Perfect';
+        case 4: return 'Runs slightly loose';
+        case 5: return 'Runs loose';
       }
     }
+
   }
 
   const handleAddPhoto = () => {
