@@ -995,13 +995,19 @@ input:checked + .slider:before {
 /* Question */
 .question-head { margin: 17px 0; }
 
+/* Answer List */
+.answer-list { width: 100%; }
+
 /* Answer */
 .answer-body {
   margin-bottom: 10px;
   font-size: 1.1em;
 }
 
-.answer { margin-top: 17px; }
+.answer {
+  margin-top: 17px;
+  width: 100%;
+}
 
 .answer:first-child { margin-top: 3px; }
 
@@ -1080,6 +1086,12 @@ input:checked + .slider:before {
   margin: 10px 0 5px auto;
   font-size: 2.5em;
   font-weight: bold;
+}
+
+.qa-question,
+.answer-body {
+  width: 60%;
+  word-wrap: break-word;
 }
 
 /*
@@ -1250,7 +1262,7 @@ input:checked + .slider:before {
   background-color: rgba(0, 0, 0, 0);
 }
 
-#defaultViewThumbnailsScroll::-webkit-scrollbar { 
+#defaultViewThumbnailsScroll::-webkit-scrollbar {
   display: none;
 }
 
