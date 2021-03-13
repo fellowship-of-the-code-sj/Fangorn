@@ -67,6 +67,14 @@
   border: 1px solid #fff;
 }
 
+.productDetailPageDark .secondary-text,
+.productDetailPageDark .secondary-text a:link,
+.productDetailPageDark .secondary-text a:visited,
+.productDetailPageDark .secondary-text a:hover,
+.productDetailPageDark .secondary-text a:active {
+  color: darkgray;
+}
+
 /* header */
 .banner {
   height: 75px;
@@ -84,10 +92,12 @@
   margin: 20px 20px auto 20px;
 }
 
+.site-search { color: #fff; }
+
 .site-search input {
   outline: none;
   padding: 6px;
-  margin-right: 5px;
+  margin: 0 5px 0 10px;
   background-color: transparent;
   border: 0;
   border-bottom: 2px solid #fff;
@@ -927,13 +937,13 @@ input:checked + .slider:before {
   font-size: 0.9em;
 }
 
-.secondary-text { color: darkgray; }
+.secondary-text { color: rgb(99, 99, 99); }
 
 .secondary-text a:link,
 .secondary-text a:visited,
 .secondary-text a:hover,
 .secondary-text a:active {
-  color: darkgray;
+  color: rgb(99, 99, 99);
 }
 
 .load-more-answers {
@@ -963,6 +973,11 @@ input:checked + .slider:before {
   font-weight: bold;
   font-size: 1.25em;
 }
+
+/* QA */
+.QA { margin-bottom: 30px; }
+
+.QA h3 { margin-bottom: 30px }
 
 /* Search bar */
 .QA-search-bar { padding: 20px; }
