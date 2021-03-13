@@ -68,8 +68,12 @@ var AddQuestion = (
     }
   };
 
+  let highlightErrorQuestion = isQuestionEmpty ? {borderColor: '#eb643f', boxShadow: '0 0 10px #eb643f' } : {};
+  let highlightErrorNickname = isNicknameEmpty ? {borderColor: '#eb643f', boxShadow: '0 0 10px #eb643f' } : {};
+  let highlightErrorEmail = isEmailEmpty || isEmailFormatInvalid ? {borderColor: '#eb643f', boxShadow: '0 0 10px #eb643f' } : {};
+
   return (
-    <React.Fragment>
+    <>
       <div className="modal-focus" onClick={handleAddQuestionModal}></div>
       <div className="modal-add">
         <ion-icon
@@ -96,6 +100,7 @@ var AddQuestion = (
             name="question"
             rows="7"
             maxLength="1000"
+            style={highlightErrorQuestion}
             value={question}
             onChange={handleChange}></textarea>
           <div className="flex">
@@ -107,6 +112,7 @@ var AddQuestion = (
                   name="nickname"
                   placeholder="Example: jackson11!"
                   value={nickname}
+                  style={highlightErrorNickname}
                   onChange={handleChange}></input>
                 <span className="disclaimer-small">For privacy reasons, do not use your full name or email address</span>
               </label>
@@ -121,6 +127,7 @@ var AddQuestion = (
                   type="text"
                   name="email"
                   placeholder="Example: jack@email.com"
+                  style={highlightErrorEmail}
                   value={email}
                   onChange={handleChange}></input>
                 <span className="disclaimer-small">For authentication reasons, you will not be emailed</span>
@@ -137,7 +144,7 @@ var AddQuestion = (
             }}></input>
         </form>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
