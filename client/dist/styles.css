@@ -508,7 +508,7 @@ input:checked + .slider:before {
 
 .reviews-list {
   margin-left: 20%;
-  width: 95%;
+  width: 560px;
   margin-top: 10%;
   max-height: 80%;
 }
