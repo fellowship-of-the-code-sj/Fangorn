@@ -119,10 +119,9 @@ body { font-family: 'Lato', sans-serif; }
 */
 
 .darkModeButton {
-  position: fixed;
-  display: inline-block;
+  position: relative;
   right: 5px;
-  top: 30px;
+  top: 20px;
   width: 60px;
   height: 34px;
   z-index: 1000;
@@ -504,16 +503,28 @@ input:checked + .slider:before {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
+
+.ratings{
+  height: 650px;
+  overflow: visible;
+
+}
+
+.reviews-list-double-spacer {
+  margin-top: 40px;
+
+}
+
 .reviews-list {
-  position: relative;
-  margin-left: 45%;
-  width: 60%;
-  bottom: 650px;
+  margin-left: 10%;
+  width: 600px;
+  margin-top: 10%;
   max-height: 80%;
 }
 .reviews-list-content {
   overflow:auto;
-  max-height: 65%;
+  max-height: 650px;
+  margin-bottom: 18px;
 }
 
 .review {
@@ -535,6 +546,7 @@ input:checked + .slider:before {
   font-size: larger
 }
 
+
 .new-review-button {
   margin-left: 10px;
   margin-right: 10px;
@@ -547,11 +559,14 @@ input:checked + .slider:before {
   margin-top: 5px;
   flex-direction: column;
   font-weight: bold;
+  font-size: 1.25em;
 }
 
 .review-body{
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 1.15em;
+  font-weight: 300;
 }
 
 .reviewer-name-and-date{
@@ -634,10 +649,7 @@ input:checked + .slider:before {
   top: 15px;
 }
 
-.ratings{
-  height: 650px;
-  overflow: visible;
-}
+
 
 .ratings-and-reviews {
   margin: auto;
@@ -755,7 +767,7 @@ input:checked + .slider:before {
   border: 1px solid #888;
   width: 803px;
   height: 752px;
-  border-radius: 5px;
+  border-radius: 30px;
   /* overflow: auto; */
 }
 
@@ -792,8 +804,13 @@ input:checked + .slider:before {
   float:right
 }
 
+.new-review-summary {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
 .new-review-add-photo-button-spacer{
-  height: 28px;
+  height: 52px;
 }
 
 
@@ -995,13 +1012,19 @@ input:checked + .slider:before {
 /* Question */
 .question-head { margin: 17px 0; }
 
+/* Answer List */
+.answer-list { width: 100%; }
+
 /* Answer */
 .answer-body {
   margin-bottom: 10px;
   font-size: 1.1em;
 }
 
-.answer { margin-top: 17px; }
+.answer {
+  margin-top: 17px;
+  width: 100%;
+}
 
 .answer:first-child { margin-top: 3px; }
 
@@ -1080,6 +1103,19 @@ input:checked + .slider:before {
   margin: 10px 0 5px auto;
   font-size: 2.5em;
   font-weight: bold;
+}
+
+.qa-body {
+  word-wrap: break-word;
+  font-weight:300;
+}
+
+.qa-question { width: 60% }
+.answer-body { width: 90% }
+
+.qa-question,
+.answer-body {
+  word-wrap: break-word;
 }
 
 /*
@@ -1250,7 +1286,7 @@ input:checked + .slider:before {
   background-color: rgba(0, 0, 0, 0);
 }
 
-#defaultViewThumbnailsScroll::-webkit-scrollbar { 
+#defaultViewThumbnailsScroll::-webkit-scrollbar {
   display: none;
 }
 

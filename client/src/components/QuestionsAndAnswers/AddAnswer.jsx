@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import _ from 'underscore';
-import regex from '../../../helperFunctions/regex';
 import captureQandA from '../../hoc/captureQandA';
 import URL from '../../URL';
 
@@ -31,13 +30,18 @@ var AddAnswer = (
     if (e.target.name === 'email') setEmail(value);
   };
 
+  const validateEmail = email => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
 
     let answerHasContent = answer.length > 0;
     let nicknameHasContent = nickname.length > 0;
     let emailHasContent = email.length > 0;
-    let emailFormatIsValid = regex.email.test(email);
+    let emailFormatIsValid = validateEmail(email);
     let allValid = answerHasContent && nicknameHasContent && emailHasContent && emailFormatIsValid;
 
     setIsAnswerEmpty(false);
@@ -67,6 +71,10 @@ var AddAnswer = (
     }
   }
 
+  let highlightErrorAnswer = isAnswerEmpty ? {borderColor: '#eb643f', boxShadow: '0 0 10px #eb643f' } : {};
+  let highlightErrorNickname = isNicknameEmpty ? {borderColor: '#eb643f', boxShadow: '0 0 10px #eb643f' } : {};
+  let highlightErrorEmail = isEmailEmpty || isEmailFormatInvalid ? {borderColor: '#eb643f', boxShadow: '0 0 10px #eb643f' } : {};
+
   return (
     <React.Fragment>
       <div className="modal-focus" onClick={handleAddAnswerModal}></div>
@@ -77,7 +85,7 @@ var AddAnswer = (
           onClick={handleAddAnswerModal}></ion-icon>
         <div className="center">
           <h1>Submit your Answer</h1>
-          <h2>{productName}: {questionBody}</h2>
+          <div className="qa-body">{productName}: {questionBody}</div>
           {
             isSubmitted ?
             <div className="confirmed">Answer submitted <ion-icon name="checkmark-outline"></ion-icon></div>
@@ -102,6 +110,7 @@ var AddAnswer = (
               name="answer"
               rows="5"
               maxLength="1000"
+              style={highlightErrorAnswer}
               value={answer}
               onChange={handleChange}></textarea>
           </label>
@@ -113,6 +122,7 @@ var AddAnswer = (
                   type="text"
                   name="nickname"
                   placeholder="Example: jackson11!"
+                  style={highlightErrorNickname}
                   value={nickname}
                   onChange={handleChange}></input>
                 <span className="disclaimer-small">For privacy reasons, do not use your full name or email address</span>
@@ -128,6 +138,7 @@ var AddAnswer = (
                   type="text"
                   name="email"
                   placeholder="Example: jack@email.com"
+                  style={highlightErrorEmail}
                   value={email}
                   onChange={handleChange}></input>
                 <span className="disclaimer-small">For authentication reasons, you will not be emailed</span>

@@ -31,10 +31,6 @@ const OutfitListCard = ({ cardData, removeOutfitItem, logger}) => {
 
   const [ cardImage, setCardImage ] = useState(0);
 
-  const pictureCarousel = () => {
-    setCarouselImages(!carouselImages);
-  }
-
   const updateCardImage = (e, index) => {
     e.stopPropagation();
     setCardImage(index);
@@ -44,7 +40,7 @@ const OutfitListCard = ({ cardData, removeOutfitItem, logger}) => {
 
     <div className='itemCard'>
       <OutfitActionButton id={cardData.id} removeOutfitItem={removeOutfitItem}/>
-      <div onMouseEnter={pictureCarousel} onMouseLeave={pictureCarousel} className='photoBorder'>
+      <div onMouseEnter={ () => setCarouselImages(true)} onMouseLeave={ () => setCarouselImages(false)} className='photoBorder'>
         {
           //Checks to see if image exists, if not returns default image
           cardData.default_style.photos[0].url ?
