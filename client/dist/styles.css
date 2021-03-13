@@ -1105,9 +1105,16 @@ input:checked + .slider:before {
   font-weight: bold;
 }
 
+.qa-body {
+  word-wrap: break-word;
+  font-weight:300;
+}
+
+.qa-question { width: 60% }
+.answer-body { width: 90% }
+
 .qa-question,
 .answer-body {
-  width: 60%;
   word-wrap: break-word;
 }
 
