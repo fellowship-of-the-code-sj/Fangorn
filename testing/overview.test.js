@@ -153,7 +153,10 @@ describe('Style Selector', () => {
       currentStyle={data.styles[0]}
       handleStyleChange={() => {}}
     />);
-    expect(wrapper.contains(<div id="styleSelectorName">Style &gt; Forest Green &amp; Black</div>)).toBe(true);
+    expect(wrapper.contains(<div id="styleSelectorName">
+      <span id="styleLabel">STYLE &gt; </span>
+      <span id="styleName">Forest Green &amp; Black</span>
+    </div>)).toBe(true);
   })
 
   it('should render thumbnails of styles dynamically', async () => {
