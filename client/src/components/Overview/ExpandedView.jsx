@@ -15,6 +15,7 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
           <img
             src={photos[imageIndex] ? photos[imageIndex].url : "https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"}
             id ="expandedViewImage"
+            alt="Expanded Image"
             onClick={e =>{
               setIsZoomed(true);
               logger(e);

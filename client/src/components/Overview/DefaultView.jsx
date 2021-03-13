@@ -19,6 +19,7 @@ const DefaultView = ({ photos, changeView, imageIndex, handleImageIndexChange, s
             rel="preload"
             src={photos[imageIndex].url ? photos[imageIndex].url : 'https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'}
             id="defaultViewImage"
+            alt="Image of selected style"
           /> : <img src="" />
         }
 
