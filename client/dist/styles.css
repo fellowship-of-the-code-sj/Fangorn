@@ -494,20 +494,27 @@ input:checked + .slider:before {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
+
+.ratings{
+  height: 650px;
+  overflow: visible;
+
+}
+
 .reviews-list-double-spacer {
   margin-top: 40px;
+
 }
 
 .reviews-list {
-  position: relative;
-  margin-left: 45%;
-  width: 60%;
-  bottom: 650px;
+  margin-left: 20%;
+  width: 95%;
+  margin-top: 10%;
   max-height: 80%;
 }
 .reviews-list-content {
   overflow:auto;
-  max-height: 65%;
+  max-height: 650px;
   margin-bottom: 18px;
 }
 
@@ -630,10 +637,7 @@ input:checked + .slider:before {
   top: 15px;
 }
 
-.ratings{
-  height: 650px;
-  overflow: visible;
-}
+
 
 .ratings-and-reviews {
   margin: auto;
