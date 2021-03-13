@@ -21,7 +21,7 @@ const ComparisonTable = ({ comparisionList, currentProductName, relatedProductNa
                 {
                   comparisionList[feature][0]?
                   <td className='leftCheckMark' ><ion-icon name="checkmark-outline"></ion-icon></td>
-                  : <td className='leftCheckMark' > </td>
+                  : <td className='leftCheckMark' ></td>
                 }
                 <td className='centerFeature' >{feature}</td>
                 {

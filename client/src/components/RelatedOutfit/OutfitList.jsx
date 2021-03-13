@@ -37,16 +37,18 @@ const OutfitList = ({ productInfo, logger }) => {
   //Adds item to outfitList
   const addOutfit = () => {
 
-    //check if the product already exists in the outfit list
-    if (!outfitList.list.find(outfitItem => outfitItem.id === productInfo.id)) {
-      setListUpdate(!listUpdate);
+    if (productInfo) {
+      //check if the product already exists in the outfit list
+      if (!outfitList.list.find(outfitItem => outfitItem.id === productInfo.id)) {
+        setListUpdate(!listUpdate);
 
-      outfitList.list.push(productInfo);
+        outfitList.list.push(productInfo);
 
-      var outfitListArrayString = JSON.stringify(outfitList.list);
-      window.localStorage.setItem('outfitList', outfitListArrayString);
-      setOutfitList({ list: outfitList.list });
-    };
+        var outfitListArrayString = JSON.stringify(outfitList.list);
+        window.localStorage.setItem('outfitList', outfitListArrayString);
+        setOutfitList({ list: outfitList.list });
+      };
+    }
   }
 
   const removeOutfitItem = (item) => {
@@ -64,7 +66,6 @@ const OutfitList = ({ productInfo, logger }) => {
   return (
     <div key={listUpdate} className='itemsList'>
       <h3 className='listTitle' >Your Outfit</h3>
-      {console.log(outfitList.list.length)}
       {
         outfitList.list.length > 3 ?
         <div className='outfitAddItemCard' onClick={ (e) => {
@@ -101,7 +102,6 @@ const OutfitList = ({ productInfo, logger }) => {
           : null
         }
         </Slider>
-
     </div>
   )
 }

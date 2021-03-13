@@ -8,6 +8,11 @@ import ExpandedView from './ExpandedView.jsx';
 import axiosHelper from '../../../helperFunctions/serverRequest.js';
 import PropTypes from 'prop-types';
 
+import RelatedAndOutfits from '../RelatedOutfit/RelatedAndOutfits.jsx';
+import QuestionsAndAnswers from '../QuestionsAndAnswers/QuestionsAndAnswers.jsx';
+import RatingsAndReviews from '../RatingsAndReviews/RatingsAndReviews.jsx';
+import helperFunctions from '../../../helperFunctions/helperFunctions.js';
+
 const Overview = (props) => {
 
   const [ product, setProduct ] = useState({});
@@ -16,6 +21,7 @@ const Overview = (props) => {
   const [ currentStyle, setCurrentStyle ] = useState({});
   const [ isExpanded, setIsExpanded ] = useState(false);
   const [ imageIndex, setImageIndex ] = useState(0);
+  const [ hasPrimaryLoaded, setHasPrimaryLoaded ] = useState(false);
 
   const handleImageIndexChange = (increment) => {
     let newIndex = imageIndex + increment;
@@ -28,54 +34,82 @@ const Overview = (props) => {
     setRatings(props.ratingsObj);
     setCurrentStyle(props.stylesArr[0]);
     setImageIndex(0);
-  }, [props.productObj])
+  }, [props.productObj]);
+
+  useEffect(() => {
+    setHasPrimaryLoaded(true);
+  }, [product])
 
   const changeView = () => {
     setIsExpanded(!isExpanded)
   }
 
   return (
-    <div className="overview">
-      { isExpanded ?
-        <ExpandedView
-          photos={ currentStyle.photos }
-          changeView = {changeView}
-          imageIndex = {imageIndex}
-          setImageIndex = {setImageIndex}
-          handleImageIndexChange = {handleImageIndexChange}
+    <>
+      <div className="overview">
+        { isExpanded ?
+          <ExpandedView
+            photos={ currentStyle.photos }
+            changeView = {changeView}
+            imageIndex = {imageIndex}
+            setImageIndex = {setImageIndex}
+            handleImageIndexChange = {handleImageIndexChange}
+          />
+        : <DefaultView
+            photos={ currentStyle.photos }
+            changeView = {changeView}
+            imageIndex = {imageIndex}
+            setImageIndex = { setImageIndex }
+            handleImageIndexChange = {handleImageIndexChange}
+          />
+        }
+        <ProductInfo
+          product={ product }
+          currentStyle={ currentStyle }
+          ratings={ ratings }
         />
-      : <DefaultView
-          photos={ currentStyle.photos }
-          changeView = {changeView}
-          imageIndex = {imageIndex}
-          setImageIndex = { setImageIndex }
-          handleImageIndexChange = {handleImageIndexChange}
+        <StyleSelector
+          styles={ styles }
+          currentStyle={ currentStyle }
+          handleStyleChange={index => setCurrentStyle(styles[index])}
         />
+        <AddToCart
+          skus={ currentStyle.skus }
+        />
+        <ProductSummary
+          product={ product }
+        />
+      </div>
+
+      {
+        props.productInfo.productObj && hasPrimaryLoaded ?
+        <div className='secondaryComponent'>
+          {
+            props.productInfo?.productObj ?
+              <RelatedAndOutfits productSelect={props.productSelect}
+                productID={props.productId}
+                productInfo={helperFunctions.createProductObjectData(props.productInfo)}
+                listUpdate={props.listUpdate}
+              />
+              : <RelatedAndOutfits productSelect={props.productSelect}
+                productID={props.productId} />
+            }
+            <QuestionsAndAnswers productID={props.productId} productName={props.productInfo.productObj?.name} />
+            <RatingsAndReviews productName={props.productInfo.productObj?.name} productID={props.productId} />
+        </div>
+        : console.log(hasPrimaryLoaded, props.productInfo)
       }
-      <ProductInfo
-        product={ product }
-        currentStyle={ currentStyle }
-        ratings={ ratings }
-      />
-      <StyleSelector
-        styles={ styles }
-        currentStyle={ currentStyle }
-        handleStyleChange={index => setCurrentStyle(styles[index])}
-      />
-      <AddToCart
-        skus={ currentStyle.skus }
-      />
-      <ProductSummary
-        product={ product }
-      />
-    </div>
+    </>
   )
 
   Overview.propTypes = {
-    productID: PropTypes.number,
+    productId: PropTypes.number,
     productObj: PropTypes.object,
     stylesArr: PropTypes.array,
-    ratingsObj: PropTypes.object
+    ratingsObj: PropTypes.object,
+    productInfo: PropTypes.object,
+    productSelect: PropTypes.object,
+    listUpdate: PropTypes.func
   }
 }
 

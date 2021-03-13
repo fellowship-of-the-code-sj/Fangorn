@@ -67,6 +67,14 @@
   border: 1px solid #fff;
 }
 
+.productDetailPageDark .secondary-text,
+.productDetailPageDark .secondary-text a:link,
+.productDetailPageDark .secondary-text a:visited,
+.productDetailPageDark .secondary-text a:hover,
+.productDetailPageDark .secondary-text a:active {
+  color: darkgray;
+}
+
 /* header */
 .banner {
   height: 75px;
@@ -84,10 +92,12 @@
   margin: 20px 20px auto 20px;
 }
 
+.site-search { color: #fff; }
+
 .site-search input {
   outline: none;
   padding: 6px;
-  margin-right: 5px;
+  margin: 0 5px 0 10px;
   background-color: transparent;
   border: 0;
   border-bottom: 2px solid #fff;
@@ -942,13 +952,13 @@ input:checked + .slider:before {
   font-size: 0.9em;
 }
 
-.secondary-text { color: darkgray; }
+.secondary-text { color: rgb(99, 99, 99); }
 
 .secondary-text a:link,
 .secondary-text a:visited,
 .secondary-text a:hover,
 .secondary-text a:active {
-  color: darkgray;
+  color: rgb(99, 99, 99);
 }
 
 .load-more-answers {
@@ -978,6 +988,11 @@ input:checked + .slider:before {
   font-weight: bold;
   font-size: 1.25em;
 }
+
+/* QA */
+.QA { margin-bottom: 30px; }
+
+.QA h3 { margin-bottom: 30px }
 
 /* Search bar */
 .QA-search-bar { padding: 20px; }
@@ -1090,7 +1105,7 @@ input:checked + .slider:before {
 
 .overview {
   box-sizing: border-box;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   display: grid;
   grid-template: repeat(4, 1fr) / 65% 35% ;
@@ -1118,7 +1133,7 @@ input:checked + .slider:before {
   grid-template-rows: 50px 1fr 25px;
   padding: 5px;
   margin: 5px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   max-width: 100%;
   max-height: 100%;
 }
@@ -1156,6 +1171,11 @@ input:checked + .slider:before {
   z-index: 102;
 }
 
+.expandedButton {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
 #closeExpandedButtonContainer {
   grid-area: 1 / 1 / 2 / 2;
 }
@@ -1182,7 +1202,7 @@ input:checked + .slider:before {
 }
 
 #zoomViewImageContainer:hover {
-  cursor: url('./public/icons/dash.png');
+  cursor: url('./public/icons/dash.png'), crosshair;
 }
 
 /***** Default View Component *****/
@@ -1193,8 +1213,7 @@ input:checked + .slider:before {
   grid-template-columns: 60px 50px 1fr 50px;
   grid-template-rows: 1fr;
   margin: 5px;
-  padding: 5px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 #defaultViewImageContainer {
@@ -1205,6 +1224,7 @@ input:checked + .slider:before {
   height: 700px;
   width: 700px;
   margin: 5px;
+  background-color: rgb(235, 235, 235);
 }
 
 #defaultViewImageContainer:hover {
@@ -1227,15 +1247,26 @@ input:checked + .slider:before {
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   z-index: 1;
+  margin: 5px 0px 5px 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 #defaultViewThumbnailsScroll {
   height: 425;
   overflow-y: scroll;
+}
+
+.scrollButton {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#defaultViewThumbnailsScroll::-webkit-scrollbar { 
+  display: none;
 }
 
 #defaultViewThumbnails {
@@ -1265,7 +1296,7 @@ input:checked + .slider:before {
 
 #selectedThumbnailImage {
   padding: 2px;
-  border: 2px solid black;
+  border: 2px solid white;
 }
 
 .defaultImageButtonContainer {
@@ -1279,16 +1310,18 @@ input:checked + .slider:before {
 .defaultViewButton {
   height: 100%;
   width: 100%;
+  border: none;
+  background-color: rgba(0, 0, 0, .0);
 }
 
-#leftDefaultButton {
+#leftDefaultButtonContainer {
   box-sizing: border-box;
   grid-row: 1 / 2;
   grid-column: 2 / 3;
   z-index: 1;
 }
 
-#rightDefaultButton {
+#rightDefaultButtonContainer {
   box-sizing: border-box;
   grid-row: 1 / 2;
   grid-column: 4 / 5;
@@ -1303,7 +1336,7 @@ input:checked + .slider:before {
   grid-template: 1fr 1fr 3fr 1fr / 1fr;
   margin: 5px;
   padding: 5px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 #productInfoRating {
@@ -1331,16 +1364,23 @@ input:checked + .slider:before {
 #productInfoCategory {
   box-sizing: border-box;
   grid-row: 2 / 3;
+  margin: auto 0px;
+  text-transform: uppercase;
+  font-weight: 300;
 }
 
 #productInfoName {
   box-sizing: border-box;
   grid-row: 3 / 4;
+  margin: auto 0px;
+  font-size: 36px;
+  font-weight: 700;
 }
 
 #productInfoPrice {
   box-sizing: border-box;
   grid-row: 4 / 5;
+  margin: auto 0px;
 }
 
 #salePrice {
@@ -1358,20 +1398,31 @@ input:checked + .slider:before {
   box-sizing: border-box;
   grid-area: styleSelector;
   display: grid;
-  grid-template-rows: 20px 1fr;
+  grid-template-rows: 30px 1fr;
   margin: 5px;
   padding: 5px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 #styleSelectorName {
   box-sizing: border-box;
   grid-row: 1 / 2;
+  margin: auto 0px;
+}
+
+#styleLabel {
+  font-weight: 700;
+}
+
+#styleName {
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 #styleSelectorStyles {
   box-sizing: border-box;
   grid-row: 2 / 3;
+  margin: auto 0px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -1400,7 +1451,7 @@ input:checked + .slider:before {
 
 #selectedStyleImage {
   box-sizing: border-box;
-  border: 2px solid black;
+  border: 4px solid black;
 }
 
 #selectedStyleCheckmark {
@@ -1417,7 +1468,7 @@ input:checked + .slider:before {
   grid-template: 1fr 1fr / 65% 35%;
   margin: 5px;
   padding: 5px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 #sizeSelectContainer {
@@ -1450,6 +1501,11 @@ input:checked + .slider:before {
   box-sizing: border-box;
   grid-area: 2 / 1 / 3 / 3;
   margin: 30px 10px;
+  padding: 0px 10px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /***** Product Summary Component *****/
@@ -1460,12 +1516,26 @@ input:checked + .slider:before {
   grid-template-columns: 65% 35% ;
   margin: 5px;
   padding: 5px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 #productOverview {
   box-sizing: border-box;
   grid-column: 1 / 2;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  border-right: 5px solid black;
+  margin: 20px 0px;
+}
+
+#productOverviewSlogan {
+  text-align: center;
+  margin: auto 10px;
+}
+
+#productOverviewDescription {
+  text-align: center;
+  margin: auto 10px;
 }
 
 #productShare {

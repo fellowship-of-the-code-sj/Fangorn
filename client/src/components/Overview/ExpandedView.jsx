@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Zoom from 'react-img-zoom';
+import captureOverview from '../../hoc/captureOverview';
 
-const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, setImageIndex }) => {
+const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, setImageIndex, logger }) => {
 
   const [ isZoomed, setIsZoomed ] = useState(false)
 
@@ -14,14 +15,20 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
           <img
             src={photos[imageIndex] ? photos[imageIndex].url : "https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"}
             id ="expandedViewImage"
-            onClick={()=>{setIsZoomed(true)}}
+            onClick={e =>{
+              setIsZoomed(true);
+              logger(e);
+            }}
           />
         </div>
         <div className="expandedButtonContainer" id="closeExpandedButtonContainer">
           <button
             className="expandedButton"
             id="closeExpandedButton"
-            onClick={() => changeView()}
+            onClick={e => {
+              changeView();
+              logger(e);
+            }}
             ><ion-icon name="close-sharp"></ion-icon>
           </button>
         </div>
@@ -30,7 +37,10 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
             <button
               className="expandedButton"
               id="leftExpandedButton"
-              onClick={() => {handleImageIndexChange(-1)}}
+              onClick={e => {
+                handleImageIndexChange(-1);
+                logger(e);
+              }}
               ><ion-icon name="arrow-back-sharp"></ion-icon>
             </button>
           </div> : null
@@ -40,7 +50,10 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
             <button
               className="expandedButton"
               id="rightExpandedButton"
-              onClick={() => {handleImageIndexChange(1)}}
+              onClick={e => {
+                handleImageIndexChange(1);
+                logger(e);
+              }}
               ><ion-icon name="arrow-forward-sharp"></ion-icon>
             </button>
           </div> : null
@@ -51,7 +64,10 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
               <ion-icon 
                 name="stop-sharp"
                 index={i}
-                onClick={(e) => {setImageIndex(Number(event.target.attributes[1].value))}}
+                onClick={e => {
+                  setImageIndex(Number(e.target.attributes[1].value));
+                  logger(e);
+                }}
               ></ion-icon>
             </div>
           ))}
@@ -60,7 +76,10 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
       <div id="zoomExpanded">
         <div
           id="zoomViewImageContainer"
-          onClick={() => {setIsZoomed(false)}}
+          onClick={e => {
+            setIsZoomed(false);
+            logger(e);
+          }}
         >
           <Zoom
             img={photos[imageIndex].url}
@@ -78,8 +97,9 @@ const ExpandedView = ({ photos, changeView, imageIndex, handleImageIndexChange, 
     changeView: PropTypes.func,
     imageIndex: PropTypes.number,
     setImageIndex: PropTypes.func,
-    handleImageIndexChange: PropTypes.func
+    handleImageIndexChange: PropTypes.func,
+    logger: PropTypes.func
   }
 };
 
-export default ExpandedView;
+export default captureOverview(ExpandedView);
