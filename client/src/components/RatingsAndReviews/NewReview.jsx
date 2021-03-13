@@ -260,7 +260,7 @@ function NewReview(props) {
       setPhotoURL('');
       closeAddPhoto();
     } else {
-      alert('Cannot submit URL, invalid extension');
+      alert('Cannot accept image, invalid URL');
     }
 
   }
