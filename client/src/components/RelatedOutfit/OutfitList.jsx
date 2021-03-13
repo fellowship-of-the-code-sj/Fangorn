@@ -102,7 +102,6 @@ const OutfitList = ({ productInfo, logger }) => {
           : null
         }
         </Slider>
-
     </div>
   )
 }

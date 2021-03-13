@@ -90,7 +90,7 @@ describe('Rendering RelatedItems Card Components', () => {
 
     //component containes images
     const wrapper2 = await mount(<RelatedItemCard cardData={dummyData.products[1]} />);
-    expect(wrapper2.contains(<img className='itemCardImg related' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png" ></img>)).toBe(true);
+    expect(wrapper2.contains(<img className='itemCardImg related' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="No Image" ></img>)).toBe(true);
 
   });
 
@@ -165,7 +165,7 @@ describe('Rendering OutfitList List Card Component', () => {
   it('should render outfitListCard div', async () => {
     const wrapper = await mount(<OutfitListCard cardData={dummyData.products[0]} />);
     expect(wrapper.containsAllMatchingElements([
-      <img className="itemCardImg" src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' alt="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"/>,
+      <img className="itemCardImg" src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' alt="No Image"/>,
       <h2 className="cardCategory">Accessories</h2>,
       <h3 className="cardItemName">Bright Future Sunglasses</h3>,
       <h4 className="cardItemPrice">$69.00</h4>
@@ -185,11 +185,11 @@ describe('Rendering OutfitList List Card Component', () => {
   it('should render the image if it exists in the relatedItemsCard', async () => {
     //component contains no images
     const wrapper = await mount(<OutfitListCard cardData={dummyData.products[0]} />);
-    expect(wrapper.contains(<img className='itemCardImg' src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png" alt="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
+    expect(wrapper.contains(<img className='itemCardImg' src="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png" alt="No Image"></img>)).toBe(true);
 
     //component containes images
     const wrapper2 = await mount(<OutfitListCard cardData={dummyData.products[1]} />);
-    expect(wrapper2.contains(<img className='itemCardImg' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
+    expect(wrapper2.contains(<img className='itemCardImg' src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="No Image"></img>)).toBe(true);
 
   });
 
@@ -264,7 +264,7 @@ describe('render related carousel list thumbnail images', () => {
     const wrapper = await mount(<RelatedItemCard cardData={dummyData.products[1]} />);
     wrapper.find('.photoBorder').simulate('mouseenter');
     wrapper.find('.relatedImageCarousel').at(1).simulate('click');
-    expect(wrapper.contains(<img className='itemCardImg related' src="test" alt="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
+    expect(wrapper.contains(<img className='itemCardImg related' src="test" alt="No Image"></img>)).toBe(true);
   });
 
 })
@@ -283,7 +283,7 @@ describe('render outfit carousel list thumbnail images', () => {
     const wrapper = await mount(<OutfitListCard cardData={dummyData.products[1]} />);
     wrapper.find('.photoBorder').simulate('mouseenter');
     wrapper.find('.relatedImageCarousel').at(1).simulate('click');
-    expect(wrapper.contains(<img className='itemCardImg' src="test" alt="https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png"></img>)).toBe(true);
+    expect(wrapper.contains(<img className='itemCardImg' src="test" alt="No Image"></img>)).toBe(true);
   });
 
 })

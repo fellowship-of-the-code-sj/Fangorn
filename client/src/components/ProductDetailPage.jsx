@@ -35,9 +35,8 @@ class ProductDetailPage extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
-        {/* <Switch> */}
-          <Route key={this.state.productId} path="/">
+      // <BrowserRouter>
+      //     <Route key={this.state.productId} path="/">
             <div className={ this.state.darkMode? 'productDetailPageDark': 'productDetailPageLight' }>
               <div className="flex banner">
                 <div className="vertical-centering logo">Fangorn</div>
@@ -105,9 +104,8 @@ class ProductDetailPage extends React.Component {
                 : null
               } */}
             </div>
-          </Route>
-        {/* </Switch> */}
-      </BrowserRouter>
+      //     </Route>
+      // </BrowserRouter>
     )
   }
 }

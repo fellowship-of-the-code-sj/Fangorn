@@ -29,7 +29,7 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
 
   const [comparisonData, setComparisonData] = useState({});
 
-   //event listener for action button
+  //event listener for action button
   const actionButtonListener = (event, comparedItem) => {
 
     if (!actionButtonToggle) {
@@ -39,10 +39,9 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
     setActionButtonToggle(!actionButtonToggle);
   }
 
-  // const resetSliderStart = () => {
-  //   slider.current.slickGoTo(0, true)
-  // }
-
+  const resetSliderStart = () => {
+    slider.current.slickGoTo(0, true)
+  }
 
   return (
     <div key={listUpdate} className='itemsList'>
@@ -52,7 +51,15 @@ const RelatedItemsList = ({ relatedItemsList, productInfo, productSelect, listUp
         <Slider ref={slider} {...settings} draggable={false} >
           {
             relatedItemsList.map((item) => {
-              return <RelatedItemCard  listUpdate={listUpdate} productSelect={productSelect} actionButtonListener={actionButtonListener} productInfo={productInfo} key={item.id} cardData={item}></RelatedItemCard>;
+              return <RelatedItemCard
+                resetSliderStart={resetSliderStart}
+                listUpdate={listUpdate}
+                productSelect={productSelect}
+                actionButtonListener={actionButtonListener}
+                productInfo={productInfo}
+                key={item.id}
+                cardData={item}>
+              </RelatedItemCard>;
             })
           }
         </Slider>
