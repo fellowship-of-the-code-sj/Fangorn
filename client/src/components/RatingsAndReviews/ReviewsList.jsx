@@ -55,10 +55,10 @@ function ReviewsList(props) {
     setVisibleList(sortByStar(list).slice(0, listSize))
   }, [props.tracker]);
 
-  // update list on first load
+  // update list on first load and productID change
   useEffect(() => {
     getList(sortQuery);
-  }, []);
+  }, [props.productID]);
 
   const isFiltering = () => {
     if (props.starSort[1] === false && props.starSort[2] === false && props.starSort[3] === false && props.starSort[4] === false && props.starSort[5] === false) {
