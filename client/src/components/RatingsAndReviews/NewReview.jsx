@@ -78,44 +78,28 @@ function NewReview(props) {
   }
 
   const isValidCharacteristics = () => {
-    var valid = 1;
-    if (size || !props.metaObject.characteristics.Size) {
-      valid *= 1
-    } else {
-      valid *= 0
-    }
-    if (width || !props.metaObject.characteristics.Width) {
-      valid *= 1
-    } else {
-      valid *= 0
-    }
-    if (comfort || !props.metaObject.characteristics.Comfort) {
-      valid *= 1
-    } else {
-      valid *= 0
-    }
-    if (quality || !props.metaObject.characteristics.Quality) {
-      valid *= 1
-    } else {
-      valid *= 0
-    }
-    if (length || !props.metaObject.characteristics.Length) {
-      valid *= 1
-    } else {
-      valid *= 0
-    }
-    if (fit || !props.metaObject.characteristics.Fit) {
-      valid *= 1
-    } else {
-      valid *= 0
-    }
-
-    if (valid) {
-      return true;
-    } else {
+    if (!size && props.metaObject.characteristics.Size) {
       return false;
     }
+    if (!width && props.metaObject.characteristics.Width) {
+      return false;
+    }
+    if (!comfort && props.metaObject.characteristics.Comfort) {
+      return false;
+    }
+    if (!quality && props.metaObject.characteristics.Quality) {
+      return false;
+    }
+    if (!length && props.metaObject.characteristics.Length) {
+      return false;
+    }
+    if (!fit && props.metaObject.characteristics.Fit) {
+      return false;
+    }
+    return true;
   }
+
+
 
   const clearForm = () => {
     setRating(0);
@@ -134,10 +118,9 @@ function NewReview(props) {
     setFit(null);
   }
 
-  function validateEmail(email) {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  }
+
+
+  // Conditionals
 
   const showErrors = (input) => {
 
@@ -171,24 +154,14 @@ function NewReview(props) {
   }
 
   const starRatingDesc = () => {
-    if (rating === 1) {
-      return 'Poor';
-    } else if (rating === 2) {
-      return 'Fair';
-    } else if (rating === 3) {
-      return 'Average';
-    } else if (rating === 4) {
-      return 'Good';
-    } else if (rating === 5) {
-      return 'Great';
-    } else if (rating === 0) {
-      return '';
+    switch (rating) {
+      case 0: return '';
+      case 1: return 'Poor';
+      case 2: return 'Fair';
+      case 3: return 'Average';
+      case 4: return 'Good';
+      case 5: return 'Great';
     }
-  }
-
-  const handleChange = (e, func) => {
-    e.preventDefault();
-    func(e.target.value)
   }
 
   const getCharacteristicMeaning = (characteristic) => {
@@ -261,6 +234,13 @@ function NewReview(props) {
 
   }
 
+  // Event handlers
+
+  const handleChange = (e, func) => {
+    e.preventDefault();
+    func(e.target.value)
+  }
+
   const handleAddPhoto = () => {
     var modal = document.getElementById('newReviewPhotoModal');
     modal.style.display = "block";
@@ -283,6 +263,15 @@ function NewReview(props) {
       alert('Cannot submit URL, invalid extension');
     }
 
+  }
+
+  // Input validators
+
+
+
+  function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
   }
 
   function checkURL(url) {
