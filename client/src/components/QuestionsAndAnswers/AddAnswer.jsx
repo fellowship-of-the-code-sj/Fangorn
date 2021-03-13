@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import _ from 'underscore';
-// import regex from '../../../helperFunctions/regex';
 import captureQandA from '../../hoc/captureQandA';
 import URL from '../../URL';
 

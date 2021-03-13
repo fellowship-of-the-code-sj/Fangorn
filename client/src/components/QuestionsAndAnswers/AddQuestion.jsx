@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'underscore';
 import axios from 'axios';
-// import regex from '../../../helperFunctions/regex';
 import captureQandA from '../../hoc/captureQandA';
 import URL from '../../URL';
 
@@ -41,7 +40,6 @@ var AddQuestion = (
     let questionHasContent = question.length > 0;
     let nicknameHasContent = nickname.length > 0;
     let emailHasContent = email.length > 0;
-    // let emailFormatIsValid = regex.email.test(email);
     let emailFormatIsValid = validateEmail(email);
     let allValid = questionHasContent && nicknameHasContent && emailHasContent && emailFormatIsValid;
 
