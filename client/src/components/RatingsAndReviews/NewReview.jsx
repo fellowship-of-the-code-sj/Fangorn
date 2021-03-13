@@ -157,7 +157,7 @@ function NewReview(props) {
       return 'You must select a recommendation'
     }
     if (input === 'characteristics' && !isValidCharacteristics()) {
-      return 'You must fill out of all the characteristics'
+      return 'You must rate each of the characteristics'
     }
     return (<div className="new-review-errors-spacer"></div>)
   }
@@ -342,7 +342,7 @@ function NewReview(props) {
       {
         photos.length < 5 ? <div className="new-review-add-photo-button">
           <br></br><button onClick={(e) => { handleAddPhoto(e) }}>&nbsp;Add a photo&nbsp;</button>
-        </div> : <div><br></br><div className="new-review-add-photo-button-spacer"></div></div>
+        </div> : <div><div className="new-review-add-photo-button-spacer"></div></div>
       }
     </div>
   )
@@ -362,10 +362,10 @@ function NewReview(props) {
             <div className="new-review-email">
               <span className="new-review-form-title">Email:&nbsp;&nbsp;</span><input className="new-review-email" placeholder=" e.g. jackson11@email.com" size="25" maxLength="60" onChange={(e) => { handleChange(e, setEmail) }} type="text" value={email}></input><Mstar /><br></br>
               {hasClickedSubmit ? <div className="new-review-errors">{showErrors('email')}</div> : <div className="new-review-errors-spacer"></div>}
-              <span className="disclaimer-small">For authentication reasons, you will not be emailed</span><br></br><br></br>
+              <span className="disclaimer-small">For authentication reasons, you will not be emailed</span>
             </div>
             <div className="new-review-summary">
-              <span className="new-review-form-title">Review summary:</span> <Mstar /><br></br><textarea className="new-review-summary" placeholder=" e.g. Best purchase ever!" maxLength="60" onChange={(e) => { handleChange(e, setSummary) }} type="text" value={summary} rows="1" cols="30" ></textarea> <br></br><br></br>
+              <span className="new-review-form-title">Review summary:</span> <br></br><textarea placeholder=" e.g. Best purchase ever!" maxLength="60" onChange={(e) => { handleChange(e, setSummary) }} type="text" value={summary} rows="1" cols="30" ></textarea>
             </div>
             <div className="new-review-body">
               <span className="new-review-form-title">Enter your review: </span><Mstar />
@@ -395,8 +395,8 @@ function NewReview(props) {
                     <input className="new-review-radios" onClick={(e) => { setSize(2); props.logger(e) }} type="radio" name="size"></input><label>2</label>
                     <input className="new-review-radios" onClick={(e) => { setSize(3); props.logger(e) }} type="radio" name="size"></input><label>3</label>
                     <input className="new-review-radios" onClick={(e) => { setSize(4); props.logger(e) }} type="radio" name="size"></input><label>4</label>
-                    <input className="new-review-radios" onClick={(e) => { setSize(5); props.logger(e) }} type="radio" name="size"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('size')}</span>
+                    <input className="new-review-radios" onClick={(e) => { setSize(5); props.logger(e) }} type="radio" name="size"></input><label>5</label>
+                    <div className="new-review-characteristic-meaning">{getCharacteristicMeaning('size')}</div>
                   </div></div> : <div></div>
               }
               {
@@ -406,8 +406,8 @@ function NewReview(props) {
                     <input className="new-review-radios" onClick={(e) => { setWidth(2); props.logger(e) }} type="radio" name="width"></input><label>2</label>
                     <input className="new-review-radios" onClick={(e) => { setWidth(3); props.logger(e) }} type="radio" name="width"></input><label>3</label>
                     <input className="new-review-radios" onClick={(e) => { setWidth(4); props.logger(e) }} type="radio" name="width"></input><label>4</label>
-                    <input className="new-review-radios" onClick={(e) => { setWidth(5); props.logger(e) }} type="radio" name="width"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('width')}</span>
+                    <input className="new-review-radios" onClick={(e) => { setWidth(5); props.logger(e) }} type="radio" name="width"></input><label>5</label>
+                    <div className="new-review-characteristic-meaning">{getCharacteristicMeaning('width')}</div>
                   </div> </div> : <div></div>
               }
               {
@@ -417,8 +417,8 @@ function NewReview(props) {
                     <input className="new-review-radios" onClick={(e) => { setComfort(2); props.logger(e) }} type="radio" name="comfort"></input><label>2</label>
                     <input className="new-review-radios" onClick={(e) => { setComfort(3); props.logger(e) }} type="radio" name="comfort"></input><label>3</label>
                     <input className="new-review-radios" onClick={(e) => { setComfort(4); props.logger(e) }} type="radio" name="comfort"></input><label>4</label>
-                    <input className="new-review-radios" onClick={(e) => { setComfort(5); props.logger(e) }} type="radio" name="comfort"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('comfort')}</span>
+                    <input className="new-review-radios" onClick={(e) => { setComfort(5); props.logger(e) }} type="radio" name="comfort"></input><label>5</label>
+                    <div className="new-review-characteristic-meaning">{getCharacteristicMeaning('comfort')}</div>
                   </div> </div> : <div></div>
               }
               {
@@ -428,8 +428,8 @@ function NewReview(props) {
                     <input className="new-review-radios" onClick={(e) => { setQuality(2); props.logger(e) }} type="radio" name="quality"></input><label>2</label>
                     <input className="new-review-radios" onClick={(e) => { setQuality(3); props.logger(e) }} type="radio" name="quality"></input><label>3</label>
                     <input className="new-review-radios" onClick={(e) => { setQuality(4); props.logger(e) }} type="radio" name="quality"></input><label>4</label>
-                    <input className="new-review-radios" onClick={(e) => { setQuality(5); props.logger(e) }} type="radio" name="quality"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('quality')}</span>
+                    <input className="new-review-radios" onClick={(e) => { setQuality(5); props.logger(e) }} type="radio" name="quality"></input><label>5</label>
+                    <div className="new-review-characteristic-meaning">{getCharacteristicMeaning('quality')}</div>
                   </div> </div> : <div></div>
               }
               {
@@ -439,8 +439,8 @@ function NewReview(props) {
                     <input className="new-review-radios" onClick={(e) => { setLength(2); props.logger(e) }} type="radio" name="length"></input><label>2</label>
                     <input className="new-review-radios" onClick={(e) => { setLength(3); props.logger(e) }} type="radio" name="length"></input><label>3</label>
                     <input className="new-review-radios" onClick={(e) => { setLength(4); props.logger(e) }} type="radio" name="length"></input><label>4</label>
-                    <input className="new-review-radios" onClick={(e) => { setLength(5); props.logger(e) }} type="radio" name="length"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('length')}</span>
+                    <input className="new-review-radios" onClick={(e) => { setLength(5); props.logger(e) }} type="radio" name="length"></input><label>5</label>
+                    <div className="new-review-characteristic-meaning">{getCharacteristicMeaning('length')}</div>
                   </div> </div>
                   : <div></div>
               }
@@ -452,7 +452,7 @@ function NewReview(props) {
                     <input className="new-review-radios" onClick={(e) => { setFit(3); props.logger(e) }} type="radio" name="fit"></input><label>3</label>
                     <input className="new-review-radios" onClick={(e) => { setFit(4); props.logger(e) }} type="radio" name="fit"></input><label>4</label>
                     <input className="new-review-radios" onClick={(e) => { setFit(5); props.logger(e) }} type="radio" name="fit"></input><label>5</label><br></br>
-                    <span className="new-review-characteristic-meaning">{getCharacteristicMeaning('fit')}</span>
+                    <div className="new-review-characteristic-meaning">{getCharacteristicMeaning('fit')}</div>
                   </div> </div>
                   : <div></div>
               }

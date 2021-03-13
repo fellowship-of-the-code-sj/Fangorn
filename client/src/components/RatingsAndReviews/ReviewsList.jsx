@@ -109,14 +109,14 @@ function ReviewsList(props) {
         <option value="helpful">Most helpful</option>
       </select>
       {
-        isFiltering() ? <span>, filtering by <br></br><ClearFilter /> {whichFilters()} reviews&nbsp;</span> : <span><br></br><br></br></span>
+        isFiltering() ? <span>, filtering by <br></br><ClearFilter /> {whichFilters()} reviews&nbsp;</span> : <div className="reviews-list-double-spacer"></div>
       }
       <hr></hr>
       <div className="reviews-list-content">
         {visibleList.map((review) => {
           return <Review key={review.review_id} review={review} />
         })}
-      </div><br></br>
+      </div>
       {
         list.length > visibleList.length ?
           <div className="review-list-buttons">
