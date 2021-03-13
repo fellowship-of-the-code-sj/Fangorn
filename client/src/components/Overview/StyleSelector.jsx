@@ -5,7 +5,10 @@ import captureOverview from '../../hoc/captureOverview';
 const StyleSelector = ({ styles, currentStyle, handleStyleChange, logger }) => {
   return (
     <div className="styleSelector">
-      <div id="styleSelectorName">Style &gt; {currentStyle.name}</div>
+      <div id="styleSelectorName">
+        <span id="styleLabel">STYLE &gt; </span>
+        <span id="styleName">{currentStyle.name}</span>
+      </div>
       <div id="styleSelectorStyles">
         { styles.length > 0 ? 
           styles.map((style, index) => (

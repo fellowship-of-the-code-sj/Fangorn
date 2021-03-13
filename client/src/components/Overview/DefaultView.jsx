@@ -76,7 +76,7 @@ const DefaultView = ({ photos, changeView, imageIndex, handleImageIndexChange, s
               scroll(-60);
               logger(e);
             }}
-          ><ion-icon name="arrow-back-sharp"></ion-icon></button>
+          ><ion-icon size="large" name="arrow-back-sharp"></ion-icon></button>
         </div> : null
       }
       { photos && (imageIndex < (photos.length - 1)) ?
@@ -89,7 +89,7 @@ const DefaultView = ({ photos, changeView, imageIndex, handleImageIndexChange, s
             scroll(60);
             logger(e);
           }}
-          ><ion-icon name="arrow-forward-sharp"></ion-icon></button>
+          ><ion-icon size="large" name="arrow-forward-sharp"></ion-icon></button>
         </div> : null
       }
     </div>

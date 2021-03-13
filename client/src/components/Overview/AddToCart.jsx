@@ -107,10 +107,12 @@ const AddToCart = ({ skus, logger }) => {
         <select id="quantitySelect"><option>-</option></select>
       }
       {sizes.length > 0 ?
-      <button id="addToCartButton"
+      <div id="addToCartButton"
         onClick={e => {e.preventDefault(); handleAddToCart(); logger(e)}}
-        >ADD TO CART +
-      </button> : <div id="addToCartButton"></div>
+      >
+        <span id="addText">ADD TO CART</span>
+        <span id="addPlus">+</span>
+      </div> : <div id="addToCartButton"></div>
       }
     </div>
   )
