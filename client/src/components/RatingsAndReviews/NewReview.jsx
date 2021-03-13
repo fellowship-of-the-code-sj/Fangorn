@@ -348,7 +348,7 @@ function NewReview(props) {
   )
 
   return (
-    <div className="new-review">
+    <div className="new-review" >
       <div id="newReviewForm" className="new-review-modal">
         <div className="new-review-modal-content">
           <span className="new-review-modal-close" onClick={(e) => { hideForm(e); props.logger(e) }} >&times;</span>

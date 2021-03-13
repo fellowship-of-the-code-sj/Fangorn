@@ -4,12 +4,14 @@ import captureRandR from '../../hoc/captureRandR.js';
 import URL from '../../URL';
 
 function Review(props) {
+
+  const [helpfulness, setHelpfulness] = useState(props.review.helpfulness);
   const [helpful, setHelpful] = useState(false);
   const [reported, report] = useState(false);
   const [selectedPhoto, selectPhoto] = useState({});
 
   const helpfulNum = function () {
-    return helpful ? props.review.helpfulness + 1 : props.review.helpfulness;
+    return helpful ? helpfulness + 1 : helpfulness;
   }
 
   const isReported = function () {
@@ -81,7 +83,7 @@ function Review(props) {
       <div className="rating-sprite">
         <span style={{ "width": giveRatingPercentage() }} className="rating-sprite-fill"></span>
       </div>
-      <div className="reviewer-name-and-date">{props.review.reviewer_name}, {giveDate()}</div>
+      <div className="reviewer-name-and-date secondary-text">{props.review.reviewer_name}, {giveDate()}</div>
       <div className="review-summary">{props.review.summary}</div>
       <div className="review-body">{props.review.body}</div>
       <div className="review-thumbnails"></div>
@@ -90,10 +92,10 @@ function Review(props) {
       })}
       { props.review.response ? <div className="response"><b>Response from seller:</b><br></br>{props.review.response}</div> : <div></div>}
       { props.review.recommend ? <div className="recommend"> ✔ I recommend this product</div> : <div></div>}
-      <span className="helpful">Helpful?</span>
-      <span className="helpful-toggle" onClick={sendHelpful} >Yes</span>
-      <span className="helpful-count">({helpfulNum()}) </span>
-      <span className="report" onClick={() => { sendReport() }} >{isReported()}</span>
+      <span className="helpful secondary-text" >Helpful?</span>
+      <span className="helpful-toggle secondary-text" onClick={sendHelpful} >Yes</span>
+      <span className="helpful-count secondary-text">({helpfulNum()}) </span>
+      <span className="report secondary-text" onClick={() => { sendReport() }} >{isReported()}</span>
       <div id={"imageModal" + JSON.stringify(props.review.review_id)} className="review-image-modal">
         <div className="review-image-modal-content">
           <span onClick={handleImageClose} className="review-image-modal-close">&times;</span>

@@ -516,8 +516,8 @@ input:checked + .slider:before {
 }
 
 .reviews-list {
-  margin-left: 20%;
-  width: 560px;
+  margin-left: 10%;
+  width: 600px;
   margin-top: 10%;
   max-height: 80%;
 }
@@ -559,11 +559,14 @@ input:checked + .slider:before {
   margin-top: 5px;
   flex-direction: column;
   font-weight: bold;
+  font-size: 1.25em;
 }
 
 .review-body{
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 1.15em;
+  font-weight: 300;
 }
 
 .reviewer-name-and-date{
@@ -803,7 +806,7 @@ input:checked + .slider:before {
 
 .new-review-summary {
   margin-top: 25px;
-  margin-bottom: 25px
+  margin-bottom: 25px;
 }
 
 .new-review-add-photo-button-spacer{
