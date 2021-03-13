@@ -11,10 +11,11 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
-const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger }) => {
+const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, resetSliderStart, logger }) => {
+
+  var defaultImage = "https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png";
 
   //State for comparison table toggle
-
   var settings = {
     dots: true,
     infinite: false,
@@ -30,7 +31,9 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
   };
 
   const [ actionButtonToggle, setActionButtonToggle] = useState(false)
+
   const [ carouselImages, setCarouselImages ] = useState(false);
+
   const [ cardImage, setCardImage ] = useState(0);
 
   const pictureCarousel = () => {
@@ -50,7 +53,7 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
   return (
     <div onClick={(e) => {
           productSelect(cardData.id)
-          // resetSliderStart()
+          resetSliderStart()
           setCardImage(0)
           logger(e)
         }
@@ -66,9 +69,9 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
         {
           //Checks to see if image exists, if not returns default image
             cardData.default_style.photos[0].url ?
-            <img className='itemCardImg related' src={cardData.default_style.photos[cardImage].thumbnail_url } alt='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'>
+            <img className='itemCardImg related' src={cardData.default_style.photos[cardImage].thumbnail_url } alt='No Image'>
             </img>
-            : <img className='itemCardImg related' src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' alt='No Image'></img>
+            : <img className='itemCardImg related' src={defaultImage} alt='No Image'></img>
         }
         {
           carouselImages?
@@ -82,7 +85,7 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
                       logger(e);
                     }}
                   className='relatedImageCarousel' key={index} src={image.thumbnail_url}
-                  alt='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'></img>
+                  alt='No Image'></img>
                 })
                 : null
               }
@@ -106,7 +109,6 @@ const RelatedItemCard = ({ cardData, actionButtonListener, productSelect, logger
       <div className="star-ratings">
         <StarRating rating={cardData.rating}/>
       </div>
-
     </div>
   )
 }
@@ -117,6 +119,6 @@ RelatedItemCard.propTypes = {
   cardData: PropTypes.object,
   actionButtonListener: PropTypes.func,
   productSelect: PropTypes.func,
-  // resetSliderStart: PropTypes.func,
+  resetSliderStart: PropTypes.func,
   logger: PropTypes.func
 }

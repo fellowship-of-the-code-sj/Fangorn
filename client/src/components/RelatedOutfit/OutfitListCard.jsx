@@ -11,6 +11,8 @@ import Slider from 'react-slick';
 
 const OutfitListCard = ({ cardData, removeOutfitItem, logger}) => {
 
+  var defaultImage = "https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png";
+
   var settings = {
     dots: true,
     infinite: false,
@@ -26,6 +28,7 @@ const OutfitListCard = ({ cardData, removeOutfitItem, logger}) => {
   };
 
   const [ carouselImages, setCarouselImages ] = useState(false);
+
   const [ cardImage, setCardImage ] = useState(0);
 
   const pictureCarousel = () => {
@@ -45,8 +48,8 @@ const OutfitListCard = ({ cardData, removeOutfitItem, logger}) => {
         {
           //Checks to see if image exists, if not returns default image
           cardData.default_style.photos[0].url ?
-          <img className='itemCardImg' src={cardData.default_style.photos[cardImage].thumbnail_url} alt='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'></img>
-          : <img className='itemCardImg' src='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png' alt='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'></img>
+          <img className='itemCardImg' src={cardData.default_style.photos[cardImage].thumbnail_url} alt='No Image'></img>
+          : <img className='itemCardImg' src={defaultImage} alt='No Image'></img>
         }
         {
           carouselImages?
@@ -58,7 +61,7 @@ const OutfitListCard = ({ cardData, removeOutfitItem, logger}) => {
                     updateCardImage(e, index)
                     logger(e)
                   }}
-                  className='relatedImageCarousel' key={index} src={image.thumbnail_url} alt='https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png'></img>
+                  className='relatedImageCarousel' key={index} src={image.thumbnail_url} alt='No Image'></img>
                 })
               }
             </Slider>
