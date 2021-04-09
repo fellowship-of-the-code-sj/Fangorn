@@ -3,8 +3,8 @@ const reviews = require('../models/reviews.js');
 
 module.exports = {
   get: (req, res) => {
-    console.log('query', req.query.itemID);
-    console.log('body', req.body.itemID);
+    console.log('query', req.query);
+    console.log('body', req.body);
     products.getProductInfo(req.query.itemID, (err, results) => {
       if (err) {
         console.log(1);
