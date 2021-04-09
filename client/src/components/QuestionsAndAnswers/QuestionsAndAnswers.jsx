@@ -26,7 +26,7 @@ const QuestionsAndAnswers = ({ productID, productName }) => {
   const [ email, setEmail ] = useState('');
 
   useEffect(() => {
-    axios.get(`${URL}/questions/${productID}`)
+    axios.get(`/questions/${productID}`)
       .then(response => {
         const sortedList = _.sortBy(response.data, question => question.question_helpfulness).reverse();
 

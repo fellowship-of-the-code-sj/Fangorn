@@ -46,7 +46,7 @@ const IndividualQuestion = ({ question, productName, logger }) => {
   const handleSubmitHelpful = e => {
     e.preventDefault();
     const { question_id } = question;
-    axios.put(`${URL}/questions/${question_id}/helpful`)
+    axios.put(`/questions/${question_id}/helpful`)
       .then(() => {
         setSubmittedHelpful(true);
       })
@@ -58,7 +58,7 @@ const IndividualQuestion = ({ question, productName, logger }) => {
   const handleSubmitReport = e => {
     e.preventDefault();
     const { question_id } = question;
-    axios.put(`${URL}/questions/${question_id}/report`)
+    axios.put(`/questions/${question_id}/report`)
       .then(() => {
         setSubmittedReport(true);
       })

@@ -28,7 +28,7 @@ function RatingsAndReviews(props) {
   const getMetaObject = () => {
     setTracker(tracker + 1);
     var ratingObject = {};
-    axios.get(`${URL}/RatingsAndReviews/getMeta?product_id=${props.productID}`)
+    axios.get(`/RatingsAndReviews/getMeta?product_id=${props.productID}`)
       .then((response) => {
         setMetaObject(response.data)
       })

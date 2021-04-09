@@ -49,7 +49,7 @@ function Review(props) {
   const sendReport = function () {
     if (!reported) {
       //axios.put
-      axios.put(`${URL}/RatingsAndReviews/report`, null, { params: { reviewId: props.review.review_id } })
+      axios.put(`/RatingsAndReviews/report`, null, { params: { reviewId: props.review.review_id } })
     } else {
       alert('You have already reported this review')
     }
@@ -59,7 +59,7 @@ function Review(props) {
   const sendHelpful = function () {
     if (!helpful) {
       //axios.put
-      axios.put(`${URL}/RatingsAndReviews/helpful`, null, { params: { reviewId: props.review.review_id } })
+      axios.put(`/RatingsAndReviews/helpful`, null, { params: { reviewId: props.review.review_id } })
     } else {
       alert('You have already marked this review as helpful')
     }

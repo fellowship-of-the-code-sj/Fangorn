@@ -20,7 +20,7 @@ const IndividualAnswer = ({ answer, logger }) => {
 
   const handleSubmitHelpful = e => {
     e.preventDefault();
-    axios.put(`${URL}/answer/${answer.id}/helpful`)
+    axios.put(`/answer/${answer.id}/helpful`)
       .then(() => {
         setSubmittedHelpful(true);
       })
@@ -31,7 +31,7 @@ const IndividualAnswer = ({ answer, logger }) => {
 
   const handleSubmitReport = e => {
     e.preventDefault();
-    axios.put(`${URL}/answer/${answer.id}/report`)
+    axios.put(`/answer/${answer.id}/report`)
       .then(() => {
         setSubmittedReport(true);
       })

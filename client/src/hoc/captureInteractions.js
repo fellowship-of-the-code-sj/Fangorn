@@ -31,7 +31,7 @@ const captureInteractions = widget => {
           widget
         };
 
-        axios.post(`${URL}/interactions/`, bodyParams)
+        axios.post(`/interactions/`, bodyParams)
           .then(() => console.log('logged'))
           .catch(err => console.error(err));
       };

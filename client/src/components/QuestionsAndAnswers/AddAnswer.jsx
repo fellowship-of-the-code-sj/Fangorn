@@ -55,7 +55,7 @@ var AddAnswer = (
         email: _.escape(email),
         body: _.escape(answer)
       };
-      axios.post(`${URL}/questions/${questionId}/answer/add`, body_params)
+      axios.post(`/questions/${questionId}/answer/add`, body_params)
         .then(() => {
             setAnswer('');
             setNickname('');
