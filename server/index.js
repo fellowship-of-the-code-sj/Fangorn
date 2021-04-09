@@ -9,7 +9,7 @@ const { relatedItems, overview } = require('./controllers.js');
 
 const app = express();
 
-// app.use(cors({ origin: '*', methods: ['GET', 'PUT', 'POST'] }));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
