@@ -6,6 +6,7 @@ import Overview from './Overview/Overview.jsx'
 // import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import helperFunctions from '../../helperFunctions/helperFunctions.js';
 import URL from '../URL';
+import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 class ProductDetailPage extends React.Component {
@@ -17,15 +18,23 @@ class ProductDetailPage extends React.Component {
   }
 
   componentDidMount() {
-    serverRequest.get(`${URL}/Overview`, {itemID: this.state.productId}, (result) => {
-      this.setState({ productInfo: result.data })
+    // serverRequest.get(`${URL}/Overview`, {itemID: this.state.productId}, (result) => {
+    //   this.setState({ productInfo: result.data })
+    // });
+    axios.get(`${URL}/Overview`, {itemID: this.state.productId})
+      .then((result) => {
+        this.setState({ productInfo: result.data });
     });
   }
 
   productSelect(id) {
     this.setState({ productId: id, listUpdate: !this.state.listUpdate });
-    serverRequest.get(`${URL}/Overview`, { itemID: id }, (result) => {
-      this.setState({ productInfo: result.data })
+    // serverRequest.get(`${URL}/Overview`, { itemID: id }, (result) => {
+    //   this.setState({ productInfo: result.data })
+    // });
+    axios.get(`${URL}/Overview`, { itemID: id })
+      .then((result) => {
+        this.setState({ productInfo: result.data })
     });
   }
 
