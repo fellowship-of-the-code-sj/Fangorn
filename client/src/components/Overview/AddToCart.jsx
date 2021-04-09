@@ -66,7 +66,6 @@ const AddToCart = ({ skus, logger }) => {
       setFailedAddToCart(true);
     } else {
       setFailedAddToCart(false);
-      console.log({sku_id: selectedSku, count: selectedQty})
     }
   }
 
@@ -75,20 +74,20 @@ const AddToCart = ({ skus, logger }) => {
       {sizes.length > 0 ?
         <div id="sizeSelectContainer">
           {failedAddToCart ? <p id="sizeError">Please select size</p> : null}
-          <select 
+          <select
             id="sizeSelect"
             onChange={e => {sizeChange(e.target.value)}}>
             <option>Select Size</option>
             {Object.keys(skus).map((key, index) => (
               <option key={key}>{skus[key].size}</option>
             ))}
-          </select> 
+          </select>
         </div> :
         <div id="sizeSelectContainer">
           <select id="sizeSelect" disabled><option>OUT OF STOCK</option></select>
         </div>
       }
-      {quantities.length > 0 ? 
+      {quantities.length > 0 ?
         <select
           id="quantitySelect"
           onChange={e => {quantityChange(e.target.value)}}>

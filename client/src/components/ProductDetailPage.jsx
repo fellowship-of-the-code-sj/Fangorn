@@ -18,10 +18,6 @@ class ProductDetailPage extends React.Component {
   }
 
   componentDidMount() {
-    // serverRequest.get(`${URL}/Overview`, {itemID: this.state.productId}, (result) => {
-    //   this.setState({ productInfo: result.data })
-    // });
-    console.log('productId', this.state.productId);
     axios.get(`/Overview?itemID=${this.state.productId}`)
       .then((result) => {
         this.setState({ productInfo: result.data });
@@ -30,9 +26,6 @@ class ProductDetailPage extends React.Component {
 
   productSelect(id) {
     this.setState({ productId: id, listUpdate: !this.state.listUpdate });
-    // serverRequest.get(`${URL}/Overview`, { itemID: id }, (result) => {
-    //   this.setState({ productInfo: result.data })
-    // });
     axios.get(`/Overview?itemID=${id}`)
       .then((result) => {
         this.setState({ productInfo: result.data })
