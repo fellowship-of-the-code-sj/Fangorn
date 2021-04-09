@@ -10,7 +10,7 @@
     "react-dev": "npx webpack --watch --mode=development",
     "react-prod": "npx webpack --mode=production",
     "start": "nodemon server/index.js",
-    "heroku-postbuild": "webpack -p"
+    "heroku-postbuild": "npx webpack --mode=production"
   },
   "jest": {
     "setupFilesAfterEnv": [
