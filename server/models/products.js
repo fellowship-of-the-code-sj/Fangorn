@@ -11,6 +11,7 @@ module.exports = {
 
     apiRequest.get(url, (err, data) => {
       if (err) {
+        console.log('url', url);
         callback(err);
       } else {
         callback(null, data);
