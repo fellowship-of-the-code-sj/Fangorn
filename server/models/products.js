@@ -20,6 +20,7 @@ module.exports = {
 
   //Send API reuqest for product info
   getProductInfo: (itemId, callback) => {
+    console.log('itemId', itemId);
     var url = `/products/${itemId}`;
 
     apiRequest.get(url, (err, data) => {
