@@ -1,4 +1,4 @@
-# FEC
+# Fangorn
 ## Fellowship of the Code
 
 ## STEPS FOR SET UP AND INSTALLATION
